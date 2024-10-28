@@ -34,7 +34,14 @@ in {
 
     userDirs.createDirectories = false;
   };
-
+  
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs29-pgtk;
+    extraPackages = epkgs: [
+      epkgs.vterm
+    ];
+  };
   programs.fish = {
     enable = false;
     interactiveShellInit = ''
@@ -92,6 +99,21 @@ in {
       alias ls="ls --color"
       alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
       alias nixosFlake="sudo nixos-rebuild switch --flake ~/.nixos#cabbage"
+      alias ls="ls --color"
+      alias vd="veracrypt -t -d"
+      alias vc="veracrypt -t -c"
+      alias vm="veracrypt -t"
+      alias mpv="mpv --hwdec=auto"    
+      alias mino="killall -SIGKILL java"
+      alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
+      alias mokuro="python3 -m mokuro"    
+      alias fetch="fetcher.sh" 
+      alias emacsc="emacsclient -c -a nvim"
+        # --ecryptfs
+          alias mount.crypt="mount.ecryptfs_private"
+          alias umount.crypt="umount.ecryptfs_private"
+          alias ikey="insert.sh"
+      PATH="$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
       source $ZIM_HOME/init.zsh
     '';
   };

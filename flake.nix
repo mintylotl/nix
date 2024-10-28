@@ -18,16 +18,17 @@
   };
   outputs = { nixpkgs, home-manager, prismlauncher, ... }@inputs:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-
       #nixos24 = nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system:
       #import inputs.nixos24{
       #inherit system;
       #config.allowUnfree = true;
       #});
       #nix24 = nixos24.x86_64-linux;
+
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
       prism = prismlauncher;
+
     in {
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {

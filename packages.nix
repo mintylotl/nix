@@ -19,7 +19,8 @@ in {
     alsa-lib coreutils udev
     libselinux
     libdecor
-    
+    timewarrior
+
     gst_all_1.gstreamer zenity
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
@@ -34,7 +35,6 @@ in {
     audacity
     # Editors
     mpv
-    emacs
     # Environment
     busybox
     htop
@@ -75,6 +75,7 @@ in {
     # QT
     qt6.full
     qt5.full
+    qt6Packages.qtstyleplugin-kvantum
     qimgv
     qt6ct
     kwayland-integration
@@ -83,6 +84,7 @@ in {
 
     # PrismLauncher Cracked
     prismlauncher
+
     # Python
     #System
     py.python
