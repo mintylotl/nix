@@ -77,11 +77,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730136551,
-        "narHash": "sha256-C0z/dTzjH6ERo2U/CgkQGLaKq1Y75gt6THKnF7rtvT0=",
+        "lastModified": 1730138218,
+        "narHash": "sha256-gtcCjM07XONF7QRfpCVcfWaGsQsynuaS3zcvDlZLN9w=",
         "owner": "mintylotl",
         "repo": "prismcrack",
-        "rev": "deec829d0ffcfb05571c83eb2ead49adcc0669d0",
+        "rev": "d9e2ccb8e81d61127f44ae4b869a90bf003ecafe",
         "type": "github"
       },
       "original": {
