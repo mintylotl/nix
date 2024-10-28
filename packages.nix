@@ -1,14 +1,16 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, prism, ... }:
 let 
   py = pkgs.python312Packages;
 in {
   nixpkgs.overlays = [
+    prism.overlays.default
     (final: prev: {
       glfw3-minecraft = prev.glfw3-minecraft.overrideAttrs {
         withMinecraftPatch = true;
       };
     })
   ];
+
   environment.systemPackages = with pkgs; [
     # New
     xdg-utils
@@ -17,7 +19,6 @@ in {
     alsa-lib coreutils udev
     libselinux
     libdecor
-    zimfw
     
     gst_all_1.gstreamer zenity
     gst_all_1.gst-plugins-base
@@ -45,12 +46,7 @@ in {
     bottles
     #RetroArch
     (retroarch.override { cores = with libretro; [ mame2016 ]; })
-    (lutris.override {
-      extraLibraries = pkgs: [
-        libappindicator
-	libappindicator-gtk3
-      ];
-    })
+    lutris
     # EMACS
     fd
     ripgrep
@@ -86,10 +82,7 @@ in {
     nwg-look
 
     # PrismLauncher Cracked
-    (prismlauncher.overrideAttrs {
-      withWaylandGLFW = true;
-    })
-
+    prismlauncher
     # Python
     #System
     py.python

@@ -9,9 +9,8 @@
       vulkan-validation-layers
       nvidia-vaapi-driver
       libGL
-      libGLU
       libglvnd
-      mesa.drivers
+      egl-wayland
       opencl-headers
 
       xorg.libX11 xorg.libXext xorg.libXrandr xorg.libXi
@@ -64,7 +63,6 @@
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
-    VK_DRIVER_FILES =
-      "/nix/store/c4s0nxrxws9vqradv5b5sjvqgidnc5zv-nvidia-x11-560.35.03-6.6.57/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    VK_DRIVER_FILES = "${config.boot.kernelPackages.nvidiaPackages.stable}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
   };
 }

@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "flake-compat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1696426674,
-        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -23,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729551526,
-        "narHash": "sha256-7LAGY32Xl14OVQp3y6M43/0AtHYYvV6pdyBcp3eoz0s=",
+        "lastModified": 1730016908,
+        "narHash": "sha256-bFCxJco7d8IgmjfNExNz9knP8wvwbXU4s/d53KOK6U0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5ec753a1fc4454df9285d8b3ec0809234defb975",
+        "rev": "e83414058edd339148dc142a8437edb9450574c8",
         "type": "github"
       },
       "original": {
@@ -69,11 +53,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1729413321,
-        "narHash": "sha256-I4tuhRpZFa6Fu6dcH9Dlo5LlH17peT79vx1y1SpeKt0=",
+        "lastModified": 1729880355,
+        "narHash": "sha256-RP+OQ6koQQLX5nw0NmcDrzvGL8HDLnyXt/jHhL1jwjM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1997e4aa514312c1af7e2bda7fad1644e778ff26",
+        "rev": "18536bf04cd71abd345f9579158841376fdd0c5a",
         "type": "github"
       },
       "original": {
@@ -83,9 +67,9 @@
         "type": "github"
       }
     },
-    "prism-cracked": {
+    "prismlauncher": {
       "inputs": {
-        "flake-compat": "flake-compat",
+        "flake-compat": [],
         "libnbtplusplus": "libnbtplusplus",
         "nix-filter": "nix-filter",
         "nixpkgs": [
@@ -93,16 +77,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1729601921,
-        "narHash": "sha256-n8BSZNyBBUGrroLfdG5vdyTufRFbM6JyXQVzh0Pc6BI=",
-        "owner": "diegiwg",
-        "repo": "prismlauncher-cracked",
-        "rev": "9a8e24e17087c13fe2635b1bacacf57ea76ea7e2",
+        "lastModified": 1730136551,
+        "narHash": "sha256-C0z/dTzjH6ERo2U/CgkQGLaKq1Y75gt6THKnF7rtvT0=",
+        "owner": "mintylotl",
+        "repo": "prismcrack",
+        "rev": "deec829d0ffcfb05571c83eb2ead49adcc0669d0",
         "type": "github"
       },
       "original": {
-        "owner": "diegiwg",
-        "repo": "prismlauncher-cracked",
+        "owner": "mintylotl",
+        "repo": "prismcrack",
         "type": "github"
       }
     },
@@ -110,7 +94,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "prism-cracked": "prism-cracked"
+        "prismlauncher": "prismlauncher"
       }
     }
   },

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, nix24, ... }:
+{ config, lib, pkgs, ... }:
 let
   HOME = "/home/jwm";
 in

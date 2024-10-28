@@ -10,13 +10,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    prism-cracked = {
-      url = "github:diegiwg/prismlauncher-cracked";
+    prismlauncher = {
+      url = "github:mintylotl/prismcrack";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "";
     };
   };
-
-  outputs = { prism-cracked, nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, prismlauncher, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -27,8 +27,7 @@
       #config.allowUnfree = true;
       #});
       #nix24 = nixos24.x86_64-linux;
-
-      prismlauncher = prism-cracked.packages.${system}.default;
+      prism = prismlauncher;
     in {
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {
@@ -43,6 +42,7 @@
               home-manager.backupFileExtension = "old";
             }
           ];
+	  specialArgs = { inherit prism; };
         };
       };
     };

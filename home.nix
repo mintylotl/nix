@@ -89,6 +89,9 @@ in {
           source $ZIM_HOME/zimfw.zsh init -q
       fi
 
+      alias ls="ls --color"
+      alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
+      alias nixosFlake="sudo nixos-rebuild switch --flake ~/.nixos#cabbage"
       source $ZIM_HOME/init.zsh
     '';
   };
@@ -108,6 +111,10 @@ in {
     '';
   };
   
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   programs.neovim = {
     enable = true;
     defaultEditor = true;
