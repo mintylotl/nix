@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
-let HOME = "/home/jwm";
+let 
+HOME = "/home/jwm";
 in {
   imports = [ ./config/hyprland-conf.nix ];
   home.username = "jwm";
@@ -22,9 +23,8 @@ in {
       xdgOpenUsePortal = true;
       extraPortals = with pkgs; [
         pkgs.xdg-desktop-portal-gtk
-	pkgs.xdg-desktop-portal-kde
       ];
-      config.common.default = "xdg-desktop-portal-kde";
+      config.common.default = "xdg-desktop-portal-gtk";
     };
 
     configHome = "${HOME}/.config";

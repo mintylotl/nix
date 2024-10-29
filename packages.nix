@@ -4,11 +4,6 @@ let
 in {
   nixpkgs.overlays = [
     prism.overlays.default
-    (final: prev: {
-      glfw3-minecraft = prev.glfw3-minecraft.overrideAttrs {
-        withMinecraftPatch = true;
-      };
-    })
   ];
 
   environment.systemPackages = with pkgs; [
@@ -238,7 +233,6 @@ in {
       enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
-	xdg-desktop-portal-kde
       ];
       configPackages = with pkgs; [
         gnome-session

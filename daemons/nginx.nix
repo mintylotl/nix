@@ -37,7 +37,7 @@ in {
     }
 
     http {
-        include mime.types;
+        #include mime.types;
         default_type application/octet-stream;
         charset utf-8;
         gzip on;
