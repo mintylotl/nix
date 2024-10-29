@@ -69,6 +69,7 @@ in
 	  jwm = {};
 	  ftpsecure = {};
 	  ssh = {};
+	  certs = {};
 	};
 	# Users
 	users.users.jwm = {
@@ -84,6 +85,9 @@ in
 	    password = "123";
 	    createHome = false;
 	    homeMode = "755";
+	};
+	users.users.nginx = {
+	  extraGroups = [ "certs" ];
 	};
 	
 	# Sound

@@ -24,6 +24,7 @@ let
 
 in {
   services.nginx.enable = true;
+  services.nginx.defaultMimeTypes = "${pkgs.nginx}/conf/mime.types";
   systemd.services.nginx = {
     serviceConfig = { ProtectSystem = lib.mkForce "off"; };
   };
