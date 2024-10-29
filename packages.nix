@@ -16,7 +16,7 @@ in {
     libselinux
     libdecor
     timewarrior
-
+    nvtopPackages.nvidia
     gst_all_1.gstreamer zenity
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
