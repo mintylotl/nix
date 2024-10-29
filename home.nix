@@ -60,7 +60,7 @@ in {
       alias mokuro="python3 -m mokuro"    
       alias fetch="fetcher.sh" 
       alias emacsc="emacsclient -c -a nvim"
-      alias nixosFlake="sudo nixos-rebuild switch --flake"
+      alias nixosFlake="nixos-rebuild switch --flake"
         # --ecryptfs
           alias mount.crypt="mount.ecryptfs_private"
       alias umount.crypt="umount.ecryptfs_private"

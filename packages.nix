@@ -9,6 +9,7 @@ in {
   environment.systemPackages = with pkgs; [
     # New
     aria2
+    compsize
     xdg-utils
     wayland
     gtk2 gtk3

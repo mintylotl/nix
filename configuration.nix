@@ -20,6 +20,9 @@ in
   	  extraOptions = ''
   	      experimental-features = nix-command flakes
   	  '';
+	  settings = {
+	    trusted-users = [ "jwm" ];
+	  };
   	};
 
   	# Use the systemd-boot EFI boot loader.
