@@ -1,15 +1,22 @@
-{ inputs, config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
+let
+HOME = "/home/jwm";
+in
 {
-  systemd.services.aria2 = {
-    enable = false;
-
+  systemd.user.services.aria2 = {
+    enable = true;
+    unitConfig.ConditionUser = "jwm";
     serviceConfig = {
-      ProtectSystem = "off";
-      ExecStart = "\"/nix/store/w38nh1fzj9rl1in0w72v5xrnlnb4ia8b-aria2-1.37.0-bin/bin/aria2c\" --conf-path=/system/programs/aria2/aria2.conf";
-      UMask = "0077";
-      User="aria2";
-      Group="aria2";
+      ProtectSystem = lib.mkForce "off";
+      Type = "simple";
+      Environment = "${pkgs.aria2.out}/lib";
+      ExecStart = "${pkgs.aria2.bin}/bin/aria2c --conf-path=${HOME}/.scripts/programs/aria2/aria2.conf";
     };
     wantedBy = [ "default.target" ];
+  };
+
+  users.users.aria2 = {
+    isNormalUser = true;
+    group = "aria2";
   };
 }

@@ -23,6 +23,7 @@ in {
       xdgOpenUsePortal = true;
       extraPortals = with pkgs; [
         pkgs.xdg-desktop-portal-gtk
+	pkgs.xdg-desktop-portal-hyprland
       ];
       config.common.default = "xdg-desktop-portal-gtk";
     };

@@ -24,7 +24,6 @@ let
 
 in {
   services.nginx.enable = true;
-  services.nginx.defaultMimeTypes = "${pkgs.nginx}/conf/mime.types";
   systemd.services.nginx = {
     serviceConfig = { ProtectSystem = lib.mkForce "off"; };
   };
@@ -38,7 +37,7 @@ in {
     }
 
     http {
-        #include mime.types;
+        include ${pkgs.nginx}/conf/mime.types;
         default_type application/octet-stream;
         charset utf-8;
         gzip on;

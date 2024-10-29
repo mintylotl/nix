@@ -8,10 +8,11 @@ in {
 
   environment.systemPackages = with pkgs; [
     # New
+    aria2
     xdg-utils
     wayland
     gtk2 gtk3
-    alsa-lib coreutils udev
+    alsa-lib coreutils
     libselinux
     libdecor
     timewarrior

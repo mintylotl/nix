@@ -1,6 +1,13 @@
 {
   description = "Home Manager Configuration";
 
+  nixConfig = {
+    extra-experimental-features = "nix-command flakes";
+    max-jobs = 2;
+    max-substitution-jobs = 2;
+    cores = 5;
+  };
+   
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
@@ -18,13 +25,6 @@
   };
   outputs = { nixpkgs, home-manager, prismlauncher, ... }@inputs:
     let
-      #nixos24 = nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system:
-      #import inputs.nixos24{
-      #inherit system;
-      #config.allowUnfree = true;
-      #});
-      #nix24 = nixos24.x86_64-linux;
-
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       prism = prismlauncher;
@@ -43,7 +43,7 @@
               home-manager.backupFileExtension = "old";
             }
           ];
-	  specialArgs = { inherit prism; };
+          specialArgs = { inherit prism; };
         };
       };
     };

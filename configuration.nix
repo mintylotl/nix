@@ -8,7 +8,7 @@ in
 	  ./hardware-configuration.nix
 	  ./daemons/nginx.nix
 	  ./daemons/vsftpd.nix
-	  #./daemons/aria2.nix
+	  ./daemons/aria2.nix
 	  ./nvidia.nix
 	  ./packages.nix
 	];
@@ -70,6 +70,7 @@ in
 	  ftpsecure = {};
 	  ssh = {};
 	  certs = {};
+	  aria2 = {};
 	};
 	# Users
 	users.users.jwm = {
@@ -125,6 +126,7 @@ in
 
   environment.sessionVariables = {
     NIX_CONF_DIR = "${HOME}/.nixos";
+    NIX_OZONE_WL = "1";
   };
   # system.copySystemConfiguration = true;
   system.stateVersion = "24.05";

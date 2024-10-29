@@ -35,7 +35,7 @@
 
           # --Programs
               exec-once = hyprpaper
-      #exec-once = emacs --daemon
+      exec-once = emacs --daemon
               # --Lutris
                   env = LUTRIS_SKIP_INIT, 1
           # --Scripts
@@ -128,7 +128,7 @@
       # WindowruleV2s
       # --Alacritty
       windowrulev2 = float, class:Alacritty
-      windowrulev2 = size 450 410, class:Alacritty
+      windowrulev2 = size 850 790, class:Alacritty
       # --QimgV
       windowrulev2 = float, class:qimgv
       windowrulev2 = size 800 800, class:qimgv
