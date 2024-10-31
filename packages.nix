@@ -8,16 +8,24 @@ in {
 
   environment.systemPackages = with pkgs; [
     # New
+    bottles
+
+    cowsay kittysay pokemonsay
+    blender
+    keyutils
     aria2
     compsize
-    xdg-utils
-    wayland
     gtk2 gtk3
-    alsa-lib coreutils
-    libselinux
-    libdecor
+    alsa-lib
     timewarrior
     nvtopPackages.nvidia
+    
+    # GTK Libs
+    appindicator-sharp
+    gnomeExtensions.appindicator
+    libappindicator-gtk3
+    libappindicator
+
     gst_all_1.gstreamer zenity
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
@@ -35,15 +43,19 @@ in {
     # Environment
     busybox
     htop
-    libappindicator-gtk3
     neofetch
     speedcrunch
     openssl
     #Emulation
-    bottles
     #RetroArch
     (retroarch.override { cores = with libretro; [ mame2016 ]; })
-    lutris
+    
+    (lutris.override {
+      extraLibraries = pkgs: [
+        libindicator-gtk3
+      ];
+    })
+    
     # EMACS
     fd
     ripgrep
@@ -97,6 +109,7 @@ in {
     py.nose2
 
     # System Utilities
+    ecryptfs
     discord
     bitwarden-desktop
     git
@@ -107,7 +120,6 @@ in {
     vulkan-tools
     rsync
     xdotool
-    ecryptfs
     nodejs_22
     sqlite
     aria2
@@ -245,6 +257,10 @@ in {
     icons.enable = true;
     mime.enable = true;
   };
+  programs.ecryptfs.enable = true;
+  
+  qt.style = "kvantum";
+
 
   # Fonts
   fonts.packages = with pkgs; [

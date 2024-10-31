@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let 
 HOME = "/home/jwm";
 in {
@@ -10,6 +10,7 @@ in {
   home.sessionVariables = {
     TERM = "alacritty";
     NIXOS_OZONE_WL = "1";
+    LD_LIBRARY_PATH = "/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib";
   };
 
   # Home Stuff
@@ -25,7 +26,7 @@ in {
         pkgs.xdg-desktop-portal-gtk
 	pkgs.xdg-desktop-portal-hyprland
       ];
-      config.common.default = "xdg-desktop-portal-gtk";
+      config.common.default = "gtk";
     };
 
     configHome = "${HOME}/.config";
@@ -51,7 +52,7 @@ in {
       alias vd="veracrypt -t -d"
       alias vc="veracrypt -t -c"
       alias vm="veracrypt -t"
-      alias mpv="mpv --hwdec=auto"    
+      alias mpv="mpv --hwdec=nvdec"
       alias mino="killall -SIGKILL java"
        
       alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
@@ -85,16 +86,14 @@ in {
     enable = true;
     completionInit = "";
     initExtra = ''
-      zstyle ':zim:zmodule' use 'degit'
       ZIM_HOME=~/.zim
-
-      if [[ ! -e $ZIM_HOME/zimfw.zsh ]]; then
-          curl -fsSL --create-dirs -o $ZIM_HOME/zimfw.zsh \
+      if [[ ! -e ''\${ZIM_HOME}/zimfw.zsh ]]; then
+          curl -fsSL --create-dirs -o ''\${ZIM_HOME}/zimfw.zsh \
           https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
       fi
 
-      if [[ ! $ZIM_HOME/init.zsh -nt $HOME/.zimrc ]]; then
-          source $ZIM_HOME/zimfw.zsh init -q
+      if [[ ! ''\${ZIM_HOME}/init.zsh -nt ''\${ZDOTDIR:-''\${HOME}}/.zimrc ]]; then
+          source ''\${ZIM_HOME}/zimfw.zsh init -q
       fi
 
       alias ls="ls --color"
@@ -104,12 +103,11 @@ in {
       alias vd="veracrypt -t -d"
       alias vc="veracrypt -t -c"
       alias vm="veracrypt -t"
-      alias mpv="mpv --hwdec=auto"    
       alias mino="killall -SIGKILL java"
       alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
       alias mokuro="python3 -m mokuro"    
       alias fetch="fetcher.sh" 
-      alias emacsc="emacsclient -c -a nvim"
+      alias emacsc="emacsclient -c -a emacs"
         # --ecryptfs
           alias mount.crypt="mount.ecryptfs_private"
           alias umount.crypt="umount.ecryptfs_private"
@@ -121,11 +119,6 @@ in {
   home.file.".zimrc" = {
     enable = true;
     text = ''
-      zmodule zsh-users/zsh-syntax-highlighting
-      zmodule zsh-users/zsh-autosuggestions
-      zmodule asciiship
-      zmodule zsh-users/zsh-syntax-highlighting
-      zmodule zsh-users/zsh-autosuggestions
       zmodule asciiship
       zmodule zsh-users/zsh-completions --fpath src
       zmodule completion
@@ -181,6 +174,7 @@ in {
     enable = true;
     platformTheme.name = "qtct";
     style.name = "kvantum";
+    style.package = pkgs.qt6Packages.qtstyleplugin-kvantum;
   };
   home.stateVersion = "24.05";
 }

@@ -37,7 +37,7 @@
               exec-once = hyprpaper
       exec-once = emacs --daemon
               # --Lutris
-                  env = LUTRIS_SKIP_INIT, 1
+                  env = LUTRIS_SKIP_INIT, 0
           # --Scripts
               exec-once = "$HOME"/.config/hypr/sink.sh
 
