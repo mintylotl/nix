@@ -1,6 +1,6 @@
 { 
-  nixpkgs, config, lib, pkgs, 
-  umuProton,
+  nixpkgs, config, lib, pkgs,
+  inputs,
   ... 
 }:
 let
@@ -15,6 +15,7 @@ in
 	  ./daemons/aria2.nix
 	  ./nvidia.nix
 	  ./packages.nix
+	  ./config/hyprland.nix
 	];
 
   	nixpkgs.config.allowUnfree = true;

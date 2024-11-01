@@ -1,13 +1,11 @@
 {
   config, pkgs, 
-  inputs,
+  lib, 
   ...
 }: 
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.Hyprland.packages.${pkgs.system}.hyprland;
-    portalPackage = inputs.Hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
 
     extraConfig = ''
       monitor = HDMI-A-1, 1280x1024, 0x0, 1

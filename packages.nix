@@ -199,14 +199,6 @@ in {
     protontricks.enable = true;
   };
 
-  # Hyprland
-  programs = {
-    hyprland = { enable = true; };
-    hyprlock.enable = true;
-    xwayland.enable = true;
-  };
-  services.hypridle.enable = true;
-
   # Services
   services.vsftpd.enable = true;
   services.openssh.enable = true;

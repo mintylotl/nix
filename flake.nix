@@ -36,20 +36,19 @@
     };
   };
 
-  outputs = inputs@ { 
+  outputs = { 
+      self,
       nixpkgs,
       home-manager,
       ... 
-    }:
+    }
+    @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
     in {
       nixosConfigurations = {
-	inherit system;
-	inherit pkgs;
-
         cabbage = nixpkgs.lib.nixosSystem {
 	  modules = [
             ./configuration.nix
@@ -58,9 +57,13 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jwm = import ./home.nix;
-              home-manager.backupFileExtension = "old";
             }
           ];
+	  specialArgs = {
+	    inherit inputs;
+	    inherit pkgs;
+	    inherit system;
+	  };
         };
       };
     };
