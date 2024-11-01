@@ -20,10 +20,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #prism = {
-    #  url = "github:mintylotl/prismcrack";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    prism = {
+      url = "github:mintylotl/prismcrack";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     umuProton= {
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
@@ -35,6 +35,7 @@
       nixpkgs,
       home-manager,
       umuProton,
+      prism,
       ... 
     }
     @attrs:

@@ -44,31 +44,6 @@ in {
       epkgs.vterm
     ];
   };
-  programs.fish = {
-    enable = false;
-    interactiveShellInit = ''
-      set fish_greeting ""
-      alias ls="ls --color"
-      alias vd="veracrypt -t -d"
-      alias vc="veracrypt -t -c"
-      alias vm="veracrypt -t"
-      alias mpv="mpv --hwdec=nvdec"
-      alias mino="killall -SIGKILL java"
-       
-      alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
-      alias fishy="nvim ~/.config/fish/config.fish"
-       
-      alias mokuro="python3 -m mokuro"    
-      alias fetch="fetcher.sh" 
-      alias emacsc="emacsclient -c -a nvim"
-      alias nixosFlake="nixos-rebuild switch --flake"
-        # --ecryptfs
-          alias mount.crypt="mount.ecryptfs_private"
-      alias umount.crypt="umount.ecryptfs_private"
-      alias ikey="insert.sh"
-      set PATH "$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
-    '';
-  };
 
   programs.waybar = {
     enable = true;

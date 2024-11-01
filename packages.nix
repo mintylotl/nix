@@ -1,13 +1,13 @@
 { 
   pkgs, config, lib,
-  umuProton,
+  umuProton, prism,
   ... 
 }:
 let 
   py = pkgs.python312Packages;
 in {
   nixpkgs.overlays = [
-    #prism.overlays.default
+    prism.overlays.default
     (final: prev: {
       umu = umuProton.packages.${pkgs.system}.umu.override{
         version = "${umuProton.shortRev}";
@@ -27,6 +27,7 @@ in {
     compsize
     gtk2 gtk3
     alsa-lib
+    udisks
     timewarrior
     nvtopPackages.nvidia
     
@@ -67,6 +68,7 @@ in {
     })
     
     # EMACS
+    protontricks
     fd
     ripgrep
     cmake
@@ -102,7 +104,7 @@ in {
     nwg-look
 
     # PrismLauncher Cracked
-    #prismlauncher
+    prismlauncher
 
     # Python
     #System
