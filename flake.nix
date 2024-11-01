@@ -61,8 +61,6 @@
           ];
 	  specialArgs = {
 	    inherit inputs;
-	    inherit pkgs;
-	    inherit system;
 	  };
         };
       };

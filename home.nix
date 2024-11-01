@@ -1,16 +1,12 @@
 { 
   config, pkgs, lib,
-  inputs,
   ...
 }:
 let 
 HOME = "/home/jwm";
 in {
   imports = [ 
-    (import ./config/hyprland-conf.nix
-    {
-      inherit inputs;
-    })
+    ./config/hyprland-conf.nix
   ];
   
   home.username = "jwm";
