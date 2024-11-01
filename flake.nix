@@ -4,39 +4,53 @@
   nixConfig = {
     extra-experimental-features = "nix-command flakes";
     trusted-users = "jwm";
-    max-jobs = 2;
-    max-substitution-jobs = 2;
+    max-jobs = 1;
+    max-substitution-jobs = 1;
     cores = 5;
   };
    
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    prismlauncher = {
-      url = "github:mintylotl/prismcrack";
+    #prism = {
+    #  url = "github:mintylotl/prismcrack";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
+
+    umuProton= {
+      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "";
     };
   };
-  outputs = { nixpkgs, home-manager, prismlauncher, ... }@inputs:
+
+  outputs = { 
+      nixpkgs,
+      home-manager,
+      umuProton,
+      ... 
+    }
+    @attrs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      prism = prismlauncher;
 
     in {
       nixosConfigurations = {
+	inherit system;
+	inherit pkgs;
+
         cabbage = nixpkgs.lib.nixosSystem {
-          system = system;
-          modules = [
+	  modules = [
             ./configuration.nix
-            home-manager.nixosModules.home-manager
+            home-manager.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -44,7 +58,8 @@
               home-manager.backupFileExtension = "old";
             }
           ];
-          specialArgs = { inherit prism; };
+
+	  specialArgs = attrs;
         };
       };
     };

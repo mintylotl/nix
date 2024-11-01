@@ -98,7 +98,7 @@ in {
 
       alias ls="ls --color"
       alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
-      alias nixosFlake="sudo nixos-rebuild switch --flake ~/.nixos#cabbage"
+      alias nixosFlake="sudo -E nixos-rebuild switch --flake ~/.nixos#cabbage"
       alias ls="ls --color"
       alias vd="veracrypt -t -d"
       alias vc="veracrypt -t -c"

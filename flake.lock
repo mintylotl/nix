@@ -20,37 +20,6 @@
         "type": "github"
       }
     },
-    "libnbtplusplus": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1699286814,
-        "narHash": "sha256-yy0q+bky80LtK1GWzz7qpM+aAGrOqLuewbid8WT1ilk=",
-        "owner": "PrismLauncher",
-        "repo": "libnbtplusplus",
-        "rev": "23b955121b8217c1c348a9ed2483167a6f3ff4ad",
-        "type": "github"
-      },
-      "original": {
-        "owner": "PrismLauncher",
-        "repo": "libnbtplusplus",
-        "type": "github"
-      }
-    },
-    "nix-filter": {
-      "locked": {
-        "lastModified": 1710156097,
-        "narHash": "sha256-1Wvk8UP7PXdf8bCCaEoMnOT1qe5/Duqgj+rL8sRQsSM=",
-        "owner": "numtide",
-        "repo": "nix-filter",
-        "rev": "3342559a24e85fc164b295c3444e8a139924675b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "nix-filter",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1729880355,
@@ -67,34 +36,35 @@
         "type": "github"
       }
     },
-    "prismlauncher": {
+    "root": {
       "inputs": {
-        "flake-compat": [],
-        "libnbtplusplus": "libnbtplusplus",
-        "nix-filter": "nix-filter",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "umuProton": "umuProton"
+      }
+    },
+    "umuProton": {
+      "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1730138218,
-        "narHash": "sha256-gtcCjM07XONF7QRfpCVcfWaGsQsynuaS3zcvDlZLN9w=",
-        "owner": "mintylotl",
-        "repo": "prismcrack",
-        "rev": "d9e2ccb8e81d61127f44ae4b869a90bf003ecafe",
-        "type": "github"
+        "dir": "packaging/nix",
+        "lastModified": 1730219667,
+        "narHash": "sha256-vNvV7p4LTYfPUG46Dt8ubPVJid4l4gEQRqU/ZV/sQR0=",
+        "ref": "refs/heads/main",
+        "rev": "10a406962c27a5a7cf05eab4ae19072cfaa4f165",
+        "revCount": 829,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
       },
       "original": {
-        "owner": "mintylotl",
-        "repo": "prismcrack",
-        "type": "github"
-      }
-    },
-    "root": {
-      "inputs": {
-        "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
-        "prismlauncher": "prismlauncher"
+        "dir": "packaging/nix",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
       }
     }
   },

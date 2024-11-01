@@ -1,14 +1,24 @@
-{ pkgs, config, lib, prism, ... }:
+{ 
+  pkgs, config, lib,
+  umuProton,
+  ... 
+}:
 let 
   py = pkgs.python312Packages;
 in {
   nixpkgs.overlays = [
-    prism.overlays.default
+    #prism.overlays.default
+    (final: prev: {
+      umu = umuProton.packages.${pkgs.system}.umu.override{
+        version = "${umuProton.shortRev}";
+      };
+    })
   ];
 
   environment.systemPackages = with pkgs; [
     # New
     bottles
+    umu
 
     cowsay kittysay pokemonsay
     blender
@@ -92,7 +102,7 @@ in {
     nwg-look
 
     # PrismLauncher Cracked
-    prismlauncher
+    #prismlauncher
 
     # Python
     #System

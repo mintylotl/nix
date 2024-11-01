@@ -1,11 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ 
+  nixpkgs, config, lib, pkgs, 
+  umuProton,
+  ... 
+}:
 let
   HOME = "/home/jwm";
 in
 {
   # nixOS
   	imports = [
-	  ./hardware-configuration.nix
+	  ./hw-cfg.nix
 	  ./daemons/nginx.nix
 	  ./daemons/vsftpd.nix
 	  ./daemons/aria2.nix
@@ -26,9 +30,15 @@ in
   	};
         
   	# Use the systemd-boot EFI boot loader.
-  	boot.loader.systemd-boot.enable = true;
-  	boot.loader.efi.canTouchEfiVariables = true;
-        boot.kernelPackages = pkgs.linuxPackages;
+  	boot = {
+          loader = {
+            systemd-boot.enable = true;
+            efi.canTouchEfiVariables = true;
+          };
+          kernelPackages = pkgs.linuxPackages;
+          initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ];
+          kernelParams = [ "nvidia-drm.modeset=1" ];
+        };
 
 	# NETWORKING
   	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

@@ -61,7 +61,7 @@
               natural_scroll = false
           }
 
-          sensitivity = 1.0
+          sensitivity = 0.5
           follow_mouse = 1
           numlock_by_default = true
       }
