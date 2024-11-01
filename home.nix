@@ -44,7 +44,7 @@ in {
   
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs29-nox;
+    package = pkgs.emacs29;
     extraPackages = epkgs: [
       epkgs.vterm
     ];

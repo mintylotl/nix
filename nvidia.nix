@@ -30,12 +30,37 @@
     package = config.boot.kernelPackages.nvidiaPackages.beta;
     powerManagement.finegrained = false;
   };
-
+  
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
     VK_DRIVER_FILES = "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+  };
+
+  environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors" = {
+    text = ''
+    {
+    "rules": [
+      {
+        "pattern": {
+          "feature": "procname", "matches": "kwin_wayland" },
+          "profile": "Limit Free Buffer Pool On Wayland Compositors"
+      }
+    ],
+    "profiles": [
+        {
+            "name": "Limit Free Buffer Pool On Wayland Compositors",
+            "settings": [
+            {
+              "key": "GLVidHeapReuseRatio",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    }
+    '';
   };
 }
