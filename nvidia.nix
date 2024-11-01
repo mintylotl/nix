@@ -45,7 +45,7 @@
     "rules": [
       {
         "pattern": {
-          "feature": "procname", "matches": "kwin_wayland" },
+          "feature": "procname", "matches": "Hyprland" },
           "profile": "Limit Free Buffer Pool On Wayland Compositors"
       }
     ],
