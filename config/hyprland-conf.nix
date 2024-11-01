@@ -1,6 +1,14 @@
-{ config, pkgs, ... }: {
+{
+  config, pkgs, 
+  inputs,
+  ...
+}: 
+{
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.Hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage = inputs.Hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+
     extraConfig = ''
       monitor = HDMI-A-1, 1280x1024, 0x0, 1
       workspace = HDMI-A-1, 1
@@ -126,6 +134,10 @@
       windowrule = workspace 1 silent, ^(firefox)$
 
       # WindowruleV2s
+      # --XDG
+      windowrulev2 = float, class:xdg-desktop-portal-gtk
+      windowrulev2 = size 880 680, class:xdg-desktop-portal-gtk
+      windowrulev2 = center 1, class:xdg-desktop-portal-gtk
       # --Alacritty
       windowrulev2 = float, class:Alacritty
       windowrulev2 = size 850 790, class:Alacritty

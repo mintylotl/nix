@@ -1,16 +1,16 @@
 { 
   pkgs, config, lib,
-  umuProton, prism,
+  inputs,
   ... 
 }:
 let 
   py = pkgs.python312Packages;
 in {
   nixpkgs.overlays = [
-    prism.overlays.default
+    inputs.prism.overlays.default
     (final: prev: {
-      umu = umuProton.packages.${pkgs.system}.umu.override{
-        version = "${umuProton.shortRev}";
+      umu = inputs.umuProton.packages.${pkgs.system}.umu.override{
+        version = "${inputs.umuProton.shortRev}";
       };
     })
   ];
@@ -21,6 +21,7 @@ in {
     umu
 
     cowsay kittysay pokemonsay
+    smartmontools
     blender
     keyutils
     aria2

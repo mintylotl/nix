@@ -25,20 +25,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    umuProton= {
+    umuProton = {
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    Hyprland = {
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { 
+  outputs = inputs@ { 
       nixpkgs,
       home-manager,
-      umuProton,
-      prism,
       ... 
-    }
-    @attrs:
+    }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -59,8 +61,6 @@
               home-manager.backupFileExtension = "old";
             }
           ];
-
-	  specialArgs = attrs;
         };
       };
     };

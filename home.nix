@@ -1,8 +1,13 @@
-{ config, pkgs, lib, ... }:
+{ 
+  config, pkgs, lib,
+  inputs,
+  ...
+}:
 let 
 HOME = "/home/jwm";
 in {
-  imports = [ ./config/hyprland-conf.nix ];
+  imports = [ (import ./config/hyprland-conf.nix){ inherit inputs; inherit pkgs; inherit lib;} ];
+  
   home.username = "jwm";
   home.homeDirectory = "/home/jwm";
   programs.home-manager.enable = true;
@@ -24,7 +29,6 @@ in {
       xdgOpenUsePortal = true;
       extraPortals = with pkgs; [
         pkgs.xdg-desktop-portal-gtk
-	pkgs.xdg-desktop-portal-hyprland
       ];
       config.common.default = "gtk";
     };
@@ -39,7 +43,7 @@ in {
   
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs29-pgtk;
+    package = pkgs.emacs29-nox;
     extraPackages = epkgs: [
       epkgs.vterm
     ];
