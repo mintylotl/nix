@@ -20,7 +20,7 @@ in {
     bottles
     umu
     
-    ovmf qemu_full
+    OVMF qemu_full
 
     cowsay kittysay pokemonsay
     smartmontools egl-wayland
