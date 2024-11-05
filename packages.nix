@@ -150,7 +150,7 @@ in {
     # Thumbnailers
     ffmpegthumbnailer
     #JAVA
-    openjdk22
+    openjdk23
     openjdk21
     openjdk17
     openjdk8
