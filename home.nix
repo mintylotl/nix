@@ -87,6 +87,7 @@ in {
       alias mokuro="python3 -m mokuro"    
       alias fetch="fetcher.sh" 
       alias emacsc="emacsclient -c -a emacs"
+      alias gitInit="eval $(ssh-agent) && ssh-add ~/.ssh/github_ssh.key && git add . && git commit -m $(%Y-%m-%d_%H:%M:%S)"
         # --ecryptfs
           alias mount.crypt="mount.ecryptfs_private"
           alias umount.crypt="umount.ecryptfs_private"
