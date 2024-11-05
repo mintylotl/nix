@@ -19,9 +19,12 @@ in {
     # New
     bottles
     umu
+    
+    ovmf qemu_full
 
     cowsay kittysay pokemonsay
-    smartmontools
+    smartmontools egl-wayland
+    wayland-pipewire-idle-inhibit
     blender
     keyutils
     aria2

@@ -41,16 +41,17 @@
 
           # --Programs
               exec-once = hyprpaper
-      exec-once = emacs --daemon
+              #exec-once = emacs --daemon
               # --Lutris
                   env = LUTRIS_SKIP_INIT, 0
           # --Scripts
               exec-once = "$HOME"/.config/hypr/sink.sh
+	      exec-once = sudo "$HOME"/.scripts/scripts/system/leds.sh
 
       exec = dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RosePineDawn-Linux'"
       exec = dconf write /org/gnome/desktop/interface/gtk-theme "'Breeze-Dark'"
 
-      exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      #exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 
       cursor {
@@ -119,7 +120,7 @@
           workspace_swipe = false
       }
       misc {
-        vfr = true
+        #vfr = true
       }
 
       #Misc

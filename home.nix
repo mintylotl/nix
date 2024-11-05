@@ -16,7 +16,6 @@ in {
   home.sessionVariables = {
     TERM = "alacritty";
     NIXOS_OZONE_WL = "1";
-    LD_LIBRARY_PATH = "/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib";
   };
 
   # Home Stuff

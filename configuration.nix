@@ -5,6 +5,7 @@
 }:
 let
   HOME = "/home/jwm";
+  LD_PATH = "${config.environment.sessionVariables.LD_LIBRARY_PATH}";
 in
 {
   # nixOS
@@ -139,8 +140,21 @@ in
   security.polkit.enable = true;
 
   environment.sessionVariables = {
+    
+  };
+
+
+  environment.sessionVariables = {
     NIX_CONF_DIR = "${HOME}/.nixos";
     NIX_OZONE_WL = "1";
+    
+    LD_LIBRARY_PATH = lib.mkForce "${pkgs.egl-wayland}/lib:/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib";
+
+    LIBVA_DRIVER_NAME = "nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    GBM_BACKEND = "nvidia-drm";
+    NVD_BACKEND = "direct";
+    VK_DRIVER_FILES = "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
   };
   # system.copySystemConfiguration = true;
   system.stateVersion = "24.05";
