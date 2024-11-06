@@ -18,6 +18,7 @@ in {
   environment.systemPackages = with pkgs; [
     # New
     bottles
+    protontricks
     umu
     
     OVMF qemu_full

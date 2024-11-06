@@ -120,7 +120,10 @@
           workspace_swipe = false
       }
       misc {
-        #vfr = true
+          vfr = true
+      }
+      render {
+          explicit_sync = 1
       }
 
       #Misc
