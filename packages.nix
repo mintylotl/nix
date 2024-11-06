@@ -25,7 +25,7 @@ in {
     cowsay kittysay pokemonsay
     smartmontools egl-wayland
     wayland-pipewire-idle-inhibit
-    blender
+    #blender-hip
     keyutils
     aria2
     compsize

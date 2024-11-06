@@ -82,12 +82,11 @@ in {
       alias vd="veracrypt -t -d"
       alias vc="veracrypt -t -c"
       alias vm="veracrypt -t"
-      alias mino="killall -SIGKILL java"
       alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
       alias mokuro="python3 -m mokuro"    
       alias fetch="fetcher.sh" 
       alias emacsc="emacsclient -c -a emacs"
-      alias gitInit="eval $(ssh-agent) && ssh-add ~/.ssh/github_ssh.key && git add . && git commit -m $(%Y-%m-%d_%H:%M:%S)"
+      alias gitInit="~/.scripts/scripts/gitInit.sh"
         # --ecryptfs
           alias mount.crypt="mount.ecryptfs_private"
           alias umount.crypt="umount.ecryptfs_private"
