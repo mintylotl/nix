@@ -86,11 +86,11 @@ in {
       alias mokuro="python3 -m mokuro"    
       alias fetch="fetcher.sh" 
       alias emacsc="emacsclient -c -a emacs"
-      alias gitInit="~/.scripts/scripts/gitInit.sh"
         # --ecryptfs
           alias mount.crypt="mount.ecryptfs_private"
           alias umount.crypt="umount.ecryptfs_private"
           alias ikey="insert.sh"
+
       PATH="$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
       source $ZIM_HOME/init.zsh
     '';

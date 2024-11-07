@@ -34,8 +34,28 @@
     {
     "rules": [
       {
+	"pattern": {
+	  "feature": "procname", "matches": "foobar" }, 
+	  "profile": "Limit Free Buffer Pool On Wayland Compositors"
+      }
+      {
         "pattern": {
-          "feature": "procname", "matches": "Hyprland" },
+          "feature": "procname", "matches": "/etc/profiles/per-user/jwm/bin/Hyprland" },
+          "profile": "Limit Free Buffer Pool On Wayland Compositors"
+      }
+      {
+        "pattern": {
+          "feature": "procname", "matches": "/etc/profiles/per-user/jwm/bin/alacritty" },
+          "profile": "Limit Free Buffer Pool On Wayland Compositors"
+      }
+      {
+        "pattern": {
+          "feature": "procname", "matches": "Xwayland" },
+          "profile": "Limit Free Buffer Pool On Wayland Compositors"
+      }
+      {
+        "pattern": {
+          "feature": "procname", "matches": "/nix/store/pigw9014x0fgzlawxmrknk6wj33v0vk1-system-path/bin/firefox" },
           "profile": "Limit Free Buffer Pool On Wayland Compositors"
       }
     ],

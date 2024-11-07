@@ -70,6 +70,10 @@ in
 		  command = "${HOME}/.scripts/scripts/system/leds.sh";
 		  options = [ "SETENV" "NOPASSWD" ];
 		}
+		{
+		  command = "${HOME}/.scripts/programs/musicbee/prio.sh";
+		  options = [ "SETENV" "NOPASSWD" ];
+		}
 	      ];
 	    }
 	  ];

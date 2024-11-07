@@ -25,6 +25,7 @@ in {
 
     cowsay kittysay pokemonsay
     smartmontools egl-wayland
+    vulkan-headers
     wayland-pipewire-idle-inhibit
     #blender-hip
     keyutils
@@ -177,6 +178,7 @@ in {
     qbittorrent
     mako
     rose-pine-cursor
+    zenity
 
     # Icon_Themes
     breeze-gtk

@@ -45,7 +45,7 @@
               # --Lutris
                   env = LUTRIS_SKIP_INIT, 0
           # --Scripts
-              exec-once = "$HOME"/.config/hypr/sink.sh
+              #exec-once = "$HOME"/.config/hypr/sink.sh
 	      exec-once = sudo "$HOME"/.scripts/scripts/system/leds.sh
 
       exec = dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RosePineDawn-Linux'"
@@ -120,10 +120,10 @@
           workspace_swipe = false
       }
       misc {
-          vfr = true
+          vfr = false
       }
       render {
-          explicit_sync = 1
+          explicit_sync = 0
       }
 
       #Misc
