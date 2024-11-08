@@ -74,6 +74,7 @@ in {
   programs.rofi = {
     enable = true;
     theme = ./config/dracula.rasi;
+    terminal = "${pkgs.alacritty}/bin/alacritty";
   };
 
   programs.git = {
