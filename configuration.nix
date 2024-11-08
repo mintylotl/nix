@@ -74,6 +74,10 @@ in
 		  command = "${HOME}/.scripts/programs/musicbee/prio.sh";
 		  options = [ "SETENV" "NOPASSWD" ];
 		}
+		{
+		  command = "${HOME}/.scripts/scripts/system/nixos-garbage.sh";
+		  options = [ "SETENV" "NOPASSWD" ];
+		}
 	      ];
 	    }
 	  ];
