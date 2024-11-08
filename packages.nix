@@ -74,6 +74,12 @@ in {
         wlr-randr
 	xorg.libXrandr
 	vulkan-tools
+	appindicator-sharp
+	libindicator libindicator-gtk2 libindicator-gtk3
+	libayatana-common
+	libayatana-indicator libayatana-indicator-gtk3
+	libayatana-appindicator libayatana-appindicator-gtk3
+
       ];
     })
     
