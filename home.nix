@@ -39,7 +39,7 @@ in {
     dataHome = "${HOME}/.local/share";
     stateHome = "${HOME}/.local/state";
 
-    userDirs.createDirectories = false;
+    userDirs.createDirectories = true;
   };
   
   # Programs
@@ -71,7 +71,11 @@ in {
 
   programs.kitty.enable = true;
   programs.alacritty.enable = true;
-  
+  programs.rofi = {
+    enable = true;
+    theme = ./config/dracula.rasi;
+  }
+
   programs.git = {
     enable = true;
     userName = "mintylotl";

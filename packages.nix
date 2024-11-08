@@ -166,6 +166,8 @@ in {
     dxvk_2
     vkd3d-proton
     gamescope
+    gamemode
+    mangohud
     # Programs
     wineWowPackages.stagingFull
     winetricks
@@ -207,7 +209,9 @@ in {
   programs.steam = {
     enable = true;
     protontricks.enable = true;
+    gamescopeSession.enable = true;
   };
+  programs.gamemode.enable = true;
 
   # Services
   services.vsftpd.enable = true;
