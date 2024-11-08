@@ -75,7 +75,7 @@ in
 		  options = [ "SETENV" "NOPASSWD" ];
 		}
 		{
-		  command = "${HOME}/.scripts/scripts/system/nixos-garbage.sh";
+		  command = "${HOME}/.scripts/scripts/system/nixosgarbage.sh";
 		  options = [ "SETENV" "NOPASSWD" ];
 		}
 	      ];
