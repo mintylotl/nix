@@ -43,10 +43,10 @@
               exec-once = hyprpaper
               #exec-once = emacs --daemon
               # --Lutris
-                  env = LUTRIS_SKIP_INIT, 0
+                  env = LUTRIS_SKIP_INIT, 1
           # --Scripts
-              #exec-once = "$HOME"/.config/hypr/sink.sh
-	      exec-once = sudo "$HOME"/.scripts/scripts/system/leds.sh
+              exec-once = "$HOME"/.config/hypr/sink.sh
+	      exec-once = sudo "$HOME"/.scripts/scripts/system/leds.sh&
 
       exec = dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RosePineDawn-Linux'"
       exec = dconf write /org/gnome/desktop/interface/gtk-theme "'Breeze-Dark'"

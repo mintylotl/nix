@@ -143,10 +143,14 @@ in
   
   security.polkit.enable = true;
 
-  environment.sessionVariables = {
-    
-  };
 
+  services.udev = {
+    extraRules = ''
+      # Set LED brightness to 1 (on) for the scroll lock LED
+      ACTION=="add", SUBSYSTEM=="leds", KERNEL=="input3::scrolllock", ATTR{brightness}="1"
+    '';
+    enable = true;
+  };
 
   environment.sessionVariables = {
     NIX_CONF_DIR = "${HOME}/.nixos";

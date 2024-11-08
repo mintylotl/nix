@@ -16,10 +16,12 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    # Project Zomboid
+    dwarfs fuse-overlayfs
     # New
-    bottles
     protontricks
     umu
+    cartridges
     
     OVMF qemu_full
 
@@ -68,8 +70,10 @@ in {
     (retroarch.override { cores = with libretro; [ mame2016 ]; })
     
     (lutris.override {
-      extraLibraries = pkgs: [
-        libindicator-gtk3
+      extraPkgs = pkgs: [
+        wlr-randr
+	xorg.libXrandr
+	vulkan-tools
       ];
     })
     
