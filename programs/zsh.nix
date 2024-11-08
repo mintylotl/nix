@@ -25,7 +25,7 @@
       alias mokuro="python3 -m mokuro"    
       alias fetch="fetcher.sh" 
       alias emacsc="emacsclient -c -a emacs"
-      alias garb="sudo $HOME/.scripts/scripts/system/nixgarbage.sh"
+      alias garb="sudo $HOME/.scripts/scripts/system/nixosgarbage.sh"
         # --ecryptfs
           alias mount.crypt="mount.ecryptfs_private"
           alias umount.crypt="umount.ecryptfs_private"
