@@ -51,9 +51,6 @@
       exec = dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RosePineDawn-Linux'"
       exec = dconf write /org/gnome/desktop/interface/gtk-theme "'Breeze-Dark'"
 
-      #exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
-
       cursor {
           no_hardware_cursors = true
       }
@@ -123,7 +120,7 @@
           vfr = false
       }
       render {
-          explicit_sync = 0
+          explicit_sync = 1
       }
 
       #Misc
