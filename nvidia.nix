@@ -3,12 +3,13 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      #libva-utils
-      #libva
-      #vulkan-loader
-      #vulkan-validation-layers
-      #nvidia-vaapi-driver
-      #opencl-headers
+      libva-utils
+      libva
+      vulkan-loader
+      vulkan-validation-layers
+      nvidia-vaapi-driver
+      opencl-headers
+      libglvnd
     ];
     extraPackages32 = with pkgs;
       [

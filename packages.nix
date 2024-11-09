@@ -12,6 +12,9 @@ in {
       umu = inputs.umuProton.packages.${pkgs.system}.umu.override{
         version = "${inputs.umuProton.shortRev}";
       };
+      cudatoolkit = prev.cudatoolkit.overrideAttrs {
+        enableCuda = true;
+      };
     })
   ];
 
@@ -19,6 +22,7 @@ in {
     # Project Zomboid
     dwarfs fuse-overlayfs
     # New
+    cudatoolkit
     snixembed
     umu
     
@@ -133,6 +137,7 @@ in {
     gcc
     gnumake
     makemkv
+    openvdb
     pkg-config
     btrfs-progs
     vulkan-tools

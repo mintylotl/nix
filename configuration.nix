@@ -150,19 +150,12 @@ in
   
   security.polkit.enable = true;
 
-
-  services.udev = {
-    extraRules = ''
-      # Set LED brightness to 1 (on) for the scroll lock LED
-      ACTION=="add", SUBSYSTEM=="leds", KERNEL=="input3::scrolllock", ATTR{brightness}="1"
-    '';
-    enable = true;
-  };
-
-  environment.sessionVariables = {
+  environment.variables = {
     NIX_CONF_DIR = "${HOME}/.nixos";
     NIX_OZONE_WL = "1";
-    
+
+
+
     LD_LIBRARY_PATH = lib.mkForce "${pkgs.egl-wayland}/lib:/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib";
 
     LIBVA_DRIVER_NAME = "nvidia";
