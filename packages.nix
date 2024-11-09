@@ -16,7 +16,7 @@ in {
         enableCuda = true;
       };
       blender = pkgs-lsg.blender;
-      mesa = inputs.hyprland.nixpkgs.legacyPackages.${pkgs.system}.mesa;
+      mesa = inputs.Hyprland.nixpkgs.legacyPackages.${pkgs.system}.mesa;
     })
   ];
 
