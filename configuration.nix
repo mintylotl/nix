@@ -5,7 +5,7 @@
 }:
 let
   HOME = "/home/jwm";
-  LD_PATH = "${pkgs.egl-wayland}/lib:/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib:${pkgs.openvdb}/lib:${config.environment.variables.LD_LIBRARY_PATH}";
+  LD_PATH = "${pkgs.egl-wayland}/lib:/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib:${pkgs.openvdb}/lib:${environment.variables.LD_LIBRARY_PATH}";
 in
 {
   # nixOS
