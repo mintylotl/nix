@@ -21,7 +21,7 @@ in {
   
   home.file = {
     ".scripts" = {
-      source = ./scripts;
+      source = ./dots/scripts;
       recursive = true;
     };
   };
