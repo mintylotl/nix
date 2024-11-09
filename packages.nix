@@ -32,7 +32,7 @@ in {
     smartmontools
     vulkan-headers
     wayland-pipewire-idle-inhibit
-    blender
+    #blender
     keyutils
     aria2
     compsize
