@@ -15,6 +15,10 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
+    nixpkgs-lsg  = {
+      url = "github:nixos/nixpkgs/ecd9092716186bef474abbd28b838b9eb75046ca";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +43,7 @@
   outputs = { 
       self,
       nixpkgs,
+      nixpkgs-lsg,
       home-manager,
       ... 
     }
@@ -46,7 +51,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-
+      pkgs-lsg = nixpkgs-lsg.legacyPackages.${system};
     in {
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {
@@ -61,6 +66,7 @@
           ];
 	  specialArgs = {
 	    inherit inputs;
+	    inherit pkgs-lsg;
 	  };
         };
       };

@@ -1,6 +1,6 @@
 { 
   pkgs, config, lib,
-  inputs,
+  pkgs-lsg, inputs,
   ... 
 }:
 let 
@@ -15,9 +15,7 @@ in {
       cudatoolkit = prev.cudatoolkit.overrideAttrs {
         enableCuda = true;
       };
-      blender = prev.blender.overrideAttrs {
-        cudaSupport = false;
-      };
+      blender = pkgs-lsg.blender;
     })
   ];
 
