@@ -15,6 +15,9 @@ in {
       cudatoolkit = prev.cudatoolkit.overrideAttrs {
         enableCuda = true;
       };
+      blender = prev.blender.overrideAttrs {
+        cudaSupport = false;
+      };
     })
   ];
 
@@ -22,7 +25,7 @@ in {
     # Project Zomboid
     dwarfs fuse-overlayfs
     # New
-    cudatoolkit
+    #cudatoolkit
     snixembed
     umu
     
@@ -32,7 +35,7 @@ in {
     smartmontools
     vulkan-headers
     wayland-pipewire-idle-inhibit
-    #blender
+    blender
     keyutils
     aria2
     compsize
