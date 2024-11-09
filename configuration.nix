@@ -11,12 +11,15 @@ in
   # nixOS
   	imports = [
 	  ./hw-cfg.nix
+	  
+	  # Daemons
 	  ./daemons/nginx.nix
 	  ./daemons/vsftpd.nix
 	  ./daemons/aria2.nix
+	  
 	  ./nvidia.nix
 	  ./packages.nix
-	  ./config/hyprland.nix
+	  ./programs/hyprland.nix
 	];
 
   	nixpkgs.config.allowUnfree = true;
