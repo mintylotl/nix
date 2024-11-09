@@ -12,7 +12,6 @@ lnID_DISK="$(printf "$lnID" | sed 's/1//g')"
 	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/DRG,noatime,compress=no $HOME/.steam/root/steamapps/common/Deep\ Rock\ Galactic
 	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/DRG,noatime,compress=no /home/Games/Deep\ Rock\ Galactic
 
-
 # APM
 	# --Cold Storage
 	printf "Setting APM Params...\n"
