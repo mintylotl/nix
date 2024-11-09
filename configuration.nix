@@ -5,7 +5,7 @@
 }:
 let
   HOME = "/home/jwm";
-  LD_PATH = "${config.environment.variables.LD_LIBRARY_PATH}";
+  LD_PATH = "${pkgs.egl-wayland}/lib:/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib:${pkgs.openvdb}/lib:${config.environment.variables.LD_LIBRARY_PATH}";
 in
 {
   # nixOS
@@ -156,7 +156,7 @@ in
 
 
 
-    LD_LIBRARY_PATH = lib.mkForce "${pkgs.egl-wayland}/lib:/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib:${pkgs.openvdb}/lib:${LD_PATH}";
+    LD_LIBRARY_PATH = lib.mkForce ${LD_PATH};
 
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
