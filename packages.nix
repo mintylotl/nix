@@ -19,9 +19,8 @@ in {
     # Project Zomboid
     dwarfs fuse-overlayfs
     # New
-    protontricks
+    snixembed
     umu
-    cartridges
     
     OVMF qemu_full
 
@@ -29,7 +28,7 @@ in {
     smartmontools egl-wayland
     vulkan-headers
     wayland-pipewire-idle-inhibit
-    #blender-hip
+    blender
     keyutils
     aria2
     compsize
@@ -40,11 +39,6 @@ in {
     nvtopPackages.nvidia
     
     # GTK Libs
-    appindicator-sharp
-    gnomeExtensions.appindicator
-    libappindicator-gtk3
-    libappindicator
-
     gst_all_1.gstreamer zenity
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
@@ -52,19 +46,24 @@ in {
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-libav
 
-    # Sound
     alsa-utils
     xcur2png
     pavucontrol
     audacity
-    # Editors
     mpv
-    # Environment
     busybox
     htop
     neofetch
     speedcrunch
     openssl
+
+    appindicator-sharp
+    libindicator libindicator-gtk2 libindicator-gtk3
+    libayatana-common
+    libappindicator-gtk3
+    libayatana-indicator libayatana-indicator-gtk3
+    libayatana-appindicator libayatana-appindicator-gtk3
+
     #Emulation
     #RetroArch
     (retroarch.override { cores = with libretro; [ mame2016 ]; })
@@ -72,14 +71,6 @@ in {
     (lutris.override {
       extraPkgs = pkgs: [
         wlr-randr
-	xorg.libXrandr
-	vulkan-tools
-	appindicator-sharp
-	libindicator libindicator-gtk2 libindicator-gtk3
-	libayatana-common
-	libayatana-indicator libayatana-indicator-gtk3
-	libayatana-appindicator libayatana-appindicator-gtk3
-
       ];
     })
     
@@ -111,11 +102,9 @@ in {
 
     # QT
     qt6.full
-    qt5.full
     qt6Packages.qtstyleplugin-kvantum
     qimgv
     qt6ct
-    kwayland-integration
     catppuccin-cursors
     nwg-look
 
@@ -181,11 +170,9 @@ in {
     slurp
     hyprpaper
     wl-clipboard
-    rofi
     cliphist
     firefox
     telegram-desktop
-    hyprcursor
     rtaudio
     qbittorrent
     mako
@@ -193,6 +180,7 @@ in {
     zenity
 
     # Icon_Themes
+    adwaita-icon-theme
     breeze-gtk
     breeze-icons
     papirus-icon-theme
