@@ -120,7 +120,7 @@
           vfr = false
       }
       render {
-          explicit_sync = 1
+          explicit_sync = 0
       }
 
       #Misc
