@@ -156,7 +156,7 @@ in
 
 
 
-    LD_LIBRARY_PATH = lib.mkForce ${LD_PATH};
+    LD_LIBRARY_PATH = lib.mkForce "${LD_PATH}";
 
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
