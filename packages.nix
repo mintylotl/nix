@@ -25,7 +25,7 @@ in {
     OVMF qemu_full
 
     cowsay kittysay pokemonsay
-    smartmontools egl-wayland
+    smartmontools
     vulkan-headers
     wayland-pipewire-idle-inhibit
     blender
@@ -164,7 +164,7 @@ in {
     gamemode
     mangohud
     # Programs
-    wineWowPackages.stagingFull
+    winePackages.stagingFull
     winetricks
     grim
     slurp
