@@ -9,7 +9,7 @@
       vulkan-validation-layers
       nvidia-vaapi-driver
       opencl-headers
-      libglvnd
+      libglvnd egl-wayland
     ];
     extraPackages32 = with pkgs;
       [
