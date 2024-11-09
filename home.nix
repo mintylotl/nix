@@ -18,6 +18,13 @@ in {
     TERM = "alacritty";
     NIXOS_OZONE_WL = "1";
   };
+  
+  home.file = {
+    ".scripts" = {
+      source = ./scripts;
+      recursive = true;
+    };
+  };
 
   # Home Stuff
   xdg = {

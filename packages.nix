@@ -131,7 +131,8 @@ in {
     bitwarden-desktop
     git
     gcc
-    cmake
+    gnumake
+    makemkv
     pkg-config
     btrfs-progs
     vulkan-tools

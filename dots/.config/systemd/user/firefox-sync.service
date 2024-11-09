@@ -1,0 +1,11 @@
+[Unit]
+Description=A Daemon to Sync the Firefox Data into TMPFS
+
+[Service]
+ExecStart=%h/.scripts/scripts/firefox-sync.sh "kgcba3qa.main" 2 0
+ExecStop=%h/.scripts/scripts/firefox-sync.sh "kgcba3qa.main" 1 0
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=Anki Sync Server
+
+[Service]
+ExecStart=/home/jwm/.scripts/programs/anki_sync.sh
+
+[Install]
+WantedBy=default.target

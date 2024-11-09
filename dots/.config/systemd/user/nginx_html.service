@@ -1,0 +1,8 @@
+[Unit]
+Description="Creates HTML files for the nginx dir periodically."
+
+[Service]
+ExecStart=/usr/bin/python /home/jwm/.scripts/scripts/nginx_html.py
+
+[Install]
+WantedBy=default.target
