@@ -14,7 +14,7 @@
     extraPackages32 = with pkgs;
       [
         #nvidia-vaapi-drive
-        #driversi686Linux.libva-vdpau-driver
+        driversi686Linux.libva-vdpau-driver
       ];
   };
 
@@ -24,7 +24,7 @@
     powerManagement.enable = false;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     powerManagement.finegrained = false;
   };
 
