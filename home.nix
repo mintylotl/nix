@@ -24,6 +24,12 @@ in {
       source = ./dots/scripts;
       recursive = true;
     };
+    ".config/mpv" = {
+      source = ./dots/config/mpv;
+    };
+    ".config/pipewire" = {
+      source = ./dots/config/pipewire;
+    };
   };
 
   # Home Stuff
