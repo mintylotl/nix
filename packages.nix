@@ -171,7 +171,10 @@ in {
     gamemode
     mangohud
     # Programs
-    winePackages.stagingFull
+    wineWowPackages.waylandFull
+    #wineWowPackages.stableFull
+    #wineWowPackages.unstableFull
+    #wineWowPackages.stagingFull
     winetricks
     grim
     slurp
