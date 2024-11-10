@@ -26,9 +26,11 @@ in {
     };
     ".config/mpv" = {
       source = ./dots/config/mpv;
+      recursive = true;
     };
     ".config/pipewire" = {
       source = ./dots/config/pipewire;
+      recursive = true;
     };
   };
 

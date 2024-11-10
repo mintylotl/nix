@@ -16,7 +16,6 @@ in {
         enableCuda = true;
       };
       blender = pkgs-lsg.blender;
-      hyprland = inputs.Hyprland.packages.${pkgs.system}.hyprland;
       wineWowPackages = inputs.Hyprland.inputs.nixpkgs.legacyPackages.${pkgs.system}.wineWowPackages;
     })
   ];

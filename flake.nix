@@ -62,6 +62,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jwm = import ./home.nix;
+	      home-manager.backupFileExtension = "bak";
             }
           ];
 	  specialArgs = {
