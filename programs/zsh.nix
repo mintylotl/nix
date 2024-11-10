@@ -16,7 +16,7 @@
 
       alias ls="ls --color"
       alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
-      alias nixosFlake="nixos-rebuild switch --flake /etc/nixos#cabbage"
+      alias nixosFlake="sudo nixos-rebuild switch --flake /etc/nixos#cabbage"
       alias ls="ls --color"
       alias vd="veracrypt -t -d"
       alias vc="veracrypt -t -c"
