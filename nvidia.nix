@@ -28,7 +28,7 @@
     #powerManagement.finegrained = false;
   };
 
-  #environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors" = {
+  ''environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors" = {
     text = ''
     {
     "rules": [
@@ -71,5 +71,5 @@
       ]
     }
     '';
-  #};
+  };''
 }
