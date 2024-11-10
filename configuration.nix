@@ -5,7 +5,6 @@
 }:
 let
   HOME = "/home/jwm";
-  LD_PATH = "${pkgs.egl-wayland}/lib:/run/opengl-driver/lib:/run/opengl-driver-32/lib:/usr/lib:${pkgs.openvdb}/lib";
 in
 {
   # nixOS
@@ -25,7 +24,7 @@ in
   	nixpkgs.config.allowUnfree = true;
 
   	nix = {
-  	  package = pkgs.nixVersions.stable;
+  	  package = pkgs.nix;
   	  extraOptions = ''
   	      experimental-features = nix-command flakes
   	  '';
@@ -153,10 +152,6 @@ in
   environment.variables = {
     NIX_CONF_DIR = "${HOME}/.nixos";
     NIX_OZONE_WL = "1";
-
-
-
-    LD_LIBRARY_PATH = lib.mkForce "${LD_PATH}";
 
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
