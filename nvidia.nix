@@ -2,41 +2,32 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    #extraPackages = with pkgs; [
-    #  libva-utils
-    #  libva
-    #  vulkan-loader
-    #  vulkan-validation-layers
-    #  nvidia-vaapi-driver
-    #  opencl-headers
-    #  libglvnd egl-wayland
-    #];
-    #extraPackages32 = with pkgs;
-    #  [
-    #    #nvidia-vaapi-drive
-    #    driversi686Linux.libva-vdpau-driver
-    #  ];
+    extraPackages = with pkgs; [
+      libva
+      nvidia-vaapi-driver
+    ];
   };
 
-  #services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver = {
+    videoDrivers = [ "nvidia" "fbdev" ];
+    resolutions = [ { x = 1280; y = 1024; } { x = 1440; y = 900; } ];
+  };
+  
   hardware.nvidia = {
     modesetting.enable = true;
+    
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+
+    powerManagement.finegrained = false;
     powerManagement.enable = true;
-    #open = false;
-    #nvidiaSettings = true;
-    #package = config.boot.kernelPackages.nvidiaPackages.stable;
-    #powerManagement.finegrained = false;
   };
 
-  ''environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors" = {
+  environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors" = {
     text = ''
     {
     "rules": [
-      {
-	"pattern": {
-	  "feature": "procname", "matches": "foobar" }, 
-	  "profile": "Limit Free Buffer Pool On Wayland Compositors"
-      }
       {
         "pattern": {
           "feature": "procname", "matches": "/etc/profiles/per-user/jwm/bin/Hyprland" },
@@ -71,5 +62,5 @@
       ]
     }
     '';
-  };''
+  };
 }

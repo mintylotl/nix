@@ -16,6 +16,7 @@ in {
         enableCuda = true;
       };
       blender = pkgs-lsg.blender;
+      hyprland = inputs.Hyprland.packages.${pkgs.system}.hyprland;
     })
   ];
 
@@ -271,9 +272,6 @@ in {
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
       ];
-      configPackages = with pkgs; [
-        gnome-session
-      ];
       xdgOpenUsePortal = true;
     };
     menus.enable = true;
@@ -283,7 +281,6 @@ in {
   programs.ecryptfs.enable = true;
   
   qt.style = "kvantum";
-
 
   # Fonts
   fonts.packages = with pkgs; [

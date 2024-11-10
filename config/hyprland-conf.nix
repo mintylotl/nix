@@ -33,20 +33,27 @@
 
       # Hyprland
       $HOME = "/home/jwm"
+      $scripts = "$HOME"/.scripts/scripts
+      $emacsDir = "$HOME"/.emacs.d
+
       # --Envar
           env = XCURSOR_SIZE, 24
           env = XCURSOR_THEME, "BreezeX-RosePineDawn-Linux"
           env = HYPRCURSOR_SIZE, 24
           env = HYPRCURSOR_THEME, "rosepine-cursor"
 
-          # --Programs
-              exec-once = hyprpaper
-              #exec-once = emacs --daemon
-              # --Lutris
-                  env = LUTRIS_SKIP_INIT, 0
           # --Scripts
               exec-once = "$HOME"/.config/hypr/sink.sh
-	      exec-once = sudo "$HOME"/.scripts/scripts/system/leds.sh&
+	      exec-once = sudo -E "$scripts"/system/leds.sh&
+	      exec-once = sudo -E "$scripts"/system/mounts.sh
+	      exec-once = $emacsDir/bin/doom sync
+
+          # --Programs
+              exec-once = hyprpaper
+              exec-once = emacs --daemon
+              # --Lutris
+                  env = LUTRIS_SKIP_INIT, 0
+
 
       exec = dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RosePineDawn-Linux'"
       exec = dconf write /org/gnome/desktop/interface/gtk-theme "'Breeze-Dark'"
@@ -78,6 +85,8 @@
           col.inactive_border = rgba(595959aa)
 
           layout = master
+
+	  allow_tearing = true;
       }
       decoration {
           rounding = 3
@@ -125,6 +134,7 @@
 
       #Misc
       #windowrulev2 = suppressevent maximize, class:.*
+      windowrulev2 = immediate, class:.*
 
       #WindowRules
       windowrule = workspace 2 silent, ^(steam)$

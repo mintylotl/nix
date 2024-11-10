@@ -8,6 +8,7 @@
     };
     hyprlock.enable = true;
     xwayland.enable = true;
+    withSystemd = true;
   };
   services.hypridle.enable = true;
 }

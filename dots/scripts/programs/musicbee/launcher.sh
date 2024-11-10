@@ -7,7 +7,7 @@ do
 sleep 1s
 done
 sleep 6s
-killall explorer.exe
+#killall explorer.exe
 
 #niceness
 sudo ./prio.sh

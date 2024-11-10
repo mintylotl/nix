@@ -40,8 +40,8 @@ in
             efi.canTouchEfiVariables = true;
           };
           kernelPackages = pkgs.linuxPackages;
-          initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ];
-          kernelParams = [ "nvidia-drm.modeset=1" ];
+          #initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ];
+          kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
         };
 
 	# NETWORKING
@@ -157,8 +157,7 @@ in
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
-    VK_DRIVER_FILES = "${config.boot.kernelPackages.nvidiaPackages.stable}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    #VK_DRIVER_FILES = "${config.boot.kernelPackages.nvidiaPackages.stable}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
   };
-  # system.copySystemConfiguration = true;
   system.stateVersion = "24.05";
 }
