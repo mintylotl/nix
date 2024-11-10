@@ -96,11 +96,6 @@
               size = 2
               passes = 1
           }
-
-          drop_shadow = false
-          shadow_range = 2
-          shadow_render_power = 1
-          col.shadow = rgba(1a1a1aee)
       }
       animations {
           enabled = true
