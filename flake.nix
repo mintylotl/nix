@@ -4,9 +4,9 @@
   nixConfig = {
     extra-experimental-features = "nix-command flakes";
     trusted-users = "jwm";
-    max-jobs = 2;
-    max-substitution-jobs = 3;
-    cores = 4;
+    max-jobs = 1;
+    max-substitution-jobs = 1;
+    cores = 5;
   };
    
   inputs = {
