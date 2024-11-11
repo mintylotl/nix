@@ -19,7 +19,6 @@
 	  env = SDL_VIDEODRIVER, wayland
 	  env = GDK_BACKEND, wayland, x11
 	  env = WLR_BACKEND, vulkan
-	  env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
 
 
       # --Themes

@@ -17,6 +17,7 @@ in {
   home.sessionVariables = {
     TERM = "alacritty";
     NIXOS_OZONE_WL = "1";
+    LD_LIBRARY_PATH = "/nix/store/fly703fiz09a2nni6bzfjrlg0d4pdd1h-nvidia-x11-565.57.01-6.6.60/lib:${config.environment.variables.LD_LIBRARY_PATH}";
   };
   
   home.file = {
