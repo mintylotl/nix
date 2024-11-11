@@ -96,13 +96,15 @@ in
 	  ssh = {};
 	  certs = {};
 	  aria2 = {};
+	  pulse = {};
+	  nm-openconnect = {};
 	};
 	# Users
 	users.users.jwm = {
 	    isNormalUser = true;
 	    home = "/home/jwm";
 	    group = "jwm";
-	    extraGroups = [ "wheel" "freezer" ];
+	    extraGroups = [ "wheel" "freezer" "realtime" ];
 	}; 
 	users.users.ftpsecure = {
 	    isNormalUser = true;
@@ -147,7 +149,34 @@ in
     ./resources/certs/ca/ca.pem
   ];
   
+  security.pam = {
+    loginLimits = [
+      {
+        domain = "@realtime";
+        type = "-";
+        item = "rtprio";
+        value = 98;
+      }
+      {
+        domain = "@realtime";
+        type = "-";
+        item = "memlock";
+        value = "unlimited";
+      }
+      {
+        domain = "@realtime";
+        type = "-";
+        item = "nice";
+        value = -13;
+      }
+    ];
+  };
+
   security.polkit.enable = true;
+  
+  services.udev.extraRules = ''
+    KERNEL=="cpu_dma_latency", GROUP="realtime"
+  '';
 
   environment.variables = {
     NIX_CONF_DIR = "${HOME}/.nixos";

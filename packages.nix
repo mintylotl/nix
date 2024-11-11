@@ -30,6 +30,7 @@ in {
     OVMF qemu_full
 
     cowsay kittysay pokemonsay
+    egl-wayland vulkan-loader
     smartmontools
     vulkan-headers
     wayland-pipewire-idle-inhibit
@@ -172,9 +173,9 @@ in {
     mangohud
     # Programs
     #wineWowPackages.waylandFull
-    #wineWowPackages.stableFull
+    wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    wineWowPackages.stagingFull
+    #wineWowPackages.stagingFull
     winetricks
     grim
     slurp
@@ -183,7 +184,6 @@ in {
     cliphist
     firefox
     telegram-desktop
-    rtaudio
     qbittorrent
     mako
     rose-pine-cursor
@@ -215,7 +215,10 @@ in {
     protontricks.enable = true;
     gamescopeSession.enable = true;
   };
-  programs.gamemode.enable = true;
+  programs.gamemode = {
+    enable = true;
+    enableRenice = true;
+  };
 
   # Services
   services.vsftpd.enable = true;
