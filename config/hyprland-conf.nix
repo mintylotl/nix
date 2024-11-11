@@ -17,7 +17,7 @@
           env = GBM_BACKEND, nvidia-drm
           env = NVD_BACKEND, direct
 	  #env = SDL_VIDEODRIVER, wayland
-	  env = GDK_BACKEND, wayland, x11
+	  #env = GDK_BACKEND, wayland, x11
 
 
       # --Themes
@@ -47,7 +47,6 @@
               exec-once = "$HOME"/.config/hypr/sink.sh
 	      exec-once = sudo -E "$scripts"/system/leds.sh&
 	      exec-once = sudo -E "$scripts"/system/mounts.sh
-	      exec-once = snixembed
 
           # --Programs
               exec-once = hyprpaper

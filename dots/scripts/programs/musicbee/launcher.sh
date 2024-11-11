@@ -8,5 +8,3 @@ sleep 1s
 done
 killall explorer.exe
 
-#niceness
-sudo ./prio.sh
