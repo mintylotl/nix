@@ -24,6 +24,7 @@ in {
     dwarfs fuse-overlayfs
     # New
     #cudatoolkit
+    gnutar
     snixembed
     umu
     bottles
