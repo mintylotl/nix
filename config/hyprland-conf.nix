@@ -16,13 +16,16 @@
           env = LIBVA_DRIVER_NAME, nvidia
           env = GBM_BACKEND, nvidia-drm
           env = NVD_BACKEND, direct
+	  env = SDL_VIDEODRIVER, wayland
+	  env = GDK_BACKEND, wayland, x11
+	  env = WLR_BACKEND, vulkan
+	  env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
+
 
       # --Themes
-          # --GTK
           # --QT
-      env = QT_QPA_PLATFORM, wayland
-      env = QT_QPA_PLATFORMTHEME, qt5ct
-      env = GTK_USE_PORTAL, 1
+	      env = QT_QPA_PLATFORM, wayland
+	      env = GTK_USE_PORTAL, 1
 
       # --XDG / DBUS
           env = XDG_CURRENT_DESKTOP, Hyprland
@@ -32,9 +35,9 @@
           env = XMODIFIERS, @im=fcitx
 
       # Hyprland
-      $HOME = "/home/jwm"
-      $scripts = "$HOME"/.scripts/scripts
-      $emacsDir = "$HOME"/.emacs.d
+          $HOME = "/home/jwm"
+	  $scripts = "$HOME"/.scripts/scripts
+	  $emacsDir = "$HOME"/.emacs.d
 
       # --Envar
           env = XCURSOR_SIZE, 24
