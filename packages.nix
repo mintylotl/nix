@@ -26,6 +26,7 @@ in {
     #cudatoolkit
     snixembed
     umu
+    bottles
     
     OVMF qemu_full
 
