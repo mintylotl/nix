@@ -9,7 +9,7 @@
   };
 
   services.xserver = {
-    videoDrivers = [ "nvidia" "fbdev" ];
+    videoDrivers = [ "nvidia" ];
     resolutions = [ { x = 1280; y = 1024; } { x = 1440; y = 900; } ];
   };
   
