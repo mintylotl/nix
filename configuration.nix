@@ -98,6 +98,7 @@ in
 	  aria2 = {};
 	  pulse = {};
 	  nm-openconnect = {};
+	  realtime = {};
 	};
 	# Users
 	users.users.jwm = {
@@ -181,6 +182,8 @@ in
   environment.variables = {
     NIX_CONF_DIR = "${HOME}/.nixos";
     NIX_OZONE_WL = "1";
+
+    LD_LIBRARY_PATH = lib.mkForce "${config.boot.kernelPackages.nvidiaPackages.beta}/lib:${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d";
 
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";

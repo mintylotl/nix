@@ -12,12 +12,12 @@ in {
   
   home.username = "jwm";
   home.homeDirectory = "/home/jwm";
+  home.preferXdgDirectories = true;
   programs.home-manager.enable = true;
-
+  
   home.sessionVariables = {
     TERM = "alacritty";
     NIXOS_OZONE_WL = "1";
-    LD_LIBRARY_PATH = "/nix/store/fly703fiz09a2nni6bzfjrlg0d4pdd1h-nvidia-x11-565.57.01-6.6.60/lib:${config.environment.variables.LD_LIBRARY_PATH}";
   };
   
   home.file = {
@@ -29,10 +29,10 @@ in {
       source = ./dots/config/mpv;
       recursive = true;
     };
-    ".config/pipewire" = {
-      source = ./dots/config/pipewire;
-      recursive = true;
-    };
+    #".config/pipewire" = {
+    #  source = ./dots/config/pipewire;
+    #  recursive = true;
+    #};
   };
 
   # Home Stuff
@@ -126,11 +126,14 @@ in {
       size = 11;
     };
   };
+
   qt = {
     enable = true;
     platformTheme.name = "qtct";
     style.name = "kvantum";
     style.package = pkgs.qt6Packages.qtstyleplugin-kvantum;
   };
+
+
   home.stateVersion = "24.05";
 }

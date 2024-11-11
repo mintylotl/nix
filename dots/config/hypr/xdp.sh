@@ -9,5 +9,5 @@ fi
 
 if ! systemctl --user status pipewire | grep -q "failed";
 then
-	waybar
+	GDK_BACKEND=wayland waybar
 fi

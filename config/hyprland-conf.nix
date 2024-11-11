@@ -128,10 +128,6 @@
           explicit_sync = 0
       }
 
-      #Misc
-      #windowrulev2 = suppressevent maximize, class:.*
-      windowrulev2 = immediate, class:.*
-
       #WindowRules
       windowrule = workspace 2 silent, ^(steam)$
       windowrule = workspace 2 silent, ^(lutris)$
