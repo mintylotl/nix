@@ -33,10 +33,9 @@ in {
       source = ./dots/ecryptfs;
       recursive = true;
     };
-    #".config/pipewire" = {
-    #  source = ./dots/config/pipewire;
-    #  recursive = true;
-    #};
+    ".config/pipewire/pipewire.conf" = {
+      source = ./dots/config/pipewire/pipewire.conf;
+    };
   };
 
   # Home Stuff
