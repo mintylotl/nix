@@ -151,15 +151,16 @@ in
     ./resources/certs/ca/ca.pem
   ];
 
-  security.pam.services.polkit = {
+  security.pam.services = [
+    name = "polkit";
     config = ''
-      polkit.addRule(function(action, subject) {
-      	  if (action.id.indexOf("org.freedesktop.pipewire") == 0) {
-	      return polkit.Result.YES;
-	  }
-      });
+        polkit.addRule(function(action, subject) {
+        if (action.id.indexOf("org.freedesktop.pipewire") == 0) {
+            return polkit.Result.YES;
+        }
+        });
     '';
-  };
+  ];
 
   services.udev.extraRules = ''
     KERNEL=="cpu_dma_latency", GROUP="realtime"
