@@ -16,8 +16,8 @@
           env = LIBVA_DRIVER_NAME, nvidia
           env = GBM_BACKEND, nvidia-drm
           env = NVD_BACKEND, direct
-	  #env = SDL_VIDEODRIVER, wayland
-	  #env = GDK_BACKEND, wayland, x11
+	  env = SDL_VIDEODRIVER, wayland
+	  env = GDK_BACKEND, wayland, x11
 
 
       # --Themes

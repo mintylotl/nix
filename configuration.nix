@@ -191,6 +191,7 @@ in
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
     VK_DRIVER_FILES = "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    VK_ICD_FILENAMES = "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
   };
   system.stateVersion = "24.05";
 }
