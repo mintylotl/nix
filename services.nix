@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   systemd = {
     user.services.hyprauthagent = {
