@@ -29,6 +29,10 @@ in {
       source = ./dots/config/mpv;
       recursive = true;
     };
+    ".ecryptfs" = {
+      source = ./dots/ecryptfs;
+      recursive = true;
+    };
     #".config/pipewire" = {
     #  source = ./dots/config/pipewire;
     #  recursive = true;
