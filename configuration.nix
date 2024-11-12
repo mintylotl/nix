@@ -151,7 +151,7 @@ in
     ./resources/certs/ca/ca.pem
   ];
 
-  services.pam.services.polkit = {
+  security.pam.services.polkit = {
     config = ''
       polkit.addRule(function(action, subject) {
       	  if (action.id.indexOf("org.freedesktop.pipewire") == 0) {
