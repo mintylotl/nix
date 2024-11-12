@@ -263,7 +263,7 @@
       bind = $mainMod, B, fullscreen
       bind = $mainMod, F, fullscreen, 1
       bind = $mainMod, D, exec, hyprctl dispatch centerwindow
-      bind = $mainMod, M, exit
+      bind = $mainMod, M, exec, loginctl terminate-user ""
       bind = $mainMod, C, killactive
       bind = $mainMod, T, exec, cliphist wipe
       bind = $mainMod, SPACE, exec, rofi -show drun
@@ -343,7 +343,7 @@
           bind = $mainMod, mouse_up, workspace, e-1
     '';
     systemd = {
-      enable = true;
+      enable = false;
       variables = [ "--all" ];
     };
   };

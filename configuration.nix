@@ -146,25 +146,21 @@ in
 
   # Securitay
   security.rtkit.enable = true;
-  security.polkit.enable = true;
+  security.polkit = {
+    enable = true;
+    extraConfig = ''
+      polkit.addRule(function (action, subject) {
+          if [ "org.freedesktop.pipewire" ].indexOf(action.id) !== -1 {
+	      return polkit.Result.YES;
+	  }
+      });
+    '';
+  };
+  
+
   security.pki.certificateFiles = [
     ./resources/certs/ca/ca.pem
   ];
-
-  security.pam.services = [
-    name = "polkit";
-    config = ''
-        polkit.addRule(function(action, subject) {
-        if (action.id.indexOf("org.freedesktop.pipewire") == 0) {
-            return polkit.Result.YES;
-        }
-        });
-    '';
-  ];
-
-  services.udev.extraRules = ''
-    KERNEL=="cpu_dma_latency", GROUP="realtime"
-  '';
 
   environment.variables = {
     NIX_CONF_DIR = "${HOME}/.nixos";
