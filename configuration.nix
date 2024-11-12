@@ -10,7 +10,8 @@ in
   # nixOS
   	imports = [
 	  ./hw-cfg.nix
-	  
+	  ./services.nix
+
 	  # Daemons
 	  ./daemons/nginx.nix
 	  ./daemons/vsftpd.nix
@@ -19,7 +20,6 @@ in
 	  ./nvidia.nix
 	  ./packages.nix
 	  ./programs/hyprland.nix
-	  ./services.nix
 	];
 
   	nixpkgs.config.allowUnfree = true;
@@ -157,7 +157,9 @@ in
     '';
   };
   
-
+  services.udev.extraRules = ''
+    SUBSYSTEM=="sound", ENV{ID_PATH}=="pci-0000:2d:00.4", ATTRS{vendor}=="0x1022", ATTRS{device}=="0x1487", ATTR{index}="0"
+  '';
   security.pki.certificateFiles = [
     ./resources/certs/ca/ca.pem
   ];
