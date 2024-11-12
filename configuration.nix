@@ -146,35 +146,21 @@ in
 
   # Securitay
   security.rtkit.enable = true;
+  security.polkit.enable = true;
   security.pki.certificateFiles = [
     ./resources/certs/ca/ca.pem
   ];
-  
-  security.pam = {
-    loginLimits = [
-      {
-        domain = "@realtime";
-        type = "-";
-        item = "rtprio";
-        value = 98;
-      }
-      {
-        domain = "@realtime";
-        type = "-";
-        item = "memlock";
-        value = "unlimited";
-      }
-      {
-        domain = "@realtime";
-        type = "-";
-        item = "nice";
-        value = -13;
-      }
-    ];
+
+  services.pam.services.polkit = {
+    config = ''
+      polkit.addRule(function(action, subject) {
+      	  if (action.id.indexOf("org.freedesktop.pipewire") == 0) {
+	      return polkit.Result.YES;
+	  }
+      });
+    '';
   };
 
-  security.polkit.enable = true;
-  
   services.udev.extraRules = ''
     KERNEL=="cpu_dma_latency", GROUP="realtime"
   '';
