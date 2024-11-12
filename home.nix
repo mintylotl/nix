@@ -29,6 +29,10 @@ in {
       source = ./dots/config/mpv;
       recursive = true;
     };
+    ".config/waybar" = {
+      source = ./dots/config/waybar;
+      recursive = true;
+    };
     ".ecryptfs" = {
       source = ./dots/ecryptfs;
       recursive = true;
