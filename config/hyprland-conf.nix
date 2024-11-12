@@ -346,7 +346,7 @@
           bind = $mainMod, mouse_up, workspace, e-1
     '';
     systemd = {
-      enable = false;
+      enable = true;
       variables = [ "--all" ];
     };
   };
