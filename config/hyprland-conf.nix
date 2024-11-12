@@ -30,6 +30,7 @@
           env = XDG_SESSION_TYPE, wayland
 
 	  exec-once = systemctl --user start hyprpolkitagent
+	  exec-once = systemctl --user start xdg-desktop-portal-hyprland
 
       # --IME / IMF
           env = XMODIFIERS, @im=fcitx
