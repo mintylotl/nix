@@ -34,11 +34,6 @@
       PATH="$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
       source $ZIM_HOME/init.zsh
     '';
-    loginExtra = ''
-      if uwsm check may-start && uwsm select; then
-          exec systemd-cat -t uwsm_start uwsm start default
-      fi
-    '';
   };
 
   home.file.".zimrc" = {

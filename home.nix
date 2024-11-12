@@ -73,8 +73,8 @@ in {
 
   programs.waybar = {
     enable = true;
-    systemd.enable = false;
-    systemd.target = "hyprland-session.target";
+    #systemd.enable = true;
+    #systemd.target = "hyprland-session.target";
   };
   
   programs.bash = {

@@ -28,6 +28,7 @@ in {
     snixembed
     umu
     bottles
+    hyprpolkitagent
     
     OVMF qemu_full
 

@@ -19,6 +19,7 @@ in
 	  ./nvidia.nix
 	  ./packages.nix
 	  ./programs/hyprland.nix
+	  ./services.nix
 	];
 
   	nixpkgs.config.allowUnfree = true;
