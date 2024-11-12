@@ -181,15 +181,16 @@ in
 
   environment.variables = {
     NIX_CONF_DIR = "${HOME}/.nixos";
-    NIX_OZONE_WL = "1";
+    NIX_OZONE_WL = "0";
 
     LD_LIBRARY_PATH = lib.mkForce "${config.boot.kernelPackages.nvidiaPackages.beta}/lib:${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d";
-
+    
+    MESA_LOADER_DRIVER_OVERRIDE  = "nvidia";
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
-    #VK_DRIVER_FILES = "${config.boot.kernelPackages.nvidiaPackages.stable}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    VK_DRIVER_FILES = "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
   };
   system.stateVersion = "24.05";
 }
