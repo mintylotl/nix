@@ -8,10 +8,7 @@ in {
   home.preferXdgDirectories = true;
   programs.home-manager.enable = true;
 
-  home.sessionVariables = {
-    TERM = "alacritty";
-    NIXOS_OZONE_WL = "1";
-  };
+  home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   home.file = {
     ".scripts" = {
