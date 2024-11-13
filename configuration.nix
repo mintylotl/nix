@@ -103,13 +103,14 @@ in
 	  aria2 = {};
 	  pulse = {};
 	  nm-openconnect = {};
+	  nicy = {};
 	};
 	# Users
 	users.users.jwm = {
 	    isNormalUser = true;
 	    home = "/home/jwm";
 	    group = "jwm";
-	    extraGroups = [ "wheel" "freezer" "realtime" ];
+	    extraGroups = [ "wheel" "freezer" "realtime" "nicy" ];
 	};
 	users.users.ftpsecure = {
 	    isNormalUser = true;
@@ -162,7 +163,7 @@ in
 
   security.pam.loginLimits = [
     {
-      domain = "jwm";
+      domain = "@nicy";
       type = "-";
       item = "nice";
       value = -13;
