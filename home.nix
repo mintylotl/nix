@@ -37,8 +37,12 @@ in {
       source = ./dots/ecryptfs;
       recursive = true;
     };
-    ".config/pipewire/pipewire.conf" = {
-      source = ./dots/config/pipewire/pipewire.conf;
+    ".config/pipewire" = {
+      source = ./dots/config/pipewire;
+      recursive = true;
+    };
+    ".asoundrc" = {
+      source = ./dots/config/asoundrc;
     };
   };
 
