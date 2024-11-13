@@ -158,7 +158,10 @@ in
   };
   
   services.udev.extraRules = ''
-    SUBSYSTEM=="sound", KERNEL=="controlC*", ATTRS{id_path}=="pci-0000:2d:00.4", ATTRS{vendor}=="0x1022", ATTRS{device}=="0x1487", OPTIONS+="index=0"
+    SUBSYSTEMS=="pci", KERNELS=="0000:2b:00.1", ATTRS{device}=="0x0fb8", ATTRS{enable}="1"
+    SUBSYSTEMS=="pci", KERNELS=="0000:2b:00.4", ATTRS{device}=="0x1487", ATTRS{index}="0"
+
+
   '';
   security.pki.certificateFiles = [
     ./resources/certs/ca/ca.pem
