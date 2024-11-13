@@ -54,7 +54,7 @@
           # --Programs
               exec-once = hyprpaper
               # --Lutris
-                  env = LUTRIS_SKIP_INIT, 0
+                  env = LUTRIS_SKIP_INIT, 1
 
 
       exec = dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RosePineDawn-Linux'"
