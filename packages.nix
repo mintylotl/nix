@@ -20,6 +20,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    baobab
     # Project Zomboid
     dwarfs fuse-overlayfs libarchive
     # New
