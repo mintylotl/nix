@@ -110,7 +110,14 @@ in
 	    isNormalUser = true;
 	    home = "/home/jwm";
 	    group = "jwm";
-	    extraGroups = [ "wheel" "freezer" "realtime" "nicy" ];
+	    extraGroups = [
+	      "wheel"
+	      "freezer"
+	      "realtime"
+	      "nicy"
+	      "realtime"
+	      "audio"
+	    ];
 	};
 	users.users.ftpsecure = {
 	    isNormalUser = true;
