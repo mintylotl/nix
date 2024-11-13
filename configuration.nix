@@ -164,7 +164,7 @@ in
     {
       domain = "jwm";
       type = "-";
-      value = "nice";
+      item = "nice";
       value = -13;
     }
   ];
