@@ -82,10 +82,7 @@ in {
     '';
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
+  programs.neovim = { enable = true; };
 
   programs.kitty.enable = true;
   programs.alacritty.enable = true;
