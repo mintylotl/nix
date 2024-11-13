@@ -64,6 +64,13 @@ in {
     package = pkgs.emacs29;
     extraPackages = epkgs: [ epkgs.vterm ];
   };
+  services.emacs = {
+    enable = true;
+    client.enable = true;
+    defaultEditor = true;
+
+    startWithUserSession = true;
+  };
 
   programs.waybar = {
     enable = true;
