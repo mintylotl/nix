@@ -103,7 +103,6 @@ in
 	  aria2 = {};
 	  pulse = {};
 	  nm-openconnect = {};
-	  realtime = {};
 	};
 	# Users
 	users.users.jwm = {
@@ -111,7 +110,7 @@ in
 	    home = "/home/jwm";
 	    group = "jwm";
 	    extraGroups = [ "wheel" "freezer" "realtime" ];
-	}; 
+	};
 	users.users.ftpsecure = {
 	    isNormalUser = true;
 	    home = "/var/lib/jail";
@@ -160,12 +159,16 @@ in
       });
     '';
   };
+
+  security.pam.loginLimits = [
+    {
+      domain = "jwm";
+      type = "-";
+      value = "nice";
+      value = -13;
+    }
+  ];
   
-  services.udev.extraRules = ''
-    SUBSYSTEMS=="sound", ATTRS{id}=="Generic", ATTRS{number}=0
-
-
-  '';
   security.pki.certificateFiles = [
     ./resources/certs/ca/ca.pem
   ];
