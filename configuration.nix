@@ -1,137 +1,120 @@
-{ 
-  nixpkgs, config, lib, pkgs,
-  inputs,
-  ... 
-}:
-let
-  HOME = "/home/jwm";
-in
-{
+{ nixpkgs, config, lib, pkgs, inputs, ... }:
+let HOME = "/home/jwm";
+in {
   # nixOS
-  	imports = [
-	  ./hw-cfg.nix
-	  ./services.nix
+  imports = [
+    ./hw-cfg.nix
+    ./services.nix
 
-	  # Daemons
-	  ./daemons/nginx.nix
-	  ./daemons/vsftpd.nix
-	  ./daemons/aria2.nix
-	  
-	  ./nvidia.nix
-	  ./packages.nix
-	  ./programs/hyprland.nix
-	];
+    # Daemons
+    ./daemons/nginx.nix
+    ./daemons/vsftpd.nix
+    ./daemons/aria2.nix
 
-  	nixpkgs.config.allowUnfree = true;
+    ./nvidia.nix
+    ./packages.nix
+    ./programs/hyprland.nix
+  ];
 
-  	nix = {
-  	  package = pkgs.nix;
-  	  extraOptions = ''
-  	      experimental-features = nix-command flakes
-  	  '';
-	  settings = {
-	    trusted-users = [ "jwm" ];
-	  };
-  	};
-        
-  	# Use the systemd-boot EFI boot loader.
-  	boot = {
-          loader = {
-            systemd-boot.enable = true;
-            efi.canTouchEfiVariables = true;
-          };
-          kernelPackages = pkgs.linuxPackages;
-          #initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ];
-          kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
-        };
+  nixpkgs.config.allowUnfree = true;
 
-	# NETWORKING
-  	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  	networking.networkmanager.enable = true;
-  	networking.firewall.enable = false;
+  nix = {
+    package = pkgs.nix;
+    extraOptions = "    experimental-features = nix-command flakes\n";
+    settings = { trusted-users = [ "jwm" ]; };
+  };
 
-	networking.hostName = "cabbage";
-        networking.hosts = {
-	  "127.0.0.1" = [ "ariaweb.srv" "jellyfin.srv" ];
-	  "192.168.2.2" = [ "vault.tld" ];
-	};
-	networking.interfaces.enp42s0.macAddress = "2C:F0:5D:E5:E2:E1";
+  # Use the systemd-boot EFI boot loader.
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxPackages;
+    #initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ];
+    kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  };
 
-	time.timeZone = "Africa/Johannesburg";
+  # NETWORKING
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
 
-        security.sudo = {
-          enable = true;
-	  extraRules = [
-	    { 
-	      users = [ "jwm" ];
-	      commands = [
-	        {
-		  command = "${HOME}/.scripts/scripts/system/mounts.sh";
-		  options = [ "SETENV" "NOPASSWD" ];
-		}
-		{
-		  command = "${HOME}/.scripts/scripts/system/leds.sh";
-		  options = [ "SETENV" "NOPASSWD" ];
-		}
-		{
-		  command = "${HOME}/.scripts/programs/musicbee/prio.sh";
-		  options = [ "SETENV" "NOPASSWD" ];
-		}
-		{
-		  command = "${HOME}/.scripts/scripts/system/nixosgarbage.sh";
-		  options = [ "SETENV" "NOPASSWD" ];
-		}
-		{
-		  command = "${HOME}/.scripts/programs/musicbee/musicbee.sh";
-		  options = [ "SETENV" "NOPASSWD" ];
-		}
-	      ];
-	    }
-	  ];
-        };
+  networking.hostName = "cabbage";
+  networking.hosts = {
+    "127.0.0.1" = [ "ariaweb.srv" "jellyfin.srv" ];
+    "192.168.2.2" = [ "vault.tld" ];
+  };
+  networking.interfaces.enp42s0.macAddress = "2C:F0:5D:E5:E2:E1";
 
-  	# Locale
-  	i18n.defaultLocale = "en_US.UTF-8";
-	
-	# Groups
-	users.groups = {
-	  freezer = {};
-	  jwm = {};
-	  ftpsecure = {};
-	  ssh = {};
-	  certs = {};
-	  aria2 = {};
-	  pulse = {};
-	  nm-openconnect = {};
-	  nicy = {};
-	};
-	# Users
-	users.users.jwm = {
-	    isNormalUser = true;
-	    home = "/home/jwm";
-	    group = "jwm";
-	    extraGroups = [
-	      "wheel"
-	      "freezer"
-	      "realtime"
-	      "nicy"
-	      "realtime"
-	      "audio"
-	    ];
-	};
-	users.users.ftpsecure = {
-	    isNormalUser = true;
-	    home = "/var/lib/jail";
-	    group = "ftpsecure";
-	    password = "123";
-	    createHome = false;
-	    homeMode = "755";
-	};
-	users.users.nginx = {
-	  extraGroups = [ "certs" ];
-	};
-	
-	# Sound
+  time.timeZone = "Africa/Johannesburg";
+
+  security.sudo = {
+    enable = true;
+    extraRules = [{
+      users = [ "jwm" ];
+      commands = [
+        {
+          command = "${HOME}/.scripts/scripts/system/mounts.sh";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+        {
+          command = "${HOME}/.scripts/scripts/system/leds.sh";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+        {
+          command = "${HOME}/.scripts/programs/musicbee/prio.sh";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+        {
+          command = "${HOME}/.scripts/scripts/system/nixosgarbage.sh";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+        {
+          command = "${HOME}/.scripts/programs/musicbee/musicbee.sh";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+        {
+          command = "/run/current-system/sw/bin/nixos-rebuild";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+      ];
+    }];
+  };
+
+  # Locale
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # Groups
+  users.groups = {
+    freezer = { };
+    jwm = { };
+    ftpsecure = { };
+    ssh = { };
+    certs = { };
+    aria2 = { };
+    pulse = { };
+    nm-openconnect = { };
+    nicy = { };
+  };
+  # Users
+  users.users.jwm = {
+    isNormalUser = true;
+    home = "/home/jwm";
+    group = "jwm";
+    extraGroups = [ "wheel" "freezer" "realtime" "nicy" "realtime" "audio" ];
+  };
+  users.users.ftpsecure = {
+    isNormalUser = true;
+    home = "/var/lib/jail";
+    group = "ftpsecure";
+    password = "123";
+    createHome = false;
+    homeMode = "755";
+  };
+  users.users.nginx = { extraGroups = [ "certs" ]; };
+
+  # Sound
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -140,7 +123,7 @@ in
     enable = true;
     enableSSHSupport = true;
   };
-  
+
   # Services
   services.pipewire = {
     enable = true;
@@ -154,46 +137,44 @@ in
     jack.enable = true;
   };
 
-
   # Securitay
   security.rtkit.enable = true;
   security.polkit = {
     enable = true;
     extraConfig = ''
-      polkit.addRule(function (action, subject) {
-          if [ "org.freedesktop.pipewire" ].indexOf(action.id) !== -1 {
-	      return polkit.Result.YES;
-	  }
-      });
+            polkit.addRule(function (action, subject) {
+                if [ "org.freedesktop.pipewire" ].indexOf(action.id) !== -1 {
+      	      return polkit.Result.YES;
+      	  }
+            });
     '';
   };
 
-  security.pam.loginLimits = [
-    {
-      domain = "@nicy";
-      type = "-";
-      item = "nice";
-      value = -13;
-    }
-  ];
-  
-  security.pki.certificateFiles = [
-    ./resources/certs/ca/ca.pem
-  ];
+  security.pam.loginLimits = [{
+    domain = "@nicy";
+    type = "-";
+    item = "nice";
+    value = -13;
+  }];
+
+  security.pki.certificateFiles = [ ./resources/certs/ca/ca.pem ];
 
   environment.variables = {
     NIX_CONF_DIR = "${HOME}/.nixos";
     NIX_OZONE_WL = "0";
 
-    LD_LIBRARY_PATH = lib.mkForce "${config.boot.kernelPackages.nvidiaPackages.beta}/lib:${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d";
-    
-    MESA_LOADER_DRIVER_OVERRIDE  = "nvidia";
+    LD_LIBRARY_PATH = lib.mkForce
+      "${config.boot.kernelPackages.nvidiaPackages.beta}/lib:${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d";
+
+    MESA_LOADER_DRIVER_OVERRIDE = "nvidia";
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
-    VK_DRIVER_FILES = "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
-    VK_ICD_FILENAMES = "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    VK_DRIVER_FILES =
+      "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    VK_ICD_FILENAMES =
+      "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
   };
   system.stateVersion = "24.05";
 }
