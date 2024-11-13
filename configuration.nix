@@ -175,6 +175,12 @@ in
       item = "nice";
       value = -13;
     }
+    {
+      domain = "@nicy";
+      type = "-";
+      item = "ionice";
+      value = 0;
+    }
   ];
   
   security.pki.certificateFiles = [
