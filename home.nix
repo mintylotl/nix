@@ -1,25 +1,18 @@
-{ 
-  config, pkgs, lib,
-  ...
-}:
-let 
-HOME = "/home/jwm";
+{ config, pkgs, lib, ... }:
+let HOME = "/home/jwm";
 in {
-  imports = [ 
-    ./config/hyprland-conf.nix
-    ./programs/zsh.nix
-  ];
-  
+  imports = [ ./config/hyprland-conf.nix ./programs/zsh.nix ];
+
   home.username = "jwm";
   home.homeDirectory = "/home/jwm";
   home.preferXdgDirectories = true;
   programs.home-manager.enable = true;
-  
+
   home.sessionVariables = {
     TERM = "alacritty";
     NIXOS_OZONE_WL = "1";
   };
-  
+
   home.file = {
     ".scripts" = {
       source = ./dots/scripts;
@@ -41,9 +34,7 @@ in {
       source = ./dots/config/pipewire;
       recursive = true;
     };
-    ".asoundrc" = {
-      source = ./dots/config/asoundrc;
-    };
+    ".asoundrc" = { source = ./dots/config/asoundrc; };
   };
 
   # Home Stuff
@@ -51,13 +42,11 @@ in {
     enable = true;
     mime.enable = true;
     mimeApps.enable = false;
-    
+
     portal = {
       enable = true;
       xdgOpenUsePortal = true;
-      extraPortals = with pkgs; [
-        pkgs.xdg-desktop-portal-gtk
-      ];
+      extraPortals = with pkgs; [ pkgs.xdg-desktop-portal-gtk ];
       config.common.default = "gtk";
     };
 
@@ -68,14 +57,12 @@ in {
 
     userDirs.createDirectories = true;
   };
-  
+
   # Programs
   programs.emacs = {
     enable = true;
     package = pkgs.emacs29;
-    extraPackages = epkgs: [
-      epkgs.vterm
-    ];
+    extraPackages = epkgs: [ epkgs.vterm ];
   };
 
   programs.waybar = {
@@ -83,7 +70,7 @@ in {
     systemd.enable = false;
     #systemd.target = "hyprland-session.target";
   };
-  
+
   programs.bash = {
     enable = true;
     bashrcExtra = ''
@@ -144,7 +131,6 @@ in {
     style.name = "kvantum";
     style.package = pkgs.qt6Packages.qtstyleplugin-kvantum;
   };
-
 
   home.stateVersion = "24.05";
 }
