@@ -81,6 +81,10 @@ in
 		  command = "${HOME}/.scripts/scripts/system/nixosgarbage.sh";
 		  options = [ "SETENV" "NOPASSWD" ];
 		}
+		{
+		  command = "${HOME}/.scripts/programs/musicbee/musicbee.sh";
+		  options = [ "SETENV" "NOPASSWD" ];
+		}
 	      ];
 	    }
 	  ];
