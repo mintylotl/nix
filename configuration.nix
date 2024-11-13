@@ -158,8 +158,7 @@ in
   };
   
   services.udev.extraRules = ''
-    SUBSYSTEMS=="pci", KERNELS=="0000:2b:00.1", ATTRS{device}=="0x0fb8", ATTRS{enable}="0"
-    SUBSYSTEMS=="pci", KERNELS=="0000:2b:00.4", ATTRS{device}=="0x1487", DRIVERS="snd_hda_intel_0"
+    SUBSYSTEMS=="sound", ATTRS{id}=="Generic", ATTRS{number}=0
 
 
   '';

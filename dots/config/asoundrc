@@ -1,0 +1,9 @@
+pcm.samson {
+	type plug
+	slave.pcm "sysdefault:CARD=Generic"
+}
+
+ctl.samson {
+	type hw
+	card Generic
+}
