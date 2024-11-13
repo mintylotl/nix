@@ -158,7 +158,7 @@ in
   };
   
   services.udev.extraRules = ''
-    SUBSYSTEMS=="pci", KERNELS=="0000:2b:00.1", ATTRS{device}=="0x0fb8", ATTRS{enable}="1"
+    SUBSYSTEMS=="pci", KERNELS=="0000:2b:00.1", ATTRS{device}=="0x0fb8", ATTRS{enable}="0"
     SUBSYSTEMS=="pci", KERNELS=="0000:2b:00.4", ATTRS{device}=="0x1487", ATTRS{index}="0"
 
 
