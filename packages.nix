@@ -1,20 +1,13 @@
-{ 
-  pkgs, config, lib,
-  pkgs-lsg, inputs,
-  ... 
-}:
-let 
-  py = pkgs.python312Packages;
+{ pkgs, config, lib, pkgs-lsg, inputs, ... }:
+let py = pkgs.python312Packages;
 in {
   nixpkgs.overlays = [
     inputs.prism.overlays.default
     (final: prev: {
-      umu = inputs.umuProton.packages.${pkgs.system}.umu.override{
+      umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
         version = "${inputs.umuProton.shortRev}";
       };
-      cudatoolkit = prev.cudatoolkit.overrideAttrs {
-        enableCuda = true;
-      };
+      cudatoolkit = prev.cudatoolkit.overrideAttrs { enableCuda = true; };
       blender = pkgs-lsg.blender;
     })
   ];
@@ -22,7 +15,9 @@ in {
   environment.systemPackages = with pkgs; [
     baobab
     # Project Zomboid
-    dwarfs fuse-overlayfs libarchive
+    dwarfs
+    fuse-overlayfs
+    libarchive
     # New
     #cudatoolkit
     gnutar
@@ -30,11 +25,15 @@ in {
     umu
     bottles
     hyprpolkitagent
-    
-    OVMF qemu_full
 
-    cowsay kittysay pokemonsay
-    egl-wayland vulkan-loader
+    OVMF
+    qemu_full
+
+    cowsay
+    kittysay
+    pokemonsay
+    egl-wayland
+    vulkan-loader
     smartmontools
     vulkan-headers
     wayland-pipewire-idle-inhibit
@@ -42,14 +41,16 @@ in {
     keyutils
     aria2
     compsize
-    gtk2 gtk3
+    gtk2
+    gtk3
     alsa-lib
     udisks
     timewarrior
     nvtopPackages.nvidia
-    
+
     # GTK Libs
-    gst_all_1.gstreamer zenity
+    gstreamer
+    zenity
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
     gst_all_1.gst-plugins-ugly
@@ -68,22 +69,22 @@ in {
     openssl
 
     appindicator-sharp
-    libindicator libindicator-gtk2 libindicator-gtk3
+    libindicator
+    libindicator-gtk2
+    libindicator-gtk3
     libayatana-common
     libappindicator-gtk3
-    libayatana-indicator libayatana-indicator-gtk3
-    libayatana-appindicator libayatana-appindicator-gtk3
+    libayatana-indicator
+    libayatana-indicator-gtk3
+    libayatana-appindicator
+    libayatana-appindicator-gtk3
 
     #Emulation
     #RetroArch
     (retroarch.override { cores = with libretro; [ mame2016 ]; })
-    
-    (lutris.override {
-      extraPkgs = pkgs: [
-        wlr-randr
-      ];
-    })
-    
+
+    (lutris.override { extraPkgs = pkgs: [ wlr-randr ]; })
+
     # EMACS
     protontricks
     fd
@@ -206,7 +207,7 @@ in {
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [
-      thunar-volman 
+      thunar-volman
       thunar-archive-plugin
       tumbler
       catfish
@@ -265,19 +266,13 @@ in {
       ProtectSystem = lib.mkForce "off";
     };
   };
-  
+
   xdg = {
     terminal-exec.enable = true;
-    terminal-exec.settings = {
-      default = [
-        "alacritty.desktop"
-      ];
-    };
+    terminal-exec.settings = { default = [ "alacritty.desktop" ]; };
     portal = {
       enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-      ];
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
       xdgOpenUsePortal = true;
     };
     menus.enable = true;
@@ -285,7 +280,7 @@ in {
     mime.enable = true;
   };
   programs.ecryptfs.enable = true;
-  
+
   qt.style = "kvantum";
 
   # Fonts
