@@ -26,6 +26,7 @@ in {
 
     OVMF
     qemu_full
+    umu
 
     cowsay
     kittysay
