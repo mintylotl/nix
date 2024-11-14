@@ -179,9 +179,9 @@
       windowrulev2 = size 615 168, class:^(kitty)$
       windowrulev2 = move 651 842, class:^(kitty)$
       # --Emacs
-      windowrulev2 = float, class:^(Emacs)$, title:(.*Doom Emacs)
-      windowrulev2 = center 1, class:^(Emacs)$, title:(.*Doom Emacs)
-      windowrulev2 = size 950 850, class:^(Emacs)$, title:(.*Doom Emacs)
+      windowrulev2 = float, class:^(Emacs)$
+      windowrulev2 = center 1, class:^(Emacs)$
+      windowrulev2 = size 950 850, class:^(Emacs)$
       # --PavuControl
       windowrulev2 = float, class:^(org.pulseaudio.pavucontrol)$
       windowrulev2 = center 1, class:^(org.pulseaudio.pavucontrol)$
