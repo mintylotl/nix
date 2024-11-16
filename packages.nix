@@ -14,7 +14,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     alsa-tools
-    strawberry
+    strawberry-qt6
     #baobab
     # Project Zomboid
     dwarfs
