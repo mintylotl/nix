@@ -13,6 +13,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    alsa-tools
     baobab
     # Project Zomboid
     dwarfs
