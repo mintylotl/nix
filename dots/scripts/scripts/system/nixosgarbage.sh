@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
-rm /nix/var/nix/gcroots/auto/*
+
+for i in /nix/var/nix/gcroots/auto/*;
+do
+	rm "$i"
+done
 nix-collect-garbage -d
