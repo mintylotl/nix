@@ -14,7 +14,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     alsa-tools
-    baobab
+    #baobab
     # Project Zomboid
     dwarfs
     fuse-overlayfs
@@ -25,8 +25,8 @@ in {
     bottles
     hyprpolkitagent
 
-    OVMF
-    qemu_full
+    #OVMF
+    #qemu_full
     umu
 
     cowsay
