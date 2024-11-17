@@ -15,6 +15,10 @@ in {
       source = ./dots/scripts;
       recursive = true;
     };
+    "Downloads/Youtube" = {
+      source = ./dots/scripts_dl/Youtube;
+      recursive = true;
+    };
     ".config/mpv" = {
       source = ./dots/config/mpv;
       recursive = true;
