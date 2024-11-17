@@ -12,6 +12,7 @@
   };
 
   services.xserver = {
+    enable = true;
     videoDrivers = [ "nvidia" ];
     windowManager.bspwm = { enable = true; };
   };
