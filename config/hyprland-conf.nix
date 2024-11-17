@@ -119,7 +119,6 @@
                   }
                   misc {
                       vfr = false
-                      no_direct_scanout = true
                   }
                   render {
                       explicit_sync = 0
