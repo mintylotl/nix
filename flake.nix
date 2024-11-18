@@ -42,7 +42,7 @@
             home-manager.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
-	      home-manager.useUserPackages = true;
+              home-manager.useUserPackages = true;
               home-manager.users.jwm = import ./home.nix;
             }
           ];

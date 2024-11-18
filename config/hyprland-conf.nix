@@ -267,8 +267,8 @@
                   bind = $mainMod, U, exec, ~/.config/hypr/gamemode.sh
                   bind = $mainMod CTRL, down, exec, bash -c 'archwiki-offline'
                   # --Audio
-                  bind = , F7, exec, pactl set-sink-volume alsa-headphones -5%
-                  bind = , F8, exec, pactl set-sink-volume alsa-headphones +5%
+                  bind = , F7, exec, wpctl set-volume 33 5%-
+                  bind = , F8, exec, wpctl set-volume 33 5%+
                   # --Programs
                   bind = $mainMod, P, exec, /home/jwm/.scripts/programs/musicbee/launcher.sh
 
