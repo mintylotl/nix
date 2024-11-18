@@ -8,14 +8,10 @@
       libva-vdpau-driver
       nvidia-vaapi-driver
     ];
-    extraPackages32 = with pkgs; [
-      driversi686-linux.libva-vdpau-driver
-    ];
+    extraPackages32 = with pkgs; [ driversi686Linux.libva-vdpau-driver ];
   };
 
-  services.xserver = {
-    videoDrivers = [ "nvidia" "fbdev" ];
-  };
+  services.xserver = { videoDrivers = [ "nvidia" "fbdev" ]; };
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -31,26 +27,26 @@
   environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors" =
     {
       text = ''
+        {
+        "rules": [
+          {
+            "pattern": {
+              "feature": "procname", "matches": "foobar" },
+              "profile": "Limit Free Buffer Pool On Wayland Compositors"
+          }
+        ],
+        "profiles": [
+            {
+                "name": "Limit Free Buffer Pool On Wayland Compositors",
+                "settings": [
                 {
-                "rules": [
-                  {
-                    "pattern": {
-                      "feature": "procname", "matches": "foobar" },
-                      "profile": "Limit Free Buffer Pool On Wayland Compositors"
-                  }
-                ],
-                "profiles": [
-                    {
-                        "name": "Limit Free Buffer Pool On Wayland Compositors",
-                        "settings": [
-                        {
-                          "key": "GLVidHeapReuseRatio",
-                          "value": 1
-                        }
-                      ]
-                    }
-                  ]
+                  "key": "GLVidHeapReuseRatio",
+                  "value": 1
                 }
+              ]
+            }
+          ]
+        }
       '';
     };
 }
