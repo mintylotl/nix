@@ -14,7 +14,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     alsa-tools
-    xorg.xinit
     strawberry-qt6
     #baobab
     # Project Zomboid
