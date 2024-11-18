@@ -42,6 +42,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+      pkgs = pkgs;
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {
 	  modules = [

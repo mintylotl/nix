@@ -8,13 +8,10 @@
       libva-vdpau-driver
       nvidia-vaapi-driver
     ];
-    extraPackages32 = with pkgs; [ driversi686Linux.libva-vdpau-driver ];
   };
 
   services.xserver = {
-    enable = false;
-    videoDrivers = [ "nvidia" ];
-    windowManager.bspwm = { enable = true; };
+    videoDrivers = [ "nvidia" "fbdev" ];
   };
 
   hardware.nvidia = {
@@ -36,26 +33,6 @@
                   {
                     "pattern": {
                       "feature": "procname", "matches": "foobar" },
-                      "profile": "Limit Free Buffer Pool On Wayland Compositors"
-                  }
-        	  {
-                    "pattern": {
-                      "feature": "procname", "matches": "/etc/profiles/per-user/jwm/bin/Hyprland" },
-                      "profile": "Limit Free Buffer Pool On Wayland Compositors"
-                  }
-                  {
-                    "pattern": {
-                      "feature": "procname", "matches": "/etc/profiles/per-user/jwm/bin/alacritty" },
-                      "profile": "Limit Free Buffer Pool On Wayland Compositors"
-                  }
-                  {
-                    "pattern": {
-                      "feature": "procname", "matches": "Xwayland" },
-                      "profile": "Limit Free Buffer Pool On Wayland Compositors"
-                  }
-                  {
-                    "pattern": {
-                      "feature": "procname", "matches": "/nix/store/pigw9014x0fgzlawxmrknk6wj33v0vk1-system-path/bin/firefox" },
                       "profile": "Limit Free Buffer Pool On Wayland Compositors"
                   }
                 ],

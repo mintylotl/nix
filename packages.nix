@@ -19,7 +19,6 @@ in {
     fuse-overlayfs
     libarchive
     gnutar
-    bottles
     hyprpolkitagent
 
     #OVMF
