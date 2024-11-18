@@ -54,7 +54,6 @@
           ];
 	  specialArgs = {
 	    inherit inputs;
-	    inherit pkgs-lsg;
 	  };
         };
       };
