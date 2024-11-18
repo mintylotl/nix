@@ -94,11 +94,8 @@ in {
     sbcl
 
     # QT
-    qt6.full
-    qt5.full
-    qt6Packages.qtstyleplugin-kvantum
     qimgv
-    qt6ct
+    kdePackages.qt6ct
     catppuccin-cursors
     nwg-look
 
