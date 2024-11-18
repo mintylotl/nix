@@ -13,7 +13,6 @@ in {
   environment.systemPackages = with pkgs; [
     alsa-tools
     strawberry-qt6
-    #baobab
     # Project Zomboid
     dwarfs
     fuse-overlayfs
@@ -33,7 +32,6 @@ in {
     vulkan-headers
     blender
     keyutils
-    aria2
     compsize
     gtk2
     gtk3
@@ -62,10 +60,9 @@ in {
     speedcrunch
     openssl
 
-    #Emulation
     #RetroArch
     (retroarch.override { cores = with libretro; [ mame2016 ]; })
-   
+
     lutris
     # EMACS
     protontricks
@@ -165,6 +162,7 @@ in {
     qbittorrent
     mako
     rose-pine-cursor
+    aria2
 
     # Icon_Themes
     adwaita-icon-theme

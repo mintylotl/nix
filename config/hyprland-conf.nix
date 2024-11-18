@@ -3,7 +3,7 @@
     enable = true;
 
     extraConfig = ''
-                  monitor = HDMI-A-1, 1280x1024@60.00, 0x0, 1
+                  monitor = HDMI-A-1, 1440x960@60.00, 0x0, 1
                   workspace = HDMI-A-1, 1
 
                   # --Nvidia
@@ -12,7 +12,6 @@
                       env = GBM_BACKEND, nvidia-drm
                       env = NVD_BACKEND, direct
 
-      env = SDL_VIDEODRIVER, wayland
       env = GDK_BACKEND, wayland, x11
 
 
@@ -27,9 +26,6 @@
 
             	  exec-once = systemctl --user start hyprpolkitagent
             	  exec-once = systemctl --user start xdg-desktop-portal-hyprland
-
-                  # --IME / IMF
-                      env = XMODIFIERS, @im=fcitx
 
                   # Hyprland
                       $HOME = "/home/jwm"
