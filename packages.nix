@@ -1,4 +1,4 @@
-{ pkgs, config, lib, pkgs-lsg, inputs, ... }:
+{ pkgs, config, lib, inputs, ... }:
 let py = pkgs.python312Packages;
 in {
   nixpkgs.overlays = [
@@ -14,15 +14,12 @@ in {
 
   environment.systemPackages = with pkgs; [
     alsa-tools
-    xorg.xinit
     strawberry-qt6
     #baobab
     # Project Zomboid
     dwarfs
     fuse-overlayfs
     libarchive
-    # New
-    #cudatoolkit
     gnutar
     bottles
     hyprpolkitagent
@@ -34,11 +31,9 @@ in {
     cowsay
     kittysay
     pokemonsay
-    egl-wayland
     vulkan-loader
     smartmontools
     vulkan-headers
-    wayland-pipewire-idle-inhibit
     blender
     keyutils
     aria2
@@ -52,12 +47,12 @@ in {
 
     # GTK Libs
     zenity
-    #gst_all_1.gstreamer
-    #gst_all_1.gst-plugins-base
-    #gst_all_1.gst-plugins-good
-    #gst_all_1.gst-plugins-ugly
-    #gst_all_1.gst-plugins-bad
-    #gst_all_1.gst-libav
+    gst_all_1.gstreamer
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-ugly
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-libav
 
     alsa-utils
     xcur2png
@@ -70,23 +65,11 @@ in {
     speedcrunch
     openssl
 
-    appindicator-sharp
-    libindicator
-    libindicator-gtk2
-    libindicator-gtk3
-    libayatana-common
-    libappindicator-gtk3
-    libayatana-indicator
-    libayatana-indicator-gtk3
-    libayatana-appindicator
-    libayatana-appindicator-gtk3
-
     #Emulation
     #RetroArch
     (retroarch.override { cores = with libretro; [ mame2016 ]; })
-
-    (lutris.override { extraPkgs = pkgs: [ wlr-randr ]; })
-
+   
+    lutris
     # EMACS
     protontricks
     fd
@@ -115,6 +98,7 @@ in {
 
     # QT
     qt6.full
+    qt5.full
     qt6Packages.qtstyleplugin-kvantum
     qimgv
     qt6ct
@@ -139,29 +123,22 @@ in {
     py.nose2
 
     # System Utilities
-    ecryptfs
     discord
     bitwarden-desktop
     git
     gcc
     gnumake
     makemkv
-    openvdb
     pkg-config
     btrfs-progs
     vulkan-tools
     rsync
     xdotool
     nodejs_22
-    sqlite
-    aria2
-    pulseaudioFull
     yarn
     stow
     brightnessctl
     ffmpeg-full
-    ark
-    git-lfs
 
     # Thumbnailers
     ffmpegthumbnailer
@@ -180,9 +157,9 @@ in {
     mangohud
     # Programs
     #wineWowPackages.waylandFull
-    wineWowPackages.stableFull
+    #wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    #wineWowPackages.stagingFull
+    wineWowPackages.stagingFull
     winetricks
     grim
     slurp
@@ -194,7 +171,6 @@ in {
     qbittorrent
     mako
     rose-pine-cursor
-    zenity
 
     # Icon_Themes
     adwaita-icon-theme
@@ -220,7 +196,7 @@ in {
   programs.steam = {
     enable = true;
     protontricks.enable = true;
-    gamescopeSession.enable = true;
+    gamescopeSession.enable = false;
   };
   programs.gamemode = {
     enable = true;
@@ -274,7 +250,7 @@ in {
     terminal-exec.settings = { default = [ "alacritty.desktop" ]; };
     portal = {
       enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+      extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gtk ];
       xdgOpenUsePortal = true;
     };
     menus.enable = true;
