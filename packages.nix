@@ -7,8 +7,6 @@ in {
       umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
         version = "${inputs.umuProton.shortRev}";
       };
-      cudatoolkit = prev.cudatoolkit.overrideAttrs { enableCuda = true; };
-      blender = pkgs-lsg.blender;
     })
   ];
 
