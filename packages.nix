@@ -13,6 +13,7 @@ in {
   environment.systemPackages = with pkgs; [
     alsa-tools
     strawberry-qt6
+
     # Project Zomboid
     dwarfs
     fuse-overlayfs
@@ -93,7 +94,6 @@ in {
     # QT
     qimgv
     kdePackages.qt6ct
-    catppuccin-cursors
     nwg-look
 
     # PrismLauncher Cracked
