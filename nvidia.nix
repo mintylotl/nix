@@ -8,6 +8,9 @@
       libva-vdpau-driver
       nvidia-vaapi-driver
     ];
+    extraPackages32 = with pkgs; [
+      driversi686-linux.libva-vdpau-driver
+    ];
   };
 
   services.xserver = {
