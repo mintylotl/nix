@@ -83,22 +83,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-lsg": {
-      "locked": {
-        "lastModified": 1731102627,
-        "narHash": "sha256-sKaYeUxUtAaNInOeFXiEKOK7OCTLlAdYqId8D02Gwe0=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "ecd9092716186bef474abbd28b838b9eb75046ca",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "ecd9092716186bef474abbd28b838b9eb75046ca",
-        "type": "github"
-      }
-    },
     "prism": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -126,7 +110,6 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-lsg": "nixpkgs-lsg",
         "prism": "prism",
         "umuProton": "umuProton"
       }
