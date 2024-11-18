@@ -12,7 +12,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     alsa-tools
-    file-roller
+    ark
     strawberry-qt6
 
     # Project Zomboid
