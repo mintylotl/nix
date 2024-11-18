@@ -1,5 +1,5 @@
 {
-  description = "Home Manager Configuration";
+  description = "NixOS Flake Configuration";
 
   nixConfig = {
     extra-experimental-features = "nix-command flakes";
@@ -8,12 +8,10 @@
     max-substitution-jobs = 1;
     cores = 5;
   };
-   
+
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
-    };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -26,25 +24,20 @@
     };
 
     umuProton = {
-      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+      url =
+        "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { 
-      self,
-      nixpkgs,
-      home-manager,
-      ... 
-    }
-    @inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {
-	  modules = [
+          modules = [
             ./configuration.nix
             home-manager.nixosModules.default
             {
@@ -52,9 +45,7 @@
               home-manager.users.jwm = import ./home.nix;
             }
           ];
-	  specialArgs = {
-	    inherit inputs;
-	  };
+          specialArgs = { inherit inputs; };
         };
       };
     };
