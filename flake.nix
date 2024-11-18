@@ -15,10 +15,6 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
-    nixpkgs-lsg  = {
-      url = "github:nixos/nixpkgs/ecd9092716186bef474abbd28b838b9eb75046ca";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,17 +29,11 @@
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    #Hyprland = {
-    #  url = "github:hyprwm/Hyprland";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
   };
 
   outputs = { 
       self,
       nixpkgs,
-      nixpkgs-lsg,
       home-manager,
       ... 
     }
@@ -51,7 +41,6 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-lsg = nixpkgs-lsg.legacyPackages.${system};
     in {
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {
@@ -60,9 +49,7 @@
             home-manager.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
               home-manager.users.jwm = import ./home.nix;
-	      home-manager.backupFileExtension = "bak";
             }
           ];
 	  specialArgs = {
