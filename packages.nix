@@ -11,6 +11,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    wlr-randr
     alsa-tools
     ark
     strawberry-qt6
