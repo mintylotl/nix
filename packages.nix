@@ -11,6 +11,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    soulseekqt
     unrar
     wlr-randr
     alsa-tools
