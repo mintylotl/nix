@@ -2,13 +2,6 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      libva
-      libva-utils
-      libva-vdpau-driver
-      nvidia-vaapi-driver
-    ];
-    extraPackages32 = with pkgs; [ driversi686Linux.libva-vdpau-driver ];
   };
 
   services.xserver = { videoDrivers = [ "nvidia" "fbdev" ]; };
