@@ -32,7 +32,7 @@ in {
     };
     kernelPackages = pkgs.linuxPackages;
     #initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ];
-    kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+    kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" "nvidia-drm.modeset=1" ];
   };
 
   # NETWORKING
