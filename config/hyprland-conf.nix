@@ -24,24 +24,24 @@
                       env = XDG_CURRENT_DESKTOP, Hyprland
                       env = XDG_SESSION_TYPE, wayland
 
-            	  exec-once = systemctl --user start hyprpolkitagent
-            	  exec-once = systemctl --user start xdg-desktop-portal-hyprland
+                      exec-once = systemctl --user start hyprpolkitagent
+                      exec-once = systemctl --user start xdg-desktop-portal-hyprland
 
                   # Hyprland
                       $HOME = "/home/jwm"
-            	  $scripts = "$HOME"/.scripts/scripts
-            	  $emacsDir = "$HOME"/.emacs.d
+                      $scripts = "$HOME"/.scripts/scripts
+                      $emacsDir = "$HOME"/.emacs.d
 
                   # --Envar
                       env = XCURSOR_SIZE, 24
                       env = XCURSOR_THEME, "BreezeX-RosePineDawn-Linux"
-                      env = HYPRCURSOR_SIZE, 24
+                     env = HYPRCURSOR_SIZE, 24
                       env = HYPRCURSOR_THEME, "rosepine-cursor"
 
                       # --Scripts
                           exec-once = "$HOME"/.config/hypr/sink.sh
-            	      exec-once = sudo -E "$scripts"/system/leds.sh&
-            	      exec-once = sudo -E "$scripts"/system/mounts.sh
+                          exec-once = sudo -E "$scripts"/system/leds.sh&
+                          exec-once = sudo -E "$scripts"/system/mounts.sh
 
                       # --Programs
                           exec-once = hyprpaper
@@ -79,7 +79,7 @@
                       col.inactive_border = rgba(595959aa)
 
                       layout = master
-            	  allow_tearing = true
+                      allow_tearing = false
                   }
                   decoration {
                       rounding = 3
@@ -117,7 +117,7 @@
                       vfr = false
                   }
                   render {
-                      explicit_sync = 0
+                      explicit_sync = 1
                   }
 
                   #WindowRules
