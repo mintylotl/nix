@@ -17,24 +17,19 @@
     powerManagement.enable = true;
   };
 
-environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors" =
+  environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors" =
     {
       text = ''
         {
         "rules": [
           {
             "pattern": {
-              "feature": "procname", "matches": "foobar" },
-              "profile": "Limit Free Buffer Pool On Wayland Compositors"
-          }
-	  {
-            "pattern": {
-              "feature": "procname", "matches": "/etc/profiles/per-user/jwm/bin/Hyprland" },
+              "feature": "procname", "matches": "Hyprland" },
               "profile": "Limit Free Buffer Pool On Wayland Compositors"
           }
           {
             "pattern": {
-              "feature": "procname", "matches": "/etc/profiles/per-user/jwm/bin/alacritty" },
+              "feature": "procname", "matches": "alacritty" },
               "profile": "Limit Free Buffer Pool On Wayland Compositors"
           }
           {
@@ -44,7 +39,7 @@ environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-po
           }
           {
             "pattern": {
-              "feature": "procname", "matches": "/nix/store/pigw9014x0fgzlawxmrknk6wj33v0vk1-system-path/bin/firefox" },
+              "feature": "procname", "matches": "firefox" },
               "profile": "Limit Free Buffer Pool On Wayland Compositors"
           }
         ],
