@@ -11,7 +11,6 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
-    wlrctl
     megasync
     soulseekqt
     unrar
