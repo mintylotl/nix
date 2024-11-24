@@ -9,8 +9,9 @@ lnID_DISK="$(printf "$lnID" | sed 's/1//g')"
 # Misc Mounts
 	#mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/vault,compress=no /Vaultwarden
 	mount --onlyonce -t btrfs -U $MED -o subvol=games,noatime,compress=no /home/Games/GamesHDD
-	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/DRG,noatime,compress=no $HOME/.steam/root/steamapps/common/Deep\ Rock\ Galactic
-	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/DRG,noatime,compress=no /home/Games/Deep\ Rock\ Galactic
+	
+	#mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/DRG,noatime,compress=no $HOME/.steam/root/steamapps/common/Deep\ Rock\ Galactic
+	#mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/DRG,noatime,compress=no /home/Games/Deep\ Rock\ Galactic
 
 # APM
 	# --Cold Storage
