@@ -11,6 +11,10 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    xorg.xauth
+    godot_4
+    ecryptfs
+    xorg.xinit
     megasync
     soulseekqt
     unrar
