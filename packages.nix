@@ -11,6 +11,9 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    alsa-plugins
+    alsa-firmware
+    alsa-lib
     xorg.xauth
     godot_4
     ecryptfs
