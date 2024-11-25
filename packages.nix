@@ -11,6 +11,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    libxkbcommon
     alsa-plugins
     alsa-firmware
     alsa-lib
