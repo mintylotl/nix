@@ -26,6 +26,7 @@
 
                       exec-once = systemctl --user start hyprpolkitagent
                       exec-once = systemctl --user start xdg-desktop-portal-hyprland
+                      exec-once = systemctl --user start emacs
 
                   # Hyprland
                       $HOME = "/home/jwm"

@@ -70,7 +70,7 @@ in {
     client.enable = true;
     defaultEditor = true;
 
-    startWithUserSession = true;
+    startWithUserSession = false;
   };
 
   programs.waybar = {
