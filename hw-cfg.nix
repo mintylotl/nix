@@ -17,7 +17,7 @@
     device = "/dev/disk/by-uuid/8f29f7cf-0bea-45a9-945c-9c35e9ac41da";
     fsType = "btrfs";
     options =
-      [ "subvol=@nix" "noatime" "compress=zstd:4" "ssd" "discard=async" ];
+      [ "subvol=@nix" "noatime" "compress=zstd:4" "ssd" "discard=async" "compress=zstd:3" ];
   };
 
   fileSystems."/boot" = {
