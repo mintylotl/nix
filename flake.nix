@@ -11,7 +11,7 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
+    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -34,8 +34,9 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      pkgs_def = nixpkgs.legacyPackages;
     in {
-      packages.x86_64-linux = pkgs;
+      packages.x86_64-linux = pkgs_def;
 
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {

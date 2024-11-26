@@ -11,6 +11,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    ntfs3g
     libxkbcommon
     alsa-plugins
     alsa-firmware
