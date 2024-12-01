@@ -36,7 +36,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs_def = nixpkgs.legacyPackages;
     in {
-      packages.x86_64-linux = pkgs_def;
+      packages = pkgs_def;
 
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {
