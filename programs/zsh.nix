@@ -1,17 +1,16 @@
-{ config, ... }:
-{
+{ config, ... }: {
   programs.zsh = {
     enable = true;
     completionInit = "";
     initExtra = ''
       ZIM_HOME=~/.zim
-      if [[ ! -e ''\${ZIM_HOME}/zimfw.zsh ]]; then
-          curl -fsSL --create-dirs -o ''\${ZIM_HOME}/zimfw.zsh \
+      if [[ ! -e ''${ZIM_HOME}/zimfw.zsh ]]; then
+          curl -fsSL --create-dirs -o ''${ZIM_HOME}/zimfw.zsh \
           https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
       fi
 
-      if [[ ! ''\${ZIM_HOME}/init.zsh -nt ''\${ZDOTDIR:-''\${HOME}}/.zimrc ]]; then
-          source ''\${ZIM_HOME}/zimfw.zsh init -q
+      if [[ ! ''${ZIM_HOME}/init.zsh -nt ''${ZDOTDIR:-''${HOME}}/.zimrc ]]; then
+          source ''${ZIM_HOME}/zimfw.zsh init -q
       fi
 
       alias ls="ls --color"
@@ -31,7 +30,7 @@
           alias umount.crypt="umount.ecryptfs_private"
           alias ikey="insert.sh"
 
-      PATH="$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
+      PATH="/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
       source $ZIM_HOME/init.zsh
     '';
   };
@@ -46,7 +45,7 @@
       zmodule zsh-users/zsh-autosuggestions
     '';
   };
-  
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
