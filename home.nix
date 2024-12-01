@@ -1,7 +1,8 @@
 { config, pkgs, lib, ... }:
 let HOME = "/home/jwm";
 in {
-  imports = [ ./config/hyprland-conf.nix ./programs/zsh.nix ];
+  imports =
+    [ ./config/hyprland-conf.nix ./programs/zsh.nix ./programs/emacs.nix ];
 
   home.username = "jwm";
   home.homeDirectory = "/home/jwm";
@@ -60,19 +61,6 @@ in {
   };
 
   # Programs
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs29-pgtk;
-    extraPackages = epkgs: [ epkgs.vterm ];
-  };
-  services.emacs = {
-    enable = true;
-    client.enable = true;
-    defaultEditor = true;
-
-    startWithUserSession = false;
-  };
-
   programs.waybar = {
     enable = true;
     systemd.enable = false;
