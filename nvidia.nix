@@ -22,22 +22,7 @@
         "rules": [
           {
             "pattern": {
-              "feature": "procname", "matches": "Hyprland" },
-              "profile": "Limit Free Buffer Pool On Wayland Compositors"
-          }
-          {
-            "pattern": {
-              "feature": "procname", "matches": "alacritty" },
-              "profile": "Limit Free Buffer Pool On Wayland Compositors"
-          }
-          {
-            "pattern": {
-              "feature": "procname", "matches": "Xwayland" },
-              "profile": "Limit Free Buffer Pool On Wayland Compositors"
-          }
-          {
-            "pattern": {
-              "feature": "procname", "matches": "firefox" },
+              "feature": "procname", "matches": "/etc/profiles/per-user/jwm/bin/Hyprland" },
               "profile": "Limit Free Buffer Pool On Wayland Compositors"
           }
         ],
