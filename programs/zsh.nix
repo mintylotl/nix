@@ -31,6 +31,8 @@
           alias ikey="insert.sh"
 
       PATH="/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
+
+      eval "$(direnv hook zsh)"
       source $ZIM_HOME/init.zsh
     '';
   };

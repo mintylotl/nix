@@ -11,6 +11,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    direnv
     ntfs3g
     libxkbcommon
     alsa-plugins
@@ -74,9 +75,6 @@ in {
     neofetch
     speedcrunch
     openssl
-
-    #RetroArch
-    (retroarch.override { cores = with libretro; [ mame2016 ]; })
 
     lutris
     # EMACS
@@ -162,9 +160,9 @@ in {
     mangohud
     # Programs
     #wineWowPackages.waylandFull
-    #wineWowPackages.stableFull
+    wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    wineWowPackages.stagingFull
+    #wineWowPackages.stagingFull
     winetricks
     grim
     slurp

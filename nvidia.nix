@@ -3,9 +3,7 @@
     enable = true;
     enable32Bit = true;
   };
-
   services.xserver = { videoDrivers = [ "nvidia" "fbdev" ]; };
-  services.xserver.windowManager.bspwm.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
 
