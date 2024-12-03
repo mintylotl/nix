@@ -61,15 +61,20 @@ in {
   };
 
   # Programs
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+
+    enableBashIntegration = true;
+  };
   programs.waybar = {
     enable = true;
     systemd.enable = false;
-    #systemd.target = "hyprland-session.target";
   };
 
   programs.bash = {
     enable = true;
-    bashrcExtra = ''
+    initExtra = ''
       zsh
     '';
   };
