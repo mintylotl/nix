@@ -3,6 +3,7 @@
     enable = true;
     enable32Bit = true;
   };
+
   services.xserver = { videoDrivers = [ "nvidia" "fbdev" ]; };
   hardware.nvidia = {
     modesetting.enable = true;
@@ -22,7 +23,7 @@
         "rules": [
           {
             "pattern": {
-              "feature": "procname", "matches": "/etc/profiles/per-user/jwm/bin/Hyprland" },
+              "feature": "procname", "matches": "Hyprland" },
               "profile": "Limit Free Buffer Pool On Wayland Compositors"
           }
         ],
