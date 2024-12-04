@@ -4,7 +4,14 @@
     enable32Bit = true;
   };
 
-  services.xserver = { videoDrivers = [ "nvidia" "fbdev" ]; };
+  services.xserver = {
+    videoDrivers = [ "nvidia" "fbdev" ];
+
+    enable = true;
+  };
+
+  services.desktopManager.plasma6 = { enable = true; };
+
   hardware.nvidia = {
     modesetting.enable = true;
 
