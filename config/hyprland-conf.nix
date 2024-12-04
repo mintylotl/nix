@@ -80,7 +80,7 @@
                       col.inactive_border = rgba(595959aa)
 
                       layout = master
-                      allow_tearing = false
+                      allow_tearing = true
                   }
                   decoration {
                       rounding = 3

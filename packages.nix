@@ -11,6 +11,11 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    gvfs
+    simple-mtpfs
+    libmtp
+    android-tools
+
     direnv
     ntfs3g
     libxkbcommon
