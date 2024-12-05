@@ -34,7 +34,7 @@
         "rules": [
           {
             "pattern": {
-              "feature": "procname", "matches": "Hyprland" },
+              "feature": "procname", "matches": "/etc/profiles/per-user/jwm/bin/Hyprland" },
               "profile": "Limit Free Buffer Pool On Wayland Compositors"
           }
         ],
