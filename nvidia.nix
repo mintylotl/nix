@@ -14,6 +14,8 @@
     enable = true;
   };
 
+  services.displayManager.sddm.enable = false;
+
   hardware.nvidia = {
     modesetting.enable = true;
 
