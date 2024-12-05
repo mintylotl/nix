@@ -165,9 +165,9 @@ in {
     mangohud
     # Programs
     #wineWowPackages.waylandFull
-    wineWowPackages.stableFull
+    #wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    #wineWowPackages.stagingFull
+    wineWowPackages.stagingFull
     winetricks
     grim
     slurp
