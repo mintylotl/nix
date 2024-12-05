@@ -107,6 +107,14 @@ in {
 
   gtk = {
     enable = true;
+    
+    gtk3.extraConfig = {
+      gtk-menu-items = true;
+    };
+
+    gtk4.extraConfig = {
+      gtk-menu-items = true;
+    };
 
     cursorTheme.name = "BreezeX-RosePineDawn-Linux";
     theme = {
