@@ -89,6 +89,7 @@ in {
   users.groups = {
     freezer = { };
     jwm = { };
+    gameboy = { };
     ftpsecure = { };
     ssh = { };
     certs = { };
@@ -103,6 +104,12 @@ in {
     home = "/home/jwm";
     group = "jwm";
     extraGroups = [ "wheel" "freezer" "realtime" "nicy" "realtime" "audio" ];
+  };
+  users.users.gameboy = {
+    isNormalUser = true;
+    home = "/home/gameboy";
+    group = "gameboy";
+    extraGroups = [ "wheel" "realtime" "nicy" "audio" ];
   };
   users.users.ftpsecure = {
     isNormalUser = true;
