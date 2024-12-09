@@ -11,6 +11,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    sunshine
     gvfs
     simple-mtpfs
     libmtp
