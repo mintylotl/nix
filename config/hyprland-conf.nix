@@ -31,6 +31,8 @@
 
           exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
+          exec-once = ./.scripts/programs/emacs.sh
+
       # Hyprland
           $HOME = "/home/jwm"
           $scripts = "$HOME"/.scripts/scripts
