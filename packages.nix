@@ -269,8 +269,8 @@ in {
       extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gtk ];
       xdgOpenUsePortal = true;
     };
-    menus.enable = true;
     icons.enable = true;
+    menus.enable = true;
     mime.enable = true;
   };
   programs.ecryptfs.enable = true;
