@@ -52,8 +52,8 @@ in {
       config.common.default = "gtk";
       config.hyprland = {
         default = "gtk";
-        org.freedesktop.impl.ScreenCast = "hyprland";
-        org.freedesktop.impl.Screenshot = "hyprland";
+        ScreenCast = "hyprland";
+        Screenshot = "hyprland";
       };
     };
 
