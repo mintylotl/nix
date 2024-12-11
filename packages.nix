@@ -195,7 +195,10 @@ in {
     papirus-icon-theme
   ];
 
-  programs.obs-studio.enable = true;
+  programs.obs-studio = {
+    enable = true;
+    plugins = [ pkgs.obs-studio-plugins.wlrobs ];
+  };
   programs.xfconf.enable = true;
   programs.dconf.enable = true;
   programs.thunar = {
