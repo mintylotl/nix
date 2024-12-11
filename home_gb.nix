@@ -1,4 +1,5 @@
-
+{ lib, pkgs, ... }:
+{
 let HOME = "/home/gameboy";
 in {
   imports = [ ./programs/zsh.nix ];
