@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+
 let HOME = "/home/gameboy";
 in {
   imports = [ ./programs/zsh.nix ];
@@ -62,13 +62,6 @@ in {
     enable = true;
     theme = ./config/dracula.rasi;
     terminal = "${pkgs.alacritty}/bin/alacritty";
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "qtct";
-    style.name = "kvantum";
-    style.package = pkgs.qt6Packages.qtstyleplugin-kvantum;
   };
 
   home.stateVersion = "24.05";
