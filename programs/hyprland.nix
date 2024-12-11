@@ -2,8 +2,6 @@
   programs = {
     hyprland = {
       enable = true;
-      systemd.enable = true;
-
       package = pkgs.hyprland;
       portalPackage = pkgs.xdg-desktop-portal-hyprland;
     };
