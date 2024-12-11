@@ -12,7 +12,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     xorg.xeyes
-    xorg.xorg-server
+    xorg.xorgserver
     xorg.xeyes
     xorg.xrandr
 
