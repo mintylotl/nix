@@ -1,8 +1,9 @@
-{ config, pkgs, lib, inputs, ... }:
-{
+{ config, pkgs, lib, inputs, ... }: {
   programs = {
-    hyprland = { 
+    hyprland = {
       enable = true;
+      systemd.enable = true;
+
       package = pkgs.hyprland;
       portalPackage = pkgs.xdg-desktop-portal-hyprland;
     };
