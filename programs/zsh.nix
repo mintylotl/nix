@@ -14,17 +14,13 @@
       fi
 
       alias ls="ls --color"
-      alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
-      alias nixosFlake="sudo nixos-rebuild switch --flake /etc/nixos#cabbage"
       alias ls="ls --color"
       alias vd="veracrypt -t -d"
       alias vc="veracrypt -t -c"
       alias vm="veracrypt -t"
-      alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
-      alias mokuro="python3 -m mokuro"    
+      alias mokuro="python3 -m mokuro"
       alias fetch="fetcher.sh" 
       alias emacsc="emacsclient -c -a emacs"
-      alias garb="sudo $HOME/.scripts/scripts/system/nixosgarbage.sh"
         # --ecryptfs
           alias mount.crypt="mount.ecryptfs_private"
           alias umount.crypt="umount.ecryptfs_private"
