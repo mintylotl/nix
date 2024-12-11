@@ -46,10 +46,10 @@ in {
     mimeApps.enable = false;
 
     portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
+      enable = false;
+      xdgOpenUsePortal = false;
       extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-      config.common.default = "gtk";
+      #config.common.default = "gtk";
     };
 
     configHome = "${HOME}/.config";
