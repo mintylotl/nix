@@ -5,7 +5,6 @@ in {
 
   home.username = "gameboy";
   home.homeDirectory = "/home/gameboy";
-  home.preferXdgDirectories = true;
   programs.home-manager.enable = true;
 
   home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
@@ -19,25 +18,6 @@ in {
   };
 
   # Home Stuff
-  xdg = {
-    enable = true;
-    mime.enable = true;
-    mimeApps.enable = false;
-
-    portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-      config.common.default = "gtk";
-    };
-
-    configHome = "${HOME}/.config";
-    cacheHome = "${HOME}/.cache";
-    dataHome = "${HOME}/.local/share";
-    stateHome = "${HOME}/.local/state";
-
-    userDirs.createDirectories = true;
-  };
 
   # Programs
   programs.direnv = {
