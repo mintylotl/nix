@@ -11,7 +11,11 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
-    xorg
+    xorg.xeyes
+    xorg.xorg-server
+    xorg.xeyes
+    xorg.xrandr
+
     heimdall
     sunshine
     gvfs
