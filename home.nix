@@ -46,10 +46,15 @@ in {
     mimeApps.enable = false;
 
     portal = {
-      enable = false;
-      xdgOpenUsePortal = false;
+      enable = true;
+      xdgOpenUsePortal = true;
       extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-      #config.common.default = "gtk";
+      config.common.default = "gtk";
+      config.hyprland = {
+        default = "gtk";
+        org.freedesktop.impl.ScreenCast = "hyprland";
+        org.freedesktop.impl.Screenshot = "hyprland";
+      };
     };
 
     configHome = "${HOME}/.config";
@@ -107,14 +112,10 @@ in {
 
   gtk = {
     enable = true;
-    
-    gtk3.extraConfig = {
-      gtk-menu-images = true;
-    };
 
-    gtk4.extraConfig = {
-      gtk-menu-images = true;
-    };
+    gtk3.extraConfig = { gtk-menu-images = true; };
+
+    gtk4.extraConfig = { gtk-menu-images = true; };
 
     cursorTheme.name = "BreezeX-RosePineDawn-Linux";
     theme = {
