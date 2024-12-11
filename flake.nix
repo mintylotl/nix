@@ -47,6 +47,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jwm = import ./home.nix;
+              home-manager.users.gameboy = import ./home_gb.nix;
             }
           ];
           specialArgs = { inherit inputs; };
