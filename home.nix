@@ -51,9 +51,9 @@ in {
       extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
       config.common.default = "gtk";
       config.hyprland = {
-        default = "gtk";
-        ScreenCast = "hyprland";
-        Screenshot = "hyprland";
+        default = "hyprland";
+        "org.freedesktop.impl.Screencast" = "hyprland";
+        "org.freedesktop.impl.Screenshot" = "hyprland";
       };
     };
 

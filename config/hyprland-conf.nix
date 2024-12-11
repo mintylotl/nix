@@ -21,12 +21,15 @@
                       env = GTK_USE_PORTAL, 1
 
                   # --XDG / DBUS
-                      env = XDG_CURRENT_DESKTOP, Hyprland
+                      env = XDG_CURRENT_DESKTOP, hyprland
                       env = XDG_SESSION_TYPE, wayland
 
                       exec-once = systemctl --user start hyprpolkitagent
                       exec-once = systemctl --user start xdg-desktop-portal-hyprland
                       exec-once = systemctl --user start emacs
+                      exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+                      exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=hyprland
 
                   # Hyprland
                       $HOME = "/home/jwm"
