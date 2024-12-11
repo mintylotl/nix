@@ -37,6 +37,6 @@
     client.enable = true;
     defaultEditor = true;
 
-    startWithUserSession = false;
+    startWithUserSession = true;
   };
 }
