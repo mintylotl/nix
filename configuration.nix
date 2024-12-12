@@ -22,6 +22,11 @@ in {
     package = pkgs.nix;
     extraOptions = "experimental-features = nix-command flakes";
     settings = { trusted-users = [ "jwm" ]; };
+
+    optimise = {
+      automatic = true;
+      dates = [ "06:00" ];
+    };
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -31,8 +36,12 @@ in {
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages;
-    initrd.kernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset" "fbdev" ];
-    kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" "nvidia-drm.modeset=1" ];
+    initrd.kernelModules =
+      [ "nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset" "fbdev" ];
+    kernelParams = [
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      "nvidia-drm.modeset=1"
+    ];
   };
 
   # NETWORKING
