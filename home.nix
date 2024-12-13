@@ -1,8 +1,15 @@
 { config, pkgs, lib, ... }:
 let HOME = "/home/jwm";
 in {
-  imports =
-    [ ./config/hyprland-conf.nix ./programs/zsh.nix ./programs/emacs.nix ];
+  imports = [
+    # Programs
+    ./config/hyprland-conf.nix
+    ./programs/zsh.nix
+    ./programs/emacs.nix
+
+    # Services
+    ./services_user.nix
+  ];
 
   home.username = "jwm";
   home.homeDirectory = "/home/jwm";

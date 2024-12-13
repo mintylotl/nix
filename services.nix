@@ -1,7 +1,4 @@
 { config, pkgs, ... }: {
-  systemd = {
-    user.services = { };
-    services = { };
-  };
+  systemd = { services = { }; };
   services.udisks2.enable = true;
 }
