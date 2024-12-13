@@ -6,9 +6,6 @@ in {
     ./config/hyprland-conf.nix
     ./programs/zsh.nix
     ./programs/emacs.nix
-
-    # Services
-    ./services_user.nix
   ];
 
   home.username = "jwm";

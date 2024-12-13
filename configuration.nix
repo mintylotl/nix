@@ -5,6 +5,7 @@ in {
   imports = [
     ./hw-cfg.nix
     ./services.nix
+    ./services_user.nix
 
     # Daemons
     ./daemons/nginx.nix

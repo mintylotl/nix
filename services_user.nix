@@ -6,8 +6,7 @@
         wantedBy = [ "default.target" ];
 
         serviceConfig = {
-          ExecStart =
-            "${pkgs.python3} /home/jwm/.scripts/scripts/nginx_html.py";
+          ExecStart = "/home/jwm/.scripts/scripts/nginxHtml/nginx_html.sh";
           Restart = "always";
         };
       };
