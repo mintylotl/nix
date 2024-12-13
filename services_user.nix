@@ -5,8 +5,11 @@
         description = "Nginx HTML regenerator service";
         wantedBy = [ "default.target" ];
 
-        ExecStart = "${pkgs.python3} /home/jwm/.scripts/scripts/nginx_html.py";
-        Restart = "always";
+        serviceConfig = {
+          ExecStart =
+            "${pkgs.python3} /home/jwm/.scripts/scripts/nginx_html.py";
+          Restart = "always";
+        };
       };
     };
   };
