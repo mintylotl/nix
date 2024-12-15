@@ -16,6 +16,10 @@ in {
     xorg.xeyes
     xorg.xrandr
 
+    lz4
+    ventoy-bin
+    gzip
+
     heimdall
     sunshine
     gvfs
