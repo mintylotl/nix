@@ -84,7 +84,8 @@ in {
   programs.bash = {
     enable = true;
     bashrcExtra = ''
-      export PATH="/home/jwm/.emacs.d/bin:$PATH"
+      export PATH="${HOME}/.emacs.d/bin:$PATH"
+      export PATH="${HOME}/.scripts/scripts/"
     '';
     initExtra = ''
       zsh
