@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 doom sync
-systemctl --user start emacs
+systemctl --user restart emacs
