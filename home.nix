@@ -85,9 +85,10 @@ in {
     enable = true;
     bashrcExtra = ''
       export PATH="${HOME}/.emacs.d/bin:$PATH"
-      export PATH="${HOME}/.scripts/scripts/"
+      export PATH="${HOME}/.scripts/scripts/machines:$PATH"
     '';
     initExtra = ''
+      export PATH="${HOME}/.emacs.d/bin:$PATH"
       zsh
     '';
   };

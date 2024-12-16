@@ -31,28 +31,28 @@
 
           exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
-          exec-once = ./.scripts/programs/emacs.sh
-
       # Hyprland
-          $HOME = "/home/jwm"
-          $scripts = "$HOME"/.scripts/scripts
-          $emacsDir = "$HOME"/.emacs.d
+      $HOME = "/home/jwm"
+      $scripts = "$HOME"/.scripts/scripts
+      $emacsDir = "$HOME"/.emacs.d
 
       # --Envar
-          env = XCURSOR_SIZE, 24
-          env = XCURSOR_THEME, "BreezeX-RosePineDawn-Linux"
-          env = HYPRCURSOR_SIZE, 24
-          env = HYPRCURSOR_THEME, "rosepine-cursor"
-
-          # --Scripts
-              exec-once = "$HOME"/.config/hypr/sink.sh
-              exec-once = sudo -E "$scripts"/system/leds.sh&
-              exec-once = sudo -E "$scripts"/system/mounts.sh
-
-          # --Programs
-              exec-once = hyprpaper
-              # --Lutris
-                  env = LUTRIS_SKIP_INIT, 1
+      env = XCURSOR_SIZE, 24
+      env = XCURSOR_THEME, "BreezeX-RosePineDawn-Linux"
+      env = HYPRCURSOR_SIZE, 24
+      env = HYPRCURSOR_THEME, "rosepine-cursor"
+      
+      # --Scripts
+      exec-once = "$HOME"/.config/hypr/sink.sh
+      exec-once = sudo -E "$scripts"/system/leds.sh&
+      exec-once = sudo -E "$scripts"/system/mounts.sh
+      
+      # --Programs
+      exec-once = hyprpaper
+      exec-once = $HOME/.scripts/programs/emacs.sh
+      	
+	# --Lutris
+	env = LUTRIS_SKIP_INIT, 1
 
 
       exec = dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RosePineDawn-Linux'"

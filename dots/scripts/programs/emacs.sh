@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source ~/.bashrc
+. ~/.profile
+. ~/.bashrc
 
 doom sync
 systemctl --user start emacs
