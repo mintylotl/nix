@@ -56,8 +56,8 @@ in {
       config.common.default = "gtk";
       config.hyprland = {
         default = "hyprland";
-        "org.freedesktop.impl.Screencast" = "hyprland";
-        "org.freedesktop.impl.Screenshot" = "hyprland";
+        "org.freedesktop.impl.Screencast" = "xdph";
+        "org.freedesktop.impl.Screenshot" = "xdph";
       };
     };
 

@@ -3,4 +3,4 @@
 . ~/.bashrc
 
 doom sync
-systemctl --user start emacs
+systemctl --user restart emacs
