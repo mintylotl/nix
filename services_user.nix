@@ -10,6 +10,15 @@
           Restart = "always";
         };
       };
+      emacsC = {
+        description = "Emacs Daemon Service";
+        wantedBy = [ "default.target" ];
+
+        serviceConfig = {
+          ExecStart = "/home/jwm/.scripts/programs/emacs.sh";
+          Restart = "on-failure";
+        };
+      };
     };
   };
 }
