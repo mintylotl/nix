@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
+sleep 5s
+
 . ~/.profile
 . ~/.bashrc
+emacsDir="/home/jwm/.emacs.d"
 
-doom sync
+"$emacsDir/bin/doom" sync
 systemctl --user restart emacs
