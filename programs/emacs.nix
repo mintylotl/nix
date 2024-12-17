@@ -37,7 +37,7 @@
     client.enable = true;
     defaultEditor = true;
 
-    startWithUserSession = false;
+    startWithUserSession = true;
   };
   systemd.user.services.emacs = {
     Service = { ExecStartPre = ''${pkgs.bash}/bin/bash -l -c "doom sync"''; };
