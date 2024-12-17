@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sleep 5s
+sleep 15s
 
 . ~/.profile
 . ~/.bashrc
