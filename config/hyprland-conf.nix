@@ -48,7 +48,6 @@
 
       # --Programs
       exec-once = hyprpaper
-      exec-once = systemctl --user restart emacs
 
       # --Lutris
       env = LUTRIS_SKIP_INIT, 1
