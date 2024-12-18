@@ -37,11 +37,12 @@
     client.enable = true;
     defaultEditor = true;
 
-    startWithUserSession = true;
+    startWithUserSession = false;
   };
   systemd.user.services.emacs = {
     Service = {
-      Environment = "$PATH";
+      ProtectSystem = lib.mkForce false;
+      Environment = ''PATH="/home/jwm/.emacs.d/bin"'';
       ExecStartPre =
         ''${pkgs.bash}/bin/bash -l -c "/home/jwm/.emacs.d/bin/doom sync"'';
     };
