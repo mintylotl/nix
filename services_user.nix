@@ -16,7 +16,7 @@ in {
         Service = {
           ProtectSystem = lib.mkForce "off";
           Type = "simple";
-          Environment = "${pkgs.aria2.out}/lib";
+          Environment = ''PATH="${pkgs.aria2.out}/lib"'';
           ExecStart =
             "${pkgs.aria2.bin}/bin/aria2c --conf-path=${HOME}/.scripts/programs/aria2/aria2.conf";
         };
