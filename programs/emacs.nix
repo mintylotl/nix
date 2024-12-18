@@ -41,6 +41,7 @@
   };
   systemd.user.services.emacs = {
     Service = {
+      Environment = "$PATH";
       ExecStartPre =
         ''${pkgs.bash}/bin/bash -l -c "/home/jwm/.emacs.d/bin/doom sync"'';
     };

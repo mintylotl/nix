@@ -1,4 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }:
+let HOME = "/home/jwm";
+in {
   systemd = {
     user.enable = true;
     user.startServices = "sd-switch";
@@ -9,6 +11,17 @@
     };
 
     user.services = {
+      aria2 = {
+        Install = { WantedBy = [ "multi-user.target" ]; };
+        Service = {
+          ProtectSystem = lib.mkForce "off";
+          Type = "simple";
+          Environment = "${pkgs.aria2.out}/lib";
+          ExecStart =
+            "${pkgs.aria2.bin}/bin/aria2c --conf-path=${HOME}/.scripts/programs/aria2/aria2.conf";
+        };
+        Unit = { Description = "Aria2 Daemon"; };
+      };
       nginx_html = {
         Unit = { Description = "Nginx HTML regenerator service"; };
         Service = {
