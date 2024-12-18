@@ -42,9 +42,15 @@
   systemd.user.services.emacs = {
     Service = {
       ProtectSystem = lib.mkForce false;
-      Environment = ''PATH="/home/jwm/.emacs.d/bin"'';
+      ProtectHome = lib.mkForce false;
+
+      ReadWritePaths = [ "/home/jwm/.emacs.d" ];
+
       ExecStartPre =
         ''${pkgs.bash}/bin/bash -l -c "/home/jwm/.emacs.d/bin/doom sync"'';
+    };
+    Install = {
+      WantedBy = [ "multi-user.target" ];
     };
   };
 }
