@@ -113,6 +113,7 @@ in {
     home = "/home/jwm";
     group = "jwm";
     extraGroups = [ "wheel" "freezer" "realtime" "nicy" "realtime" "audio" ];
+    linger = true;
   };
   users.users.gameboy = {
     isNormalUser = true;
