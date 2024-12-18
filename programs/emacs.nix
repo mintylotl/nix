@@ -40,6 +40,9 @@
     startWithUserSession = true;
   };
   systemd.user.services.emacs = {
-    Service = { ExecStartPre = ''${pkgs.bash}/bin/bash -l -c "doom sync"''; };
+    Service = {
+      ExecStartPre =
+        ''${pkgs.bash}/bin/bash -l -c "/home/jwm/.emacs.d/bin/doom sync"'';
+    };
   };
 }
