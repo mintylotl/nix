@@ -9,7 +9,7 @@ in {
     # Daemons
     ./daemons/nginx.nix
     ./daemons/vsftpd.nix
-    ./daemons/aria2.nix
+    #./daemons/aria2.nix
 
     ./nvidia.nix
     ./packages.nix
@@ -165,6 +165,9 @@ in {
       });
     '';
   };
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev"
+  '';
 
   security.pam.loginLimits = [{
     domain = "@nicy";
