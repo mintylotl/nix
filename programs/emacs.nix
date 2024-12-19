@@ -33,24 +33,10 @@
       ];
   };
   services.emacs = {
-    enable = true;
+    enable = false;
     client.enable = true;
     defaultEditor = true;
 
     startWithUserSession = false;
-  };
-  systemd.user.services.emacs = {
-    Service = {
-      ProtectSystem = lib.mkForce false;
-      ProtectHome = lib.mkForce false;
-
-      ReadWritePaths = [ "/home/jwm/.emacs.d" ];
-
-      ExecStartPre =
-        ''${pkgs.bash}/bin/bash -l -c "/home/jwm/.emacs.d/bin/doom sync"'';
-    };
-    Install = {
-      WantedBy = [ "multi-user.target" ];
-    };
   };
 }

@@ -86,13 +86,14 @@ in {
 
   programs.bash = {
     enable = true;
-    bashrcExtra = ''
-      export PATH="${HOME}/.emacs.d/bin:$PATH"
-      export PATH="${HOME}/.scripts/scripts/machines:$PATH"
-    '';
+    bashrcExtra = "";
     initExtra = ''
       export PATH="${HOME}/.emacs.d/bin:$PATH"
       zsh
+    '';
+    profileExtra = ''
+      export PATH="${HOME}/.emacs.d/bin:''\$PATH"
+      doom sync >/dev/null && emacs --daemon&
     '';
   };
 

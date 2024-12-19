@@ -11,6 +11,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    zip
     imhex
     xorg.xeyes
     xorg.xorgserver
