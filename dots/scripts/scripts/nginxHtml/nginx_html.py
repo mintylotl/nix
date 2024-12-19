@@ -18,7 +18,7 @@ while True:
     try:
         testy = open("index.html", "r")
         if testy.read() == prevFile:
-            sleep(15)
+            sleep(7)
             continue
     except:
         pass
