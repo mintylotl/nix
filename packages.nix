@@ -11,16 +11,25 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    # General
+    man-pages-posix
+
     zip
     imhex
+    gzip
+    lz4
+    gnutar
+    cheat
+    tldr
+    most
+    less
+
     xorg.xeyes
     xorg.xorgserver
     xorg.xeyes
     xorg.xrandr
 
-    lz4
     ventoy-bin
-    gzip
 
     heimdall
     sunshine

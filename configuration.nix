@@ -29,6 +29,14 @@ in {
     };
   };
 
+  documentation = {
+    dev.enable = true;
+    man = {
+      man-db.enable = false;
+      mandoc.enable = true;
+    };
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {
