@@ -48,7 +48,7 @@
 
       # --Programs
       exec-once = hyprpaper
-      exec-once = doom sync && emacs --daemon
+      exec-once = emacs --daemon
 
       # --Lutris
       env = LUTRIS_SKIP_INIT, 1
