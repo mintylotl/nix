@@ -33,7 +33,7 @@
       ];
   };
   services.emacs = {
-    enable = false;
+    enable = true;
     client.enable = true;
     defaultEditor = true;
 
