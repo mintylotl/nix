@@ -114,6 +114,7 @@ in {
     group = "jwm";
     extraGroups = [ "wheel" "freezer" "realtime" "nicy" "realtime" "audio" ];
     linger = true;
+    homeMode = "751";
   };
   users.users.gameboy = {
     isNormalUser = true;

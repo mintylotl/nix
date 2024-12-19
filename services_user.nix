@@ -3,7 +3,7 @@ let HOME = "/home/jwm";
 in {
   systemd = {
     user.enable = true;
-    user.startServices = "sd-switch";
+    #user.startServices = "sd-switch";
 
     user.sessionVariables = {
       PATH =
@@ -12,7 +12,7 @@ in {
 
     user.services = {
       aria2 = {
-        Install = { WantedBy = [ "multi-user.target" ]; };
+        Install = { WantedBy = [ "default.target" ]; };
         Service = {
           ProtectSystem = lib.mkForce "off";
           Type = "simple";
