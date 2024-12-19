@@ -19,6 +19,7 @@ in {
   home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   home.file = {
+    # Scripts & Folders
     ".scripts" = {
       source = ./dots/scripts;
       recursive = true;
@@ -27,6 +28,14 @@ in {
       source = ./dots/scripts_dl/Youtube;
       recursive = true;
     };
+
+    # Programs
+    ".scripts/programs" = {
+      source = ./dots/programs;
+      recursive = true;
+    };
+
+    # Configuration
     ".config/mpv" = {
       source = ./dots/config/mpv;
       recursive = true;
