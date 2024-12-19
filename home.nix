@@ -88,13 +88,9 @@ in {
     enable = true;
     bashrcExtra = "";
     initExtra = ''
-      export PATH="${HOME}/.emacs.d/bin:$PATH"
       zsh
     '';
-    profileExtra = ''
-      export PATH="${HOME}/.emacs.d/bin:''\$PATH"
-      doom sync >/dev/null && emacs --daemon&
-    '';
+    profileExtra = "";
   };
 
   programs.neovim = { enable = true; };
