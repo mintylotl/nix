@@ -44,11 +44,10 @@
       # --Scripts
       exec-once = "$HOME"/.config/hypr/sink.sh
       exec-once = sudo -E "$scripts"/system/leds.sh&
-      exec-once = sudo -E "$scripts"/system/mounts.sh
+      exec-once = sudo -E "$scripts"/system/mounts.sh && emacs --daemon
 
       # --Programs
       exec-once = hyprpaper
-      exec-once = emacs --daemon
 
       # --Lutris
       env = LUTRIS_SKIP_INIT, 1
