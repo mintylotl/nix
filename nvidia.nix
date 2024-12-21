@@ -1,15 +1,12 @@
 { config, pkgs, lib, ... }: {
   services.xserver = {
     enable = false;
-    videoDrivers = [
-      "nvidia"
-      "fbdev"
-    ];
+    videoDrivers = [ "nvidia" "fbdev" ];
   };
-  
+
   services.displayManager.sddm = {
     enable = lib.mkForce false;
-    wayland.enable = true;
+    wayland.enable = false;
   };
 
   services.desktopManager.plasma6.enable = false;
