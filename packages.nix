@@ -50,6 +50,7 @@ in {
     xorg.xinit
     megasync
     soulseekqt
+    hyprland-utils
     unrar
     wlr-randr
     alsa-tools
