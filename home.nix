@@ -28,7 +28,6 @@ in {
       source = ./dots/scripts_dl/Youtube;
       recursive = true;
     };
-
     # Programs
     ".scripts/programs" = {
       source = ./dots/programs;
@@ -71,6 +70,7 @@ in {
         "org.freedesktop.impl.ScreenCast" = "xdph";
         "org.freedesktop.impl.Screenshot" = "xdph";
       };
+      configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
     };
 
     configHome = "${HOME}/.config";
