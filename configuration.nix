@@ -65,8 +65,8 @@ in {
 
   networking.hostName = "cabbage";
   networking.hosts = {
-    "127.0.0.1" = [ "ariaweb.srv" "jellyfin.srv" ];
-    "192.168.2.2" = [ "vault.tld" ];
+    "127.0.0.1" = [ "ariaweb.srv" "jellyfin.srv" "fileserve.srv" ];
+    "192.168.0.2" = [ "vault.tld" ];
   };
   networking.interfaces.enp42s0.macAddress = "2C:F0:5D:E5:E2:E1";
 
@@ -120,13 +120,15 @@ in {
     pulse = { };
     nm-openconnect = { };
     nicy = { };
+    gamers = { };
   };
   # Users
   users.users.jwm = {
     isNormalUser = true;
     home = "/home/jwm";
     group = "jwm";
-    extraGroups = [ "wheel" "freezer" "realtime" "nicy" "realtime" "audio" ];
+    extraGroups =
+      [ "wheel" "freezer" "realtime" "nicy" "realtime" "audio" "gamers" ];
     linger = true;
     homeMode = "751";
   };
@@ -134,7 +136,7 @@ in {
     isNormalUser = true;
     home = "/home/gameboy";
     group = "gameboy";
-    extraGroups = [ "wheel" "realtime" "nicy" "audio" ];
+    extraGroups = [ "wheel" "realtime" "nicy" "audio" "gamers" ];
   };
   users.users.ftpsecure = {
     isNormalUser = true;
