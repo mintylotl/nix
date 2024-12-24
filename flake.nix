@@ -56,7 +56,10 @@
               home-manager.users.gameboy = import ./home_gb.nix;
             }
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            inherit pkgs_unstable;
+          };
         };
       };
     };
