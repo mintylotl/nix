@@ -15,7 +15,7 @@
     nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-24.11"; };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager?ref=release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -26,7 +26,7 @@
 
     umuProton = {
       url =
-        "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix&submodules=1";
+        "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -63,7 +63,6 @@
           specialArgs = {
             inherit inputs;
             inherit pkgs_unst;
-            inherit nixpkgs_unstable;
           };
         };
       };
