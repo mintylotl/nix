@@ -122,7 +122,7 @@ in {
     nwg-look
 
     # PrismLauncher Cracked
-    prismlauncher
+    pkgs.prismlauncher
 
     # Python
     #System

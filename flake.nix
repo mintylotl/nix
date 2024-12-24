@@ -21,7 +21,7 @@
 
     prism = {
       url = "github:mintylotl/prismcrack";
-      inputs.nixpkgs.follows = "nixpkgs_unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     umuProton = {
