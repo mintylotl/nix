@@ -1,9 +1,9 @@
-{ pkgs_unst, pkgs, nixpkgs_unstable, config, lib, inputs, ... }:
+{ pkgs_unst, pkgs, config, lib, inputs, ... }:
 let
-  pkgs = pkgs_unst;
+  paks = pkgs_unst;
   py = pkgs.python312Packages;
 in {
-  nixpkgs_unstable.overlays = [
+  nixpkgs.overlays = [
     inputs.prism.overlays.default
     (final: prev: {
       umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
@@ -12,7 +12,7 @@ in {
     })
   ];
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with paks; [
     # General
     man-pages-posix
 
@@ -67,7 +67,7 @@ in {
 
     #OVMF
     #qemu_full
-    umu
+    pkgs.umu
 
     cowsay
     kittysay
