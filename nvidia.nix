@@ -12,7 +12,7 @@
     wayland.enable = false;
   };
 
-  services.desktopManager.plasma6.enable = false;
+  services.desktopManager.plasma6.enable = true;
 
   hardware.nvidia = {
     modesetting.enable = true;
