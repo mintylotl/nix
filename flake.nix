@@ -63,6 +63,7 @@
           specialArgs = {
             inherit inputs;
             inherit pkgs_unst;
+            inherit nixpkgs_unstable;
           };
         };
       };

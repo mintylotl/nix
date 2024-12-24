@@ -1,9 +1,9 @@
-{ pkgs_unst, pkgs, config, lib, inputs, ... }:
+{ pkgs_unst, pkgs, nixpkgs_unstable, config, lib, inputs, ... }:
 let
   pkgs = pkgs_unst;
   py = pkgs.python312Packages;
 in {
-  nixpkgs.overlays = [
+  nixpkgs_unstable.overlays = [
     inputs.prism.overlays.default
     (final: prev: {
       umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
