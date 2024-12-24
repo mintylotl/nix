@@ -24,7 +24,7 @@ in {
     settings = { trusted-users = [ "jwm" ]; };
 
     optimise = {
-      automatic = true;
+      automatic = false;
       dates = [ "06:00" ];
     };
   };
@@ -44,12 +44,18 @@ in {
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages;
+
     initrd.kernelModules =
       [ "nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset" "fbdev" ];
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
       "nvidia-drm.modeset=1"
+      "module_blacklist=i915"
+      "module_blacklist=amdgpu"
     ];
+    blacklistedKernelModules = [ "nouveau" ];
+
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_beta ];
   };
 
   # NETWORKING

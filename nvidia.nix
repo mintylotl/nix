@@ -1,4 +1,7 @@
 { config, pkgs, lib, ... }: {
+
+  hardware.graphics = { enable = true; };
+
   services.xserver = {
     enable = false;
     videoDrivers = [ "nvidia" "fbdev" ];

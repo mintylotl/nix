@@ -11,8 +11,8 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
-    nixpkgs_unstable = { url = "github:nixos/nixpkgs?ref=nixos-24.11"; };
+    nixpkgs_unstable = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
+    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-24.11"; };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -21,12 +21,17 @@
 
     prism = {
       url = "github:mintylotl/prismcrack";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs_unstable";
     };
 
     umuProton = {
       url =
         "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix&submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    Hyprland = {
+      url = "github:hyprwm/hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -35,11 +40,9 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs_def = nixpkgs.legacyPackages;
-      pkgs_unst = nixpkgs_unstable.legacyPackages.${system};
+      packages.${system} = nixpkgs_unstable.legacyPackages.${system};
 
     in {
-      packages.default = pkgs_def.x86_64-linux;
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {
           modules = [
