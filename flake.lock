@@ -439,7 +439,7 @@
         "libnbtplusplus": "libnbtplusplus",
         "nix-filter": "nix-filter",
         "nixpkgs": [
-          "nixpkgs_unstable"
+          "nixpkgs"
         ]
       },
       "locked": {
