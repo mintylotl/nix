@@ -67,8 +67,8 @@ in {
       config.common.default = "gtk";
       config.hyprland = {
         default = "hyprland";
-        "org.freedesktop.impl.Screencast" = "xdph";
-        "org.freedesktop.impl.Screenshot" = "xdph";
+        "org.freedesktop.impl.Screencast" = "wlr";
+        "org.freedesktop.impl.Screenshot" = "wlr";
       };
       configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
     };
