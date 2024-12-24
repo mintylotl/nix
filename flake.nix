@@ -42,7 +42,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs_unst = import nixpkgs_unstable {
         system = system;
-        allowUnfree = true;
+        config.allowUnfree = true;
       };
 
       packages.${system} = nixpkgs_unstable.legacyPackages.${system};
