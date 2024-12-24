@@ -45,7 +45,7 @@
         config.allowUnfree = true;
       };
 
-      packages.${system} = nixpkgs_unstable.legacyPackages.${system};
+      packages.x86_64-linux = nixpkgs_unstable.legacyPackages.${system};
 
     in {
       nixosConfigurations = {
