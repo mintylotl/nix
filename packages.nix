@@ -1,6 +1,6 @@
-{ pkgs_unstable, pkgs, config, lib, inputs, ... }:
+{ pkgs_unst, pkgs, config, lib, inputs, ... }:
 let
-  pkgs = pkgs_unstable;
+  pkgs = pkgs_unst;
   py = pkgs.python312Packages;
 in {
   nixpkgs.overlays = [
