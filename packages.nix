@@ -72,7 +72,7 @@ in {
     cowsay
     kittysay
     pokemonsay
-    vulkan-loader
+    pkgs.vulkan-loader
     smartmontools
     vulkan-headers
     blender
@@ -87,12 +87,12 @@ in {
 
     # GTK Libs
     zenity
-    gst_all_1.gstreamer
-    gst_all_1.gst-plugins-base
-    gst_all_1.gst-plugins-good
-    gst_all_1.gst-plugins-ugly
-    gst_all_1.gst-plugins-bad
-    gst_all_1.gst-libav
+    pkgs.gst_all_1.gstreamer
+    pkgs.gst_all_1.gst-plugins-base
+    pkgs.gst_all_1.gst-plugins-good
+    pkgs.gst_all_1.gst-plugins-ugly
+    pkgs.gst_all_1.gst-plugins-bad
+    pkgs.gst_all_1.gst-libav
 
     alsa-utils
     xcur2png
@@ -105,32 +105,16 @@ in {
     speedcrunch
     openssl
 
-    lutris
-    # EMACS
-    protontricks
+    pkgs.lutris
+    pkgs.protontricks
+
     fd
     ripgrep
     cmake
     clang
-    jsbeautifier
-    nixfmt-classic
-    ispell
-    gnuplot
-    shfmt
     gnumake
-    pipenv
-    cmigemo
-    stylelint
-    shellcheck
-    zig
-    graphviz
-    pandoc
-    libtool
     rustup
     rust-analyzer
-    pnpm
-    html-tidy
-    sbcl
 
     # QT
     qimgv
@@ -159,7 +143,6 @@ in {
     bitwarden-desktop
     git
     gcc
-    gnumake
     makemkv
     pkg-config
     btrfs-progs
@@ -184,18 +167,18 @@ in {
     dxvk
     dxvk_2
     vkd3d-proton
-    gamescope
-    gamemode
-    mangohud
+    pkgs.gamescope
+    pkgs.gamemode
+    pkgs.mangohud
     # Programs
     #wineWowPackages.waylandFull
     #wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    wineWowPackages.stagingFull
-    winetricks
+    pkgs.wineWowPackages.stagingFull
+    pkgs.winetricks
     grim
     slurp
-    hyprpaper
+    pkgs.hyprpaper
     wl-clipboard
     cliphist
     firefox
