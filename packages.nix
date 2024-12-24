@@ -1,5 +1,7 @@
-{ pkgs, config, lib, inputs, ... }:
-let py = pkgs.python312Packages;
+{ pkgs_unstable, pkgs, config, lib, inputs, ... }:
+let
+  pkgs = pkgs_unstable;
+  py = pkgs.python312Packages;
 in {
   nixpkgs.overlays = [
     inputs.prism.overlays.default
