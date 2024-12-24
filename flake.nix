@@ -40,7 +40,10 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs_unstable = nixpkgs_unstable.legacyPackages.${system};
+
+      nixpkgs_unst = import nixpkgs_unstable { system = system; };
+      pkgs_unstable = nixpkgs_unst.legacyPackages.${system};
+
       packages.${system} = nixpkgs_unstable.legacyPackages.${system};
 
     in {
