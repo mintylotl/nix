@@ -1,0 +1,25 @@
+[ req ]
+default_bits = 2048
+prompt = no
+default_md = sha256
+distinguished_name = dn
+req_extensions = req_ext
+
+[ dn ]
+C = ZA
+O = Lazy Owl Inc.
+CN = 192.168.0.2
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = ariaweb.srv
+DNS.2 = vault.tld
+DNS.3 = jellyfin.srv
+DNS.4 = fileserve.srv
+
+IP.1 = 192.168.0.2
+IP.2 = 192.168.2.2
+IP.3 = 127.0.0.1
+IP.4 = 0.0.0.0
