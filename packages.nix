@@ -40,6 +40,8 @@ in {
     libmtp
     android-tools
 
+    shadow
+    coreutils
     direnv
     ntfs3g
     libxkbcommon

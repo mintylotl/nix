@@ -44,7 +44,7 @@
       # --Scripts
       exec-once = "$HOME"/.config/hypr/sink.sh
       exec-once = sudo -E "$scripts"/system/leds.sh&
-      exec-once = sudo -E "$scripts"/system/mounts.sh
+      #exec-once = sudo -E "$scripts"/system/mounts.sh
 
       # --Programs
       exec-once = hyprpaper
