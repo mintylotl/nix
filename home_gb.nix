@@ -18,13 +18,32 @@ in {
   };
 
   # Home Stuff
+  xdg = {
+    enable = true;
+    mime.enable = true;
+    mimeApps.enable = false;
+
+    portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+      config.common.default = "gtk";
+      configPackages = [ pkgs.xdg-desktop-portal-gtk ];
+    };
+
+    configHome = "${HOME}/.config";
+    cacheHome = "${HOME}/.cache";
+    dataHome = "${HOME}/.local/share";
+    stateHome = "${HOME}/.local/state";
+
+    userDirs.createDirectories = true;
+  };
 
   # Programs
   programs.direnv = {
     enable = true;
-    nix-direnv.enable = true;
-
     enableBashIntegration = true;
+    nix-direnv.enable = true;
   };
 
   programs.bash = {
