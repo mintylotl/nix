@@ -5,7 +5,7 @@ COLD="d7f41dd1-ef48-427f-9f65-94e1016c0b13"
 HOT="8f29f7cf-0bea-45a9-945c-9c35e9ac41da"
 MED="bc53d224-cdf4-4d0d-a328-9731266e5220"
 
-if [ "$MODE" -eq 1 ]; then
+if [ "$MODE" == "1" ]; then
 	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/emacs-conf $HOME/.doom.d/
 	mount --onlyonce -t btrfs -U $HOT -o compress-force=zstd:3,noatime,subvol=@vols/emacs $HOME/.emacs.d/
 	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/orgnotes,compress=zstd:3,noatime $HOME/.orgnotes

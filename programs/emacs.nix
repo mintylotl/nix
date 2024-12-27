@@ -5,38 +5,43 @@
     enable = true;
     package = pkgs.emacs29-pgtk;
     extraPackages = epkgs:
-      with pkgs; [
-        epkgs.vterm
-        fd
+      with epkgs; [
+        vterm
+        fd-dired
         ripgrep
-        cmake
-        clang
-        jsbeautifier
-        nixfmt-classic
-        ispell
+        cpputils-cmake
+        clang-format
+        nixfmt
+        helm-ispell
+        tree-sitter-ispell
         gnuplot
+        gnuplot-mode
         shfmt
-        gnumake
-        pipenv
-        cmigemo
-        stylelint
-        shellcheck
-        zig
-        graphviz
+        flymake-shellcheck
+        zig-mode
+        graphviz-dot-mode
         pandoc
-        libtool
-        rustup
-        rust-analyzer
-        pnpm
-        html-tidy
-        sbcl
+        pandoc-mode
+        rust-mode
+        rustic
+        flycheck-rust
+        pnpm-mode
+
+        pkgs.libtool
+        pkgs.sbcl
+        pkgs.rust-analyzer
+        pkgs.clang
       ];
   };
+
   services.emacs = {
     enable = true;
     client.enable = true;
     defaultEditor = true;
 
-    startWithUserSession = false;
+    startWithUserSession = true;
+  };
+  systemd.user.services.emacs = {
+    Unit.after = [ "emacs.service" ];
   };
 }

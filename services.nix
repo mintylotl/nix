@@ -1,20 +1,47 @@
 { config, pkgs, ... }: {
   systemd = {
     services = {
+      mounts = {
+        after = [ "emacs-mounts.service" ];
+        wantedBy = [ "multi-user.target" ];
+        description = "Drives and Volume Mounter";
+        path = [ pkgs.util-linux pkgs.coreutils ];
+
+        serviceConfig = {
+          ExecStart = "${pkgs.bash}/bin/bash /system/scripts/mounts.sh";
+          ProtectHome = false;
+          ProtectSystem = false;
+        };
+      };
+
+      emacs-mounts = {
+        wantedBy = [ "multi-user.target" ];
+        description = "Mounts Emacs's Paths";
+        path = [ pkgs.util-linux pkgs.coreutils ];
+
+        serviceConfig = {
+          ExecStart = "${pkgs.bash}/bin/bash /system/scripts/mounts.sh 1";
+          ProtectSystem = false;
+          ProtectHome = false;
+          WorkingDirectory = "/home/jwm";
+        };
+      };
+
       emacs = {
+      	enable = false;
+        after = [ "emacs-mounts.service" ];
         wantedBy = [ "multi-user.target" ];
         description = "Emacs Daemon Service";
 
         serviceConfig = {
           ProtectHome = false;
-          ReadWriteDirectories = [ "/home/jwm/.emacs.d" "/home/jwm/.doom.d" ];
-          Environment = "HOME=/home/jwm";
+          PrivateTmp = false;
+          WorkingDirectory = "/home/jwm";
           ExecStart =
-            "${pkgs.bash}/bin/bash -c 'su jwm && cd && ${pkgs.emacs29-pgtk}/bin/emacs --fg-daemon'";
+            "${pkgs.bash}/bin/bash -l -c 'emacs --fg-daemon'";
+          User = "jwm";
+          Group = "jwm";
         };
-        preStart = "${pkgs.bash}/bin/bash /system/scripts/mounts.sh 1";
-
-        path = [ pkgs.util-linux pkgs.coreutils pkgs.shadow pkgs.su ];
       };
     };
   };
