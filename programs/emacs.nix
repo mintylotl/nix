@@ -6,32 +6,31 @@
     package = pkgs.emacs29-pgtk;
 
     extraPackages = epkgs:
-      with epkgs; [
-        vterm
-        fd-dired
+      with pkgs; [
+        epkgs.vterm
+        fd
         ripgrep
-        cpputils-cmake
-        clang-format
-        nixfmt
-        helm-ispell
-        tree-sitter-ispell
+        cmake
+        clang
+        jsbeautifier
+        nixfmt-classic
+        ispell
         gnuplot
-        gnuplot-mode
         shfmt
-        flymake-shellcheck
-        zig-mode
-        graphviz-dot-mode
+        gnumake
+        pipenv
+        cmigemo
+        stylelint
+        shellcheck
+        zig
+        graphviz
         pandoc
-        pandoc-mode
-        rust-mode
-        rustic
-        flycheck-rust
-        pnpm-mode
-
-        pkgs.libtool
-        pkgs.sbcl
-        pkgs.rust-analyzer
-        pkgs.clang
+        libtool
+        rustup
+        rust-analyzer
+        pnpm
+        html-tidy
+        sbcl
       ];
   };
 
