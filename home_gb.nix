@@ -45,11 +45,18 @@ in {
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
-
+  
+  programs.emacs.enable = true;
+  services.emacs.enable = false;
+  programs.emacs.defaultEditor = true;
+  
   programs.bash = {
     enable = true;
     initExtra = ''
       zsh
+    '';
+    profileExtra = ''
+      exec startplasma-wayland
     '';
   };
 
