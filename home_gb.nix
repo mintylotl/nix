@@ -48,7 +48,6 @@ in {
   
   programs.emacs.enable = true;
   services.emacs.enable = false;
-  programs.emacs.defaultEditor = true;
   
   programs.bash = {
     enable = true;
