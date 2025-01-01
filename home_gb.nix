@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 let HOME = "/home/gameboy";
 in {
-  imports = [ ./programs/zsh.nix ];
+  imports = [ ./programs/zsh.nix ./home/xdg.nix ];
 
   home.username = "gameboy";
   home.homeDirectory = "/home/gameboy";
@@ -17,38 +17,16 @@ in {
     ".asoundrc" = { source = ./dots/config/asoundrc; };
   };
 
-  # Home Stuff
-  xdg = {
-    enable = true;
-    mime.enable = true;
-    mimeApps.enable = false;
-
-    portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-      config.common.default = "gtk";
-      configPackages = [ pkgs.xdg-desktop-portal-gtk ];
-    };
-
-    configHome = "${HOME}/.config";
-    cacheHome = "${HOME}/.cache";
-    dataHome = "${HOME}/.local/share";
-    stateHome = "${HOME}/.local/state";
-
-    userDirs.createDirectories = true;
-  };
-
   # Programs
   programs.direnv = {
     enable = true;
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
-  
+
   programs.emacs.enable = true;
   services.emacs.enable = false;
-  
+
   programs.bash = {
     enable = true;
     initExtra = ''
