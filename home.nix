@@ -2,6 +2,9 @@
 let HOME = "/home/jwm";
 in {
   imports = [
+    # Home
+    ./home/xdg.nix
+
     # Programs
     ./config/hyprland-conf.nix
     ./programs/zsh.nix
@@ -52,33 +55,6 @@ in {
       recursive = true;
     };
     ".asoundrc" = { source = ./dots/config/asoundrc; };
-  };
-
-  # Home Stuff
-  xdg = {
-    enable = true;
-    mime.enable = true;
-    mimeApps.enable = false;
-
-    portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-      config.common.default = "gtk";
-      config.hyprland = {
-        default = "gtk";
-        "org.freedesktop.impl.Screencast" = "wlr";
-        "org.freedesktop.impl.Screenshot" = "wlr";
-      };
-      configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
-    };
-
-    configHome = "${HOME}/.config";
-    cacheHome = "${HOME}/.cache";
-    dataHome = "${HOME}/.local/share";
-    stateHome = "${HOME}/.local/state";
-
-    userDirs.createDirectories = true;
   };
 
   # Programs
