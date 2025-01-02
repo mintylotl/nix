@@ -6,7 +6,7 @@ in {
     enable = true;
 
     mime.enable = false;
-    mimeApps.enable = true;
+    mimeApps.enable = false;
 
     portal = {
       enable = true;

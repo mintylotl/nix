@@ -9,8 +9,8 @@ let
   httpsJellyfin = "9998";
   httpJellyfin = "9999";
   httpPlex = "32400";
-  httpsAnki = "34888";
-  httpAnki = "34889";
+  httpsAnki = "37356";
+  httpAnki = "37355";
 
   sslCert = "/system/certs/ssl/ssl.crt";
   sslCertSecret = "/system/certs/ssl/ssl.key";

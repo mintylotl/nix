@@ -33,7 +33,10 @@ in {
       zsh
     '';
     profileExtra = ''
-      exec startplasma-wayland
+      if [[$- == *i*]];
+      then
+        exec startplasma-wayland
+      fi
     '';
   };
 
