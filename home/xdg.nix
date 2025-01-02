@@ -71,7 +71,7 @@ in {
 
         icon = "emacs";
         type = "Application";
-        exec = "emacsclient --alternate-editor= --reuse-frame %F";
+        exec = "emacsclient --alternate-editor= -c %F";
 
         terminal = false;
         categories = [ "Development" "TextEditor" ];
@@ -84,7 +84,7 @@ in {
 
         actions."new-window" = {
           name = "New Frame";
-          exec = "emacsclient --alternate-editor= --reuse-frame %F";
+          exec = "emacsclient --alternate-editor= -c %F";
         };
       };
     };
