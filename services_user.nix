@@ -30,6 +30,15 @@ in {
         };
         Install = { WantedBy = [ "default.target" ]; };
       };
+      anki_sync = {
+        Unit = { Description = "Anki-Sync Daemon"; };
+        Service = {
+          ExecStart =
+            "${pkgs.bash}/bin/bash -l -c '/home/jwm/.scripts/programs/anki_sync.sh'";
+          Restart = "on-failure";
+        };
+        Install = { WantedBy = [ "default.target" ]; };
+      };
     };
   };
 }
