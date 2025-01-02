@@ -26,6 +26,9 @@ in {
     most
     less
 
+    anki-bin
+    anki-sync-server
+
     xorg.xeyes
     xorg.xorgserver
     xorg.xeyes
