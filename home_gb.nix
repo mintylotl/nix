@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 let HOME = "/home/gameboy";
 in {
-  imports = [ ./programs/zsh.nix ./home/xdg.nix ];
+  imports = [ ./programs/zsh.nix ];
 
   home.username = "gameboy";
   home.homeDirectory = "/home/gameboy";
