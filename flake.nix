@@ -12,10 +12,10 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs_unstable = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
-    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
+    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-24.11"; };
 
     home-manager = {
-      url = "github:nix-community/home-manager?ref=master";
+      url = "github:nix-community/home-manager?ref=release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -26,7 +26,7 @@
 
     umuProton = {
       url =
-        "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix";
+        "github:Open-Wine-Components/umu-launcher?dir=packaging/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
