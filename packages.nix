@@ -81,8 +81,8 @@ in {
     pokemonsay
     pkgs.vulkan-loader
     smartmontools
-    vulkan-headers
-    blender
+    pkgs.vulkan-headers
+    pkgs.blender
     keyutils
     compsize
     gtk2
@@ -90,7 +90,7 @@ in {
     alsa-lib
     udisks
     timewarrior
-    nvtopPackages.nvidia
+    pkgs.nvtopPackages.nvidia
 
     # GTK Libs
     zenity
@@ -112,16 +112,16 @@ in {
     speedcrunch
     openssl
 
-    pkgs.lutris
-    pkgs.protontricks
+    lutris
+    protontricks
 
     fd
     ripgrep
     cmake
     clang
     gnumake
-    rustup
-    rust-analyzer
+    pkgs.rustup
+    pkgs.rust-analyzer
 
     # QT
     qimgv
