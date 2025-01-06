@@ -7,7 +7,9 @@ in {
     inputs.prism.overlays.default
     (final: prev: {
       umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
-        version = "${inputs.umuProton.shortRev}";
+        version = inputs.umuProton.shortRev;
+	truststore = true;
+	cbor2 = true;
       };
     })
   ];
