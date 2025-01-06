@@ -1,15 +1,16 @@
 { pkgs_unst, pkgs, config, lib, inputs, ... }:
 let
   paks = pkgs_unst;
-  py = pkgs.python312Packages;
+  py = paks.python312Packages;
+
 in {
   nixpkgs.overlays = [
     inputs.prism.overlays.default
     (final: prev: {
       umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
         version = inputs.umuProton.shortRev;
-	truststore = true;
-	cbor2 = true;
+	#truststore = true;
+	#cbor2 = true;
       };
     })
   ];
@@ -120,8 +121,8 @@ in {
     cmake
     clang
     gnumake
-    pkgs.rustup
-    pkgs.rust-analyzer
+    paks.rustup
+    paks.rust-analyzer
 
     # QT
     qimgv
@@ -133,16 +134,16 @@ in {
 
     # Python
     #System
-    py.python
+    python312
     py.pip
+
     #Misc
     py.yt-dlp
+    
     #Emacs
     py.black
     py.isort
     py.pyflakes
-    py.pytest
-    py.setuptools
     py.nose2
 
     # System Utilities
