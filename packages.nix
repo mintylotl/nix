@@ -29,8 +29,8 @@ in {
     most
     less
 
-    anki-bin
-    anki-sync-server
+    pkgs.anki-bin
+    pkgs.anki-sync-server
 
     xorg.xeyes
     xorg.xorgserver
@@ -40,7 +40,6 @@ in {
     ventoy-bin
 
     heimdall
-    sunshine
     gvfs
     simple-mtpfs
     libmtp
@@ -191,7 +190,7 @@ in {
     cliphist
     firefox
     telegram-desktop
-    qbittorrent
+    pkgs.qbittorrent
     mako
     rose-pine-cursor
     aria2
