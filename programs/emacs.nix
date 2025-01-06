@@ -42,6 +42,6 @@
     startWithUserSession = true;
   };
   systemd.user.services.emacs = {
-    Unit.after = [ "emacs.service" ];
+    Unit.After = [ "emacs-mounts.service" ];
   };
 }
