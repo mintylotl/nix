@@ -9,8 +9,8 @@ in {
     (final: prev: {
       umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
         version = inputs.umuProton.shortRev;
-	#truststore = true;
-	#cbor2 = true;
+        #truststore = true;
+        #cbor2 = true;
       };
     })
   ];
@@ -111,6 +111,7 @@ in {
     neofetch
     speedcrunch
     openssl
+    tailscale
 
     lutris
     protontricks
@@ -138,7 +139,7 @@ in {
 
     #Misc
     py.yt-dlp
-    
+
     #Emacs
     py.black
     py.isort
