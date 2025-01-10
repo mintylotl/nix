@@ -109,7 +109,7 @@ in {
     busybox
     htop
     neofetch
-    speedcrunch
+    pkgs.speedcrunch
     openssl
     tailscale
 
