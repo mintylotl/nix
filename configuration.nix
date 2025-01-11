@@ -121,6 +121,7 @@ in {
     nm-openconnect = { };
     nicy = { };
     gamers = { };
+    ftp = { };
   };
   # Users
   users.users.jwm = {
@@ -145,6 +146,7 @@ in {
     password = "123";
     createHome = false;
     homeMode = "755";
+    extraGroups = [ "ftp" ];
   };
   users.users.nginx = { extraGroups = [ "certs" ]; };
 
