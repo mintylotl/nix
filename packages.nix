@@ -39,7 +39,7 @@ in {
 
     ventoy-bin
 
-    logmein-hamachi
+    softether
     heimdall
     gvfs
     simple-mtpfs
