@@ -39,7 +39,7 @@ in {
 
     ventoy-bin
 
-    softether
+    stuntman
     heimdall
     gvfs
     simple-mtpfs
