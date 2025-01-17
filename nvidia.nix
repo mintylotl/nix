@@ -4,7 +4,7 @@
 
   services.xserver = {
     enable = false;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "nvidia" "fbdev" ];
   };
 
   services.displayManager.sddm = {
