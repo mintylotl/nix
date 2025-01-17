@@ -137,7 +137,7 @@ in {
     isNormalUser = true;
     home = "/home/gameboy";
     homeMode = "771";
-    group = "gameboy";
+    group = "gamers";
     extraGroups = [ "wheel" "realtime" "nicy" "audio" "gamers" ];
   };
   users.users.ftpsecure = {
@@ -200,8 +200,7 @@ in {
   security.pki.certificateFiles = [ ./resources/certs/ca/rootCA.pem ];
 
   environment.variables = {
-    NIX_CONF_DIR = "${HOME}/.nixos";
-    NIX_OZONE_WL = "0";
+    NIX_CONF_DIR = "/etc/nixos";
 
     MESA_LOADER_DRIVER_OVERRIDE = "nvidia";
     LIBVA_DRIVER_NAME = "nvidia";

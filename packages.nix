@@ -34,7 +34,6 @@ in {
 
     xorg.xeyes
     xorg.xorgserver
-    xorg.xeyes
     xorg.xrandr
 
     ventoy-bin
@@ -54,16 +53,16 @@ in {
     alsa-plugins
     alsa-firmware
     alsa-lib
-    xorg.xauth
+    alsa-tools
+    alsa-utils
     godot_4
     ecryptfs
     xorg.xinit
-    megasync
+    pkgs.megasync
     soulseekqt
     unrar
     wlr-randr
-    alsa-tools
-    ark
+    pkgs.ark
     strawberry-qt6
 
     # Project Zomboid
@@ -86,9 +85,8 @@ in {
     pkgs.blender
     keyutils
     compsize
-    gtk2
-    gtk3
-    alsa-lib
+    pkgs.gtk2
+    pkgs.gtk3
     udisks
     timewarrior
     pkgs.nvtopPackages.nvidia
@@ -102,7 +100,6 @@ in {
     pkgs.gst_all_1.gst-plugins-bad
     pkgs.gst_all_1.gst-libav
 
-    alsa-utils
     xcur2png
     pavucontrol
     audacity
@@ -126,9 +123,8 @@ in {
     paks.rust-analyzer
 
     # QT
-    qimgv
-    kdePackages.qt6ct
-    nwg-look
+    pkgs.qimgv
+    pkgs.kdePackages.qt6ct
 
     # PrismLauncher Cracked
     pkgs.prismlauncher
@@ -155,7 +151,7 @@ in {
     makemkv
     pkg-config
     btrfs-progs
-    vulkan-tools
+    pkgs.vulkan-tools
     rsync
     xdotool
     nodejs_22
@@ -176,18 +172,18 @@ in {
     dxvk
     dxvk_2
     vkd3d-proton
-    pkgs.gamescope
-    pkgs.gamemode
-    pkgs.mangohud
+    gamescope
+    gamemode
+    mangohud
     # Programs
     #wineWowPackages.waylandFull
     #wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    pkgs.wineWowPackages.stagingFull
-    pkgs.winetricks
+    wineWowPackages.stagingFull
+    winetricks
     grim
     slurp
-    pkgs.hyprpaper
+    hyprpaper
     wl-clipboard
     cliphist
     firefox
@@ -286,8 +282,6 @@ in {
     mime.enable = true;
   };
   programs.ecryptfs.enable = true;
-
-  qt.style = "kvantum";
 
   # Fonts
   fonts.packages = with pkgs; [
