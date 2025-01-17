@@ -46,10 +46,6 @@ in {
       source = ./dots/config/waybar;
       recursive = true;
     };
-    #".ecryptfs" = {
-    #  source = ./dots/ecryptfs;
-    #  recursive = true;
-    #};
     ".config/pipewire" = {
       source = ./dots/config/pipewire;
       recursive = true;

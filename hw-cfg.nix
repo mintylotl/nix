@@ -6,13 +6,21 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules =
-    [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules =
-    [ "nvidia_modeset" "nvidia_drm" "nvidia_uvm" "nvidia" ];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "ahci"
+    "usb_storage"
+    "usbhid"
+    "sd_mod"
+    "sr_mod"
+    "nvidia"
+    "nvidia_drm"
+    "nvidia_uvm"
+    "nvidia_modeset"
+    "nvidiafb"
+  ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
-  boot.blacklistedKernelModules = [ "nouveau" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/8f29f7cf-0bea-45a9-945c-9c35e9ac41da";

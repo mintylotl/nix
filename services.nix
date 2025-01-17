@@ -28,7 +28,7 @@
       };
 
       emacs = {
-      	enable = false;
+        enable = false;
         after = [ "emacs-mounts.service" ];
         wantedBy = [ "multi-user.target" ];
         description = "Emacs Daemon Service";
@@ -37,8 +37,7 @@
           ProtectHome = false;
           PrivateTmp = false;
           WorkingDirectory = "/home/jwm";
-          ExecStart =
-            "${pkgs.bash}/bin/bash -l -c 'emacs --fg-daemon'";
+          ExecStart = "${pkgs.bash}/bin/bash -l -c 'emacs --fg-daemon'";
           User = "jwm";
           Group = "jwm";
         };
