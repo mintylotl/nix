@@ -71,7 +71,8 @@ in {
 
         icon = "emacs";
         type = "Application";
-        exec = "emacsclient --alternate-editor= -c %F";
+        exec = ''
+          emacsclient --alternate-editor= -s "${HOME}/.emacs.d/emacflurry/mcflurry" -r %F'';
 
         terminal = false;
         categories = [ "Development" "TextEditor" ];
@@ -84,7 +85,8 @@ in {
 
         actions."new-window" = {
           name = "New Frame";
-          exec = "emacsclient --alternate-editor= -c %F";
+          exec = ''
+            emacsclient --alternate-editor= -s "${HOME}/.emacs.d/emacflurry/mcflurry" -c %F'';
         };
       };
     };
