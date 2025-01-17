@@ -46,7 +46,7 @@ in {
     kernelPackages = pkgs.linuxPackages;
 
     initrd.kernelModules =
-      [ "nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset" "fbdev" ];
+      [ "nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset" "nvidiafb" ];
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
       "nvidia-drm.modeset=1"
