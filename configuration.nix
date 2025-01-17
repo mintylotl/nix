@@ -1,0 +1,165 @@
+{ nixpkgs, config, lib, pkgs, inputs, ... }:
+let HOME = "/home/panda";
+in {
+  # nixOS
+  imports = [
+    ./hw-cfg.nix
+    ./services.nix
+
+    ./intel.nix
+    ./packages.nix
+  ];
+
+  nixpkgs.config.allowUnfree = true;
+
+  nix = {
+    package = pkgs.nix;
+    extraOptions = "experimental-features = nix-command flakes";
+    settings = { trusted-users = [ "panda" ]; };
+
+    optimise = {
+      automatic = false;
+      dates = [ "06:00" ];
+    };
+  };
+
+  documentation = {
+    dev.enable = true;
+    man = {
+      man-db.enable = false;
+      mandoc.enable = true;
+    };
+  };
+
+  # Use the systemd-boot EFI boot loader.
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxPackages;
+
+    initrd.kernelModules = [ "i915" ];
+    kernelParams = [ "module_blacklist=amdgpu" ];
+    blacklistedKernelModules = [
+      "nouveau"
+      "nvidia"
+      "nvidia_drm"
+      "nvidia_uvm"
+      "nvidia_modeset"
+      "nvidiafb"
+    ];
+  };
+
+  # NETWORKING
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
+
+  networking.hostName = "grape";
+  networking.hosts = { "127.0.0.1" = [ "localhost" ]; };
+  networking.interfaces.enp42s0.macAddress = "2C:F0:5D:E5:E2:E7";
+
+  time.timeZone = "Africa/Johannesburg";
+
+  security.sudo = {
+    enable = true;
+    extraRules = [{
+      users = [ "panda" ];
+      commands = [
+        {
+          command = "${HOME}/.scripts/scripts/system/mounts.sh";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+        {
+          command = "${HOME}/.scripts/scripts/system/nixosgarbage.sh";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+        {
+          command = "/run/current-system/sw/bin/nixos-rebuild";
+          options = [ "SETENV" "NOPASSWD" ];
+        }
+      ];
+    }];
+  };
+
+  # Locale
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # Groups
+  users.groups = {
+    panda = { };
+    pulse = { };
+    nm-openconnect = { };
+    nicy = { };
+  };
+  # Users
+  users.users.panda = {
+    isNormalUser = true;
+    home = "/home/panda";
+    group = "panda";
+    extraGroups = [ "wheel" "realtime" "nicy" "audio" ];
+    linger = false;
+    homeMode = "711";
+  };
+
+  # Sound
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  # Services
+  services.pipewire = {
+    enable = true;
+
+    wireplumber.enable = true;
+
+    audio.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  # Securitay
+  security.rtkit.enable = true;
+  security.polkit = {
+    enable = true;
+    extraConfig = ''
+      polkit.addRule(function (action, subject) {
+        if [ "org.freedesktop.pipewire" ].indexOf(action.id) !== -1 {
+          return polkit.Result.YES;
+        }
+      });
+    '';
+  };
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev"
+  '';
+
+  security.pam.loginLimits = [{
+    domain = "@nicy";
+    type = "-";
+    item = "nice";
+    value = -15;
+  }];
+
+  environment.variables = {
+    NIX_CONF_DIR = "/etc/nixos";
+
+    #LIBVA_DRIVER_NAME = "nvidia";
+    #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    #GBM_BACKEND = "nvidia-drm";
+
+    #VK_DRIVER_FILES =
+    #"${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    #VK_ICD_FILENAMES =
+    #"${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+  };
+  system.stateVersion = "24.05";
+}

@@ -1,0 +1,68 @@
+{
+  description = "NixOS Flake Configuration";
+
+  nixConfig = {
+    extra-experimental-features = "nix-command flakes";
+    trusted-users = "panda";
+    max-jobs = 1;
+    max-substitution-jobs = 1;
+    cores = 5;
+  };
+
+  inputs = {
+    # Specify the source of Home Manager and Nixpkgs.
+    nixpkgs_unstable = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
+    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-24.11"; };
+
+    home-manager = {
+      url = "github:nix-community/home-manager?ref=release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    prism = {
+      url = "github:mintylotl/prismcrack";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    umuProton = {
+      url =
+        "github:Open-Wine-Components/umu-launcher/59a82ea8cd284c7535bc06b8f6156abb7da96f6a?dir=packaging/nix";
+    };
+
+    Hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = { self, nixpkgs, nixpkgs_unstable, home-manager, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs_unst = import nixpkgs_unstable {
+        system = system;
+        config.allowUnfree = true;
+      };
+
+      packages.x86_64-linux = nixpkgs_unstable.legacyPackages.${system};
+
+    in {
+      nixosConfigurations = {
+        grape = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./configuration.nix
+            home-manager.nixosModules.default
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.panda = import ./home.nix;
+            }
+          ];
+          specialArgs = {
+            inherit inputs;
+            inherit pkgs_unst;
+          };
+        };
+      };
+    };
+}
