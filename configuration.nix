@@ -131,11 +131,12 @@ in {
     extraGroups =
       [ "wheel" "freezer" "realtime" "nicy" "realtime" "audio" "gamers" ];
     linger = true;
-    homeMode = "751";
+    homeMode = "711";
   };
   users.users.gameboy = {
     isNormalUser = true;
     home = "/home/gameboy";
+    homeMode = "771";
     group = "gameboy";
     extraGroups = [ "wheel" "realtime" "nicy" "audio" "gamers" ];
   };
@@ -209,9 +210,9 @@ in {
     NVD_BACKEND = "direct";
 
     VK_DRIVER_FILES =
-      "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+      "${config.boot.kernelPackages.nvidiaPackages.vulkan_beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
     VK_ICD_FILENAMES =
-      "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+      "${config.boot.kernelPackages.nvidiaPackages.vulkan_beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
   };
   system.stateVersion = "24.05";
 }
