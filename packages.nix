@@ -179,7 +179,7 @@ in {
     #wineWowPackages.waylandFull
     #wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    wineWowPackages.stagingFull
+    pkgs.wineWowPackages.stagingFull
     winetricks
     grim
     slurp

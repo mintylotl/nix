@@ -50,7 +50,6 @@ in {
       source = ./dots/config/pipewire;
       recursive = true;
     };
-    ".asoundrc" = { source = ./dots/config/asoundrc; };
   };
 
   # Programs
