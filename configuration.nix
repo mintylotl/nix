@@ -188,6 +188,7 @@ in {
   };
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev"
+    SUBSYSTEMS=="pci", ATTRS{subsystem_device}=="0x9c56", ATTRS{subsystem_vendor}=="0x1462", ATTRS{enable}="0"
   '';
 
   security.pam.loginLimits = [{
