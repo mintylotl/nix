@@ -49,7 +49,7 @@ in {
       "nvidia"
       "nvidia-drm"
     ];
-    boot.kernelModules = [
+    kernelModules = [
       # AMDCPU
       "kvm-amd"
 
@@ -80,8 +80,8 @@ in {
     "192.168.0.2" = [ "vault.tld" ];
   };
   networking.interfaces.enp42s0.macAddress = "2C:F0:5D:E5:E2:E1";
+  networking.interfaces.enp42s0.useDHCP = true;
 
-  networking.enp42s0.useDHCP = true;
   networking.dhcpcd.enable = false;
 
   time.timeZone = "Africa/Johannesburg";
