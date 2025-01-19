@@ -43,24 +43,35 @@ in {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages;
 
-    initrd.kernelModules =
-      [ "nvidia" "nvidia_drm" "nvidia_uvm" "nvidia_modeset" "nvidiafb" ];
+    initrd.kernelModules = [
+      # NVIDIA
+      "nvidia"
+      "nvidia-drm"
+    ];
+    boot.kernelModules = [
+      # AMDCPU
+      "kvm-amd"
+
+      # NVIDIA_GPU
+      "nvidia_uvm"
+      "nvidia_modeset"
+      "nvidiafb"
+    ];
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
       "nvidia-drm.modeset=1"
-      "module_blacklist=i915"
-      "module_blacklist=amdgpu"
     ];
-    blacklistedKernelModules = [ "nouveau" ];
+    blacklistedKernelModules = [ "amdgpu" "i915" "nouveau" ];
 
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_beta ];
+    kernelPackages = pkgs.linuxPackages;
   };
 
   # NETWORKING
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
+  networking.wireless.enable = false;
   networking.firewall.enable = false;
 
   networking.hostName = "cabbage";
@@ -69,6 +80,9 @@ in {
     "192.168.0.2" = [ "vault.tld" ];
   };
   networking.interfaces.enp42s0.macAddress = "2C:F0:5D:E5:E2:E1";
+
+  networking.enp42s0.useDHCP = true;
+  networking.dhcpcd.enable = false;
 
   time.timeZone = "Africa/Johannesburg";
 
@@ -114,14 +128,12 @@ in {
     jwm = { };
     gameboy = { };
     ftpsecure = { };
-    ssh = { };
     certs = { };
     aria2 = { };
     pulse = { };
     nm-openconnect = { };
-    nicy = { };
+    nicely = { };
     gamers = { };
-    ftp = { };
   };
   # Users
   users.users.jwm = {
@@ -164,14 +176,14 @@ in {
   # Services
   services.pipewire = {
     enable = true;
-
     wireplumber.enable = true;
 
     audio.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+
+    alsa.enable = true;
+    alsa.support32Bit = true;
   };
 
   # Securitay
@@ -180,18 +192,22 @@ in {
     enable = true;
     extraConfig = ''
       polkit.addRule(function (action, subject) {
-        if [ "org.freedesktop.pipewire" ].indexOf(action.id) !== -1 {
+        if ([
+          "org.freedesktop.pipewire",
+          "com.feralinteractive.gamemode"
+        ].indexOf(action.id) !== -1 && subject.isInGroup("nicely")) {
           return polkit.Result.YES;
         }
       });
     '';
   };
+
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev"
   '';
 
   security.pam.loginLimits = [{
-    domain = "@nicy";
+    domain = "@nicely";
     type = "-";
     item = "nice";
     value = -15;
