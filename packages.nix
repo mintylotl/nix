@@ -79,9 +79,7 @@ in {
     cowsay
     kittysay
     pokemonsay
-    pkgs.vulkan-loader
     smartmontools
-    pkgs.vulkan-headers
     pkgs.blender
     keyutils
     compsize
