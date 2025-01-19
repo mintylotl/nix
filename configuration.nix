@@ -39,7 +39,6 @@ in {
     };
     kernelPackages = pkgs.linuxPackages;
 
-    initrd.kernelModules = [ ];
     kernelParams = [ "module_blacklist=amdgpu" ];
     blacklistedKernelModules = [
       "nouveau"
@@ -52,13 +51,14 @@ in {
   };
 
   # NETWORKING
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
   networking.hostName = "grape";
   networking.hosts = { "127.0.0.1" = [ "localhost" ]; };
-  networking.interfaces.enp42s0.macAddress = "2C:F0:5D:E5:E2:E7";
+  
+  networking.wireless.enable = false;
+  networking.dhcpcd.enable = false;
 
   time.timeZone = "Africa/Johannesburg";
 

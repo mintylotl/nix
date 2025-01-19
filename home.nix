@@ -4,6 +4,7 @@ in {
   imports = [
     # Services
     ./services_user.nix
+    ./programs/fish.nix
   ];
 
   home.username = "panda";
@@ -41,6 +42,7 @@ in {
   programs.neovim = { enable = true; };
 
   programs.kitty.enable = true;
+  programs.fish.enable = true;
   programs.alacritty.enable = true;
 
   programs.git = {

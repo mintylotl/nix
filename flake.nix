@@ -3,10 +3,10 @@
 
   nixConfig = {
     extra-experimental-features = "nix-command flakes";
-    trusted-users = "panda";
+    trusted-users = [ "root" "panda" ];
     max-jobs = 1;
     max-substitution-jobs = 1;
-    cores = 5;
+    cores = 3;
   };
 
   inputs = {
@@ -27,11 +27,6 @@
     umuProton = {
       url =
         "github:Open-Wine-Components/umu-launcher/59a82ea8cd284c7535bc06b8f6156abb7da96f6a?dir=packaging/nix";
-    };
-
-    Hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
