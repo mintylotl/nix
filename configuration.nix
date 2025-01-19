@@ -60,7 +60,8 @@ in {
     ];
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-      "nvidia-drm.modeset=1"
+      "nvidia_drm.modeset=1"
+      "nvidia_drm.fbdev=1"
     ];
     blacklistedKernelModules = [ "amdgpu" "i915" "nouveau" ];
 
