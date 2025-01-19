@@ -21,6 +21,7 @@ if systemctl --user status pipewire | grep -q "failed"; then
 	done
 
 	systemctl --user restart pipewire
+	sleep 5s
 	rm ~/.config/pipewire/pipewire.conf
 fi
 
