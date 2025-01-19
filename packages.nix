@@ -17,8 +17,6 @@ in {
 
   environment.systemPackages = with paks; [
     # General
-    man-pages-posix
-
     zip
     imhex
     gzip
@@ -34,17 +32,12 @@ in {
     xorg.xorgserver
     xorg.xrandr
 
-    ventoy-bin
-
     stuntman
     gvfs
     simple-mtpfs
     libmtp
-    android-tools
 
-    shadow
     coreutils
-    direnv
     ntfs3g
     libxkbcommon
     alsa-plugins
@@ -139,9 +132,9 @@ in {
     #wineWowPackages.waylandFull
     #wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    wineWowPackages.stagingFull
+    pkgs.wineWowPackages.stagingFull
     winetricks
-    paks.firefox
+    firefox
     telegram-desktop
     qbittorrent
     mako
@@ -186,8 +179,6 @@ in {
   #  menus.enable = true;
   #  mime.enable = true;
   #};
-
-  programs.ecryptfs.enable = true;
 
   # Fonts
   fonts.packages = with pkgs; [

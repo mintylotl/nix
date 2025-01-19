@@ -39,7 +39,7 @@ in {
     };
     kernelPackages = pkgs.linuxPackages;
 
-    initrd.kernelModules = [ "i915" ];
+    initrd.kernelModules = [ ];
     kernelParams = [ "module_blacklist=amdgpu" ];
     blacklistedKernelModules = [
       "nouveau"
@@ -138,9 +138,6 @@ in {
       });
     '';
   };
-  services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev"
-  '';
 
   security.pam.loginLimits = [{
     domain = "@nicy";
@@ -150,7 +147,7 @@ in {
   }];
 
   environment.variables = {
-    NIX_CONF_DIR = "/etc/nixos";
+    NIX_CONF_DIR = "/etc/nixos/intel";
 
     #LIBVA_DRIVER_NAME = "nvidia";
     #__GLX_VENDOR_LIBRARY_NAME = "nvidia";

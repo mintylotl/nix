@@ -2,7 +2,10 @@
 
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [ "intel-media-sdk" ];
+    extraPackages = with pkgs; [
+      intel-media-sdk
+      intel-media-driver
+    ];
   };
 
   services.xserver = { enable = false; };
@@ -13,4 +16,8 @@
   };
 
   services.desktopManager.plasma6.enable = true;
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 }
