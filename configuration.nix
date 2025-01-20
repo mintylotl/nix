@@ -142,7 +142,7 @@ in {
     home = "/home/jwm";
     group = "jwm";
     extraGroups =
-      [ "wheel" "freezer" "realtime" "nicy" "realtime" "audio" "gamers" ];
+      [ "wheel" "freezer" "realtime" "nicely" "realtime" "audio" "gamers" ];
     linger = true;
     homeMode = "711";
   };
@@ -151,7 +151,7 @@ in {
     home = "/home/gameboy";
     homeMode = "771";
     group = "gamers";
-    extraGroups = [ "wheel" "realtime" "nicy" "audio" "gamers" ];
+    extraGroups = [ "wheel" "realtime" "nicely" "audio" "gamers" ];
   };
   users.users.ftpsecure = {
     isNormalUser = true;
