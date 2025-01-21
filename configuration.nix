@@ -66,7 +66,7 @@ in {
     blacklistedKernelModules = [ "amdgpu" "i915" "nouveau" ];
 
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_beta ];
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   # NETWORKING
