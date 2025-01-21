@@ -114,7 +114,7 @@ in {
     openssl
     tailscale
 
-    pkgs.lutris_unwrapped
+    pkgs.lutris-unwrapped
     protontricks
 
     fd
