@@ -62,7 +62,7 @@ in {
     soulseekqt
     unrar
     wlr-randr
-    pkgs.ark
+    pkgs.kdePackages.ark
     strawberry-qt6
 
     # Project Zomboid
