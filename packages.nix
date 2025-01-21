@@ -92,6 +92,7 @@ in {
     # GTK Libs
     zenity
     pkgs.gst_all_1.gstreamer
+    pkgs.gst_all_1.gst-vaapi
     pkgs.gst_all_1.gst-plugins-base
     pkgs.gst_all_1.gst-plugins-good
     pkgs.gst_all_1.gst-plugins-ugly
@@ -113,7 +114,7 @@ in {
     openssl
     tailscale
 
-    lutris
+    pkgs.lutris_unwrapped
     protontricks
 
     fd
