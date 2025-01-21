@@ -98,6 +98,10 @@ in {
     pkgs.gst_all_1.gst-plugins-bad
     pkgs.gst_all_1.gst-libav
 
+    pkgs.vulkan-loader
+    pkgs.vulkan-headers
+    pkgs.vulkan-validation-layers
+
     xcur2png
     pavucontrol
     audacity
@@ -167,7 +171,6 @@ in {
     openjdk8
 
     # WINE
-    dxvk
     dxvk_2
     vkd3d-proton
     gamescope
