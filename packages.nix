@@ -32,6 +32,7 @@ in {
     pkgs.anki-bin
     pkgs.anki-sync-server
 
+    config.boot.kernelPackages.nvidiaPackages.nvidia_x11_beta
     xorg.xeyes
     xorg.xorgserver
     xorg.xrandr
