@@ -276,8 +276,8 @@ in {
       xdgOpenUsePortal = true;
     };
     icons.enable = true;
-    menus.enable = true;
-    mime.enable = true;
+    menus.enable = false;
+    mime.enable = false;
   };
   programs.ecryptfs.enable = true;
 
