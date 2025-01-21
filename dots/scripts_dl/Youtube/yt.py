@@ -14,7 +14,7 @@ def youtube(link):
         "break_on_existing": False,
         "break_per_url": False,
         #'format': 'best[protocol=https]',
-        "format": "bestvideo[ext=webm][protocol=https]+bestaudio",
+        "format": "bestvideo[protocol=https]+bestaudio",
         "keep_fragments": False,
         "concurrent_fragment_downloads": 1,
         "writesubtitles": True,
