@@ -229,6 +229,8 @@ in {
     #  "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
     VK_ICD_FILENAMES =
       "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    LIBGL_DRIVERS_PATH =
+      "${config.boot.kernelPackages.nvidiaPackages.beta}/lib";
   };
   system.stateVersion = "24.05";
 }
