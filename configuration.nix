@@ -1,5 +1,7 @@
 { nixpkgs, config, lib, pkgs, inputs, ... }:
-let HOME = "/home/jwm";
+let
+  HOME = "/home/jwm";
+  nvidia = config.boot.nvidiaPackages.beta;
 in {
   # nixOS
   imports = [
@@ -225,13 +227,9 @@ in {
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
 
-    #VK_DRIVER_FILES =
-    #  "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
     VK_ICD_FILENAMES =
-      "${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
-    LIBGL_DRIVERS_PATH =
-      "${config.boot.kernelPackages.nvidiaPackages.beta}/lib";
-
+      "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
   };
+  environment.pathsToLink = [ "${nvidia}/lib" "${nvidia.lib32}/lib" ];
   system.stateVersion = "24.05";
 }
