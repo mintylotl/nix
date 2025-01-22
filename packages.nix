@@ -173,7 +173,8 @@ in {
     openjdk8
 
     # WINE
-    logmein_hamachi
+    ryujinx
+    logmein-hamachi
     dxvk_2
     vkd3d-proton
     gamescope
