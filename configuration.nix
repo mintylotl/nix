@@ -68,11 +68,11 @@ in {
       users = [ "panda" ];
       commands = [
         {
-          command = "${HOME}/.scripts/scripts/system/mounts.sh";
+          command = "/system/scripts/mounts.sh";
           options = [ "SETENV" "NOPASSWD" ];
         }
         {
-          command = "${HOME}/.scripts/scripts/system/nixosgarbage.sh";
+          command = "/system/scripts/nixosgarbage.sh";
           options = [ "SETENV" "NOPASSWD" ];
         }
         {
