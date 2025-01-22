@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }: {
 
   hardware.graphics = {
-    enable = false;
-    enable32Bit = false;
+    enable = lib.mkDefault false;
+    enable32Bit = lib.mkDefault false;
     extraPackages = with pkgs; [
       vulkan-loader
       vulkan-validation-layers
