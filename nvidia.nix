@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }: {
 
   hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+    enable = false;
+    enable32Bit = false;
     extraPackages = with pkgs; [
       vulkan-loader
       vulkan-validation-layers
@@ -11,9 +11,6 @@
       libva-vdpau-driver
     ];
     extraPackages32 = with pkgs.driversi686Linux; [ libva-vdpau-driver ];
-
-    package = null;
-    package32 = null;
   };
 
   services.xserver = {
