@@ -11,6 +11,9 @@
       libva-vdpau-driver
     ];
     extraPackages32 = with pkgs.driversi686Linux; [ libva-vdpau-driver ];
+
+    package = null;
+    package32 = null;
   };
 
   services.xserver = {
