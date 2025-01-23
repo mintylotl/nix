@@ -173,7 +173,7 @@ in {
     openjdk8
 
     # WINE
-    ryujinx
+    suyu
     logmein-hamachi
     dxvk_2
     vkd3d-proton
