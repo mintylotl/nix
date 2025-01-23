@@ -173,6 +173,7 @@ in {
     openjdk8
 
     # WINE
+    duperemove
     suyu
     logmein-hamachi
     dxvk_2
