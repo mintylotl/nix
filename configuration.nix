@@ -153,8 +153,6 @@ in {
     MESA_LOADER_DRIVER_OVERRIDE = "iris";
 
     VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
-
-    LD_LIBRARY_PATH = lib.makeLibraryPath( with pkgs; [ mesa driversi686Linux.mesa ] );
   };
   system.stateVersion = "24.05";
 }

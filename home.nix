@@ -12,7 +12,10 @@ in {
   home.preferXdgDirectories = false;
   programs.home-manager.enable = true;
 
-  home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+  home.sessionVariables = { 
+    NIXOS_OZONE_WL = "1";
+    LD_LIBRARY_PATH = lib.makeLibraryPath( with pkgs; [ mesa driversi686Linux.mesa ] );
+  };
 
   home.file = {
     # Scripts & Folders
