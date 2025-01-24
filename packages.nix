@@ -17,6 +17,7 @@ in {
 
   environment.systemPackages = with paks; [
     # General
+    neofetch
     zip
     imhex
     gzip

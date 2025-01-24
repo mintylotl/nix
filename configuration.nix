@@ -152,9 +152,9 @@ in {
     LIBVA_DRIVER_NAME = "iHD";
     MESA_LOADER_DRIVER_OVERRIDE = "iris";
 
-    VK_ICD_FILENAMES = "${mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
+    VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
 
-    LD_LIBRARY_PATH = "${lib.makeLibraryPath( with pkgs; [ ${pkgs.mesa.drivers} ${pkgs.driversi686Linux.drivers} ] )}";
+    LD_LIBRARY_PATH = "${lib.makeLibraryPath( with pkgs; [ mesa.drivers driversi686Linux.drivers ] )}";
   };
   system.stateVersion = "24.05";
 }
