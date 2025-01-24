@@ -132,7 +132,7 @@ in {
     enable = true;
     extraConfig = ''
       polkit.addRule(function (action, subject) {
-        if [ "org.freedesktop.pipewire" ].indexOf(action.id) !== -1 {
+        if ([ "org.freedesktop.pipewire" ].indexOf(action.id) !== -1) {
           return polkit.Result.YES;
         }
       });
@@ -148,15 +148,13 @@ in {
 
   environment.variables = {
     NIX_CONF_DIR = "/etc/nixos/intel";
+    
+    LIBVA_DRIVER_NAME = "iHD";
+    MESA_LOADER_DRIVER_OVERRIDE = "iris";
 
-    #LIBVA_DRIVER_NAME = "nvidia";
-    #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    #GBM_BACKEND = "nvidia-drm";
+    VK_ICD_FILENAMES = "${mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
 
-    #VK_DRIVER_FILES =
-    #"${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
-    #VK_ICD_FILENAMES =
-    #"${config.boot.kernelPackages.nvidiaPackages.beta}/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    LD_LIBRARY_PATH = "${lib.makeLibraryPath( with pkgs; [ ${pkgs.mesa.drivers} ${pkgs.driversi686Linux.drivers} ] )}";
   };
   system.stateVersion = "24.05";
 }

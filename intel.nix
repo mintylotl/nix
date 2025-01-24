@@ -17,9 +17,4 @@
   };
 
   services.desktopManager.plasma6.enable = true;
-
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "iHD";
-    MESA_DRIVER_LOADER_OVERRIDE = "iris";
-  };
 }
