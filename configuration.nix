@@ -154,7 +154,7 @@ in {
 
     VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
 
-    LD_LIBRARY_PATH = ${lib.makeLibraryPath( with pkgs; [ mesa driversi686Linux ] )};
+    LD_LIBRARY_PATH = lib.makeLibraryPath( with pkgs; [ mesa driversi686Linux ] );
   };
   system.stateVersion = "24.05";
 }
