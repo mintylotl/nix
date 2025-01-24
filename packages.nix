@@ -28,6 +28,7 @@ in {
     tldr
     most
     less
+    tkinter
 
     pkgs.anki-bin
     pkgs.anki-sync-server
