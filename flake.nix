@@ -43,7 +43,7 @@
 
     in {
       nixosConfigurations = {
-        grape = nixpkgs.lib.nixosSystem {
+        banana = nixpkgs.lib.nixosSystem {
           modules = [
             ./configuration.nix
             home-manager.nixosModules.default

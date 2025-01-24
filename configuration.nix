@@ -54,7 +54,7 @@ in {
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
-  networking.hostName = "grape";
+  networking.hostName = "banana";
   networking.hosts = { "127.0.0.1" = [ "localhost" ]; };
   
   networking.wireless.enable = false;
