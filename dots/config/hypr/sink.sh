@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
 count=3
+state_sink="$(wpctl status)"
+state="$(systemctl --user status pipewire)"
+config="$(cat ~/.config/pipewire/pipewire.conf)"
 
-if systemctl --user status pipewire | grep -q "failed"; then
+if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headphones"; then
 	echo Service Failed, Attempting a Restart...
 	sleep 10s
 	for x in /sys/bus/pci/devices/0000:2d:00.4/sound/card*; do
 		while :; do
 			if [ "${x: -1}" == "$count" ]; then
-				cat ~/.config/pipewire/pipewire.conf | sed "/s/hw:[0-9]/hw:$count/g" >~/.config/pipewire/pipewire.conf
-				sed -i "/s/hw:[0-9]/hw:$count/g" /etc/nixos/dots/config/pipewire/pipewire.conf
+				rm ~/.config/pipewire/pipewire.conf
+				echo "$config" | sed "s/hw:[0-9]/hw:$count/g" >~/.config/pipewire/pipewire.conf
+				sed -i "s/hw:[0-9]/hw:$count/g" /etc/nixos/dots/config/pipewire/pipewire.conf
 			fi
 
 			if [ $count -lt 1 ]; then

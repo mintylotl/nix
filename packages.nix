@@ -28,7 +28,6 @@ in {
     tldr
     most
     less
-    tkinter
 
     pkgs.anki-bin
     pkgs.anki-sync-server
@@ -174,9 +173,9 @@ in {
     openjdk8
 
     # WINE
+    wireguard-tools
     duperemove
     suyu
-    logmein-hamachi
     dxvk_2
     vkd3d-proton
     gamescope
