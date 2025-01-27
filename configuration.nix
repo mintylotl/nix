@@ -90,6 +90,7 @@ in {
   networking.interfaces.enp42s0.useDHCP = true;
 
   networking.dhcpcd.enable = false;
+  networking.nftables.enable = true;
 
   time.timeZone = "Africa/Johannesburg";
 
