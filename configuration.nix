@@ -77,8 +77,14 @@ in {
   networking.wireless.enable = false;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ ];
-    allowedUDPPorts = [ ];
+    allowedTCPPortRanges = [{
+      from = 0;
+      to = 65000;
+    }];
+    allowedUDPPortRanges = [{
+      from = 0;
+      to = 65000;
+    }];
   };
 
   networking.hostName = "cabbage";
