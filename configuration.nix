@@ -227,7 +227,7 @@ in {
     value = -15;
   }];
 
-  security.pki.certificateFiles = [ ./resources/certs/ca/ca.pem ];
+  security.pki.certificateFiles = [ ./resources/certs/ca/rootCA.pem ];
 
   environment.variables = {
     NIX_CONF_DIR = "/etc/nixos";
