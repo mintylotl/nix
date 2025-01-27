@@ -173,6 +173,7 @@ in {
     openjdk8
 
     # WINE
+    wireshark-qt
     wireguard-tools
     duperemove
     suyu
