@@ -90,7 +90,7 @@ in {
   networking.hostName = "cabbage";
   networking.hosts = {
     "127.0.0.1" = [ "ariaweb.srv" "jellyfin.srv" "fileserve.srv" ];
-    "192.168.0.2" = [ "vault.tld" ];
+    "10.0.2.2" = [ "vault.tld" ];
   };
   networking.interfaces.enp42s0.macAddress = "2C:F0:5D:E5:E2:E1";
   networking.interfaces.enp42s0.useDHCP = true;
