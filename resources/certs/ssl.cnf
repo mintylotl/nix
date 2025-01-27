@@ -8,7 +8,7 @@ req_extensions = req_ext
 [ dn ]
 C = ZA
 O = Lazy Owl Inc.
-CN = 192.168.0.2
+CN = 10.0.2.2
 
 [ req_ext ]
 subjectAltName = @alt_names
@@ -19,7 +19,7 @@ DNS.2 = vault.tld
 DNS.3 = jellyfin.srv
 DNS.4 = fileserve.srv
 
-IP.1 = 192.168.0.2
+IP.1 = 10.0.2.2
 IP.2 = 192.168.2.2
 IP.3 = 127.0.0.1
 IP.4 = 0.0.0.0
