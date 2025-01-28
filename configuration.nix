@@ -176,7 +176,7 @@ in {
     extraGroups = [ "ftp" ];
   };
   users.users.nginx = { extraGroups = [ "certs" ]; };
-
+  users.users.jellyfin = { extraGroups = [ "freezer" ]; };
   # Sound
 
   # Some programs need SUID wrappers, can be configured further or are
