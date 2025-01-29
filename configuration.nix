@@ -56,7 +56,7 @@ in {
       "kvm-amd"
 
       # NVIDIA_GPU
-      #"nvidia_uvm"
+      "nvidia_uvm"
       "nvidia_modeset"
       "nvidiafb"
     ];
