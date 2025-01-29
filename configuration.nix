@@ -56,7 +56,7 @@ in {
       "kvm-amd"
 
       # NVIDIA_GPU
-      "nvidia_uvm"
+      #"nvidia_uvm"
       "nvidia_modeset"
       "nvidiafb"
     ];
@@ -67,8 +67,8 @@ in {
     ];
     blacklistedKernelModules = [ "amdgpu" "i915" "nouveau" ];
 
+    kernelPackages = pkgs.linuxPackages;
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_beta ];
-    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   # NETWORKING
