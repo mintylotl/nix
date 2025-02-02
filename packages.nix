@@ -1,7 +1,7 @@
 { pkgs_unst, pkgs, config, lib, inputs, ... }:
 let
   paks = pkgs_unst;
-  py = paks.python312Packages;
+  py = pkgs.python312Packages;
 
 in {
   nixpkgs.overlays = [
@@ -135,7 +135,7 @@ in {
 
     # Python
     #System
-    python312
+    pkgs.python3Full
     py.pip
 
     #Misc
