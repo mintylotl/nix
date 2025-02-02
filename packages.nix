@@ -7,10 +7,10 @@ in {
   nixpkgs.overlays = [
     inputs.prism.overlays.default
     (final: prev: {
-      umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
+      umu = inputs.umuProton.packages.${pkgs.system}.umu-launcher.override {
         version = inputs.umuProton.shortRev;
-        truststore = true;
-        cbor2 = true;
+        withTruststore = true;
+        withDeltaUpdates = true;
       };
     })
   ];
