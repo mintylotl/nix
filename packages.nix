@@ -29,6 +29,7 @@ in {
     most
     less
 
+    osu-lazer-bin
     pkgs.anki-bin
     pkgs.anki-sync-server
 
