@@ -8,7 +8,6 @@ in {
     inputs.prism.overlays.default
     (final: prev: {
       umu = inputs.umuProton.packages.${pkgs.system}.umu-launcher.override {
-        version = inputs.umuProton.shortRev;
         withTruststore = true;
         withDeltaUpdates = true;
       };
