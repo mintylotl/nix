@@ -28,7 +28,7 @@ def youtube(link):
         "abort_on_error": True,
         "fragment_retries": 9999,
         "merge_output_format": "mkv",
-        #'outtmpl': '%(playlist_index)s_%(title)s.%(ext)s'
+        "outtmpl": "%(playlist_index)s_%(title)s.%(ext)s",
     }
 
     if "!" in link:
