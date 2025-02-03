@@ -3,11 +3,11 @@
 count=3
 state_sink="$(wpctl status)"
 state="$(systemctl --user status pipewire)"
-config="$(cat ~/.config/pipewire/pipewire.conf)"
+config="$(cat /etc/nixos/dots/config/pipewire/pipewire.conf)"
 
 if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headphones"; then
 	echo Service Failed, Attempting a Restart...
-	sleep 10s
+	sleep 3s
 	for x in /sys/bus/pci/devices/0000:2d:00.4/sound/card*; do
 		while :; do
 			if [ "${x: -1}" == "$count" ]; then
