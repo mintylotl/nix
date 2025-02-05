@@ -1,7 +1,7 @@
 { nixpkgs, config, lib, pkgs, inputs, ... }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.beta;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
 in {
   # nixOS
   imports = [
@@ -68,7 +68,7 @@ in {
     blacklistedKernelModules = [ "amdgpu" "i915" "nouveau" ];
 
     kernelPackages = pkgs.linuxPackages;
-    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_beta ];
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
   };
 
   # NETWORKING
@@ -154,8 +154,7 @@ in {
     isNormalUser = true;
     home = "/home/jwm";
     group = "jwm";
-    extraGroups =
-      [ "wheel" "freezer" "realtime" "nicely" "realtime" "audio" "gamers" ];
+    extraGroups = [ "wheel" "freezer" "realtime" "nicely" "audio" "gamers" ];
     linger = true;
     homeMode = "711";
   };
@@ -241,6 +240,5 @@ in {
     VK_ICD_FILENAMES =
       "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
   };
-  environment.pathsToLink = [ "${nvidia}/lib" "${nvidia.lib32}/lib" ];
   system.stateVersion = "24.05";
 }
