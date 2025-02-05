@@ -7,9 +7,9 @@ in {
   nixpkgs.overlays = [
     inputs.prism.overlays.default
     (final: prev: {
-      umu = inputs.umuProton.packages.${pkgs.system}.umu-launcher.override {
-        withTruststore = true;
-        withDeltaUpdates = true;
+      umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
+        #withTruststore = true;
+        #withDeltaUpdates = true;
       };
     })
   ];
@@ -32,7 +32,6 @@ in {
     pkgs.anki-bin
     pkgs.anki-sync-server
 
-    config.boot.kernelPackages.nvidiaPackages.beta
     xorg.xeyes
     xorg.xorgserver
     xorg.xrandr
@@ -48,7 +47,6 @@ in {
 
     shadow
     coreutils
-    direnv
     ntfs3g
     libxkbcommon
     alsa-plugins
@@ -59,10 +57,8 @@ in {
     godot_4
     ecryptfs
     xorg.xinit
-    pkgs.megasync
     soulseekqt
     unrar
-    wlr-randr
     pkgs.kdePackages.ark
     strawberry-qt6
 
@@ -113,9 +109,8 @@ in {
     neofetch
     pkgs.speedcrunch
     openssl
-    tailscale
 
-    pkgs.lutris-unwrapped
+    pkgs.lutris
     protontricks
 
     fd
@@ -123,6 +118,7 @@ in {
     cmake
     clang
     gnumake
+    gcc
     paks.rustup
     paks.rust-analyzer
 
@@ -151,7 +147,6 @@ in {
     discord
     bitwarden-desktop
     git
-    gcc
     makemkv
     pkg-config
     btrfs-progs
@@ -184,9 +179,9 @@ in {
     mangohud
     # Programs
     #wineWowPackages.waylandFull
-    #wineWowPackages.stableFull
+    pkgs.wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    pkgs.wineWowPackages.stagingFull
+    #wineWowPackages.stagingFull
     winetricks
     grim
     slurp

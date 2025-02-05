@@ -1,15 +1,9 @@
 { config, pkgs, lib, ... }: {
 
   hardware.graphics = {
-    enable = lib.mkDefault false;
-    enable32Bit = lib.mkDefault false;
-    extraPackages = with pkgs; [
-      vulkan-loader
-      vulkan-validation-layers
-      vulkan-headers
-
-      libva-vdpau-driver
-    ];
+    enable = lib.mkDefault true;
+    enable32Bit = lib.mkDefault true;
+    extraPackages = with pkgs; [ libva-vdpau-driver ];
     extraPackages32 = with pkgs.driversi686Linux; [ libva-vdpau-driver ];
   };
 
@@ -30,7 +24,7 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     powerManagement.finegrained = false;
     powerManagement.enable = true;
