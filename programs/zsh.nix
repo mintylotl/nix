@@ -34,6 +34,12 @@
         alias umount.crypt="umount.ecryptfs_private"
         alias ikey="insert.sh"
 
+        # --wireguard
+        alias wgVlanU="sudo wg-quick up ~/.wireguard/vlan.conf"
+        alias wgVlanD="sudo wg-quick down ~/.wireguard/vlan.conf"
+        alias wgClientU="sudo wg-quick up ~/.wireguard/client2.conf"
+        alias wgClientD="sudo wg-quick down ~/.wireguard/client2.conf"
+
       PATH="/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
 
       eval "$(direnv hook zsh)"
