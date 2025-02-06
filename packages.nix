@@ -204,7 +204,8 @@ in {
 
   programs.obs-studio = {
     enable = true;
-    plugins = [ pkgs.obs-studio-plugins.wlrobs ];
+    package = paks.obs-studio;
+    plugins = [ paks.obs-studio-plugins.wlrobs ];
   };
   programs.xfconf.enable = true;
   programs.dconf.enable = true;
