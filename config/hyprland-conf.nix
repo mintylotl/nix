@@ -121,7 +121,7 @@
           vfr = false
       }
       render {
-          explicit_sync = 0
+          explicit_sync = 1
       }
 
       #WindowRules
