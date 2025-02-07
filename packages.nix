@@ -7,9 +7,9 @@ in {
   nixpkgs.overlays = [
     inputs.prism.overlays.default
     (final: prev: {
-      umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
-        #withTruststore = true;
-        #withDeltaUpdates = true;
+      umu = inputs.umuProton.packages.${pkgs.system}.umu-launcher.override {
+        withTruststore = true;
+        withDeltaUpdates = true;
       };
     })
   ];
