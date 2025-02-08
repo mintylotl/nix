@@ -1,18 +1,16 @@
-{config, lib, pkgs, ...}:
-let
-HOME = "/home/jwm";
-in
-{
+{ config, lib, pkgs, ... }:
+let HOME = "/home/jwm";
+in {
   home.username = "jwm";
   home.homeDirectory = "/home/jwm";
   home.preferXdgDirectories = true;
   programs.home-manager.enable = true;
- 
+
   imports = [
     ./home/xdg.nix
 
     ./programs/zsh.nix
-    ./programs/hyprland.nix
+    ./config/hyprland-conf.nix
     ./programs/emacs.nix
 
     ./services_user.nix

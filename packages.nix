@@ -11,16 +11,11 @@ in {
         withTruststore = true;
         withDeltaUpdates = true;
       };
-      mbWine =
-        inputs.musicBee.inputs.nixpkgs.legacyPackages.${pkgs.system}.wineWowPackages.stableFull.override {
-          version = "9.0";
-        };
     })
   ];
 
   environment.systemPackages = with paks; [
     # General
-    #mbWine
     man-pages-posix
 
     zip
