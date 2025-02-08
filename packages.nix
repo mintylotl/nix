@@ -136,6 +136,7 @@ in {
 
     #Misc
     py.yt-dlp
+    py.numpy
 
     #Emacs
     py.black
