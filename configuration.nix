@@ -239,6 +239,11 @@ in {
 
     VK_ICD_FILENAMES =
       "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
+    mbWINE = "${
+        inputs.musicBee.legacyPackages.${pkgs.system}.wineWowPackages.stableFull.overrideAttrs {
+          version = "9.0";
+        }
+      }/bin/wine";
   };
 
   system.stateVersion = "24.05";
