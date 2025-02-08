@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-xdotool key --window $( xdotool search --limit 1 --pid $( pgrep -f MusicBee.exe ) ) "SHIFT+Scroll_Lock"
+cd "$HOME/.scripts/programs/musicbee/shortcuts"
+
+WINDOW="$(./getWdName.sh)"
+xdotool key --window $WINDOW "SHIFT+Scroll_Lock"
