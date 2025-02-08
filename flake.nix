@@ -30,13 +30,18 @@
       #"github:Open-Wine-Components/umu-launcher/59a82ea8cd284c7535bc06b8f6156abb7da96f6a?dir=packaging/nix";
     };
 
+    musicBee = {
+      url = "github:NixOS/nixpkgs/030ba1976b7c0e1a67d9716b17308ccdab5b381e";
+    };
+
     Hyprland = {
       url = "github:hyprwm/hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs_unstable, home-manager, ... }@inputs:
+  outputs =
+    { self, nixpkgs, nixpkgs_unstable, home-manager, musicBee, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -44,7 +49,6 @@
         system = system;
         config.allowUnfree = true;
       };
-
       packages.x86_64-linux = nixpkgs_unstable.legacyPackages.${system};
 
     in {
@@ -63,8 +67,9 @@
           specialArgs = {
             inherit inputs;
             inherit pkgs_unst;
+            inherit musicBee;
           };
         };
       };
-    };
+      };
 }

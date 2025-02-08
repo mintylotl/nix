@@ -1,25 +1,27 @@
-{ config, pkgs, lib, ... }:
-let HOME = "/home/jwm";
-in {
-  imports = [
-    # Home
-    ./home/xdg.nix
-
-    # Programs
-    ./config/hyprland-conf.nix
-    ./programs/zsh.nix
-    ./programs/emacs.nix
-
-    # Services
-    ./services_user.nix
-  ];
-
+{config, lib, pkgs, ...}:
+let
+HOME = "/home/jwm";
+in
+{
   home.username = "jwm";
   home.homeDirectory = "/home/jwm";
   home.preferXdgDirectories = true;
   programs.home-manager.enable = true;
+ 
+  imports = [
+    ./home/xdg.nix
 
-  home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+    ./programs/zsh.nix
+    ./programs/hyprland.nix
+    ./programs/emacs.nix
+
+    ./services_user.nix
+  ];
+
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    #mbWine = "${mbPkgs}/bin/wine";
+  };
 
   home.file = {
     # Scripts & Folders

@@ -11,11 +11,16 @@ in {
         withTruststore = true;
         withDeltaUpdates = true;
       };
+      mbWine =
+        inputs.musicBee.inputs.nixpkgs.legacyPackages.${pkgs.system}.wineWowPackages.stableFull.override {
+          version = "9.0";
+        };
     })
   ];
 
   environment.systemPackages = with paks; [
     # General
+    #mbWine
     man-pages-posix
 
     zip
@@ -179,9 +184,9 @@ in {
     mangohud
     # Programs
     #wineWowPackages.waylandFull
-    pkgs.wineWowPackages.stableFull
+    #wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    #wineWowPackages.stagingFull
+    wineWowPackages.stagingFull
     winetricks
     grim
     slurp

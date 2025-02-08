@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-xdotool key --window $( xdotool search --limit 1 --pid $(pgrep -f MusicBee.exe) ) "End"
+cd "$HOME/.scripts/programs/musicbee/shortcuts"
+
+WINDOW="$(./getWdName.sh)"
+xdotool key --window $WINDOW "End"
