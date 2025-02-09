@@ -3,7 +3,7 @@
 {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs30-pgtk;
+    package = pkgs.emacs29-pgtk;
 
     extraPackages = epkgs:
       with pkgs; [
