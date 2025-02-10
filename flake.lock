@@ -80,22 +80,6 @@
         "type": "github"
       }
     },
-    "flake-compat_2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733328505,
-        "narHash": "sha256-NeCCThCEP3eCl2l/+27kNNK7QrwZB1IJCrXfrbv5oqU=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "ff81ac966bb2cae68946d5ed5fc4994f96d0ffec",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
@@ -432,6 +416,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1739020877,
+        "narHash": "sha256-mIvECo/NNdJJ/bXjNqIh8yeoSjVLAuDuTUzAo7dzs8Y=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a79cfe0ebd24952b580b1cf08cd906354996d547",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_unstable": {
       "locked": {
         "lastModified": 1739020877,
@@ -473,24 +473,22 @@
     },
     "prism": {
       "inputs": {
-        "flake-compat": "flake-compat_2",
+        "flake-compat": [],
         "libnbtplusplus": "libnbtplusplus",
         "nix-filter": "nix-filter",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1736636015,
-        "narHash": "sha256-/5xtzKed3r84lIMMDVrQE8jqvTUzHTdsWyPIySw/NGs=",
-        "owner": "mintylotl",
-        "repo": "prismcrack",
-        "rev": "988d07e2ff01a4962c72f28052a0d96d4b84ca97",
+        "lastModified": 1738827323,
+        "narHash": "sha256-kM7rPh9kopO4tmJi6AhOlo72lyEBX00bTY3fr0532VQ=",
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
+        "rev": "8d143c7b952848181789f996e82a430004a0b105",
         "type": "github"
       },
       "original": {
-        "owner": "mintylotl",
-        "repo": "prismcrack",
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
         "type": "github"
       }
     },

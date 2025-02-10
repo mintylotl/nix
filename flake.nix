@@ -20,8 +20,8 @@
     };
 
     prism = {
-      url = "github:mintylotl/prismcrack";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:PrismLauncher/PrismLauncher";
+      inputs.flake-compat.follows = "";
     };
 
     umuProton = {
@@ -40,8 +40,8 @@
     };
   };
 
-  outputs =
-    { self, nixpkgs, nixpkgs_unstable, home-manager, musicBee, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs_unstable, home-manager, prism, musicBee
+    , ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -66,6 +66,7 @@
           ];
           specialArgs = {
             inherit inputs;
+            inherit prism;
             inherit pkgs_unst;
             inherit musicBee;
           };
