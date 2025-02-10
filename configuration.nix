@@ -23,11 +23,21 @@ in {
   nix = {
     package = pkgs.nix;
     extraOptions = "experimental-features = nix-command flakes";
-    settings = { trusted-users = [ "jwm" ]; };
 
     optimise = {
       automatic = false;
       dates = [ "06:00" ];
+    };
+    settings = {
+      trusted-users = [ "jwm" ];
+      trusted-substituters = [ "https://prismlauncher.cachix.org" ];
+
+      substituters =
+        [ "https://nix-community.cachix.org" "https://cache.nixos.org/" ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
+      ];
     };
   };
 

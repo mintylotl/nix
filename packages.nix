@@ -1,16 +1,16 @@
-{ pkgs_unst, pkgs, config, lib, inputs, ... }:
+{ pkgs_unst, pkgs, config, lib, inputs, prism, ... }:
 let
   paks = pkgs_unst;
   py = pkgs.python312Packages;
 
 in {
   nixpkgs.overlays = [
-    inputs.prism.overlays.default
     (final: prev: {
       umu = inputs.umuProton.packages.${pkgs.system}.umu-launcher.override {
         withTruststore = true;
         withDeltaUpdates = true;
       };
+      prismlauncherCracked = prism.packages.${pkgs.system}.prismlauncher;
     })
   ];
 
@@ -127,7 +127,7 @@ in {
     pkgs.kdePackages.qt6ct
 
     # PrismLauncher Cracked
-    pkgs.prismlauncher
+    pkgs.prismlauncherCracked
 
     # Python
     #System
