@@ -3,8 +3,8 @@
   hardware.graphics = {
     enable = lib.mkDefault true;
     enable32Bit = lib.mkDefault true;
-    extraPackages = with pkgs; [ libva-vdpau-driver egl-wayland ];
-    extraPackages32 = with pkgs.driversi686Linux; [ libva-vdpau-driver ];
+    extraPackages = with pkgs; [ ];
+    extraPackages32 = with pkgs.driversi686Linux; [ ];
   };
 
   services.xserver = {
