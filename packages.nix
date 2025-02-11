@@ -1,6 +1,7 @@
-{ pkgs_unst, pkgs, config, lib, inputs, prism, ... }:
+{ pkgs_unst, pkgs, pkgs_old, config, lib, inputs, prism, ... }:
 let
   paks = pkgs_unst;
+  pakold = pkgs_old;
   py = pkgs.python312Packages;
 
 in {
@@ -195,7 +196,7 @@ in {
     pkgs.qbittorrent
     mako
     rose-pine-cursor
-    aria2
+    paksold.aria2
 
     # Icon_Themes
     adwaita-icon-theme
