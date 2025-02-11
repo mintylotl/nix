@@ -28,6 +28,7 @@ in {
     most
     less
 
+    jellyfin-mpv-shim
     osu-lazer
     pkgs.anki-bin
     pkgs.anki-sync-server
