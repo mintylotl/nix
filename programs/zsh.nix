@@ -40,7 +40,7 @@
         alias wgClientU="sudo wg-quick up ~/.wireguard/client2.conf"
         alias wgClientD="sudo wg-quick down ~/.wireguard/client2.conf"
 
-      PATH="/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
+      PATH="/home/jwm/.cargo/bin:/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
 
       eval "$(direnv hook zsh)"
       source $ZIM_HOME/init.zsh
