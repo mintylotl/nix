@@ -1,7 +1,7 @@
 { pkgs_unst, pkgs, pkgs_old, config, lib, inputs, prism, ... }:
 let
   paks = pkgs_unst;
-  pakold = pkgs_old;
+  paksold = pkgs_old;
   py = pkgs.python312Packages;
 
 in {
