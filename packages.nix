@@ -30,7 +30,7 @@ in {
     less
 
     jellyfin-mpv-shim
-    osu-lazer
+    osu-lazer-bin
     pkgs.anki-bin
     pkgs.anki-sync-server
 
