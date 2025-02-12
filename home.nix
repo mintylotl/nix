@@ -68,6 +68,7 @@ in {
     enable = true;
     bashrcExtra = "";
     initExtra = ''
+      alias e="exit"
       zsh
     '';
     profileExtra = "";
