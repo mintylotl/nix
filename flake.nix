@@ -23,7 +23,7 @@
     };
 
     prism = {
-      url = "github:PrismLauncher/PrismLauncher";
+      url = "github:Diegiwg/PrismLauncher-Cracked";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "";
     };
