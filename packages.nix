@@ -237,6 +237,7 @@ in {
   services.vsftpd.enable = true;
   services.openssh.enable = true;
   services.tumbler.enable = true;
+  services.cachix-agent.enable = true;
 
   services.jellyfin = {
     enable = true;
