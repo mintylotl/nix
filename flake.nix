@@ -24,7 +24,6 @@
 
     prism = {
       url = "github:Diegiwg/PrismLauncher-Cracked";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "";
     };
 

@@ -3,13 +3,11 @@
   hardware.graphics = {
     enable = lib.mkDefault true;
     enable32Bit = lib.mkDefault true;
-    extraPackages = with pkgs; [ ];
-    extraPackages32 = with pkgs.driversi686Linux; [ ];
   };
 
   services.xserver = {
     enable = false;
-    videoDrivers = [ "nvidia" "modesetting" ];
+    videoDrivers = [ "nvidia" ];
   };
 
   services.displayManager.sddm = {
