@@ -7,10 +7,10 @@
       workspace = HDMI-A-1, 1
 
       # --Nvidia
-      env = __GLX_VENDOR_LIBRARY_NAME, nvidia
-      env = LIBVA_DRIVER_NAME, nvidia
-      env = GBM_BACKEND, nvidia-drm
-      env = NVD_BACKEND, direct
+      #env = __GLX_VENDOR_LIBRARY_NAME, nvidia
+      #env = LIBVA_DRIVER_NAME, nvidia
+      #env = GBM_BACKEND, nvidia-drm
+      #env = NVD_BACKEND, direct
 
       env = GDK_BACKEND, wayland, x11
 
