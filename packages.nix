@@ -191,7 +191,7 @@ in {
     hyprpaper
     wl-clipboard
     cliphist
-    pkgs.firefox
+    pkgs.firefox-bin
     telegram-desktop
     pkgs.qbittorrent
     mako
