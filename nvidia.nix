@@ -3,6 +3,7 @@
   hardware.graphics = {
     enable = lib.mkDefault true;
     enable32Bit = lib.mkDefault true;
+    extraPackages = [ pkgs.libva-vdpau-driver ];
   };
 
   services.xserver = {
