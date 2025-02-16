@@ -42,7 +42,7 @@
       env = HYPRCURSOR_THEME, "rosepine-cursor"
 
       # --Scripts
-      exec-once = "$HOME"/.config/hypr/sink.sh
+      exec-once = $HOME/.config/hypr/sink.sh
       exec-once = sudo -E "$scripts"/system/leds.sh&
       #exec-once = sudo -E "$scripts"/system/mounts.sh
 
