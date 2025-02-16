@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
-if [ ! "$( pidof hypridle )" == "" ]
-then
+if [ ! "$(pidof hypridle)" == "" ]; then
 	killall hypridle
-	hypridle&
+	hypridle &
 else
-	hypridle&
-fi
-
-if ! systemctl --user status pipewire | grep -q "failed";
-then
-	waybar
+	hypridle &
 fi
