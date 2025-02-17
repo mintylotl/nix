@@ -24,6 +24,8 @@ in {
     package = pkgs.nix;
     extraOptions = "experimental-features = nix-command flakes";
 
+    registry.devshells.flake = builtins.getFlake "./shells";
+
     optimise = {
       automatic = false;
       dates = [ "06:00" ];

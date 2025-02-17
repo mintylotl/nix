@@ -12,7 +12,6 @@ in {
         withDeltaUpdates = true;
       };
       prismlauncherCracked = prism.packages.${pkgs.system}.prismlauncher;
-      blender3 = pkgs.blender.overrideAttrs { version = "3.3.0"; };
     })
   ];
 
@@ -81,7 +80,6 @@ in {
     pokemonsay
     smartmontools
     pkgs.blender
-    pkgs.blender3
     keyutils
     compsize
     pkgs.gtk2
