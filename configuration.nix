@@ -24,6 +24,17 @@ in {
     package = pkgs.nix;
     extraOptions = "experimental-features = nix-command flakes";
 
+    registry.devShells = {
+      from = {
+        id = "blender3";
+        type = "indirect";
+      };
+      to = {
+        type = "path";
+        path = "/etc/nixos/shells";
+      };
+    };
+
     optimise = {
       automatic = false;
       dates = [ "06:00" ];
