@@ -31,7 +31,7 @@ in {
       };
       to = {
         type = "path";
-        path = "/etc/nixos/shells";
+        path = "/etc/nixos/devShells";
       };
     };
 
