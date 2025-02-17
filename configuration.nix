@@ -26,7 +26,7 @@ in {
 
     registry.devShells = {
       from = {
-        id = "blender3";
+        id = "devShells";
         type = "indirect";
       };
       to = {
