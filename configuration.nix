@@ -24,15 +24,15 @@ in {
     package = pkgs.nix;
     extraOptions = "experimental-features = nix-command flakes";
 
-    registry.devShells = {
-      from = {
-        id = "devShells";
-        type = "indirect";
+    registry = {
+
+      devShells = {
+        to = {
+          type = "path";
+          path = "/etc/nixos/devShells";
+        };
       };
-      to = {
-        type = "path";
-        path = "/etc/nixos/devShells";
-      };
+      nixos.to = config.nix.registry.nixpkgs.to;
     };
 
     optimise = {

@@ -23,6 +23,23 @@ in {
     #mbWine = "${mbPkgs}/bin/wine";
   };
 
+  nix.registry = {
+    devShells = {
+      from = {
+        id = "devShells";
+        type = "indirect";
+      };
+      to = {
+        type = "path";
+        path = "/etc/nixos/devShells";
+      };
+    };
+    nixos.to = {
+      id = "nixpkgs";
+      type = "indirect";
+    };
+  };
+
   home.file = {
     # Scripts & Folders
     ".scripts" = {
