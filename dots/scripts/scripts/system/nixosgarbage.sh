@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
-for i in /nix/var/nix/gcroots/auto/*; do
-    rm "$i"
-done
-nix-collect-garbage -d
+if [ $1 -eq 0 ]; then
+    for x in /nix/var/nix/gcroots/auto/*; do
+        rm "$x"
+    done
 
-nixos-rebuild boot --flake /etc/nixos#cabbage
+    nix-collect-garbage -d
+    nixos-rebuild boot --flake /etc/nixos#cabbage
+
+else
+    nix-collect-garbage -d
+    nixos-rebuild boot --flake /etc/nixos#cabbage
+fi
