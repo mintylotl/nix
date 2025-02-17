@@ -5,3 +5,5 @@ if [ ! "$(pidof hypridle)" == "" ]; then
 else
 	hypridle &
 fi
+
+waybar &
