@@ -17,15 +17,15 @@
       # --Themes
       # --QT
       env = QT_QPA_PLATFORM, wayland
-      env = GTK_USE_PORTAL, 1
+      #env = GTK_USE_PORTAL, 1
 
       # --XDG / DBUS
       env = XDG_CURRENT_DESKTOP, Hyprland
       env = XDG_SESSION_DESKTOP, Hyprland
       env = XDG_SESSION_TYPE, wayland
 
-      exec-once = systemctl --user start hyprpolkitagent
-      exec-once = systemctl --user start xdg-desktop-portal-hyprland
+      exec-once = sleep 5s && systemctl --user start hyprpolkitagent
+      exec-once = sleep 10s systemctl --user start xdg-desktop-portal-hyprland
       exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -50,7 +50,7 @@
       exec-once = hyprpaper
 
       # --Lutris
-      env = LUTRIS_SKIP_INIT, 1
+      #env = LUTRIS_SKIP_INIT, 1
 
 
       exec = dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RosePineDawn-Linux'"
@@ -276,7 +276,7 @@
       # --Programs
       bind = $mainMod, P, exec, /home/jwm/.scripts/programs/musicbee/launcher.sh
 
-      bind = $mainMod, G, exec, MOZ_ENABLE_WAYLAND=1 firefox
+      bind = $mainMod, G, exec, firefox
       bind = $mainMod, RETURN, exec, alacritty
       bind = $mainMod, S, exec, speedcrunch
       bind = $mainMod, E, exec, GDK_BACKEND="wayland" GTK_ICON_THEME="Papirus-Dark" thunar

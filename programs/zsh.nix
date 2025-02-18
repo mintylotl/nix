@@ -29,6 +29,7 @@
       alias emacsc="emacsclient -c -a emacs -s /home/jwm/.doom.d/emacflurry/mcflurry"
       alias garb="sudo $HOME/.scripts/scripts/system/nixosgarbage.sh 1"
       alias garbBige="sudo $HOME/.scripts/scripts/system/nixosgarbage.sh 0"
+      alias blender3="~/.local/state/nix/profiles/blender3/bin/blender"
 
         # --ecryptfs
         alias mount.crypt="mount.ecryptfs_private"
