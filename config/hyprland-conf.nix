@@ -125,10 +125,10 @@
       }
 
       #WindowRules
-      windowrule = workspace 2 silent, ^(steam)$
-      windowrule = workspace 2 silent, ^(lutris)$
-      windowrule = workspace 8 silent, ^(org.qbittorrent.qBittorrent)$
-      windowrule = workspace 1 silent, ^(firefox)$
+      #windowrule = workspace 2 silent, ^(steam)$
+      #windowrule = workspace 2 silent, ^(lutris)$
+      #windowrule = workspace 8 silent, ^(org.qbittorrent.qBittorrent)$
+      #windowrule = workspace 1 silent, ^(firefox)$
 
       # WindowruleV2s
       # --XDG
@@ -143,9 +143,9 @@
       windowrulev2 = size 800 800, class:qimgv
       windowrulev2 = center 1, class:qimgv
       # --Lutris
-      windowrulev2 = float, class:lutris, title:^(?!Lutris).*$
-      windowrulev2 = center 1, class:lutris, title:^(?!Lutris).*$
-      windowrulev2 = size 950 700, class:lutris, title:^(?!Lutris).*$
+      windowrulev2 = float, class:lutris, title:(?!Lutris.*)
+      windowrulev2 = center 1, class:lutris, title:(?!Lutris.*)
+      windowrulev2 = size 950 700, class:lutris, title:(?!Lutris.*)
       # --polkit
       windowrulev2 = float, class:^(org.kde.polkit-kde-authentication-agent-1)$
       windowrulev2 = center 1, class:^(org.kde.polkit-kde-authentication-agent-1)$
@@ -183,8 +183,8 @@
       windowrulev2 = center 1, class:^(org.pulseaudio.pavucontrol)$
       windowrulev2 = size 1094 345, class:^(org.pulseaudio.pavucontrol)$
       # --qBittorrent
-      #windowrulev2 = float, class:^(qBittorrent)$, title:^(?!.*qBittorrent).*$
-      windowrulev2 = float, class:^(org.qbittorrent.qBittorrent)$, title:^(?!.*qBittorrent).*$
+      #windowrulev2 = float, class:^(qBittorrent)$, title:^(?!.*qBittorrent.*)
+      windowrulev2 = float, class:^(org.qbittorrent.qBittorrent)$, title:(?!.*qBittorrent.*)
       # --winetricks
       windowrulev2 = float, class:^(zenity)$
       windowrulev2 = center 1, class:^(zenity)$
