@@ -42,7 +42,10 @@ in {
       automatic = false;
       dates = [ "06:00" ];
     };
-    settings = { trusted-users = [ "jwm" ]; };
+    settings = {
+      trusted-users = [ "jwm" ];
+      substituters = [ "https://cache.nixos.org/" ];
+    };
   };
 
   documentation = {
