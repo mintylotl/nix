@@ -45,6 +45,15 @@ in {
     settings = {
       trusted-users = [ "jwm" ];
       substituters = [ "https://cache.nixos.org/" ];
+
+      #trusted-substituters = [
+      #  "https://prismlauncher.cachix.org"
+      #  "https://nix-comminity.cachix.org"
+      #];
+      #trusted-public-keys = [
+      #  "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
+      #  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      #];
     };
   };
 

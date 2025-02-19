@@ -8,12 +8,16 @@
     max-substitution-jobs = 1;
     cores = 5;
 
-    extra-substituters =
-      [ "https://nix-community.cachix.org" "https://cache.nixos.org/" ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://cache.nixos.org"
+      "https://prismlauncher.cachix.org"
+      "https://hyprland.cachix.org"
     ];
+    #extra-trusted-public-keys = [
+    #  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    #  "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
+    #];
   };
 
   inputs = {
@@ -42,7 +46,7 @@
 
     Hyprland = {
       url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs_unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
