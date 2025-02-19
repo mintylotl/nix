@@ -5,6 +5,8 @@ in {
 
   home.username = "gameboy";
   home.homeDirectory = "/home/gameboy";
+  home.enableNixpkgsReleaseCheck = false;
+
   programs.home-manager.enable = true;
 
   home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
