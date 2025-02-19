@@ -21,10 +21,7 @@
     nixpkgs_unstable = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
     nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-24.11"; };
 
-    home-manager = {
-      url = "github:nix-community/home-manager?ref=release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager = { url = "github:nix-community/home-manager?ref=master"; };
 
     prism = {
       url = "github:Diegiwg/PrismLauncher-Cracked";
@@ -33,7 +30,6 @@
 
     umuProton = {
       url = "github:Open-Wine-Components/umu-launcher?dir=packaging/nix";
-      inputs.nixpkgs.follows = "nixpkgs_unstable";
       #"github:Open-Wine-Components/umu-launcher/59a82ea8cd284c7535bc06b8f6156abb7da96f6a?dir=packaging/nix";
     };
 
@@ -41,10 +37,7 @@
       url = "github:NixOS/nixpkgs/030ba1976b7c0e1a67d9716b17308ccdab5b381e";
     };
 
-    Hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "";
-    };
+    Hyprland = { url = "github:hyprwm/hyprland"; };
   };
 
   outputs = { self, nixpkgs, Hyprland, nixpkgs_unstable, home-manager, prism
@@ -52,11 +45,12 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs_unst = import nixpkgs_unstable {
-        system = system;
-        config.allowUnfree = true;
-      };
       pkgs_old = musicBee.legacyPackages.${system};
+      pkgs_unst = import nixpkgs_unstable {
+        inherit system;
+        nixpkgs.config.allowUnfree = true;
+      };
+
       packages.x86_64-linux = nixpkgs_unstable.legacyPackages.${system};
 
     in {
@@ -64,11 +58,15 @@
         cabbage = nixpkgs.lib.nixosSystem {
           modules = [
             ./configuration.nix
-            home-manager.nixosModules.default
+            home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.users.jwm = import ./home.nix;
               home-manager.users.gameboy = import ./home_gb.nix;
+
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.enableNixpkgsReleaseCheck = false;
             }
           ];
           specialArgs = {
@@ -81,12 +79,5 @@
           };
         };
       };
-      homeConfigurations."jwm@cabbage" =
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          inherit Hyprland;
-
-          modules = [ ./home.nix ];
-        };
     };
 }
