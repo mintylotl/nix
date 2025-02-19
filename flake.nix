@@ -48,7 +48,7 @@
       pkgs_old = musicBee.legacyPackages.${system};
       pkgs_unst = import nixpkgs_unstable {
         inherit system;
-        nixpkgs.config.allowUnfree = true;
+        config.allowUnfree = true;
       };
 
       packages.x86_64-linux = nixpkgs_unstable.legacyPackages.${system};
