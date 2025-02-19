@@ -9,15 +9,12 @@
     cores = 5;
 
     extra-substituters = [
-      "https://nix-community.cachix.org"
       "https://cache.nixos.org"
+
+      "https://nix-community.cachix.org"
       "https://prismlauncher.cachix.org"
       "https://hyprland.cachix.org"
     ];
-    #extra-trusted-public-keys = [
-    #  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    #  "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
-    #];
   };
 
   inputs = {
@@ -32,7 +29,7 @@
 
     prism = {
       url = "github:Diegiwg/PrismLauncher-Cracked";
-      inputs.flake-compat.follows = "";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     umuProton = {
@@ -61,7 +58,10 @@
         config.allowUnfree = true;
       };
 
-      packages.x86_64-linux = nixpkgs_unstable.legacyPackages.${system};
+      packages.x86_64-linux = {
+        default = nixpkgs.legacyPackages.${system};
+        prismlauncherCracked = prism.packages.${system}.prismlauncher;
+      };
 
     in {
       nixosConfigurations = {
