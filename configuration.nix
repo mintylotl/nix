@@ -16,6 +16,9 @@ in {
     ./nvidia.nix
     ./packages.nix
     ./programs/hyprland.nix
+
+    #Binary Caches
+    ./cachix.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
