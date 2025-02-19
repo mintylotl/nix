@@ -31,7 +31,7 @@ in {
 
     cachix
     jellyfin-mpv-shim
-    osu-lazer-bin
+    paks.osu-lazer-bin
     pkgs.anki-bin
     pkgs.anki-sync-server
 
