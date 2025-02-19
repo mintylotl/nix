@@ -21,6 +21,7 @@ in {
   home.sessionVariables = {
     NIXOS_OZONE_WL = 1;
     LIBVA_DRIVER_NAME = "nvidia";
+    NVD_BACKEND = "nvidia";
     #mbWine = "${mbPkgs}/bin/wine";
   };
 
