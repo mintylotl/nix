@@ -43,12 +43,12 @@
 
     Hyprland = {
       url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs_unstable, home-manager, prism, musicBee
-    , ... }@inputs:
+  outputs = { self, nixpkgs, Hyprland, nixpkgs_unstable, home-manager, prism
+    , musicBee, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -68,12 +68,12 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jwm = import ./home.nix;
               home-manager.users.gameboy = import ./home_gb.nix;
             }
           ];
           specialArgs = {
             inherit inputs;
+            inherit Hyprland;
             inherit prism;
             inherit pkgs_unst;
             inherit pkgs_old;
@@ -81,5 +81,12 @@
           };
         };
       };
+      homeConfigurations."jwm@cabbage" =
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          inherit Hyprland;
+
+          modules = [ ./home.nix ];
+        };
     };
 }

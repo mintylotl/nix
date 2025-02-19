@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let HOME = "/home/jwm";
 in {
   home.username = "jwm";
@@ -18,8 +18,7 @@ in {
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = 1;
-    MOZ_ENABLE_WAYLAND = 0;
-    LIBVA_DRIVER_NAME = "vdpau";
+    LIBVA_DRIVER_NAME = "nvidia";
     #mbWine = "${mbPkgs}/bin/wine";
   };
 
@@ -110,6 +109,13 @@ in {
   };
 
   # Hyprland
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = inputs.Hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage =
+      inputs.Hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+  };
+
   home.pointerCursor = {
     x11.enable = true;
 
