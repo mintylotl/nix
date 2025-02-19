@@ -4,7 +4,7 @@
     enable = lib.mkDefault true;
     enable32Bit = lib.mkDefault true;
     extraPackages = [ pkgs.libva-vdpau-driver ];
-    extraPackages32 = [ pkgs.driversi686-Linux.libva-vdpau-driver ];
+    extraPackages32 = [ pkgs.driversi686Linux.libva-vdpau-driver ];
   };
 
   services.xserver = {
