@@ -186,7 +186,6 @@ in {
     password = "123";
     createHome = false;
     homeMode = "755";
-    extraGroups = [ "ftp" ];
   };
   users.users.nginx = { extraGroups = [ "certs" ]; };
   users.users.jellyfin = { extraGroups = [ "freezer" ]; };
@@ -249,7 +248,7 @@ in {
     LIBVA_DRIVER_NAME = "vdpau";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
-    NVD_BACKEND = "direct";
+    #NVD_BACKEND = "direct";
 
     VK_ICD_FILENAMES =
       "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
