@@ -66,7 +66,6 @@
               home-manager.users.gameboy = import ./home_gb.nix;
 
               home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.enableNixpkgsReleaseCheck = false;
             }
           ];
           specialArgs = {
