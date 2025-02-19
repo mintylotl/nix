@@ -8,12 +8,12 @@
     max-substitution-jobs = 1;
     cores = 5;
 
-    #extra-substituters =
-    #  [ "https://nix-community.cachix.org" "https://cache.nixos.org/" ];
-    #extra-trusted-public-keys = [
-    #  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    #  "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
-    #];
+    extra-substituters =
+      [ "https://nix-community.cachix.org" "https://cache.nixos.org/" ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
+    ];
   };
 
   inputs = {
@@ -40,7 +40,10 @@
       url = "github:NixOS/nixpkgs/030ba1976b7c0e1a67d9716b17308ccdab5b381e";
     };
 
-    Hyprland = { url = "github:hyprwm/hyprland"; };
+    Hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs_unstable";
+    };
   };
 
   outputs = { self, nixpkgs, Hyprland, nixpkgs_unstable, home-manager, prism
