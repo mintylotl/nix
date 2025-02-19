@@ -29,6 +29,7 @@ in {
     most
     less
 
+    cachix
     jellyfin-mpv-shim
     osu-lazer-bin
     pkgs.anki-bin
