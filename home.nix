@@ -114,8 +114,8 @@ in {
   # Hyprland
   wayland.windowManager.hyprland = {
     enable = true;
-    package = null;
-    portalPackage = null;
+    package = inputs.Hyprland.packages.${pkgs.system}.hyprland;
+    #portalPackage = null;
   };
 
   home.pointerCursor = {

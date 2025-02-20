@@ -248,7 +248,6 @@ in {
     NIX_CONF_DIR = "/etc/nixos";
 
     MESA_LOADER_DRIVER_OVERRIDE = "nvidia";
-    LIBVA_DRIVER_NAME = "vdpau";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
     #NVD_BACKEND = "direct";

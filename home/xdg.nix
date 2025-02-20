@@ -18,7 +18,7 @@ in {
         #"org.freedesktop.impl.Screencast" = "wlr";
         #"org.freedesktop.impl.Screenshot" = "wlr";
       };
-      #configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+      configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
     };
 
     configHome = "${HOME}/.config";
