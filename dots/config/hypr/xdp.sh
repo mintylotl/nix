@@ -10,4 +10,6 @@ fi
 if [ ! "$(pidof waybar)" == "" ]; then
 	killall -SIGKILL waybar
 	waybar &
+else
+	waybar &
 fi
