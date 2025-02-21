@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let HOME = "/home/jwm";
 in {
   # Home Stuff
@@ -9,7 +9,7 @@ in {
     mimeApps.enable = false;
 
     portal = {
-      enable = false;
+      enable = true;
       xdgOpenUsePortal = true;
       extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
       config.common.default = "gtk";
@@ -18,7 +18,8 @@ in {
         #"org.freedesktop.impl.Screencast" = "wlr";
         #"org.freedesktop.impl.Screenshot" = "wlr";
       };
-      configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+      configPackages =
+        [ inputs.Hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland ];
     };
 
     configHome = "${HOME}/.config";
