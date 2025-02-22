@@ -16,7 +16,7 @@
 
       # --Themes
       # --QT
-      env = QT_QPA_PLATFORM, wayland
+      env = QT_QPA_PLATFORM, wayland, xcb
       #env = GTK_USE_PORTAL, 1
 
       # --XDG / DBUS
@@ -24,10 +24,9 @@
       env = XDG_SESSION_DESKTOP, Hyprland
       env = XDG_SESSION_TYPE, wayland
 
-      exec-once = sleep 5s && systemctl --user start hyprpolkitagent
-      exec-once = sleep 10s systemctl --user start xdg-desktop-portal-hyprland
+      exec-once = sleep 10s && systemctl --user start hyprpolkitagent
+      exec-once = systemctl --user start xdg-desktop-portal-hyprland
       exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
       # Hyprland
