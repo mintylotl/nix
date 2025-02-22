@@ -124,10 +124,10 @@
       }
 
       #WindowRules
-      #windowrule = workspace 2 silent, ^(steam)$
-      #windowrule = workspace 2 silent, ^(lutris)$
-      #windowrule = workspace 8 silent, ^(org.qbittorrent.qBittorrent)$
-      #windowrule = workspace 1 silent, ^(firefox)$
+      windowrulev2 = workspace 2 silent, class:^(steam)$
+      windowrulev2 = workspace 2 silent, class:^(lutris)$
+      windowrulev2 = workspace 8 silent, class:^(org.qbittorrent.qBittorrent)$
+      windowrulev2 = workspace 1 silent, class:^(firefox)$
 
       # WindowruleV2s
       # --XDG
