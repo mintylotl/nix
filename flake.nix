@@ -4,7 +4,7 @@
   nixConfig = {
     extra-experimental-features = "nix-command flakes";
     trusted-users = "jwm";
-    max-jobs = 1;
+    max-jobs = 2;
     max-substitution-jobs = 1;
     cores = 5;
 
@@ -31,7 +31,6 @@
 
     prism = {
       url = "github:Diegiwg/PrismLauncher-Cracked";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "";
     };
 
