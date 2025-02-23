@@ -16,7 +16,7 @@
 
       # --Themes
       # --QT
-      env = QT_QPA_PLATFORM, wayland, xcb
+      env = QT_QPA_PLATFORM, wayland
       #env = GTK_USE_PORTAL, 1
 
       # --XDG / DBUS
