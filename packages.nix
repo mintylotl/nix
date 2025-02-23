@@ -49,6 +49,7 @@ in {
     android-tools
 
     shadow
+    wget
     coreutils
     ntfs3g
     libxkbcommon
@@ -107,13 +108,13 @@ in {
     pavucontrol
     audacity
     mpv
-    busybox
+    #busybox
     htop
     neofetch
     pkgs.speedcrunch
     openssl
 
-    pkgs.lutris
+    lutris
     protontricks
 
     fd
@@ -192,7 +193,7 @@ in {
     hyprpaper
     wl-clipboard
     cliphist
-    pkgs.firefox-bin
+    pkgs.firefox-devedition-bin
     telegram-desktop
     pkgs.qbittorrent
     mako
