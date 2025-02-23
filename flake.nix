@@ -22,8 +22,8 @@
     #nixpkgs_unstable = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
     #nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-24.11"; };
 
-    nixpkgs_unstable = { url = "github:NixOS/nixpkgs/d74a2335ac9c"; };
-    nixpkgs = { url = "github:NixOS/nixpkgs/c618e28f7025"; };
+    nixpkgs_unstable = { url = "github:NixOS/nixpkgs?ref=nixos-unstable"; };
+    nixpkgs = { url = "github:NixOS/nixpkgs?ref=nixos-24.11"; };
 
     home-manager = {
       url = "github:nix-community/home-manager?ref=release-24.11";

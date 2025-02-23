@@ -275,7 +275,7 @@
       # --Programs
       bind = $mainMod, P, exec, /home/jwm/.scripts/programs/musicbee/launcher.sh
 
-      bind = $mainMod, G, exec, firefox
+      bind = $mainMod, G, exec, firefox-developer-edition
       bind = $mainMod, RETURN, exec, alacritty
       bind = $mainMod, S, exec, speedcrunch
       bind = $mainMod, E, exec, GDK_BACKEND="wayland" GTK_ICON_THEME="Papirus-Dark" thunar
