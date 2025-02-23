@@ -13,7 +13,7 @@
         cmake
         clang
         jsbeautifier
-        nixfmt-classic
+        nixfmt
         ispell
         gnuplot
         shfmt
@@ -41,7 +41,5 @@
 
     startWithUserSession = true;
   };
-  systemd.user.services.emacs = {
-    Unit.After = [ "emacs-mounts.service" ];
-  };
+  systemd.user.services.emacs = { Unit.After = [ "emacs-mounts.service" ]; };
 }
