@@ -7,10 +7,8 @@ else
 	hypridle &
 fi
 
-if [ ! "$(pidof waybar)" == "" ]; then
-	killall -SIGKILL waybar
-	sleep 2s
-	waybar &
-else
-	waybar &
-fi
+for x in $(pidof waybar); do
+	kill -SIGKILL $x
+done
+
+waybar &
