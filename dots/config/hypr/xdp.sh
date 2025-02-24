@@ -9,6 +9,7 @@ fi
 
 if [ ! "$(pidof waybar)" == "" ]; then
 	killall -SIGKILL waybar
+	sleep 2s
 	waybar &
 else
 	waybar &
