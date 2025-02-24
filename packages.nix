@@ -1,6 +1,5 @@
-{ pkgs_unst, pkgs, pkgs_old, config, lib, inputs, prism, ... }:
+{ pkgs, pkgs_old, config, lib, inputs, prism, ... }:
 let
-  paks = pkgs_unst;
   paksold = pkgs_old;
   py = pkgs.python312Packages;
 
@@ -15,7 +14,7 @@ in {
     })
   ];
 
-  environment.systemPackages = with paks; [
+  environment.systemPackages = with pkgs; [
     # General
     man-pages-posix
 
@@ -31,9 +30,9 @@ in {
 
     cachix
     jellyfin-mpv-shim
-    paks.osu-lazer-bin
-    pkgs.anki-bin
-    pkgs.anki-sync-server
+    osu-lazer-bin
+    anki-bin
+    anki-sync-server
 
     xorg.xeyes
     xorg.xorgserver
@@ -51,6 +50,7 @@ in {
     shadow
     wget
     coreutils
+    psmisc
     ntfs3g
     libxkbcommon
     alsa-plugins
@@ -63,7 +63,7 @@ in {
     xorg.xinit
     soulseekqt
     unrar
-    pkgs.kdePackages.ark
+    kdePackages.ark
     strawberry-qt6
 
     # Project Zomboid
@@ -75,7 +75,7 @@ in {
 
     #OVMF
     #qemu_full
-    pkgs.umu
+    umu
 
     cowsay
     kittysay
@@ -88,21 +88,20 @@ in {
     pkgs.gtk3
     udisks
     timewarrior
-    pkgs.nvtopPackages.nvidia
+    nvtopPackages.nvidia
 
     # GTK Libs
     zenity
-    pkgs.gst_all_1.gstreamer
-    pkgs.gst_all_1.gst-vaapi
-    pkgs.gst_all_1.gst-plugins-base
-    pkgs.gst_all_1.gst-plugins-good
-    pkgs.gst_all_1.gst-plugins-ugly
-    pkgs.gst_all_1.gst-plugins-bad
-    pkgs.gst_all_1.gst-libav
+    gst_all_1.gstreamer
+    gst_all_1.gst-vaapi
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-ugly
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-libav
 
-    pkgs.vulkan-loader
-    pkgs.vulkan-headers
-    pkgs.vulkan-validation-layers
+    vulkan-loader
+    vulkan-headers
 
     xcur2png
     pavucontrol
@@ -111,7 +110,7 @@ in {
     #busybox
     htop
     neofetch
-    pkgs.speedcrunch
+    speedcrunch
     openssl
 
     lutris
@@ -123,19 +122,19 @@ in {
     clang
     gnumake
     gcc
-    paks.rustup
-    paks.rust-analyzer
+    rustup
+    rust-analyzer
 
     # QT
-    pkgs.qimgv
-    pkgs.kdePackages.qt6ct
+    qimgv
+    kdePackages.qt6ct
 
     # PrismLauncher Cracked
-    pkgs.prismlauncherCracked
+    #pkgs.prismlauncherCracked
 
     # Python
     #System
-    pkgs.python3Full
+    python3Full
     py.pip
 
     #Misc
@@ -155,7 +154,7 @@ in {
     makemkv
     pkg-config
     btrfs-progs
-    pkgs.vulkan-tools
+    vulkan-tools
     rsync
     xdotool
     nodejs_22
@@ -176,7 +175,6 @@ in {
     wireshark-qt
     wireguard-tools
     duperemove
-    suyu
     dxvk_2
     vkd3d-proton
     gamescope
@@ -209,8 +207,8 @@ in {
 
   programs.obs-studio = {
     enable = true;
-    package = paks.obs-studio;
-    plugins = [ paks.obs-studio-plugins.wlrobs ];
+    package = pkgs.obs-studio;
+    #plugins = [ pkgs.obs-studio-plugins.wlrobs ];
   };
   programs.xfconf.enable = true;
   programs.dconf.enable = true;
