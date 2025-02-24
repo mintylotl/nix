@@ -462,22 +462,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_unstable": {
-      "locked": {
-        "lastModified": 1740126099,
-        "narHash": "sha256-ozoOtE2hGsqh4XkTJFsrTkNxkRgShxpQxDynaPZUGxk=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "32fb99ba93fea2798be0e997ea331dd78167f814",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -528,7 +512,6 @@
         "home-manager": "home-manager",
         "musicBee": "musicBee",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs_unstable": "nixpkgs_unstable",
         "prism": "prism",
         "umuProton": "umuProton"
       }

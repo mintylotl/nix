@@ -22,7 +22,6 @@
     #nixpkgs_unstable = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
     #nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-24.11"; };
 
-    nixpkgs_unstable = { url = "github:NixOS/nixpkgs?ref=nixos-unstable"; };
     nixpkgs = { url = "github:NixOS/nixpkgs?ref=nixos-24.11"; };
 
     home-manager = {
@@ -49,16 +48,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, Hyprland, nixpkgs_unstable, home-manager, prism
-    , musicBee, ... }@inputs:
+  outputs =
+    { self, nixpkgs, Hyprland, home-manager, prism, musicBee, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs_old = musicBee.legacyPackages.${system};
-      pkgs_unst = import nixpkgs_unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
 
       packages.x86_64-linux = {
         default = nixpkgs.legacyPackages.${system};
@@ -84,7 +79,6 @@
             inherit inputs;
             inherit Hyprland;
             inherit prism;
-            inherit pkgs_unst;
             inherit pkgs_old;
             inherit musicBee;
           };
