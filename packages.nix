@@ -30,6 +30,7 @@ in {
 
     cachix
     gammastep
+    geoclue2
     jellyfin-mpv-shim
     osu-lazer-bin
     anki-bin
