@@ -29,6 +29,7 @@ in {
     less
 
     cachix
+    gammastep
     jellyfin-mpv-shim
     osu-lazer-bin
     anki-bin
