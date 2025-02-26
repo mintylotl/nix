@@ -18,8 +18,8 @@ in {
         #"org.freedesktop.impl.Screencast" = "wlr";
         #"org.freedesktop.impl.Screenshot" = "wlr";
       };
-      configPackages =
-        [ inputs.Hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland ];
+      #configPackages =
+      #[ inputs.Hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland ];
     };
 
     configHome = "${HOME}/.config";
