@@ -20,9 +20,6 @@ in {
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = 1;
-    LIBVA_DRIVER_NAME = "nvidia";
-    CUDA_PATH = "${pkgs.cudatoolkit}";
-    #NVD_BACKEND = "direct";
     #mbWine = "${mbPkgs}/bin/wine";
   };
 
