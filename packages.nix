@@ -29,6 +29,7 @@ in {
     less
 
     cachix
+    mokuro
     gammastep
     geoclue2
     jellyfin-mpv-shim

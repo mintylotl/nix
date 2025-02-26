@@ -24,8 +24,7 @@
       alias nixosFlakeF="sudo nixos-rebuild switch --flake /etc/nixos#cabbage --fast --offline"
 
       alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
-      alias mokuro="python3 -m mokuro"    
-      alias fetch="fetcher.sh" 
+      alias fetch="fetcher.sh"
       alias emacsc="emacsclient -c -a emacs -s /home/jwm/.doom.d/emacflurry/mcflurry"
       alias garb="sudo $HOME/.scripts/scripts/system/nixosgarbage.sh 1"
       alias garbBige="sudo $HOME/.scripts/scripts/system/nixosgarbage.sh 0"
