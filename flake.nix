@@ -14,6 +14,7 @@
       "https://nix-community.cachix.org"
       "https://prismlauncher.cachix.org"
       "https://hyprland.cachix.org"
+      "https://cuda-maintainers.cachix.org"
     ];
   };
 
@@ -42,14 +43,13 @@
       url = "github:NixOS/nixpkgs/030ba1976b7c0e1a67d9716b17308ccdab5b381e";
     };
 
-    Hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #Hyprland = {
+    #  url = "github:hyprwm/hyprland";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
   };
 
-  outputs =
-    { self, nixpkgs, Hyprland, home-manager, prism, musicBee, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, prism, musicBee, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -77,7 +77,6 @@
           ];
           specialArgs = {
             inherit inputs;
-            inherit Hyprland;
             inherit prism;
             inherit pkgs_old;
             inherit musicBee;

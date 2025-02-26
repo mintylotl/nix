@@ -37,6 +37,7 @@ in {
     anki-bin
     anki-sync-server
 
+    cudaPackages.cudatoolkit
     xorg.xeyes
     xorg.xorgserver
     xorg.xrandr
@@ -133,7 +134,7 @@ in {
     kdePackages.qt6ct
 
     # PrismLauncher Cracked
-    #pkgs.prismlauncherCracked
+    pkgs.prismlauncherCracked
 
     # Python
     #System
@@ -211,7 +212,7 @@ in {
   programs.obs-studio = {
     enable = true;
     package = pkgs.obs-studio;
-    #plugins = [ pkgs.obs-studio-plugins.wlrobs ];
+    plugins = [ pkgs.obs-studio-plugins.wlrobs ];
   };
   programs.xfconf.enable = true;
   programs.dconf.enable = true;
