@@ -2,6 +2,7 @@
 let
   HOME = "/home/jwm";
   nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
+  cuda = with pkgs; [ cudaPackages.cudatoolkit ];
 in {
   # nixOS
   imports = [
@@ -247,10 +248,19 @@ in {
   environment.variables = {
     NIX_CONF_DIR = "/etc/nixos";
 
+    LIBVA_DRIVER_NAME = "nvidia";
     MESA_LOADER_DRIVER_OVERRIDE = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
-    #NVD_BACKEND = "direct";
+    NVD_BACKEND = "direct";
+
+    CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
+    LD_LIBRARY_PATH = lib.makeLibraryPath cuda + lib.optionalStr
+      (builtins.hasAttr "LD_LIBRARY_PATH" config.environment.variables)
+      (":" + config.environment.variables.LD_LIBRARY_PATH);
+    PATH = lib.makeBinPath cuda
+      + lib.optionalStr (builtins.hasAttr "PATH" config.environment.variables)
+      (":" + config.environment.variables.PATH);
 
     VK_ICD_FILENAMES =
       "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
