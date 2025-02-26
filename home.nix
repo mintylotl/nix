@@ -114,7 +114,7 @@ in {
   # Hyprland
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.Hyprland.packages.${pkgs.system}.hyprland;
+    package = pkgs.hyprland;
     #portalPackage = null;
   };
 
