@@ -2,7 +2,7 @@
 let
   HOME = "/home/jwm";
   nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
-  cuda = with pkgs; [ cudaPackages.cudatoolkit ];
+  cuda = pkgs.cudaPackages.cudatoolkit;
 in {
   # nixOS
   imports = [
@@ -255,12 +255,6 @@ in {
     NVD_BACKEND = "direct";
 
     CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
-    LD_LIBRARY_PATH = lib.makeLibraryPath cuda + lib.optionalStr
-      (builtins.hasAttr "LD_LIBRARY_PATH" config.environment.variables)
-      (":" + config.environment.variables.LD_LIBRARY_PATH);
-    PATH = lib.makeBinPath cuda
-      + lib.optionalStr (builtins.hasAttr "PATH" config.environment.variables)
-      (":" + config.environment.variables.PATH);
 
     VK_ICD_FILENAMES =
       "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
@@ -270,6 +264,8 @@ in {
         }
       }/bin/wine";
   };
+
+  environment.pathsToLink = [ "${cuda}/lib" "${cuda}/bin" ];
 
   system.stateVersion = "24.05";
 }

@@ -29,6 +29,7 @@ in {
     less
 
     cachix
+    filezilla
     mokuro
     gammastep
     geoclue2
@@ -106,6 +107,7 @@ in {
 
     vulkan-loader
     vulkan-headers
+    vulkan-validation-layers
 
     xcur2png
     pavucontrol
