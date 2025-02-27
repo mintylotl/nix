@@ -29,6 +29,7 @@ in {
     less
 
     cachix
+    nicotine-plus
     filezilla
     mokuro
     gammastep
@@ -66,7 +67,6 @@ in {
     godot_4
     ecryptfs
     xorg.xinit
-    soulseekqt
     unrar
     kdePackages.ark
     strawberry-qt6
