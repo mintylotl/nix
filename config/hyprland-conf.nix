@@ -47,6 +47,7 @@
 
       # --Programs
       exec-once = hyprpaper
+      exec-once = fcitx5 -d
 
       # --Lutris
       #env = LUTRIS_SKIP_INIT, 1
