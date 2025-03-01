@@ -151,9 +151,6 @@ in {
     }];
   };
 
-  # Locale
-  i18n.defaultLocale = "en_US.UTF-8";
-
   # Groups
   users.groups = {
     freezer = { };
@@ -214,6 +211,21 @@ in {
 
     alsa.enable = true;
     alsa.support32Bit = true;
+  };
+
+  # IME
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+
+      fcitx5 = {
+        waylandFrontend = true;
+        addons = with pkgs; [ fcitx5-mozc fcitx5-gtk ];
+      };
+    };
   };
 
   # Securitay
