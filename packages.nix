@@ -9,8 +9,8 @@ in {
     (final: prev: {
       umu = inputs.umuProton.packages.${pkgs.system}.umu.override {
         version = inputs.umuProton.shortRev;
-        #truststore = true;
-        #cbor2 = true;
+        truststore = true;
+        cbor2 = true;
       };
     })
   ];
@@ -98,7 +98,7 @@ in {
     qimgv
 
     # PrismLauncher Cracked
-    prismlauncher
+    pkgs.prismlauncher
 
     # Python
     #System
@@ -131,9 +131,9 @@ in {
     mangohud
     # Programs
     #wineWowPackages.waylandFull
-    #wineWowPackages.stableFull
+    wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    pkgs.wineWowPackages.stagingFull
+    #pkgs.wineWowPackages.stagingFull
     winetricks
     firefox
     telegram-desktop

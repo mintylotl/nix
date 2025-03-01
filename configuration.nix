@@ -143,7 +143,7 @@ in {
     domain = "@nicy";
     type = "-";
     item = "nice";
-    value = -15;
+    value = -19;
   }];
 
   environment.variables = {

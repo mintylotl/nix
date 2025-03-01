@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-let HOME = "/home/jwm";
+let HOME = "/home/panda";
 in {
   imports = [
     # Services

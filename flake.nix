@@ -6,7 +6,7 @@
     trusted-users = [ "root" "panda" ];
     max-jobs = 1;
     max-substitution-jobs = 1;
-    cores = 3;
+    cores = 1;
   };
 
   inputs = {
@@ -26,7 +26,7 @@
 
     umuProton = {
       url =
-        "github:Open-Wine-Components/umu-launcher/59a82ea8cd284c7535bc06b8f6156abb7da96f6a?dir=packaging/nix";
+        "github:Open-Wine-Components/umu-launcher?dir=packaging/nix";
     };
   };
 
