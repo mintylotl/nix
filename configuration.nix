@@ -238,6 +238,7 @@ in {
         if ([
           "org.freedesktop.pipewire",
           "com.feralinteractive.gamemode"
+          "com.feralinteractive.GameMode.governor-helper"
         ].indexOf(action.id) !== -1 && subject.isInGroup("nicely")) {
           return polkit.Result.YES;
         }
