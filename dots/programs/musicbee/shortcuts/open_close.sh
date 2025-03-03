@@ -2,4 +2,4 @@
 cd "$HOME/.scripts/programs/musicbee/shortcuts"
 
 WINDOW="$(./getWdName.sh)"
-xdotool key --window $WINDOW "Delete"
+xdotool key --window "$WINDOW" "SUPER+Delete"

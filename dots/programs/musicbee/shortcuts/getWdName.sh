@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-VALUES=$(xdotool search --pid $(pgrep -f MusicBee.exe))
+VALUES="$(xdotool search --pid $(pgrep -f MusicBee.exe))"
 
-for x in $VALUES;
-do
+for x in $VALUES; do
 	NAME="$(xdotool getwindowname $x)"
 
-	if [[ "$NAME" == *"MusicBee"* ]];
-	then
+	if [[ "$NAME" == *"MusicBee"* ]]; then
 		echo "$x"
 	fi
 done

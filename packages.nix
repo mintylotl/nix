@@ -220,13 +220,19 @@ in {
   programs.dconf.enable = true;
   programs.thunar = {
     enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-volman
-      thunar-archive-plugin
-      tumbler
-      catfish
-      garcon
-      exo
+    plugins = with pkgs; [
+      xfce.thunar-volman
+      xfce.thunar-archive-plugin
+      xfce.catfish
+      xfce.garcon
+      xfce.exo
+      xfce.tumbler
+
+      totem
+      webp-pixbuf-loader
+      mcomix
+      f3d
+      gnome-epub-thumbnailer
     ];
   };
   programs.steam = {

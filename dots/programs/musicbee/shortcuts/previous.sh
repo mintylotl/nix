@@ -2,4 +2,4 @@
 cd "$HOME/.scripts/programs/musicbee/shortcuts"
 
 WINDOW="$(./getWdName.sh)"
-xdotool key --window $WINDOW "SHIFT+Scroll_Lock"
+xdotool key --window "$WINDOW" "SUPER+SHIFT+Scroll_Lock"
