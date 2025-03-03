@@ -3,4 +3,4 @@
 cd "$HOME/.scripts/programs/musicbee/shortcuts"
 
 WINDOW="$(./getWdName.sh)"
-xdotool key --window $WINDOW "End"
+xdotool key --window "$WINDOW" "SUPER+End"

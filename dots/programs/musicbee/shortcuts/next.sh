@@ -2,4 +2,4 @@
 cd "$HOME/.scripts/programs/musicbee/shortcuts"
 
 WINDOW="$(./getWdName.sh)"
-xdotool key --window $WINDOW "Home"
+xdotool key --window "$WINDOW" "SUPER+Home"
