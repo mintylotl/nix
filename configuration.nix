@@ -269,7 +269,7 @@ in {
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
 
-    CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
+    #CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
 
     VK_ICD_FILENAMES =
       "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
@@ -280,7 +280,13 @@ in {
       }/bin/wine";
   };
 
-  environment.pathsToLink = [ "${cuda}/lib" "${cuda}/bin" ];
+  environment.pathsToLink = [
+    "${nvidia}/lib"
+    "${nvidia.lib32}/lib"
+
+    "${pkgs.libva-vdpau-driver}/lib"
+    "${pkgs.driversi686Linux.libva-vdpau-driver}/lib"
+  ];
 
   system.stateVersion = "24.05";
 }
