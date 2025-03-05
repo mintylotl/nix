@@ -1,6 +1,19 @@
 { config, pkgs, ... }: {
   systemd = {
+
+    tmpfiles.rules = [ "d /run/postgresql 0775 postgres postgres -" ];
+
     services = {
+      postgres-init = {
+        description = "Ensure /run/postgresql exists";
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "/run/current-system/sw/bin/mkdir -p /run/postgresql";
+          ExecStartPost =
+            "${pkgs.bash}/bin/bash -c '/run/current-system/sw/bin/chown jwm:jwm /run/postgresql && /run/current-system/sw/bin/chmod 775 /run/postgresql'";
+        };
+      };
       mounts = {
         after = [ "emacs-mounts.service" ];
         wantedBy = [ "multi-user.target" ];
