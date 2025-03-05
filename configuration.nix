@@ -163,6 +163,7 @@ in {
     nm-openconnect = { };
     nicely = { };
     gamers = { };
+    postgres = { };
   };
   # Users
   users.users.jwm = {
