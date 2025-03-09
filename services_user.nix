@@ -39,6 +39,12 @@ in {
         };
         Install = { WantedBy = [ "default.target" ]; };
       };
+      loadsheddingnotifier = {
+        Service = {
+          ExecStart = "/home/jwm/.scripts/programs/loadshed/run.sh";
+        };
+        Install = { WantedBy = [ "default.target" ]; };
+      };
     };
   };
 }
