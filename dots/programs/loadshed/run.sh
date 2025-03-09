@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 cd /home/jwm/.scripts/programs/loadshed
 chmod +x ./load-shed-notifier

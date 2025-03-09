@@ -41,7 +41,8 @@ in {
       };
       loadsheddingnotifier = {
         Service = {
-          ExecStart = "/home/jwm/.scripts/programs/loadshed/run.sh";
+          ExecStart =
+            "${pkgs.bash}/bin/bash -l -c '/home/jwm/.scripts/programs/loadshed/run.sh'";
         };
         Install = { WantedBy = [ "default.target" ]; };
       };
