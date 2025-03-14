@@ -1,7 +1,8 @@
-{ pkgs, pkgs_old, config, lib, inputs, prism, ... }:
+{ pkgs, pkgs_bleeding, pkgs_old, config, lib, inputs, prism, ... }:
 let
   paksold = pkgs_old;
   py = pkgs.python312Packages;
+  bleed = pkgs_bleeding;
 
 in {
   nixpkgs.overlays = [
@@ -28,6 +29,8 @@ in {
     most
     less
 
+    bleed.ollama
+    ngrok
     cachix
     nicotine-plus
     filezilla
