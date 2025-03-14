@@ -20,9 +20,7 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    #nixpkgs_unstable = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
-    #nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-24.11"; };
-
+    nixpkgs_unstable = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
     nixpkgs = { url = "github:NixOS/nixpkgs?ref=nixos-24.11"; };
 
     home-manager = {
@@ -50,11 +48,17 @@
     #};
   };
 
-  outputs = { self, nixpkgs, home-manager, prism, musicBee, ... }@inputs:
+  outputs = { self, nixpkgs_unstable, nixpkgs, home-manager, prism, musicBee
+    , ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs_old = musicBee.legacyPackages.${system};
+
+      pkgs_bleeding = import nixpkgs_unstable {
+        system = "${system}";
+        config.allowUnfree = true;
+      };
 
       packages.x86_64-linux = {
         default = nixpkgs.legacyPackages.${system};
@@ -81,6 +85,7 @@
             inherit prism;
             inherit pkgs_old;
             inherit musicBee;
+            inherit pkgs_bleeding;
           };
         };
       };
