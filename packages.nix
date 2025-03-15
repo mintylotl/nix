@@ -29,14 +29,13 @@ in {
     most
     less
 
+    hyprpicker
     bleed.ollama
     ngrok
     cachix
     nicotine-plus
     filezilla
     mokuro
-    gammastep
-    geoclue2
     jellyfin-mpv-shim
     osu-lazer-bin
     anki-bin
