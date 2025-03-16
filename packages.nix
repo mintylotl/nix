@@ -140,6 +140,8 @@ in {
 
     # PrismLauncher Cracked
     pkgs.prismlauncherCracked
+    retroarch
+    retroarch-assets
 
     # Python
     #System
