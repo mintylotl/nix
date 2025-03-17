@@ -30,7 +30,7 @@ in {
     less
 
     hyprpicker
-    bleed.ollama
+    bleed.ollama-cuda
     ngrok
     cachix
     nicotine-plus
