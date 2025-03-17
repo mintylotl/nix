@@ -72,8 +72,9 @@ in {
 
         icon = "emacs";
         type = "Application";
-        exec = ''
-          emacsclient --alternate-editor= -s "${HOME}/.emacs.d/emacflurry/mcflurry" -r %F'';
+        #exec = ''
+        #  WAYLAND_DISPLAY=$WAYLAND_DISPLAY emacsclient --alternate-editor= -s "${HOME}/.emacs.d/emacflurry/mcflurry" -c %F
+        #'';
 
         terminal = false;
         categories = [ "Development" "TextEditor" ];
@@ -81,13 +82,14 @@ in {
 
         settings = {
           Keywords = "emacsclient";
-          StartupWMClass = "Emacs";
+          StartupWMClass = "Emacsd";
         };
 
         actions."new-window" = {
           name = "New Frame";
           exec = ''
-            emacsclient --alternate-editor= -s "${HOME}/.emacs.d/emacflurry/mcflurry" -c %F'';
+            emacsclient --alternate-editor= -s "${HOME}/.emacs.d/emacflurry/mcflurry" -c %F
+          '';
         };
       };
     };
