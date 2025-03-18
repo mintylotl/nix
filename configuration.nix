@@ -1,7 +1,7 @@
 { nixpkgs, config, lib, pkgs, inputs, ... }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.beta;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
   cuda = pkgs.cudaPackages.cudatoolkit;
 in {
   # nixOS
