@@ -189,8 +189,9 @@
       windowrulev2 = float, class:^(zenity)$
       windowrulev2 = center 1, class:^(zenity)$
       # --speedcrunch
-      windowrulev2 = float, class:^(org.speedcrunch.)$
-      windowrulev2 = center 1, class:^(org.speedcrunch.)$
+      windowrulev2 = float, class:^(org\.speedcrunch.*)$
+      windowrulev2 = size 1000 800, class:^(org.speedcrunch.*)$
+      windowrulev2 = center 1, class:^(org\.speedcrunch.*)$
       # --thunar
       windowrulev2 = float, class:^(thunar)$, title:^(File Operation Progress)$
       windowrulev2 = size 500 160, class:^(thunar)$, title:^(File Operation Progress)$
