@@ -202,7 +202,7 @@ in {
     hyprpaper
     wl-clipboard
     cliphist
-    pkgs.firefox-devedition-bin
+    bleed.firefox-devedition-bin
     telegram-desktop
     pkgs.qbittorrent
     mako
