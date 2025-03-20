@@ -8,6 +8,7 @@
     extraPackages = epkgs:
       with pkgs; [
         epkgs.vterm
+        epkgs.apheleia
         fd
         ripgrep
         cmake
