@@ -9,29 +9,33 @@
       with pkgs; [
         epkgs.vterm
         epkgs.apheleia
+        epkgs.nixfmt
+        epkgs.ripgrep
+        epkgs.gnuplot
+        epkgs.shfmt
+        epkgs.pipenv
+        epkgs.pandoc
+
         fd
-        ripgrep
         cmake
         clang
-        jsbeautifier
-        nixfmt
-        ispell
-        gnuplot
-        shfmt
         gnumake
-        pipenv
-        cmigemo
+        sbcl
+
+        ispell
         stylelint
+        jsbeautifier
+        html-tidy
+
+        cmigemo
         shellcheck
-        zig
         graphviz
-        pandoc
+
         libtool
         rustup
         rust-analyzer
+        zig
         pnpm
-        html-tidy
-        sbcl
       ];
   };
 
