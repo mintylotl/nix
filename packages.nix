@@ -159,6 +159,7 @@ in {
     py.nose2
 
     # System Utilities
+    home-manager
     discord
     bitwarden-desktop
     git
@@ -202,7 +203,7 @@ in {
     hyprpaper
     wl-clipboard
     cliphist
-    bleed.firefox-devedition-bin
+    paksold.firefox-devedition-bin
     telegram-desktop
     pkgs.qbittorrent
     mako

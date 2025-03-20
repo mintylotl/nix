@@ -6,7 +6,10 @@ in {
   home.preferXdgDirectories = true;
   home.enableNixpkgsReleaseCheck = false;
 
-  programs.home-manager.enable = true;
+  programs.home-manager = {
+    enable = true;
+    path = "/etc/nixos/home.nix";
+  };
 
   imports = [
     ./home/xdg.nix
