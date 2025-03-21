@@ -8,6 +8,7 @@ sleep 1s
 
 VALUE="$(ps aux | grep "explorer" | grep -v "grep" | awk '{print $2}')"
 if [[ "$VALUE" != "" && -e ./.startup ]]; then
-    kill -9 $VALUE
+    killall explorer.exe
+    #kill -9 $VALUE
     rm ./.startup
 fi
