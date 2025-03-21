@@ -282,11 +282,17 @@ in {
   };
 
   environment.pathsToLink = [
+    # NVIDIA DRIVERS
     "${nvidia}/lib"
     "${nvidia.lib32}/lib"
 
+    # LIBVA VDPAU
     "${pkgs.libva-vdpau-driver}/lib"
     "${pkgs.driversi686Linux.libva-vdpau-driver}/lib"
+
+    # SDL
+    "${pkgs.sdl2-compat}/lib"
+    "${pkgs.sdl3}/lib"
   ];
 
   system.stateVersion = "24.05";
