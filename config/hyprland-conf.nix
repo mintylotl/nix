@@ -283,6 +283,7 @@
       bind = $mainMod, E, exec, GDK_BACKEND="wayland" GTK_ICON_THEME="Papirus-Dark" thunar
       bind = $mainMod, Z, exec, emacsclient -c -s "$HOME/.doom.d/emacflurry/mcflurry"
       # --MusicBee
+          bind = $mainMod, Delete, exec, $shortcut_dir/close_kill.sh
           bind = , End, exec, $shortcut_dir/play_pause.sh
           bind = , Pause, exec, $shortcut_dir/shuffle.sh
           bind = , Delete, exec, $shortcut_dir/open_close.sh
