@@ -1,8 +1,9 @@
-{ nixpkgs, config, lib, pkgs, inputs, ... }:
+{ nixpkgs, config, lib, pkgs, pkgs_bleeding, inputs, ... }:
 let
   HOME = "/home/jwm";
   nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
   cuda = pkgs.cudaPackages.cudatoolkit;
+  bleed = pkgs_bleeding;
 in {
   # nixOS
   imports = [
@@ -291,8 +292,8 @@ in {
     "${pkgs.driversi686Linux.libva-vdpau-driver}/lib"
 
     # SDL
-    "${pkgs.sdl2-compat}/lib"
-    "${pkgs.sdl3}/lib"
+    "${bleed.sdl2-compat}/lib"
+    "${bleed.sdl3}/lib"
   ];
 
   system.stateVersion = "24.05";
