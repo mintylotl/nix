@@ -112,6 +112,8 @@ in {
     vulkan-headers
     vulkan-validation-layers
 
+    bleed.sdl2-compat
+    sdl3
     xcur2png
     pavucontrol
     audacity
@@ -154,12 +156,10 @@ in {
     py.numpy
 
     #Emacs
-    py.black
     py.isort
-    py.pyflakes
-    py.nose2
-    py.pygame
-    py.pygame-gui
+    py.pygame-ce
+    #py.pygame-gui
+    #py.pygame-sdl
 
     # System Utilities
     home-manager
