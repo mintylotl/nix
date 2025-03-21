@@ -158,6 +158,8 @@ in {
     py.isort
     py.pyflakes
     py.nose2
+    py.pygame
+    py.pygame-gui
 
     # System Utilities
     home-manager
