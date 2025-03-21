@@ -143,6 +143,7 @@ in {
     retroarch
     retroarch-assets
 
+    typescript
     # Python
     #System
     python3Full
