@@ -29,6 +29,11 @@ in {
     most
     less
 
+    vitetris
+    joystickwake
+    sdl-jstest
+    jstest-gtk
+    linuxConsoleTools
     hyprpicker
     bleed.ollama-cuda
     ngrok
@@ -112,8 +117,6 @@ in {
     vulkan-headers
     vulkan-validation-layers
 
-    bleed.sdl2-compat
-    sdl3
     xcur2png
     pavucontrol
     audacity
