@@ -1,8 +1,5 @@
 { config, pkgs, ... }: {
   systemd = {
-
-    tmpfiles.rules = [ "d /run/postgresql 0775 postgres postgres -" ];
-
     services = {
       postgres-init = {
         description = "Ensure /run/postgresql exists";
