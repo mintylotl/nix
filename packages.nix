@@ -303,12 +303,11 @@ in {
 
   services.murmur = {
     enable = true;
-    settings = {
       port = 37374;
+      registerName = "Mumbone";
       bonjour = true;
       users = 3;
       welcometext = "Welcome to the Abyss";
-    };
   };
 
   xdg = {
