@@ -61,7 +61,6 @@ in {
     libmtp
     android-tools
 
-    murmur
     mumble
     shadow
     wget
@@ -299,6 +298,16 @@ in {
     serviceConfig = {
       StateDirectory = lib.mkForce "/system/programs/Vaultwarden";
       ProtectSystem = lib.mkForce "off";
+    };
+  };
+
+  services.murmur = {
+    enable = true;
+    settings = {
+      port = 37374;
+      bonjour = true;
+      users = 3;
+      welcometext = "Welcome to the Abyss";
     };
   };
 
