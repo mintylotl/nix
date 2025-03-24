@@ -12,5 +12,5 @@ done
 while :
 do
     brightnessctl -q --device="$DEV" set 1
-    sleep 0.1s
+    sleep 0.06s
 done
