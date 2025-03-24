@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }:
-
+let
+  epaks = pkgs.emacsPackages;
+in
 {
   programs.emacs = {
     enable = true;
@@ -7,14 +9,14 @@
 
     extraPackages = epkgs:
       with pkgs; [
-        epkgs.vterm
-        epkgs.apheleia
-        epkgs.nixfmt
-        epkgs.ripgrep
-        epkgs.gnuplot
-        epkgs.shfmt
-        epkgs.pipenv
-        epkgs.pandoc
+        epaks.vterm
+        epaks.apheleia
+        epaks.nixfmt
+        epaks.ripgrep
+        epaks.gnuplot
+        epaks.shfmt
+        epaks.pipenv
+        epaks.pandoc
 
         fd
         cmake
