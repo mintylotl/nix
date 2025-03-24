@@ -61,6 +61,8 @@ in {
     libmtp
     android-tools
 
+    murmur
+    mumble
     shadow
     wget
     coreutils
