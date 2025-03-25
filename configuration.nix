@@ -86,7 +86,7 @@ in {
     ];
     blacklistedKernelModules = [ "amdgpu" "i915" "nouveau" ];
 
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = bleed.linuxPackages_latest;
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
   };
 
@@ -290,10 +290,6 @@ in {
     # LIBVA VDPAU
     "${pkgs.libva-vdpau-driver}/lib"
     "${pkgs.driversi686Linux.libva-vdpau-driver}/lib"
-
-    # SDL
-    "${bleed.sdl2-compat}/lib"
-    "${bleed.sdl3}/lib"
   ];
 
   system.stateVersion = "24.05";
