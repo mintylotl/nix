@@ -11,7 +11,7 @@ in
       with pkgs; [
         epaks.vterm
         epaks.apheleia
-        epaks.nixfmt
+        nixfmt
         epaks.ripgrep
         epaks.gnuplot
         epaks.shfmt
