@@ -29,6 +29,8 @@ in {
     most
     less
 
+    bleed.mediaelch-qt6
+    rpcs3
     vitetris
     joystickwake
     sdl-jstest
@@ -146,7 +148,25 @@ in {
 
     # PrismLauncher Cracked
     pkgs.prismlauncherCracked
-    retroarch
+
+    (retroarch.override {
+      cores = with libretro; [
+        mgba
+        mame2003-plus
+        mame2010
+        snes9x
+        nestopia
+        ppsspp
+        dolphin
+        swanstation
+        bsnes-mercury-performance
+        bsnes-mercury
+        fbalpha2012
+        pcsx-rearmed
+        genesis-plus-gx
+        mame2000
+      ];
+    })
     retroarch-assets
 
     typescript
@@ -303,11 +323,11 @@ in {
 
   services.murmur = {
     enable = true;
-      port = 37374;
-      registerName = "Mumbone";
-      bonjour = true;
-      users = 3;
-      welcometext = "Welcome to the Abyss";
+    port = 37374;
+    registerName = "Mumbone";
+    bonjour = true;
+    users = 3;
+    welcometext = "Welcome to the Abyss";
   };
 
   xdg = {
