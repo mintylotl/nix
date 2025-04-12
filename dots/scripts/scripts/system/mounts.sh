@@ -14,15 +14,8 @@ fi
 
 lnID="$(blkid | grep 'UUID="d7f41dd1-ef48-427f-9f65-94e1016c0b13"' | grep -o '/dev/sd[a-z][1-9]*')"
 lnID_DISK="$(printf "$lnID" | sed 's/1//g')"
-# Misc Mounts
-#mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/vault,compress=no /Vaultwarden
-mount --onlyonce -t btrfs -U $MED -o subvol=games,noatime,compress=no /home/Games/GamesHDD
-
-#mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/DRG,noatime,compress=no $HOME/.steam/root/steamapps/common/Deep\ Rock\ Galactic
-#mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/DRG,noatime,compress=no /home/Games/Deep\ Rock\ Galactic
 
 # APM
-# --Cold Storage
 printf "Setting APM Params...\n"
 hdparm -B 111 -S 245 $lnID_DISK
 printf "\nParams Set Successfully...\n\n"
@@ -50,6 +43,7 @@ printf "\nMounted\n\n"
 # --Crypts
 printf "Mounting Encrypted Volumes...\n"
 mount --onlyonce -t btrfs -U $COLD -o subvol=@vols/crypt/vol_camera /Drives/WD1TB/Archive/Camera/.crypt/vol_camera
+mount --onlyonce -t btrfs -U $COLD -o subvol=@vols/crypt/vol_gptchats /Drives/WD1TB/Archive/Other/bak/chatgpt/.crypt
 
 printf "Symlinking\n"
 # --Cold Storage
