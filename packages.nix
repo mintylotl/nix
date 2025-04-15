@@ -29,7 +29,8 @@ in {
     most
     less
 
-    bleed.mediaelch-qt6
+    hdparm
+    libreoffice-qt6-fresh
     rpcs3
     vitetris
     joystickwake
@@ -37,14 +38,13 @@ in {
     jstest-gtk
     linuxConsoleTools
     hyprpicker
-    bleed.ollama-cuda
     ngrok
     cachix
     nicotine-plus
     filezilla
     mokuro
     jellyfin-mpv-shim
-    osu-lazer-bin
+    bleed.osu-lazer-bin
     anki-bin
     anki-sync-server
     prisma-engines

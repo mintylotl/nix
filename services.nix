@@ -15,7 +15,7 @@
         after = [ "emacs-mounts.service" ];
         wantedBy = [ "multi-user.target" ];
         description = "Drives and Volume Mounter";
-        path = [ pkgs.util-linux pkgs.coreutils ];
+        path = [ pkgs.util-linux pkgs.coreutils pkgs.hdparm ];
 
         serviceConfig = {
           ExecStart = "${pkgs.bash}/bin/bash /system/scripts/mounts.sh";
