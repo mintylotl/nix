@@ -29,6 +29,7 @@ in {
     most
     less
 
+    veracrypt
     hdparm
     libreoffice-qt6-fresh
     rpcs3
