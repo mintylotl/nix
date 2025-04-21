@@ -53,6 +53,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs_old = musicBee.legacyPackages.${system};
+      pkgsPath = pkgs.outPath;
 
       pkgs_bleeding = import nixpkgs_unstable {
         system = "${system}";
@@ -76,7 +77,10 @@
               home-manager.users.jwm = import ./home.nix;
               home-manager.users.gameboy = import ./home_gb.nix;
 
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit pkgsPath;
+              };
             }
           ];
           specialArgs = {

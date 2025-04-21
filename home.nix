@@ -34,9 +34,15 @@ in {
         path = "/etc/nixos/devShells";
       };
     };
-    nixos.to = {
-      id = "nixpkgs";
-      type = "indirect";
+    nixos = {
+      from = {
+        id = "nixos";
+        type = "indirect";
+      };
+      to = {
+        type = "path";
+        path = pkgs.outPath;
+      };
     };
   };
 

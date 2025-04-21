@@ -37,7 +37,13 @@ in {
           path = "/etc/nixos/devShells";
         };
       };
-      nixos.to = config.nix.registry.nixpkgs.to;
+      nixos = {
+        from = {
+          type = "indirect";
+          id = "nixos";
+        };
+        to = config.nix.registry.nixpkgs.to;
+      };
     };
 
     optimise = {
