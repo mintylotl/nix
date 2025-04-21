@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, pkgsPath, inputs, ... }:
 let HOME = "/home/jwm";
 in {
   home.username = "jwm";
@@ -41,7 +41,7 @@ in {
       };
       to = {
         type = "path";
-        path = pkgs.outPath;
+        path = pkgsPath;
       };
     };
   };
