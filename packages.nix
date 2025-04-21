@@ -138,7 +138,6 @@ in {
     ripgrep
     cmake
     clang
-    gnumake
     gcc
     rustup
     rust-analyzer
