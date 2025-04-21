@@ -53,7 +53,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs_old = musicBee.legacyPackages.${system};
-      pkgsPath = pkgs.outPath;
+      pkgsPath = nixpkgs.outPath;
 
       pkgs_bleeding = import nixpkgs_unstable {
         system = "${system}";
