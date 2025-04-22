@@ -19,6 +19,7 @@ in {
     # General
     man-pages-posix
 
+    zlib
     zip
     imhex
     gzip
@@ -330,6 +331,28 @@ in {
     welcometext = "Welcome to the Abyss";
   };
 
+  services.bookstack = {
+    enable = false;
+    dataDir = "/system/programs/bookstack";
+    appKeyFile = "/system/programs/bookstack/appkey";
+  };
+
+  services.navidrome = {
+    enable = true;
+    settings.Port = 37311;
+    settings = {
+      MusicFolder = "/Drives/WD1TB/Archive/Artists";
+      DataFolder = "/system/programs/navidrome";
+      CacheFolder = "/system/programs/navidrome/cache";
+    };
+  };
+
+  services.komga = {
+    enable = true;
+    stateDir = "/system/programs/komga";
+    port = 37322;
+  };
+
   xdg = {
     terminal-exec.enable = true;
     terminal-exec.settings = { default = [ "alacritty.desktop" ]; };
@@ -342,8 +365,13 @@ in {
     menus.enable = true;
     mime.enable = true;
   };
-  programs.ecryptfs.enable = true;
-
+  programs = {
+    ecryptfs.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [ zlib ];
+    };
+  };
   # Fonts
   fonts.packages = with pkgs; [
     noto-fonts
