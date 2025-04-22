@@ -198,6 +198,8 @@ in {
   };
   users.users.nginx = { extraGroups = [ "certs" ]; };
   users.users.jellyfin = { extraGroups = [ "freezer" ]; };
+  users.users.komga.extraGroups = [ "freezer" ];
+  users.users.navidrome.extraGroups = [ "freezer" ];
   # Sound
 
   # Some programs need SUID wrappers, can be configured further or are
