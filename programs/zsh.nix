@@ -3,12 +3,15 @@
   home.file.".zmodules" = {
     enable = true;
     text = ''
-      zinit light zsh-users/zsh-completions
       zinit light zsh-users/zsh-autosuggestions
       zinit light zdharma-continuum/fast-syntax-highlighting
       zinit light zdharma-continuum/history-search-multi-word
 
-      zinit ice depth=1; zinit light romkatv/powerlevel10k
+      zinit ice depth=1
+      zinit light romkatv/powerlevel10k
+
+      zinit ice fpath"src"
+      zinit light zsh-users/zsh-completions
 
       zi ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh"
       zi light direnv/direnv
