@@ -60,15 +60,20 @@
         alias wgClientD="sudo wg-quick down ~/.wireguard/client2.conf"
 
       PATH="/home/jwm/.cargo/bin:/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
+
       source "''${ZINIT_HOME}/zinit.zsh"
       source "''${HOME}/.zmodules"
 
       source "''${HOME}/.p10k.zsh"
-
       POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
       if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
       fi
+
+      if [[ $options[zle] = on ]]; then
+         eval "$(/nix/store/aiwy3qq7sc0f39i52mp2qdml7gg1rb4y-fzf-0.56.2/bin/fzf --zsh)"
+      fi
+
     '';
   };
 }
