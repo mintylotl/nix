@@ -19,7 +19,7 @@ in {
     # General
     man-pages-posix
 
-    legendary-gl
+    bleed.legendary-gl
 
     zlib
     zip
@@ -32,6 +32,7 @@ in {
     most
     less
 
+    vscode-fhs
     veracrypt
     hdparm
     libreoffice-qt6-fresh
