@@ -88,7 +88,6 @@ in {
     dwarfs
     fuse-overlayfs
     libarchive
-    gnutar
     hyprpolkitagent
 
     #OVMF

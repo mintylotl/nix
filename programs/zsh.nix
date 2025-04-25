@@ -1,17 +1,37 @@
 { config, ... }: {
+
+  home.file.".zmodules" = {
+    enable = true;
+    text = ''
+      zinit light zsh-users/zsh-completions
+      zinit light zsh-users/zsh-autosuggestions
+      zinit light zdharma-continuum/fast-syntax-highlighting
+      zinit light zdharma-continuum/history-search-multi-word
+
+      zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+      zi ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh"
+      zi light direnv/direnv
+    '';
+  };
+
   programs.zsh = {
     enable = true;
     completionInit = "";
     initExtra = ''
-      ZIM_HOME=~/.zim
-      if [[ ! -e ''${ZIM_HOME}/zimfw.zsh ]]; then
-          curl -fsSL --create-dirs -o ''${ZIM_HOME}/zimfw.zsh \
-          https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+      # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+      # Initialization code that may require console input (password prompts, [y/n]
+      # confirmations, etc.) must go above this block; everything else may go below.
+
+      POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+         source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
       fi
 
-      if [[ ! ''${ZIM_HOME}/init.zsh -nt ''${ZDOTDIR:-''${HOME}}/.zimrc ]]; then
-          source ''${ZIM_HOME}/zimfw.zsh init -q
-      fi
+      ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.local/share}/zinit/zinit.git"
+
+      [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+      [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
       alias ls="ls --color"
       alias e="exit"
@@ -42,25 +62,10 @@
         alias wgClientD="sudo wg-quick down ~/.wireguard/client2.conf"
 
       PATH="/home/jwm/.cargo/bin:/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
+      source "''${ZINIT_HOME}/zinit.zsh"
+      source "''${HOME}/.zmodules"
 
-      eval "$(direnv hook zsh)"
-      source $ZIM_HOME/init.zsh
+      source "''${HOME}/.p10k.zsh"
     '';
-  };
-
-  home.file.".zimrc" = {
-    enable = true;
-    text = ''
-      zmodule asciiship
-      zmodule zsh-users/zsh-completions --fpath src
-      zmodule completion
-      zmodule zsh-users/zsh-syntax-highlighting
-      zmodule zsh-users/zsh-autosuggestions
-    '';
-  };
-
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
   };
 }
