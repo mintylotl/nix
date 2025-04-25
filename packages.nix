@@ -19,6 +19,8 @@ in {
     # General
     man-pages-posix
 
+    legendary-gl
+
     zlib
     zip
     imhex
