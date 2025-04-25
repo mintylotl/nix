@@ -1,6 +1,21 @@
 { config, pkgs, ... }: {
   systemd = {
     services = {
+      komf = {
+        description = "Komf service for fetching Komga metadata";
+        wantedBy = [ "multi-user.target" ];
+        path = with pkgs; [ openjdk ];
+
+        serviceConfig = {
+          User = "komga";
+          Group = "komga";
+
+          WorkingDirectory = "/system/programs/komga/komf";
+          ExecStart =
+            "/run/current-system/sw/bin/java -jar ./komf.jar application.yaml";
+        };
+      };
+
       postgres-init = {
         description = "Ensure /run/postgresql exists";
         wantedBy = [ "multi-user.target" ];
@@ -11,6 +26,7 @@
             "${pkgs.bash}/bin/bash -c '/run/current-system/sw/bin/chown jwm:jwm /run/postgresql && /run/current-system/sw/bin/chmod 775 /run/postgresql'";
         };
       };
+
       mounts = {
         after = [ "emacs-mounts.service" ];
         wantedBy = [ "multi-user.target" ];

@@ -75,14 +75,13 @@ in {
       source = ./dots/config/pipewire;
       recursive = true;
     };
+    "~/.pk10.zsh" = { source = ./dots/config/p10k.zsh; };
   };
 
   # Programs
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-
-    enableBashIntegration = true;
   };
   programs.waybar = {
     enable = true;
