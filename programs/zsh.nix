@@ -4,15 +4,14 @@
     enable = true;
     text = ''
       zinit light zsh-users/zsh-autosuggestions
-      zinit light zdharma-continuum/fast-syntax-highlighting
-      zinit light zdharma-continuum/history-search-multi-word
+      zinit light zsh-users/zsh-syntax-highlighting
 
-      zinit ice depth=1
-      zinit light romkatv/powerlevel10k
+      #zinit ice depth=1
+      #zinit light romkatv/powerlevel10k
+      zinit light sindresorhus/pure
 
       zinit ice fpath"src"
       zinit light zsh-users/zsh-completions
-
       zi ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh"
       zi light direnv/direnv
     '';
@@ -60,20 +59,31 @@
         alias wgClientD="sudo wg-quick down ~/.wireguard/client2.conf"
 
       PATH="/home/jwm/.cargo/bin:/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
+      PURE_PROMPT_SYMBOL='❯'
+      PURE_GIT_PULL=1
+      PURE_GIT_UNTRACKED_DIRTY=1
+
+      autoload -Uz compinit
+      autoload -U promptinit; promptinit
+
+      eval $(ssh-agent -s) > /dev/null
+      ssh-add -q ~/".ssh/github_ssh.key"
 
       source "''${ZINIT_HOME}/zinit.zsh"
       source "''${HOME}/.zmodules"
 
-      source "''${HOME}/.p10k.zsh"
-      POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-         source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
+      eval $(vivid generate catppuccin-mocha | dircolors -b)
 
-      if [[ $options[zle] = on ]]; then
-         eval "$(/nix/store/aiwy3qq7sc0f39i52mp2qdml7gg1rb4y-fzf-0.56.2/bin/fzf --zsh)"
-      fi
-
+      compinit
+      zstyle ':completion:*' completer _complete _ignored _files
+      zstyle ':completion:*' file-sort name
+      zstyle ':completion:*' list-colors 'tty=1'
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+      zstyle ':completion:*' special-dirs true
+      zstyle ':completion:*' menu select=1
+      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+      zstyle ':completion:*' list-dirs-first true
+      zstyle ':completion:*' rehash true
     '';
   };
 }

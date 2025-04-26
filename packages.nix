@@ -20,6 +20,7 @@ in {
     man-pages-posix
 
     bleed.legendary-gl
+    vivid
 
     zlib
     zip
