@@ -1,6 +1,16 @@
 { config, pkgs, ... }: {
   systemd = {
     services = {
+      alice = {
+        description = "A service for running the Alice Bot";
+        wantedBy = [ "multi-user.target" ];
+        path = with pkgs; [ openjdk ];
+
+        serviceConfig = {
+          WorkingDirectory = "/system/programs/alice";
+          ExecStart = "/run/current-system/sw/bin/java -jar ./alice.jar";
+        };
+      };
       komf = {
         description = "Komf service for fetching Komga metadata";
         wantedBy = [ "multi-user.target" ];
