@@ -19,7 +19,6 @@ in {
     # General
     man-pages-posix
 
-    bleed.legendary-gl
     vivid
 
     zlib
@@ -194,7 +193,7 @@ in {
     discord
     bitwarden-desktop
     git
-    makemkv
+    bleed.makemkv
     pkg-config
     btrfs-progs
     vulkan-tools

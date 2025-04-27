@@ -4,7 +4,6 @@ in {
   systemd = {
     user.enable = true;
     #user.startServices = "sd-switch";
-
     user.sessionVariables = {
       PATH =
         "/run/current-system/sw/bin:/home/jwm/.emacs.d/bin:/home/jwm/.scripts/scripts/nginxHtml:$PATH";

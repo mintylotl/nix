@@ -11,6 +11,7 @@
           ExecStart = "/run/current-system/sw/bin/java -jar ./alice.jar";
         };
       };
+
       komf = {
         description = "Komf service for fetching Komga metadata";
         wantedBy = [ "multi-user.target" ];

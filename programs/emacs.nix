@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
-let
-  epaks = pkgs.emacsPackages;
-in
-{
+let epaks = pkgs.emacsPackages;
+in {
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-pgtk;
@@ -43,7 +41,7 @@ in
 
   services.emacs = {
     enable = true;
-    client.enable = true;
+    client.enable = false;
     defaultEditor = true;
 
     startWithUserSession = true;
