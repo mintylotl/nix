@@ -75,7 +75,6 @@ in {
       source = ./dots/config/pipewire;
       recursive = true;
     };
-    "${HOME}/.p10k.zsh" = { source = ./dots/config/p10k.zsh; };
   };
 
   # Programs
