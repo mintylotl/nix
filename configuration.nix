@@ -196,8 +196,9 @@ in {
     createHome = false;
     homeMode = "755";
   };
-  users.users.nginx = { extraGroups = [ "certs" ]; };
-  users.users.jellyfin = { extraGroups = [ "freezer" ]; };
+  users.users.nginx.extraGroups = [ "certs" ];
+
+  users.users.jellyfin.extraGroups = [ "freezer" ];
   users.users.komga.extraGroups = [ "freezer" ];
   users.users.navidrome.extraGroups = [ "freezer" ];
   # Sound
@@ -247,9 +248,9 @@ in {
     extraConfig = ''
       polkit.addRule(function (action, subject) {
         if ([
-          "org.freedesktop.pipewire",
-          "com.feralinteractive.gamemode"
-          "com.feralinteractive.GameMode.governor-helper"
+          "com.feralinteractive.GameMode.cpu-helper",
+          "com.feralinteractive.GameMode.governor-helper",
+          "org.freedesktop.RealtimeKit1.acquire-real-time"
         ].indexOf(action.id) !== -1 && subject.isInGroup("nicely")) {
           return polkit.Result.YES;
         }
@@ -261,12 +262,20 @@ in {
     SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev"
   '';
 
-  security.pam.loginLimits = [{
-    domain = "@nicely";
-    type = "-";
-    item = "nice";
-    value = -15;
-  }];
+  security.pam.loginLimits = [
+    {
+      domain = "@nicely";
+      type = "-";
+      item = "nice";
+      value = -16;
+    }
+    {
+      domain = "@nicely";
+      type = "-";
+      item = "rtprio";
+      value = "88";
+    }
+  ];
 
   security.pki.certificateFiles = [ ./resources/certs/ca/rootCA.pem ];
 
