@@ -3,23 +3,25 @@ let epaks = pkgs.emacsPackages;
 in {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-pgtk;
+    package = pkgs.emacs;
 
     extraPackages = epkgs:
       with pkgs; [
         epaks.vterm
         epaks.apheleia
-        nixfmt
         epaks.ripgrep
         epaks.gnuplot
         epaks.shfmt
         epaks.pipenv
         epaks.pandoc
+        epaks.all-the-icons
+        epaks.org-superstar
 
         fd
         cmake
         clang
         gnumake
+        nixfmt
         sbcl
 
         ispell
