@@ -15,7 +15,7 @@ in {
       config.common.default = "gtk";
       config.hyprland = {
         default = "gtk";
-        #"org.freedesktop.impl.Screencast" = "wlr";
+        "org.freedesktop.impl.Screencast" = "wlr";
         #"org.freedesktop.impl.Screenshot" = "wlr";
       };
       #configPackages =
@@ -73,7 +73,7 @@ in {
         icon = "emacs";
         type = "Application";
         exec = ''
-          emacsclient --alternate-editor= -s "${HOME}/.emacs.d/emacflurry/mcflurry" -c %F
+          emacsclient --alternate-editor= -s "${HOME}/.doom.d/emacflurry/mcflurry" -c %F
         '';
 
         terminal = false;
