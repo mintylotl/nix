@@ -59,6 +59,7 @@
         system = "${system}";
         config.allowUnfree = true;
       };
+      pkgsPath_bleeding = nixpkgs_unstable.outPath;
 
       packages.x86_64-linux = {
         default = nixpkgs.legacyPackages.${system};
@@ -80,6 +81,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 inherit pkgsPath;
+                inherit pkgsPath_bleeding;
               };
             }
           ];

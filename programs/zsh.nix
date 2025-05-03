@@ -66,12 +66,12 @@
       autoload -Uz compinit
       autoload -U promptinit; promptinit
 
-      if [ "jwm" == "$(whoami)" ];
+      if [[ "jwm" == "$(whoami)" ]];
       then
-      	eval $(ssh-agent -s) > /dev/null
-      	ssh-add -q ~/".ssh/github_ssh.key"
+        eval $(ssh-agent -s) > /dev/null
+        ssh-add -q ~/".ssh/github_ssh.key"
       fi
-      
+
       source "''${ZINIT_HOME}/zinit.zsh"
       source "''${HOME}/.zmodules"
 

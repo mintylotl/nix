@@ -3,7 +3,7 @@ let epaks = pkgs.emacsPackages;
 in {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs;
+    package = pkgs.emacs-pgtk;
 
     extraPackages = epkgs:
       with pkgs; [
@@ -23,13 +23,11 @@ in {
         gnumake
         nixfmt
         sbcl
+        gdtoolkit_4
 
         ispell
         stylelint
-        jsbeautifier
-        html-tidy
 
-        cmigemo
         shellcheck
         graphviz
 

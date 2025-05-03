@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgsPath, inputs, ... }:
+{ config, lib, pkgs, pkgsPath, pkgsPath_bleeding, inputs, ... }:
 let HOME = "/home/jwm";
 in {
   home.username = "jwm";
@@ -42,6 +42,16 @@ in {
       to = {
         type = "path";
         path = pkgsPath;
+      };
+    };
+    nixosBleed = {
+      from = {
+        id = "nixosbleed";
+        type = "indirect";
+      };
+      to = {
+        type = "path";
+        path = pkgsPath_bleeding;
       };
     };
   };
