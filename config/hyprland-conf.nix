@@ -131,6 +131,10 @@
       windowrulev2 = workspace 1 silent, class:^(firefox)$
 
       # WindowruleV2s
+      # --Godot
+      windowrulev2 = float, class:Godot
+      windowrulev2 = size 1100 750, class:Godot
+      windowrulev2 = center 1, class:Godot
       # --XDG
       windowrulev2 = float, class:xdg-desktop-portal-gtk
       windowrulev2 = size 880 680, class:xdg-desktop-portal-gtk
