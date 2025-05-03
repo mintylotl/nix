@@ -306,6 +306,7 @@ in {
     # LIBVA VDPAU
     "${pkgs.libva-vdpau-driver}/lib"
     "${pkgs.driversi686Linux.libva-vdpau-driver}/lib"
+    "${pkgs.zlib}"
   ];
 
   system.stateVersion = "24.05";

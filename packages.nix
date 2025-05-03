@@ -269,7 +269,7 @@ in {
     telegram-desktop
     pkgs.qbittorrent
     mako
-    zlib
+    bleed.zlib
     rose-pine-cursor
     paksold.aria2
 
