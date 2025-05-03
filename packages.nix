@@ -68,6 +68,42 @@ in {
     libmtp
     android-tools
 
+    #Emacs
+    cmigemo
+    tidyp
+    jsbeautifier
+    html-tidy
+    gnumake
+    pkg-config
+    cmake
+    libtool
+    libvterm
+    editorconfig-checker
+    editorconfig-core-c
+    sbcl
+    gdtoolkit_4
+    libxml2
+    gopls
+    gomodifytags
+    gotest
+    gore
+    cabal-install
+    haskell-language-server
+    llvmPackages.clang-tools
+    pandoc
+    nixfmt
+    shfmt
+    shellcheck
+    stylelint
+    graphviz
+
+    #Python
+    py.black
+    py.nose2
+    py.pyflakes
+    py.pytest
+    py.isort
+
     mumble
     shadow
     wget
@@ -80,7 +116,7 @@ in {
     alsa-lib
     alsa-tools
     alsa-utils
-    godot_4
+    bleed.godot_4
     ecryptfs
     xorg.xinit
     unrar
@@ -182,12 +218,6 @@ in {
     py.yt-dlp
     py.numpy
 
-    #Emacs
-    py.isort
-    py.pygame-ce
-    #py.pygame-gui
-    #py.pygame-sdl
-
     # System Utilities
     home-manager
     discord
@@ -204,6 +234,8 @@ in {
     stow
     brightnessctl
     ffmpeg-full
+    zig
+    ghc
 
     # Thumbnailers
     ffmpegthumbnailer
@@ -237,6 +269,7 @@ in {
     telegram-desktop
     pkgs.qbittorrent
     mako
+    zlib
     rose-pine-cursor
     paksold.aria2
 

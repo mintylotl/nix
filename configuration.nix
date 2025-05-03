@@ -30,7 +30,6 @@ in {
     extraOptions = "experimental-features = nix-command flakes";
 
     registry = {
-
       devShells = {
         to = {
           type = "path";
