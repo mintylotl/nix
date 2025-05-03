@@ -234,6 +234,7 @@ in {
     stow
     brightnessctl
     ffmpeg-full
+    bleed.yt-dlp
     zig
     ghc
 
