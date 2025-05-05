@@ -85,9 +85,8 @@ in {
     libxml2
     gopls
     gomodifytags
-    gotest
+    gotests
     gore
-    cabal-install
     haskell-language-server
     llvmPackages.clang-tools
     pandoc
@@ -103,6 +102,9 @@ in {
     py.pyflakes
     py.pytest
     py.isort
+    pipenv
+    poetry
+    pyenv
 
     mumble
     shadow
@@ -236,7 +238,7 @@ in {
     ffmpeg-full
     bleed.yt-dlp
     zig
-    ghc
+    (ghc.withPackages (hp: with hp; [ zlib cabal-install ]))
 
     # Thumbnailers
     ffmpegthumbnailer
