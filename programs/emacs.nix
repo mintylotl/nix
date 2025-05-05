@@ -16,6 +16,7 @@ in {
         epaks.pandoc
         epaks.all-the-icons
         epaks.org-superstar
+        epaks.pytest
 
         fd
         cmake
