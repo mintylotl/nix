@@ -75,7 +75,7 @@
       source "''${ZINIT_HOME}/zinit.zsh"
       source "''${HOME}/.zmodules"
 
-      eval $(vivid generate catppuccin-mocha | dircolors -b)
+      LS_COLORS=$(vivid generate tokyonight-storm)
 
       compinit
       zstyle ':completion:*' completer _complete _ignored _files

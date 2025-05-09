@@ -7,7 +7,7 @@ config="$(cat /etc/nixos/dots/config/pipewire/pipewire.conf)"
 
 if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headphones"; then
 	echo Service Failed, Attempting a Restart...
-	sleep 3s
+	sleep 1s
 	for x in /sys/bus/pci/devices/0000:2d:00.4/sound/card*; do
 		while :; do
 			if [ "${x: -1}" == "$count" ]; then
@@ -25,8 +25,8 @@ if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headp
 	done
 
 	systemctl --user restart pipewire
-	sleep 5s
-	rm ~/.config/pipewire/pipewire.conf
+	sleep 1s
+	ln -s /etc/nixos/dots/config/pipewire/pipewire.conf ~/.config/pipewire/pipewire.conf
 fi
 
 SCRIPT_DIR="/home/jwm/.config/hypr"
