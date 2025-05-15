@@ -47,5 +47,9 @@ in {
 
     startWithUserSession = true;
   };
-  systemd.user.services.emacs = { Unit.After = [ "emacs-mounts.service" ]; };
+  systemd.user.services.emacs = {
+    Unit.After = [ "emacs-mounts.service" ];
+    Service.User = "jwm";
+    Service.Group = "org";
+  };
 }

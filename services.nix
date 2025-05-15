@@ -51,6 +51,17 @@
         };
       };
 
+      crypt-mounts = {
+        after = [ "mounts.service" ];
+        wantedBy = [ "multi-user.target" ];
+        description = "Mounts Gocryptfs Volumes";
+        path = [ pkgs.util-linux pkgs.gocryptfs ];
+
+        serviceConfig = {
+          ExecStart = "${pkgs.bash}/bin/bash /system/scripts/usb_crypt.sh";
+        };
+      };
+
       emacs-mounts = {
         wantedBy = [ "multi-user.target" ];
         description = "Mounts Emacs's Paths";
