@@ -12,7 +12,6 @@ if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headp
 		while :; do
 			if [ "${x: -1}" == "$count" ]; then
 				rm ~/.config/pipewire/pipewire.conf
-				echo "$config" | sed "s/hw:[0-9]/hw:$count/g" >~/.config/pipewire/pipewire.conf
 				sed -i "s/hw:[0-9]/hw:$count/g" /etc/nixos/dots/config/pipewire/pipewire.conf
 			fi
 
@@ -24,9 +23,9 @@ if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headp
 		done
 	done
 
+	ln -s /etc/nixos/dots/config/pipewire/pipewire.conf ~/.config/pipewire/pipewire.conf
 	systemctl --user restart pipewire
 	sleep 1s
-	ln -s /etc/nixos/dots/config/pipewire/pipewire.conf ~/.config/pipewire/pipewire.conf
 fi
 
 SCRIPT_DIR="/home/jwm/.config/hypr"

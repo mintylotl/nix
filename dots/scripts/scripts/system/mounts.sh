@@ -42,7 +42,7 @@ printf "\nMounted\n\n"
 
 # --Crypts
 printf "Mounting Encrypted Volumes...\n"
-mount --onlyonce -t btrfs -U $COLD -o subvol=@vols/crypt/vol_camera /Drives/WD1TB/Archive/Camera/.crypt/vol_camera
+mount --onlyonce -t btrfs -U $COLD -o subvol=@vols/crypt/vol_camera /Drives/WD1TB/Archive/Camera/.crypt
 mount --onlyonce -t btrfs -U $COLD -o subvol=@vols/crypt/vol_gptchats /Drives/WD1TB/Archive/Other/bak/chatgpt/.crypt
 
 printf "Symlinking\n"
