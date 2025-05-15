@@ -58,7 +58,7 @@
         path = [ pkgs.util-linux pkgs.gocryptfs ];
 
         serviceConfig = {
-          ExecStart = "${pkgs.bash}/bin/bash /system/scripts/usb_crypt.sh";
+          ExecStart = "${pkgs.bash}/bin/bash /system/scripts/usb_crypt.sh org";
         };
       };
 

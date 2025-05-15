@@ -37,7 +37,7 @@ mount --onlyonce -t btrfs -U $COLD -o subvol=@vols/projects,compress-force=zstd:
 printf "Mounting DoomEmacs...\n"
 mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/emacs-conf $HOME/.doom.d/
 mount --onlyonce -t btrfs -U $HOT -o compress-force=zstd:3,noatime,subvol=@vols/emacs $HOME/.emacs.d/
-mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/orgnotes,compress=zstd:3,noatime $HOME/.orgnotes
+mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/orgnotes,compress=zstd:3,noatime $HOME/.crypt/orgnotes
 printf "\nMounted\n\n"
 
 # --Crypts
