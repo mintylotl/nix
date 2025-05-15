@@ -3,7 +3,21 @@
         {
             "pattern": {
                 "feature": "procname",
-                "matches": "Hyprland"
+                "matches": "/run/wrappers/bin/kwin_wayland"
+            },
+            "profile": "Limit Free Buffer Pool On Wayland Compositors"
+        },
+        {
+            "pattern": {
+                "feature": "procname",
+                "matches": "/run/current-system/sw/bin/Xwayland"
+            },
+            "profile": "Limit Free Buffer Pool On Wayland Compositors"
+        },
+        {
+            "pattern": {
+                "feature": "procname",
+                "matches": "/etc/profiles/per-user/jwm/bin/Hyprland"
             },
             "profile": "Limit Free Buffer Pool On Wayland Compositors"
         }

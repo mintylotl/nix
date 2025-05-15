@@ -225,7 +225,7 @@ in {
     discord
     bitwarden-desktop
     git
-    bleed.makemkv
+    #makemkv
     pkg-config
     btrfs-progs
     vulkan-tools

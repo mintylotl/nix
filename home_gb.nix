@@ -12,10 +12,11 @@ in {
   home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   home.file = {
-    #".config/pipewire" = {
-    #  source = ./dots/config/pipewire;
-    #  recursive = true;
-    #};
+    ".config/pipewire" = {
+      source = ./dots/config/pipewire;
+      recursive = true;
+    };
+    ".scripts/scripts/sink.sh" = { source = ./dots/config/hypr/sink.sh; };
   };
 
   # Programs
