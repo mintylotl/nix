@@ -169,6 +169,7 @@ in {
     nicely = { };
     gamers = { };
     postgres = { };
+    org = { };
   };
   # Users
   users.users.jwm = {
