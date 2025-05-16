@@ -16,7 +16,7 @@ in {
       source = ./dots/config/pipewire;
       recursive = true;
     };
-    ".scripts/scripts/sink.sh" = { source = ./dots/config/hypr/sink.sh; };
+    ".scripts/sink.sh" = { source = ./dots/config/hypr/sink.sh; };
   };
 
   # Programs
