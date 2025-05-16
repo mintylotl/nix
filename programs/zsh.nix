@@ -22,6 +22,7 @@
     completionInit = "";
     initExtra = ''
       ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.local/share}/zinit/zinit.git"
+      SCRIPTS_DIR="$HOME"/.scripts
 
       [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
       [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
@@ -32,17 +33,16 @@
       alias vc="veracrypt -t -c"
       alias vm="veracrypt -t"
 
-      alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
+      alias mounts="sudo $SCRIPTS_DIR/system/mounts.sh"
       alias nixosFlake="sudo nixos-rebuild switch --flake /etc/nixos#cabbage"
       alias nixosFlakeF="sudo nixos-rebuild switch --flake /etc/nixos#cabbage --fast --offline"
 
-      alias mounts="sudo $HOME/.scripts/scripts/system/mounts.sh"
       alias fetch="fetcher.sh"
-      alias emacsc="emacsclient -c -a emacs -s /home/jwm/.doom.d/emacflurry/mcflurry"
-      alias garb="sudo $HOME/.scripts/scripts/system/nixosgarbage.sh 1"
-      alias garbBige="sudo $HOME/.scripts/scripts/system/nixosgarbage.sh 0"
-      alias blender3="~/.local/state/nix/profiles/blender3/bin/blender"
-      alias crypt="sudo -E /etc/nixos/dots/scripts/scripts/system/usb_crypt.sh"
+      alias emacsc="emacsclient -c -a emacs -s "$HOME"/.doom.d/emacflurry/mcflurry"
+      alias garb="sudo $SCRIPTS_DIR/system/nixosgarbage.sh 1"
+      alias garbBige="sudo $SCRIPTS_DIR/system/nixosgarbage.sh 0"
+      alias blender3="$HOME"/.local/state/nix/profiles/blender3/bin/blender
+      alias crypt="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh"
 
         # --wireguard
         alias wgVlanU="sudo wg-quick up ~/.wireguard/vlan.conf"
@@ -50,7 +50,7 @@
         alias wgClientU="sudo wg-quick up ~/.wireguard/client2.conf"
         alias wgClientD="sudo wg-quick down ~/.wireguard/client2.conf"
 
-      PATH="/home/jwm/.cargo/bin:/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$HOME/.scripts/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
+      PATH="/home/jwm/.cargo/bin:/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$SCRIPTS_DIR/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
       PURE_PROMPT_SYMBOL='❯'
       PURE_GIT_PULL=1
       PURE_GIT_UNTRACKED_DIRTY=1

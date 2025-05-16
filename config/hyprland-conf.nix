@@ -31,7 +31,7 @@
 
       # Hyprland
       $HOME = "/home/jwm"
-      $scripts = "$HOME"/.scripts/scripts
+      $scripts = "$HOME"/.scripts
       $emacsDir = "$HOME"/.emacs.d
 
       # --Envar
@@ -248,7 +248,7 @@
       #Binds
       $HOME = "/home/jwm"
       $mainMod = SUPER
-      $shortcut_dir = "$HOME/.scripts/programs/musicbee/shortcuts"
+      $shortcut_dir = "$HOME/.programs/musicbee/shortcuts"
 
       # --ScreenShotting
       bind = , Print, exec, grim -l 4 -g "0,0 1280x1024"
@@ -279,7 +279,7 @@
       bind = , F7, exec, wpctl set-volume 33 5%-
       bind = , F8, exec, wpctl set-volume 33 5%+
       # --Programs
-      bind = $mainMod, P, exec, /home/jwm/.scripts/programs/musicbee/launcher.sh
+      bind = $mainMod, P, exec, $shortcut_dir/../launcher.sh
 
       bind = $mainMod, G, exec, firefox-developer-edition
       bind = $mainMod, RETURN, exec, alacritty
