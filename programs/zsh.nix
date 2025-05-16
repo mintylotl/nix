@@ -21,10 +21,6 @@
     enable = true;
     completionInit = "";
     initExtra = ''
-      # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-      # Initialization code that may require console input (password prompts, [y/n]
-      # confirmations, etc.) must go above this block; everything else may go below.
-
       ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.local/share}/zinit/zinit.git"
 
       [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -46,11 +42,6 @@
       alias garb="sudo $HOME/.scripts/scripts/system/nixosgarbage.sh 1"
       alias garbBige="sudo $HOME/.scripts/scripts/system/nixosgarbage.sh 0"
       alias blender3="~/.local/state/nix/profiles/blender3/bin/blender"
-
-        # --ecryptfs
-        alias mount.crypt="mount.ecryptfs_private"
-        alias umount.crypt="umount.ecryptfs_private"
-        alias ikey="insert.sh"
 
         # --wireguard
         alias wgVlanU="sudo wg-quick up ~/.wireguard/vlan.conf"
