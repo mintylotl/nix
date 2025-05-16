@@ -15,6 +15,13 @@ fi
 echo "Mounting: ${mountPoints[$VOL]}"
 mount --onlyonce -U 43EB-617A /pass
 
+if [ $? -eq 0 ]; then
+    printf "Mounted Volume...\n"
+else
+    printf "Please insert USB key\n"
+    exit 1
+fi
+
 if [ $VOLV -eq 0 ]; then
     gocryptfs -passfile /system/pass/usb /pass/.pass_crypt /pass/.pass
     umount /pass/.pass
