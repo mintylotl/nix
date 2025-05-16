@@ -248,7 +248,7 @@
       #Binds
       $HOME = "/home/jwm"
       $mainMod = SUPER
-      $shortcut_dir = "$HOME/.programs/musicbee/shortcuts"
+      $shortcut_dir = "$HOME"/.programs/musicbee/shortcuts
 
       # --ScreenShotting
       bind = , Print, exec, grim -l 4 -g "0,0 1280x1024"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$HOME/.scripts/programs/musicbee/shortcuts"
+cd "$HOME/.programs/musicbee/shortcuts"
 
 WINDOW="$(./getWdName.sh)"
 xdotool key --window "$WINDOW" "SUPER+End"
