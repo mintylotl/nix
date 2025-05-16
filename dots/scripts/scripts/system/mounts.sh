@@ -8,7 +8,7 @@ MED="bc53d224-cdf4-4d0d-a328-9731266e5220"
 if [ "$MODE" == "1" ]; then
 	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/emacs-conf $HOME/.doom.d/
 	mount --onlyonce -t btrfs -U $HOT -o compress-force=zstd:3,noatime,subvol=@vols/emacs $HOME/.emacs.d/
-	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/orgnotes,compress=zstd:3,noatime $HOME/.orgnotes
+	/system/scripts/usb_crypt.sh org
 	exit 0
 fi
 

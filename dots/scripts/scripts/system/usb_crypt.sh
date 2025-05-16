@@ -6,31 +6,38 @@ mountPointsCrypt[org]="${HOME}/.crypt/orgnotes"
 mountPoints[org]="${HOME}/.orgnotes"
 
 VOL="${1}"
-if [[ "$VOL" == "" || "$VOL" == " " ]]; then
-    VOL=0
-fi
-if [[ "${VOL}" == "org" ]]; then
-    for _f in "${HOME}/.orgnotes/"*; do
-        umount /pass/.pass
-        exit 0
-    done
+VOLV=100
+
+if [[ $VOL =~ ^[0-9]+$ ]]; then
+    VOLV=$VOL
 fi
 
-echo $1
-echo ${mountPoints[org]}
-echo ${mountPointsCrypt[org]}
-
+echo "Mounting: ${mountPoints[$VOL]}"
 mount --onlyonce -U 43EB-617A /pass
 
-if [[ "$VOL" -eq 0 ]]; then
+if [ $VOLV -eq 0 ]; then
     gocryptfs -passfile /system/pass/usb /pass/.pass_crypt /pass/.pass
-    exit 0
-elif [ "$VOL" -eq 1 ]; then
     umount /pass/.pass
+    umount /pass
+    exit 0
+elif [ $VOLV -eq 1 ]; then
+    umount /pass/.pass
+    umount /pass
     exit 0
 fi
 
-gocryptfs -passfile /system/pass/usb /pass/.pass_crypt /pass/.pass
-gocryptfs -passfile /pass/.pass/passfile "${mountPointsCrypt[$VOL]}" "${mountPoints[$VOL]}"
+if [ -e /pass/.pass/passfile ]; then
+    printf "already mounted!\n"
+else
+    gocryptfs -passfile /system/pass/usb /pass/.pass_crypt /pass/.pass
+fi
+
+tmpFile=$(mktemp)
+chmod 600 "${tmpFile}"
+chown jwm:root "${tmpFile}"
+cat /pass/.pass/passfile | sudo -u jwm tee "${tmpFile}" >/dev/null
+
+sudo -u jwm gocryptfs -passfile "${tmpFile}" "${mountPointsCrypt[$VOL]}" "${mountPoints[$VOL]}"
 
 umount /pass/.pass
+rm "${tmpFile}"
