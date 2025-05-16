@@ -4,6 +4,10 @@ declare -A mountPoints
 declare -A mountPointsCrypt
 mountPointsCrypt[org]="${HOME}/.crypt/orgnotes"
 mountPoints[org]="${HOME}/.orgnotes"
+mountPointsCrypt[camera]="/Drives/WD1TB/Archive/Camera/.crypt"
+mountPoints[camera]="/Drives/WD1TB/Archive/Camera/Files"
+mountPointsCrypt[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/.crypt"
+mountPoints[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/Files"
 
 VOL="${1}"
 VOLV=100
@@ -46,5 +50,6 @@ cat /pass/.pass/passfile | sudo -u jwm tee "${tmpFile}" >/dev/null
 
 sudo -u jwm gocryptfs -passfile "${tmpFile}" "${mountPointsCrypt[$VOL]}" "${mountPoints[$VOL]}"
 
-umount /pass/.pass
 rm "${tmpFile}"
+umount /pass/.pass
+umount /pass

@@ -67,7 +67,7 @@ in {
       recursive = true;
     };
     # Programs
-    ".scripts/programs" = {
+    ".programs" = {
       source = ./dots/programs;
       recursive = true;
     };
