@@ -11,9 +11,24 @@ mountPoints[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/Files"
 
 VOL="${1}"
 VOLV=100
+VOLVV=100
 
 if [[ $VOL =~ ^[0-9]+$ ]]; then
     VOLV=$VOL
+fi
+if [ $VOLV -eq 3 ]; then
+    for d in "${mountPoints[@]}"; do
+        umount "$d"
+    done
+    exit 0
+fi
+
+if [[ $2 =~ ^[0-9]+$ ]]; then
+    VOLVV=$2
+fi
+if [ $VOLVV -eq 1 ]; then
+    umount "${mountPoints[$VOL]}"
+    exit 0
 fi
 
 echo "Mounting: ${mountPoints[$VOL]}"
@@ -23,13 +38,15 @@ if [ $? -eq 0 ]; then
     printf "Mounted Volume...\n"
 else
     printf "Please insert USB key\n"
-    exit 1
+
+    if [ $VOLV -eq 1 ]; then
+        umount /pass/.pass
+        umount /pass
+    fi
 fi
 
 if [ $VOLV -eq 0 ]; then
     gocryptfs -passfile /system/pass/usb /pass/.pass_crypt /pass/.pass
-    umount /pass/.pass
-    umount /pass
     exit 0
 elif [ $VOLV -eq 1 ]; then
     umount /pass/.pass
@@ -48,6 +65,12 @@ chmod 600 "${tmpFile}"
 chown jwm:root "${tmpFile}"
 cat /pass/.pass/passfile | sudo -u jwm tee "${tmpFile}" >/dev/null
 
+if [ -z $VOL ]; then
+    for d in "${!mountPoints[@]}"; do
+        echo $d
+        sudo -u jwm gocryptfs -passfile "${tmpFile}" "${mountPointsCrypt[$d]}" "${mountPoints[$d]}"
+    done
+fi
 sudo -u jwm gocryptfs -passfile "${tmpFile}" "${mountPointsCrypt[$VOL]}" "${mountPoints[$VOL]}"
 
 rm "${tmpFile}"
