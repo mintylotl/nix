@@ -4,6 +4,9 @@ let
   nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
   cuda = pkgs.cudaPackages.cudatoolkit;
   bleed = pkgs_bleeding;
+
+  scriptsDir = "${HOME}/.scripts";
+  programsDir = "${HOME}/.programs";
 in {
   # nixOS
   imports = [
@@ -132,19 +135,19 @@ in {
       users = [ "jwm" ];
       commands = [
         {
-          command = "${HOME}/.scripts/scripts/system/mounts.sh";
+          command = "${scriptsDir}/system/mounts.sh";
           options = [ "SETENV" "NOPASSWD" ];
         }
         {
-          command = "${HOME}/.scripts/scripts/system/leds.sh";
+          command = "${scriptsDir}/system/leds.sh";
           options = [ "SETENV" "NOPASSWD" ];
         }
         {
-          command = "${HOME}/.scripts/programs/musicbee/prio.sh";
+          command = "${programsDir}/musicbee/prio.sh";
           options = [ "SETENV" "NOPASSWD" ];
         }
         {
-          command = "${HOME}/.scripts/scripts/system/nixosgarbage.sh";
+          command = "${scriptsDir}/system/nixosgarbage.sh";
           options = [ "SETENV" "NOPASSWD" ];
         }
         {
