@@ -19,8 +19,8 @@ in {
   environment.systemPackages = with pkgs; [
     # General
     man-pages-posix
-
     vivid
+    ollama-cuda
 
     zlib
     zip
