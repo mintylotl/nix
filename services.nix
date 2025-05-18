@@ -3,6 +3,7 @@
     services = {
       alice = {
         description = "A service for running the Alice Bot";
+        after = [ "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
         path = with pkgs; [ openjdk ];
 
