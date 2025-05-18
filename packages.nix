@@ -12,6 +12,7 @@ in {
         withDeltaUpdates = true;
       };
       prismlauncherCracked = prism.packages.${pkgs.system}.prismlauncher;
+      kdePackges = bleed.kdePackages;
     })
   ];
 
@@ -119,7 +120,6 @@ in {
     alsa-tools
     alsa-utils
     bleed.godot_4
-    ecryptfs
     xorg.xinit
     unrar
     kdePackages.ark
@@ -164,15 +164,15 @@ in {
 
     xcur2png
     pavucontrol
-    audacity
-    mpv
+    bleed.audacity
+    bleed.mpv
     #busybox
     htop
     neofetch
     speedcrunch
-    openssl
+    bleed.openssl
 
-    lutris
+    bleed.lutris
     protontricks
 
     fd
@@ -181,7 +181,7 @@ in {
     clang
     gcc
     rustup
-    rust-analyzer
+    bleed.rust-analyzer
 
     # QT
     qimgv
@@ -222,7 +222,7 @@ in {
 
     # System Utilities
     home-manager
-    discord
+    bleed.discord
     bitwarden-desktop
     git
     #makemkv
@@ -254,9 +254,9 @@ in {
     duperemove
     dxvk_2
     vkd3d-proton
-    gamescope
-    gamemode
-    mangohud
+    bleed.gamescope
+    bleed.gamemode
+    bleed.mangohud
     # Programs
     #wineWowPackages.waylandFull
     #wineWowPackages.stableFull
@@ -268,8 +268,8 @@ in {
     hyprpaper
     wl-clipboard
     cliphist
-    paksold.firefox-devedition-bin
-    telegram-desktop
+    bleed.firefox-devedition-bin
+    bleed.telegram-desktop
     pkgs.qbittorrent
     mako
     bleed.zlib

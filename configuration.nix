@@ -23,7 +23,10 @@ in {
     ./cachix.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [ "electron-33.4.11" ];
+  };
 
   nix = {
     package = pkgs.nix;

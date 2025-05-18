@@ -2,16 +2,23 @@
 
 declare -A mountPoints
 declare -A mountPointsCrypt
+declare -A additionalArgs
+
 mountPointsCrypt[org]="${HOME}/.crypt/orgnotes"
 mountPoints[org]="${HOME}/.orgnotes"
 mountPointsCrypt[camera]="/Drives/WD1TB/Archive/Camera/.crypt"
 mountPoints[camera]="/Drives/WD1TB/Archive/Camera/Files"
 mountPointsCrypt[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/.crypt"
 mountPoints[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/Files"
+additionalArgs[org]=" -noprealloc"
 
 VOL="${1}"
 VOLV=100
 VOLVV=100
+
+if [[ ! -v ${additionalArgs[$VOL]} ]]; then
+    additionalArgs[$VOL]=""
+fi
 
 if [[ $VOL =~ ^[0-9]+$ ]]; then
     VOLV=$VOL
@@ -37,12 +44,21 @@ mount --onlyonce -U 43EB-617A /pass
 if [ $? -eq 0 ]; then
     printf "Mounted Volume...\n"
 else
-    printf "Please insert USB key\n"
+    printf "Please insert USB key...\n"
 
     if [ $VOLV -eq 1 ]; then
         umount /pass/.pass
         umount /pass
     fi
+
+    while :; do
+        sleep 1s
+        mount --onlyonce -U 43EB-617A /pass 2>/dev/null
+
+        if [ $? -eq 0 ]; then
+            break
+        fi
+    done
 fi
 
 if [ $VOLV -eq 0 ]; then
@@ -68,10 +84,10 @@ cat /pass/.pass/passfile | sudo -u jwm tee "${tmpFile}" >/dev/null
 if [ -z $VOL ]; then
     for d in "${!mountPoints[@]}"; do
         echo $d
-        sudo -u jwm gocryptfs -passfile "${tmpFile}" "${mountPointsCrypt[$d]}" "${mountPoints[$d]}"
+        sudo -u jwm gocryptfs${additionalArgs[$d]} -passfile "${tmpFile}" "${mountPointsCrypt[$d]}" "${mountPoints[$d]}"
     done
 fi
-sudo -u jwm gocryptfs -passfile "${tmpFile}" "${mountPointsCrypt[$VOL]}" "${mountPoints[$VOL]}"
+sudo -u jwm gocryptfs${additionalArgs[$VOL]} -passfile "${tmpFile}" "${mountPointsCrypt[$VOL]}" "${mountPoints[$VOL]}"
 
 rm "${tmpFile}"
 umount /pass/.pass
