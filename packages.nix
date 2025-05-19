@@ -60,6 +60,8 @@ in {
     hunspellDicts.en_GB-ize
     hunspell
 
+    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
+
     #cudaPackages.cudatoolkit
     xorg.xeyes
     xorg.xorgserver
