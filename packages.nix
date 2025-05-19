@@ -55,6 +55,11 @@ in {
     anki-sync-server
     prisma-engines
 
+    #Dicts
+    hunspellDicts.ko_KR
+    hunspellDicts.en_GB-ize
+    hunspell
+
     #cudaPackages.cudatoolkit
     xorg.xeyes
     xorg.xorgserver
