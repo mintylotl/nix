@@ -39,7 +39,7 @@ if [ $VOLVV -eq 1 ]; then
 fi
 
 echo "Mounting: ${mountPoints[$VOL]}"
-mount --onlyonce -U 43EB-617A /pass
+mount --onlyonce -U 88A1-995F /pass
 
 if [ $? -eq 0 ]; then
     printf "Mounted Volume...\n"

@@ -4,6 +4,7 @@
       alice = {
         description = "A service for running the Alice Bot";
         after = [ "network-online.target" ];
+        requires = [ "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
         path = with pkgs; [ openjdk ];
 
@@ -52,16 +53,17 @@
         };
       };
 
-      crypt-mounts = {
-        after = [ "mounts.service" ];
-        wantedBy = [ "multi-user.target" ];
-        description = "Mounts Gocryptfs Volumes";
-        path = [ pkgs.util-linux pkgs.gocryptfs ];
+      /* crypt-mounts = {
+           after = [ "mounts.service" ];
+           wantedBy = [ "multi-user.target" ];
+           description = "Mounts Gocryptfs Volumes";
+           path = [ pkgs.util-linux pkgs.gocryptfs ];
 
-        serviceConfig = {
-          ExecStart = "${pkgs.bash}/bin/bash /system/scripts/usb_crypt.sh 1";
-        };
-      };
+           serviceConfig = {
+             ExecStart = "${pkgs.bash}/bin/bash /system/scripts/usb_crypt.sh 1";
+           };
+         };
+      */
 
       emacs-mounts = {
         wantedBy = [ "multi-user.target" ];
