@@ -22,6 +22,8 @@ in {
     vivid
     ollama-cuda
 
+    ryujinx
+    citron
     zlib
     zip
     imhex
