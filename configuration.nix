@@ -251,15 +251,17 @@ in {
   security.polkit = {
     enable = true;
     extraConfig = ''
-      polkit.addRule(function (action, subject) {
-        if ([
-          "com.feralinteractive.GameMode.cpu-helper",
-          "com.feralinteractive.GameMode.governor-helper",
-          "org.freedesktop.RealtimeKit1.acquire-real-time"
-        ].indexOf(action.id) !== -1 && subject.isInGroup("nicely")) {
-          return polkit.Result.YES;
-        }
-      });
+            polkit.addRule(function (action, subject) {
+              if ([
+                "com.feralinteractive.GameMode.cpu-helper",
+      	  "com.feralinteractive.GameMode.gpu-helper",
+      	  "com.feralinteractive.GameMode.procsys-helper",
+                "com.feralinteractive.GameMode.governor-helper",
+                "org.freedesktop.RealtimeKit1.acquire-real-time"
+              ].indexOf(action.id) !== -1 && subject.isInGroup("nicely")) {
+                return polkit.Result.YES;
+              }
+            });
     '';
   };
 
@@ -302,6 +304,7 @@ in {
           version = "9.0";
         }
       }/bin/wine";
+    condaSrc = "${pkgs.conda.env}";
   };
 
   environment.pathsToLink = [
