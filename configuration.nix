@@ -304,7 +304,6 @@ in {
           version = "9.0";
         }
       }/bin/wine";
-    condaSrc = "${pkgs.conda.env}";
   };
 
   environment.pathsToLink = [

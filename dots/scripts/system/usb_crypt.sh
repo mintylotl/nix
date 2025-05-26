@@ -84,11 +84,10 @@ cat /pass/.pass/passfile | sudo -u jwm tee "${tmpFile}" >/dev/null
 if [ -z $VOL ]; then
     for d in "${!mountPoints[@]}"; do
         echo $d
-        sudo -u jwm gocryptfs${additionalArgs[$d]} -passfile "${tmpFile}" "${mountPointsCrypt[$d]}" "${mountPoints[$d]}"
+        sudo -u jwm gocryptfs${additionalArgs[$d]} --quiet -passfile "${tmpFile}" "${mountPointsCrypt[$d]}" "${mountPoints[$d]}"
     done
 fi
-sudo -u jwm gocryptfs${additionalArgs[$VOL]} -passfile "${tmpFile}" "${mountPointsCrypt[$VOL]}" "${mountPoints[$VOL]}"
+sudo -u jwm gocryptfs${additionalArgs[$VOL]} --quiet -passfile "${tmpFile}" "${mountPointsCrypt[$VOL]}" "${mountPoints[$VOL]}"
 
 rm "${tmpFile}"
-umount /pass/.pass
-umount /pass
+umount /pass/.pass && sleep 3s && umount /pass &

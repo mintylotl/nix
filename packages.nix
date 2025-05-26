@@ -20,8 +20,9 @@ in {
     # General
     man-pages-posix
     vivid
-    ollama-cuda
+    bleed.ollama-cuda
 
+    conda
     ryujinx
     citron
     zlib
@@ -105,6 +106,7 @@ in {
     shellcheck
     stylelint
     graphviz
+    tk
 
     #Python
     py.black
@@ -112,6 +114,7 @@ in {
     py.pyflakes
     py.pytest
     py.isort
+    py.tkinter
 
     pipenv
     poetry
@@ -417,17 +420,29 @@ in {
     ecryptfs.enable = true;
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [ zlib ];
+      libraries = with pkgs; [ zlib gcc ];
     };
   };
+
+  programs.fuse = {
+    userAllowOther = true;
+    mountMax = 100;
+  };
+
   # Fonts
-  fonts.packages = with pkgs; [
+  fonts.packages = with bleed; [
     noto-fonts
+    noto-fonts-extra
     noto-fonts-cjk-sans
-    noto-fonts-emoji
-    fira-code
-    fira-code-symbols
+    noto-fonts-cjk-serif
+    noto-fonts-color-emoji
+
     proggyfonts
     font-awesome
+
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+    nerd-fonts.hack
   ];
 }
