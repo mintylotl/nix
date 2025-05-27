@@ -107,6 +107,14 @@ in {
     stylelint
     graphviz
     tk
+    tree
+    ocrmypdf
+    php
+    sl
+    lsof
+    hdparm
+    gocryptfs
+    fscryptctl
 
     #Python
     py.black
@@ -439,6 +447,7 @@ in {
 
     proggyfonts
     font-awesome
+    andika
 
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
