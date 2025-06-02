@@ -27,7 +27,8 @@ in {
       nginx_html = {
         Unit = { Description = "Nginx HTML regenerator service"; };
         Service = {
-          ExecStart = "${scriptsDir}/nginxHtml/nginx_html.sh";
+          ExecStart =
+            "${pkgs.bash}/bin/bash ${scriptsDir}/nginxHtml/nginx_html.sh";
           Restart = "always";
         };
         Install = { WantedBy = [ "default.target" ]; };
