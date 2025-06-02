@@ -53,7 +53,7 @@ else
 
     while :; do
         sleep 1s
-        mount --onlyonce -U 43EB-617A /pass 2>/dev/null
+        mount --onlyonce -U 88A1-995F /pass 2>/dev/null
 
         if [ $? -eq 0 ]; then
             break
