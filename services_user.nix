@@ -7,9 +7,7 @@ in {
   systemd = {
     user.enable = true;
     #user.startServices = "sd-switch";
-    user.sessionVariables = {
-      PATH = "/home/jwm/.emacs.d/bin:${scriptsDir}/nginxHtml:$PATH";
-    };
+    user.sessionVariables = { PATH = "/home/jwm/.emacs.d/bin:$PATH"; };
 
     user.services = {
       aria2 = {
@@ -28,16 +26,15 @@ in {
         Unit = { Description = "Nginx HTML regenerator service"; };
         Service = {
           ExecStart =
-            "${pkgs.bash}/bin/bash ${scriptsDir}/nginxHtml/nginx_html.sh";
-          Restart = "always";
+            "${pkgs.bash}/bin/bash -lc '${scriptsDir}/nginxhtml/nginx_html.sh'";
+          Restart = "on-failure";
         };
         Install = { WantedBy = [ "default.target" ]; };
       };
       anki_sync = {
         Unit = { Description = "Anki-Sync Daemon"; };
         Service = {
-          ExecStart =
-            "${pkgs.bash}/bin/bash -l -c '${programsDir}/anki_sync.sh'";
+          ExecStart = "${pkgs.bash}/bin/bash -lc '${programsDir}/anki_sync.sh'";
           Restart = "on-failure";
         };
         Install = { WantedBy = [ "default.target" ]; };
