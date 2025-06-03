@@ -22,6 +22,7 @@ in {
     vivid
     bleed.ollama-cuda
 
+    bleed.lmstudio
     conda
     ryujinx
     citron
