@@ -10,13 +10,17 @@ mountPointsCrypt[camera]="/Drives/WD1TB/Archive/Camera/.crypt"
 mountPoints[camera]="/Drives/WD1TB/Archive/Camera/Files"
 mountPointsCrypt[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/.crypt"
 mountPoints[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/Files"
-additionalArgs[org]=" -noprealloc"
+additionalArgs[org]="-noprealloc"
 
 VOL="${1}"
 VOLV=100
 VOLVV=100
 
-if [[ ! -v ${additionalArgs[$VOL]} ]]; then
+if [[ -z $VOL ]]; then
+    VOL=""
+fi
+
+if [[ -n $VOL && ! -v additionalArgs[$VOL] ]]; then
     additionalArgs[$VOL]=""
 fi
 
@@ -24,8 +28,8 @@ if [[ $VOL =~ ^[0-9]+$ ]]; then
     VOLV=$VOL
 fi
 if [ $VOLV -eq 3 ]; then
-    for d in "${mountPoints[@]}"; do
-        umount "$d"
+    for g in "${mountPoints[@]}"; do
+        umount "$g"
     done
     exit 0
 fi
@@ -38,18 +42,19 @@ if [ $VOLVV -eq 1 ]; then
     exit 0
 fi
 
-echo "Mounting: ${mountPoints[$VOL]}"
+if [ $VOLV -eq 1 ]; then
+    printf 'Unmounting: USB Key\n'
+    umount /pass/.pass
+    umount /pass
+    exit 0
+fi
+printf 'Mounting: USB Key with UUID:88A1-995F\n'
 mount --onlyonce -U 88A1-995F /pass
 
 if [ $? -eq 0 ]; then
     printf "Mounted Volume...\n"
 else
     printf "Please insert USB key...\n"
-
-    if [ $VOLV -eq 1 ]; then
-        umount /pass/.pass
-        umount /pass
-    fi
 
     while :; do
         sleep 1s
@@ -60,6 +65,7 @@ else
         fi
     done
 fi
+printf 'Done\n'
 
 if [ $VOLV -eq 0 ]; then
     gocryptfs -passfile /system/pass/usb /pass/.pass_crypt /pass/.pass
@@ -81,13 +87,21 @@ chmod 600 "${tmpFile}"
 chown jwm:root "${tmpFile}"
 cat /pass/.pass/passfile | sudo -u jwm tee "${tmpFile}" >/dev/null
 
-if [ -z $VOL ]; then
+if [ -z "$VOL" ]; then
     for d in "${!mountPoints[@]}"; do
-        echo $d
-        sudo -u jwm gocryptfs${additionalArgs[$d]} --quiet -passfile "${tmpFile}" "${mountPointsCrypt[$d]}" "${mountPoints[$d]}"
+        if ! [[ -v additionalArgs[$d] ]]; then
+            additionalArgs[$d]=""
+        fi
+        sudo -u jwm gocryptfs ${additionalArgs[$d]} --quiet -passfile $tmpFile ${mountPointsCrypt[$d]} ${mountPoints[$d]}
+        printf 'Mount Successful: %s \n' "$d"
     done
+
+    umount /pass/.pass && sleep 3s && umount /pass &
+    exit 0
 fi
-sudo -u jwm gocryptfs${additionalArgs[$VOL]} --quiet -passfile "${tmpFile}" "${mountPointsCrypt[$VOL]}" "${mountPoints[$VOL]}"
+
+sudo -u jwm gocryptfs ${additionalArgs[$VOL]} --quiet -passfile $tmpFile ${mountPointsCrypt[$VOL]} ${mountPoints[$VOL]}
+printf 'Mount Successful: %s \n' "$VOL"
 
 rm "${tmpFile}"
 umount /pass/.pass && sleep 3s && umount /pass &
