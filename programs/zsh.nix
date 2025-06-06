@@ -42,7 +42,10 @@
       alias garb="sudo $SCRIPTS_DIR/system/nixosgarbage.sh 1"
       alias garbBige="sudo $SCRIPTS_DIR/system/nixosgarbage.sh 0"
       alias blender3="$HOME"/.local/state/nix/profiles/blender3/bin/blender
-      alias crypt="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh"
+      alias crypts="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh"
+      alias cryptsU="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh 3"
+      alias org="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh org"
+      alias orgu="umount -l ''${HOME}/.orgnotes"
 
         # --wireguard
         alias wgVlanU="sudo wg-quick up ~/.wireguard/vlan.conf"

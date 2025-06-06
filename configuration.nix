@@ -97,7 +97,7 @@ in {
     ];
     blacklistedKernelModules = [ "amdgpu" "i915" "nouveau" ];
 
-    kernelPackages = bleed.linuxPackages;
+    kernelPackages = pkgs.linuxPackages;
   };
 
   # NETWORKING
@@ -251,17 +251,20 @@ in {
   security.polkit = {
     enable = true;
     extraConfig = ''
-            polkit.addRule(function (action, subject) {
-              if ([
-                "com.feralinteractive.GameMode.cpu-helper",
-      	  "com.feralinteractive.GameMode.gpu-helper",
-      	  "com.feralinteractive.GameMode.procsys-helper",
-                "com.feralinteractive.GameMode.governor-helper",
-                "org.freedesktop.RealtimeKit1.acquire-real-time"
-              ].indexOf(action.id) !== -1 && subject.isInGroup("nicely")) {
-                return polkit.Result.YES;
-              }
-            });
+      polkit.addRule(function (action, subject) {
+        if ([
+          "org.freedesktop.policykit.exec",
+          "com.feralinteractive.GameMode.cpu-helper",
+          "com.feralinteractive.GameMode.gpu-helper",
+          "com.feralinteractive.GameMode.procsys-helper",
+          "com.feralinteractive.GameMode.governor-helper",
+          "org.freedesktop.RealtimeKit1.acquire-real-time",
+          "org.xfce.thunar",
+          "org.kde.ksysguard.processlisthelper.renice"
+        ].indexOf(action.id) !== -1 && subject.isInGroup("nicely")) {
+          return polkit.Result.YES;
+        }
+      });
     '';
   };
 
