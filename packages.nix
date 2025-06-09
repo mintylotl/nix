@@ -20,7 +20,7 @@ in {
     # General
     man-pages-posix
     vivid
-    bleed.ollama-cuda
+    #bleed.ollama-cuda
 
     bleed.lmstudio
     conda
@@ -70,8 +70,6 @@ in {
     xorg.xeyes
     xorg.xorgserver
     xorg.xrandr
-
-    ventoy-bin
 
     stuntman
     heimdall
@@ -212,8 +210,8 @@ in {
     # PrismLauncher Cracked
     pkgs.prismlauncherCracked
 
-    (retroarch.override {
-      cores = with libretro; [
+    (retroarch.withCores (cores:
+      with cores; [
         mgba
         mame2003-plus
         mame2010
@@ -228,8 +226,7 @@ in {
         pcsx-rearmed
         genesis-plus-gx
         mame2000
-      ];
-    })
+      ]))
     retroarch-assets
 
     typescript
@@ -283,7 +280,7 @@ in {
     #wineWowPackages.waylandFull
     #wineWowPackages.stableFull
     #wineWowPackages.unstableFull
-    wineWowPackages.stagingFull
+    wineWowPackages.stableFull
     winetricks
     grim
     slurp
@@ -300,8 +297,8 @@ in {
 
     # Icon_Themes
     adwaita-icon-theme
-    breeze-gtk
-    breeze-icons
+    kdePackages.breeze-gtk
+    kdePackages.breeze-icons
     papirus-icon-theme
   ];
 
@@ -410,7 +407,7 @@ in {
   services.komga = {
     enable = true;
     stateDir = "/system/programs/komga";
-    port = 37322;
+    settings.server = { port = 37322; };
   };
 
   xdg = {

@@ -15,11 +15,10 @@ in {
       config.common.default = "gtk";
       config.hyprland = {
         default = "gtk";
-        "org.freedesktop.impl.Screencast" = "wlr";
-        #"org.freedesktop.impl.Screenshot" = "wlr";
+        "org.freedesktop.impl.portal.ScreenCast" = "hyprland.portal";
+        "org.freedesktop.impl.portal.Screenshot" = "hyprland.portal";
+        "org.freedesktop.impl.portal.GlobalShortcuts" = "hyprland.portal";
       };
-      #configPackages =
-      #[ inputs.Hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland ];
     };
 
     configHome = "${HOME}/.config";
