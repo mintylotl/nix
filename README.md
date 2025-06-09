@@ -13,8 +13,6 @@ The flakes build on **nixos-25.05** **(stable)**.
 There are devShells made for blender3 and more.
 These are put into the user registry, then installed by using
 ```nix
-nix profile install devshell#blender3
+nix profile install <devshell>#blender3
 ```
-
-
 
