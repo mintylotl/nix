@@ -152,7 +152,7 @@ in {
 
     cursorTheme.name = "BreezeX-RosePineDawn-Linux";
     theme = {
-      package = pkgs.breeze-gtk;
+      package = pkgs.kdePackages.breeze-gtk;
       name = "Breeze-Dark";
     };
     iconTheme = {

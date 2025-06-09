@@ -20,7 +20,7 @@
   programs.zsh = {
     enable = true;
     completionInit = "";
-    initExtra = ''
+    initContent = ''
       ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.local/share}/zinit/zinit.git"
       SCRIPTS_DIR="$HOME"/.scripts
 
