@@ -131,7 +131,7 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
-    #portalPackage = null;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
   home.pointerCursor = {
