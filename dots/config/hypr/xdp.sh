@@ -12,3 +12,4 @@ for x in $(pidof waybar); do
 done
 
 waybar &
+systemctl --user restart xdg-desktop-portal-hyprland

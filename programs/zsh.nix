@@ -37,15 +37,19 @@
       alias nixosFlake="sudo nixos-rebuild switch --flake /etc/nixos#cabbage"
       alias nixosFlakeF="sudo nixos-rebuild switch --flake /etc/nixos#cabbage --fast --offline"
 
+      alias tday="timew day from 3:30 - 19:15"
       alias fetch="fetcher.sh"
       alias emacsc="emacsclient -c -a emacs -s "$HOME"/.doom.d/emacflurry/mcflurry"
       alias garb="sudo $SCRIPTS_DIR/system/nixosgarbage.sh 1"
       alias garbBige="sudo $SCRIPTS_DIR/system/nixosgarbage.sh 0"
       alias blender3="$HOME"/.local/state/nix/profiles/blender3/bin/blender
-      alias crypts="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh"
-      alias cryptsU="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh 3"
-      alias org="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh org"
-      alias orgu="umount -l ''${HOME}/.orgnotes"
+      alias todosC="git commit -a -m "todos@$(date +'%Y-%m-%dT%H:%M:%S')""
+
+        # --gocryptfs
+        alias crypts="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh"
+        alias cryptsU="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh 3"
+        alias org="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh org"
+        alias orgu="umount -l ''${HOME}/.orgnotes"
 
         # --wireguard
         alias wgVlanU="sudo wg-quick up ~/.wireguard/vlan.conf"
