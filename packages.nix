@@ -348,17 +348,17 @@ in {
   };
 
   services.plex = {
-    enable = true;
+    enable = false;
     package = pkgs.plex;
     accelerationDevices = [ ];
   };
-  systemd.services.plex = {
-    serviceConfig = {
-      Environment = ''
-        LD_LIBRARY_PATH="${pkgs.plex}/lib/plexmediaserver/lib"
-      '';
-    };
-  };
+  #systemd.services.plex = {
+  #serviceConfig = {
+  #  Environment = ''
+  #    LD_LIBRARY_PATH="${pkgs.plex}/lib/plexmediaserver/lib"
+  #  '';
+  #};
+  #};
 
   services.vaultwarden = {
     enable = true;
@@ -423,7 +423,7 @@ in {
     mime.enable = true;
   };
   programs = {
-    ecryptfs.enable = true;
+    ecryptfs.enable = false;
     nix-ld = {
       enable = true;
       libraries = with pkgs; [ zlib gcc ];

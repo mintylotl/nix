@@ -37,7 +37,7 @@
       alias nixosFlake="sudo nixos-rebuild switch --flake /etc/nixos#cabbage"
       alias nixosFlakeF="sudo nixos-rebuild switch --flake /etc/nixos#cabbage --fast --offline"
 
-      alias tday="timew day from 3:30 - 19:15"
+      alias tday="timew day from 3:30 - 18:15"
       alias fetch="fetcher.sh"
       alias emacsc="emacsclient -c -a emacs -s "$HOME"/.doom.d/emacflurry/mcflurry"
       alias garb="sudo $SCRIPTS_DIR/system/nixosgarbage.sh 1"
