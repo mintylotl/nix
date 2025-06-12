@@ -52,7 +52,6 @@
       # --Lutris
       #env = LUTRIS_SKIP_INIT, 1
 
-
       exec = dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RosePineDawn-Linux'"
       exec = dconf write /org/gnome/desktop/interface/gtk-theme "'Breeze-Dark'"
 
@@ -79,7 +78,9 @@
           gaps_out = 5
           border_size = 3
 
-          col.active_border = rgba(008b8baa)
+          #col.active_border = rgba(1803E799)
+          col.active_border = rgba(240FB480)
+
           col.inactive_border = rgba(595959aa)
 
           layout = master
@@ -121,7 +122,7 @@
           vfr = false
       }
       render {
-          explicit_sync = 0
+          explicit_sync = 1
       }
 
       #WindowRules
@@ -141,7 +142,7 @@
       windowrulev2 = center 1, class:xdg-desktop-portal-gtk
       # --Alacritty
       windowrulev2 = float, class:Alacritty
-      windowrulev2 = size 850 790, class:Alacritty
+      windowrulev2 = size 1150 550, class:Alacritty
       # --QimgV
       windowrulev2 = float, class:qimgv
       windowrulev2 = size 800 800, class:qimgv
