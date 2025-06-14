@@ -48,8 +48,8 @@ if [ $VOLV -eq 1 ]; then
     umount /pass
     exit 0
 fi
-printf 'Mounting: USB Key with UUID:88A1-995F\n'
-mount --onlyonce -U 88A1-995F /pass
+printf 'Mounting: USB Key with UUID:049B-44C5\n'
+mount --onlyonce -U 049B-44C5 /pass
 
 if [ $? -eq 0 ]; then
     printf "Mounted Volume...\n"
@@ -58,7 +58,7 @@ else
 
     while :; do
         sleep 1s
-        mount --onlyonce -U 88A1-995F /pass 2>/dev/null
+        mount --onlyonce -U 049B-44C5 /pass 2>/dev/null
 
         if [ $? -eq 0 ]; then
             break
