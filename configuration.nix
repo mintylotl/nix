@@ -1,7 +1,7 @@
 { nixpkgs, config, lib, pkgs, pkgs_bleeding, inputs, ... }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.beta;
   cuda = pkgs.cudaPackages.cudatoolkit;
   bleed = pkgs_bleeding;
 
@@ -97,7 +97,7 @@ in {
     ];
     blacklistedKernelModules = [ "amdgpu" "i915" "nouveau" ];
 
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = bleed.linuxPackages_latest;
   };
 
   # NETWORKING
