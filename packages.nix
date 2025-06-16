@@ -1,10 +1,20 @@
-{ pkgs, pkgs_bleeding, pkgs_old, config, lib, inputs, prism, ... }:
+{
+  pkgs,
+  pkgs_bleeding,
+  pkgs_old,
+  config,
+  lib,
+  inputs,
+  prism,
+  ...
+}:
 let
   paksold = pkgs_old;
   py = pkgs.python312Packages;
   bleed = pkgs_bleeding;
 
-in {
+in
+{
   nixpkgs.overlays = [
     (final: prev: {
       umu = inputs.umuProton.packages.${pkgs.system}.umu-launcher.override {
@@ -64,7 +74,13 @@ in {
     hunspellDicts.en_GB-ize
     hunspell
 
-    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
+    (aspellWithDicts (
+      dicts: with dicts; [
+        en
+        en-computers
+        en-science
+      ]
+    ))
 
     #cudaPackages.cudatoolkit
     xorg.xeyes
@@ -100,7 +116,7 @@ in {
     haskell-language-server
     llvmPackages.clang-tools
     pandoc
-    nixfmt
+    nixfmt-rfc-style
     shfmt
     shellcheck
     stylelint
@@ -210,8 +226,8 @@ in {
     # PrismLauncher Cracked
     pkgs.prismlauncherCracked
 
-    (retroarch.withCores (cores:
-      with cores; [
+    (retroarch.withCores (
+      cores: with cores; [
         mgba
         mame2003-plus
         mame2010
@@ -226,7 +242,8 @@ in {
         pcsx-rearmed
         genesis-plus-gx
         mame2000
-      ]))
+      ]
+    ))
     retroarch-assets
 
     typescript
@@ -257,7 +274,12 @@ in {
     ffmpeg-full
     bleed.yt-dlp
     zig
-    (ghc.withPackages (hp: with hp; [ zlib cabal-install ]))
+    (ghc.withPackages (
+      hp: with hp; [
+        zlib
+        cabal-install
+      ]
+    ))
 
     # Thumbnailers
     ffmpegthumbnailer
@@ -407,15 +429,22 @@ in {
   services.komga = {
     enable = true;
     stateDir = "/system/programs/komga";
-    settings.server = { port = 37322; };
+    settings.server = {
+      port = 37322;
+    };
   };
 
   xdg = {
     terminal-exec.enable = true;
-    terminal-exec.settings = { default = [ "alacritty.desktop" ]; };
+    terminal-exec.settings = {
+      default = [ "alacritty.desktop" ];
+    };
     portal = {
       enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gtk ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal
+        xdg-desktop-portal-gtk
+      ];
       xdgOpenUsePortal = true;
     };
     icons.enable = true;
@@ -426,7 +455,10 @@ in {
     ecryptfs.enable = false;
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [ zlib gcc ];
+      libraries = with pkgs; [
+        zlib
+        gcc
+      ];
     };
   };
 
