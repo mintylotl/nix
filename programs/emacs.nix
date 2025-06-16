@@ -22,7 +22,7 @@ in {
         cmake
         clang
         gnumake
-        nixfmt
+        nixfmt-rfc-style
         sbcl
         gdtoolkit_4
 
@@ -47,7 +47,5 @@ in {
 
     startWithUserSession = true;
   };
-  systemd.user.services.emacs = {
-    Unit.After = [ "emacs-mounts.service" ];
-  };
+  systemd.user.services.emacs = { Unit.After = [ "emacs-mounts.service" ]; };
 }
