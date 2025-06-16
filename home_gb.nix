@@ -52,14 +52,5 @@ in {
     terminal = "${pkgs.alacritty}/bin/alacritty";
   };
 
-  services.mpd = {
-    enable = true;
-    musicDirectory = "${HOME}/Music";
-    dataDir = "/system/programs/mpd";
-    dbFile = "/system/programs/mpd/library.db";
-
-    network = { port = 37388; };
-  };
-
   home.stateVersion = "24.05";
 }

@@ -86,6 +86,15 @@ in {
       recursive = true;
     };
   };
+  # Services
+  services.mpd = {
+    enable = true;
+    musicDirectory = "${HOME}/Music";
+    dataDir = "/system/programs/mpd";
+    dbFile = "/system/programs/mpd/library.db";
+
+    network = { port = 37388; };
+  };
 
   # Programs
   programs.direnv = {
