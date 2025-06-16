@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -273,7 +279,7 @@
       bind = $mainMod, T, exec, cliphist wipe
       bind = $mainMod, SPACE, exec, rofi -show drun
       bind = $mainMod, V, layoutmsg, swapwithmaster
-      bind = $mainMod, L, exec, pidof hyprlock || hyprlock
+      bind = $mainMod, L, exec, pidof hyprlock && hyprlock || hyprlock
       bind = $mainMod, U, exec, ~/.config/hypr/gamemode.sh
       bind = $mainMod CTRL, down, exec, bash -c 'archwiki-offline'
       # --Audio
@@ -354,10 +360,18 @@
   };
   home.file = {
     # SCRIPTS
-    ".config/hypr/gamemode.sh" = { source = ../dots/config/hypr/gamemode.sh; };
-    ".config/hypr/startup.sh" = { source = ../dots/config/hypr/startup.sh; };
-    ".config/hypr/sink.sh" = { source = ../dots/config/hypr/sink.sh; };
-    ".config/hypr/xdp.sh" = { source = ../dots/config/hypr/xdp.sh; };
+    ".config/hypr/gamemode.sh" = {
+      source = ../dots/config/hypr/gamemode.sh;
+    };
+    ".config/hypr/startup.sh" = {
+      source = ../dots/config/hypr/startup.sh;
+    };
+    ".config/hypr/sink.sh" = {
+      source = ../dots/config/hypr/sink.sh;
+    };
+    ".config/hypr/xdp.sh" = {
+      source = ../dots/config/hypr/xdp.sh;
+    };
 
     # CONFIG
     ".config/hypr/hypridle.conf" = {
