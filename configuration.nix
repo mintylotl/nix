@@ -97,7 +97,7 @@ in {
     ];
     blacklistedKernelModules = [ "amdgpu" "i915" "nouveau" ];
 
-    kernelPackages = bleed.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages;
   };
 
   # NETWORKING
