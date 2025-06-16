@@ -96,7 +96,7 @@ if [ -z "$VOL" ]; then
         printf 'Mount Successful: %s \n' "$d"
     done
 
-    umount /pass/.pass && sleep 3s && umount /pass &
+    umount /pass/.pass && sleep 1s && umount /pass &
     exit 0
 fi
 
@@ -104,4 +104,4 @@ sudo -u jwm gocryptfs ${additionalArgs[$VOL]} --quiet -passfile $tmpFile ${mount
 printf 'Mount Successful: %s \n' "$VOL"
 
 rm "${tmpFile}"
-umount /pass/.pass && sleep 3s && umount /pass &
+umount /pass/.pass && sleep 1s && umount /pass &
