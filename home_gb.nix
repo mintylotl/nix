@@ -58,7 +58,7 @@ in {
     dataDir = "/system/programs/mpd";
     dbFile = "/system/programs/mpd/library.db";
 
-    network = { port = 37311; };
+    network = { port = 37388; };
   };
 
   home.stateVersion = "24.05";
