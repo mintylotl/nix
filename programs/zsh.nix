@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
 
   home.file.".zmodules" = {
     enable = true;
@@ -37,7 +38,8 @@
       alias nixosFlake="sudo nixos-rebuild switch --flake /etc/nixos#cabbage"
       alias nixosFlakeF="sudo nixos-rebuild switch --flake /etc/nixos#cabbage --fast --offline"
 
-      alias tday="timew day from 9:30 - 20:00"
+      alias tday="timew day from 6:00 - 20:00"
+      alias lday="timew day from now - 20:00"
       alias resume="timew continue && timew join @2 @1"
       alias fetch="fetcher.sh"
       alias emacsc="emacsclient -c -a emacs -s "$HOME"/.doom.d/emacflurry/mcflurry"
