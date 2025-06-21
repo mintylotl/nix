@@ -125,7 +125,8 @@
           workspace_swipe = false
       }
       misc {
-          vfr = false
+           vfr = false
+           enable_anr_dialog = false
       }
       render {
           explicit_sync = 0
