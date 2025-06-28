@@ -289,7 +289,7 @@
       # --Programs
       bind = $mainMod, P, exec, $shortcut_dir/../launcher.sh
 
-      bind = $mainMod, G, exec, firefox-developer-edition
+      bind = $mainMod, G, exec, firefox-devedition
       bind = $mainMod, RETURN, exec, alacritty
       bind = $mainMod, S, exec, speedcrunch
       bind = $mainMod, E, exec, GDK_BACKEND="wayland" GTK_ICON_THEME="Papirus-Dark" thunar

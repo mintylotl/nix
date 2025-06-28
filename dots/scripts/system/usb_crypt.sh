@@ -5,11 +5,14 @@ declare -A mountPointsCrypt
 declare -A additionalArgs
 
 mountPointsCrypt[org]="${HOME}/.crypt/orgnotes"
-mountPoints[org]="${HOME}/.orgnotes"
 mountPointsCrypt[camera]="/Drives/WD1TB/Archive/Camera/.crypt"
-mountPoints[camera]="/Drives/WD1TB/Archive/Camera/Files"
 mountPointsCrypt[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/.crypt"
-mountPoints[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/Files"
+mountPointsCrypt[dreams]="/Drives/WD1TB/Archive/Other/bak/misc/Dreams/.crypt"
+
+for j in "${!mountPointsCrypt[@]}"; do
+    mountPoints[$j]="${mountPointsCrypt[$j]}/../Files"
+done
+mountPoints[org]="${HOME}/.orgnotes"
 additionalArgs[org]="-noprealloc"
 
 VOL="${1}"
@@ -86,6 +89,11 @@ tmpFile=$(mktemp)
 chmod 600 "${tmpFile}"
 chown jwm:root "${tmpFile}"
 cat /pass/.pass/passfile | sudo -u jwm tee "${tmpFile}" >/dev/null
+if [ $VOLV -eq 8 ]; then
+    echo $tmpFile
+    setsid sh -c "sleep 45s && rm $tmpFile" >/dev/null 2>&1 &
+    exit 0
+fi
 
 if [ -z "$VOL" ]; then
     for d in "${!mountPoints[@]}"; do
