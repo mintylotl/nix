@@ -32,6 +32,8 @@ in
     vivid
     #bleed.ollama-cuda
 
+    zrythm
+    bespokesynth
     bleed.lmstudio
     conda
     ryujinx
