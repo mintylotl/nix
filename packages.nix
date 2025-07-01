@@ -34,7 +34,7 @@ in
 
     zrythm
     bespokesynth
-    bleed.lmstudio
+    #bleed.lmstudio
     conda
     ryujinx
     citron
@@ -311,7 +311,7 @@ in
     hyprpaper
     wl-clipboard
     cliphist
-    bleed.firefox-devedition-bin
+    bleed.firefox-devedition
     bleed.telegram-desktop
     pkgs.qbittorrent
     mako
