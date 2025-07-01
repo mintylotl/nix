@@ -13,6 +13,22 @@ if [ "$MODE" == "1" ]; then
 	exit 0
 fi
 
+COUNTER=0
+while :; do
+	mount -U $COLD /Drives/WD1TB -o subvol=@Files
+	if [ $? -eq 0 ]; then
+		printf 'Drive Found...\n'
+		break
+	fi
+
+	COUNTER=$((COUNTER + 1))
+	if [[ $COUNTER -eq 10 ]]; then
+		printf 'Error Loading Drive\nUUID %s Not Found...\n' "$COLD" >&2
+		exit 1
+	fi
+	sleep 5s
+done
+
 lnID="$(blkid | grep 'UUID="d7f41dd1-ef48-427f-9f65-94e1016c0b13"' | grep -o '/dev/sd[a-z][1-9]*')"
 lnID_DISK="$(printf "$lnID" | sed 's/1//g')"
 
