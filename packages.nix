@@ -50,6 +50,17 @@ in
     less
 
     vscode-fhs
+    wineasio
+    unzip
+    surge
+    sfizz
+    rmpc
+    poppler_utils
+    pnpm
+    p7zip
+    nvme-cli
+    ardour
+    arch-install-scripts
     veracrypt
     hdparm
     libreoffice-qt6-fresh
