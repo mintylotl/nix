@@ -430,7 +430,7 @@ in
   };
 
   services.navidrome = {
-    enable = true;
+    enable = false;
     settings.Port = 37311;
     settings = {
       MusicFolder = "/Drives/WD1TB/Archive/Artists";
