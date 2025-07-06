@@ -1,4 +1,12 @@
-{ nixpkgs, config, lib, pkgs, pkgs_bleeding, inputs, ... }:
+{
+  nixpkgs,
+  config,
+  lib,
+  pkgs,
+  pkgs_bleeding,
+  inputs,
+  ...
+}:
 let
   HOME = "/home/jwm";
   nvidia = config.boot.kernelPackages.nvidiaPackages.beta;
@@ -7,7 +15,8 @@ let
 
   scriptsDir = "${HOME}/.scripts";
   programsDir = "${HOME}/.programs";
-in {
+in
+{
   # nixOS
   imports = [
     ./hw-cfg.nix
@@ -95,7 +104,11 @@ in {
       "nvidia_drm.modeset=1"
       "nvidia_drm.fbdev=1"
     ];
-    blacklistedKernelModules = [ "amdgpu" "i915" "nouveau" ];
+    blacklistedKernelModules = [
+      "amdgpu"
+      "i915"
+      "nouveau"
+    ];
 
     kernelPackages = pkgs.linuxPackages;
   };
@@ -106,19 +119,27 @@ in {
   networking.wireless.enable = false;
   networking.firewall = {
     enable = true;
-    allowedTCPPortRanges = [{
-      from = 0;
-      to = 65000;
-    }];
-    allowedUDPPortRanges = [{
-      from = 0;
-      to = 65000;
-    }];
+    allowedTCPPortRanges = [
+      {
+        from = 0;
+        to = 65000;
+      }
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 0;
+        to = 65000;
+      }
+    ];
   };
 
   networking.hostName = "cabbage";
   networking.hosts = {
-    "127.0.0.1" = [ "ariaweb.srv" "jellyfin.srv" "fileserve.srv" ];
+    "127.0.0.1" = [
+      "ariaweb.srv"
+      "jellyfin.srv"
+      "fileserve.srv"
+    ];
     "10.0.2.2" = [ "vault.tld" ];
   };
   networking.interfaces.enp42s0.macAddress = "2C:F0:5D:E5:E2:E1";
@@ -131,35 +152,55 @@ in {
 
   security.sudo = {
     enable = true;
-    extraRules = [{
-      users = [ "jwm" ];
-      commands = [
-        {
-          command = "${scriptsDir}/system/mounts.sh";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-        {
-          command = "${scriptsDir}/system/leds.sh";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-        {
-          command = "${programsDir}/musicbee/prio.sh";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-        {
-          command = "${scriptsDir}/system/nixosgarbage.sh";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-        {
-          command = "${HOME}/.scripts/programs/musicbee/musicbee.sh";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-        {
-          command = "/run/current-system/sw/bin/nixos-rebuild";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-      ];
-    }];
+    extraRules = [
+      {
+        users = [ "jwm" ];
+        commands = [
+          {
+            command = "${scriptsDir}/system/mounts.sh";
+            options = [
+              "SETENV"
+              "NOPASSWD"
+            ];
+          }
+          {
+            command = "${scriptsDir}/system/leds.sh";
+            options = [
+              "SETENV"
+              "NOPASSWD"
+            ];
+          }
+          {
+            command = "${programsDir}/musicbee/prio.sh";
+            options = [
+              "SETENV"
+              "NOPASSWD"
+            ];
+          }
+          {
+            command = "${scriptsDir}/system/nixosgarbage.sh";
+            options = [
+              "SETENV"
+              "NOPASSWD"
+            ];
+          }
+          {
+            command = "${HOME}/.scripts/programs/musicbee/musicbee.sh";
+            options = [
+              "SETENV"
+              "NOPASSWD"
+            ];
+          }
+          {
+            command = "/run/current-system/sw/bin/nixos-rebuild";
+            options = [
+              "SETENV"
+              "NOPASSWD"
+            ];
+          }
+        ];
+      }
+    ];
   };
 
   # Groups
@@ -182,7 +223,14 @@ in {
     isNormalUser = true;
     home = "/home/jwm";
     group = "jwm";
-    extraGroups = [ "wheel" "freezer" "realtime" "nicely" "audio" "gamers" ];
+    extraGroups = [
+      "wheel"
+      "freezer"
+      "realtime"
+      "nicely"
+      "audio"
+      "gamers"
+    ];
     linger = true;
     homeMode = "711";
   };
@@ -191,7 +239,13 @@ in {
     home = "/home/gameboy";
     homeMode = "771";
     group = "gamers";
-    extraGroups = [ "wheel" "realtime" "nicely" "audio" "gamers" ];
+    extraGroups = [
+      "wheel"
+      "realtime"
+      "nicely"
+      "audio"
+      "gamers"
+    ];
   };
   users.users.ftpsecure = {
     isNormalUser = true;
@@ -205,7 +259,6 @@ in {
 
   users.users.jellyfin.extraGroups = [ "freezer" ];
   users.users.komga.extraGroups = [ "freezer" ];
-  users.users.navidrome.extraGroups = [ "freezer" ];
   # Sound
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -232,8 +285,11 @@ in {
   # IME
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    supportedLocales =
-      [ "en_US.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" "ko_KR.UTF-8/UTF-8" ];
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "ja_JP.UTF-8/UTF-8"
+      "ko_KR.UTF-8/UTF-8"
+    ];
 
     inputMethod = {
       enable = true;
@@ -241,7 +297,11 @@ in {
 
       fcitx5 = {
         waylandFrontend = true;
-        addons = with pkgs; [ fcitx5-mozc fcitx5-gtk fcitx5-hangul ];
+        addons = with pkgs; [
+          fcitx5-mozc
+          fcitx5-gtk
+          fcitx5-hangul
+        ];
       };
     };
   };
@@ -300,13 +360,12 @@ in {
 
     #CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
 
-    VK_ICD_FILENAMES =
-      "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
+    VK_ICD_FILENAMES = "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
     mbWINE = "${
-        inputs.musicBee.legacyPackages.${pkgs.system}.wineWowPackages.stableFull.overrideAttrs {
-          version = "9.0";
-        }
-      }/bin/wine";
+      inputs.musicBee.legacyPackages.${pkgs.system}.wineWowPackages.stableFull.overrideAttrs {
+        version = "9.0";
+      }
+    }/bin/wine";
   };
 
   environment.pathsToLink = [
