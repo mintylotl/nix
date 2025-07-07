@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   systemd = {
     services = {
       alice = {
@@ -24,8 +25,7 @@
           Group = "komga";
 
           WorkingDirectory = "/system/programs/komga/komf";
-          ExecStart =
-            "/run/current-system/sw/bin/java -jar ./komf.jar application.yaml";
+          ExecStart = "/run/current-system/sw/bin/java -jar ./komf.jar application.yaml";
         };
       };
 
@@ -35,8 +35,7 @@
         serviceConfig = {
           Type = "oneshot";
           ExecStart = "/run/current-system/sw/bin/mkdir -p /run/postgresql";
-          ExecStartPost =
-            "${pkgs.bash}/bin/bash -c '/run/current-system/sw/bin/chown jwm:jwm /run/postgresql && /run/current-system/sw/bin/chmod 775 /run/postgresql'";
+          ExecStartPost = "${pkgs.bash}/bin/bash -c '/run/current-system/sw/bin/chown jwm:jwm /run/postgresql && /run/current-system/sw/bin/chmod 775 /run/postgresql'";
         };
       };
 
@@ -44,7 +43,11 @@
         after = [ "emacs-mounts.service" ];
         wantedBy = [ "multi-user.target" ];
         description = "Drives and Volume Mounter";
-        path = [ pkgs.util-linux pkgs.coreutils pkgs.hdparm ];
+        path = [
+          pkgs.util-linux
+          pkgs.coreutils
+          pkgs.hdparm
+        ];
 
         serviceConfig = {
           ExecStart = "${pkgs.bash}/bin/bash /system/scripts/mounts.sh";
@@ -53,22 +56,13 @@
         };
       };
 
-      /* crypt-mounts = {
-           after = [ "mounts.service" ];
-           wantedBy = [ "multi-user.target" ];
-           description = "Mounts Gocryptfs Volumes";
-           path = [ pkgs.util-linux pkgs.gocryptfs ];
-
-           serviceConfig = {
-             ExecStart = "${pkgs.bash}/bin/bash /system/scripts/usb_crypt.sh 1";
-           };
-         };
-      */
-
       emacs-mounts = {
         wantedBy = [ "multi-user.target" ];
         description = "Mounts Emacs's Paths";
-        path = [ pkgs.util-linux pkgs.coreutils ];
+        path = [
+          pkgs.util-linux
+          pkgs.coreutils
+        ];
 
         serviceConfig = {
           ExecStart = "${pkgs.bash}/bin/bash /system/scripts/mounts.sh 1";
