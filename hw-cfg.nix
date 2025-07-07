@@ -26,7 +26,6 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  swapDevices = [ ];
   hardware.enableAllFirmware = true;
 
 

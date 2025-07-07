@@ -132,7 +132,11 @@ in {
     enable = true;
     extraConfig = ''
       polkit.addRule(function (action, subject) {
-        if ([ "org.freedesktop.pipewire" ].indexOf(action.id) !== -1) {
+      	let ids = [
+	  "com.feralinteractive.GameMode.cpu-helper"
+	  "com.feralinteractive.GameMode.governor-helper"
+	];
+        if (ids.indexOf(action.id) !== -1) {
           return polkit.Result.YES;
         }
       });
@@ -143,7 +147,7 @@ in {
     domain = "@nicy";
     type = "-";
     item = "nice";
-    value = -19;
+    value = -16;
   }];
 
   environment.variables = {
