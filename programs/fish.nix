@@ -8,7 +8,7 @@
       alias ls="ls --color"
       
       #NIXOS
-      alias nixosRebuild="sudo nixos-rebuild switch --flake /etc/nixos/intel#banana"
+      alias nixosRebuild="sudo nixos-rebuild switch --flake /etc/nixos#banana"
       alias garb="sudo /system/scripts/nixosgarbage.sh"
     '';
   };

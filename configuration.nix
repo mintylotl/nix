@@ -135,10 +135,14 @@ in {
       	let ids = [
 	  "com.feralinteractive.GameMode.cpu-helper"
 	  "com.feralinteractive.GameMode.governor-helper"
+	  "com.feralinteractive.GameMode.gpu-helper"
+	  "com.feralinteractive.GameMode.procsys-helper"
+	  "com.freedesktop.policykit.exec"
+	  "org.kde.ksysguard.processlisthelper.renice"
 	];
-        if (ids.indexOf(action.id) !== -1) {
+        if (ids.indexOf(action.id) !== -1 && subject.isInGroup("nicy")) {
           return polkit.Result.YES;
-        }
+        };
       });
     '';
   };
@@ -151,7 +155,7 @@ in {
   }];
 
   environment.variables = {
-    NIX_CONF_DIR = "/etc/nixos/intel";
+    NIX_CONF_DIR = "/etc/nixos";
     
     LIBVA_DRIVER_NAME = "iHD";
     MESA_LOADER_DRIVER_OVERRIDE = "iris";
