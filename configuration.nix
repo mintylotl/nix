@@ -139,6 +139,7 @@ in
       "ariaweb.srv"
       "jellyfin.srv"
       "fileserve.srv"
+      "komga.srv"
     ];
     "10.0.2.2" = [ "vault.tld" ];
   };
