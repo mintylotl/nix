@@ -255,6 +255,7 @@ in
         pcsx-rearmed
         genesis-plus-gx
         mame2000
+        melonds
       ]
     ))
     retroarch-assets
