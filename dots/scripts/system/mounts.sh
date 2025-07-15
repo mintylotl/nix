@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 MODE=0
 
+mountpoint /Drives/WD1TB
+if [[ $? -eq 0 ]]; then
+	if [ $MODE -eq 0 ]; then
+		exit 2
+	fi
+fi
+
 if [[ $1 =~ ^[1-9]$ ]]; then
-	printf "Error, no mode specified\nAssuming mode 0\n"
 	MODE=$1
 fi
 
