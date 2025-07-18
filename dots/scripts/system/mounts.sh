@@ -4,7 +4,7 @@ MODE=0
 mountpoint /Drives/WD1TB
 if [[ $? -eq 0 ]]; then
 	if [ $MODE -eq 0 ]; then
-		exit 2
+		exit 0
 	fi
 fi
 
