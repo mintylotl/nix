@@ -49,6 +49,7 @@ while True:
 
     if okay:
         file.write("<br>\n")
+
     file.write("</ul>\n")
     file.write("</body>\n")
     file.write('<div class="top">100% WORKING !!!</div>')
