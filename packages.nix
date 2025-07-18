@@ -447,6 +447,14 @@ in
       port = 37322;
     };
   };
+  systemd.services.komga = {
+    wants = [
+      "mounts.service"
+    ];
+    after = [
+      "mounts.service"
+    ];
+  };
 
   xdg = {
     terminal-exec.enable = true;
