@@ -195,8 +195,9 @@
       windowrulev2 = center 1, class:^(org.pulseaudio.pavucontrol)$
       windowrulev2 = size 1094 345, class:^(org.pulseaudio.pavucontrol)$
       # --qBittorrent
-      #windowrulev2 = float, class:^(qBittorrent)$, title:^(?!.*qBittorrent.*)
-      #windowrulev2 = float, class:^(org.qbittorrent.qBittorrent)$, title:(?!.*qBittorrent.*)
+      windowrulev2 = float, class:^(org.qbittorrent.qBittorrent)$, title:^(?!.*qBittorrent).*
+      windowrulev2 = size 1100 900, class:^(org.qbittorrent.qBittorrent)$, title:^(?!.*qBittorrent).*
+      windowrulev2 = center, class:^(org.qbittorrent.qBittorrent)$, title:^(?!.*qBittorrent).*
       # --winetricks
       windowrulev2 = float, class:^(zenity)$
       windowrulev2 = center 1, class:^(zenity)$
