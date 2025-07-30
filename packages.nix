@@ -213,7 +213,7 @@ in
 
     xcur2png
     pavucontrol
-    bleed.audacity
+    #audacity
     bleed.mpv
     #busybox
     htop
