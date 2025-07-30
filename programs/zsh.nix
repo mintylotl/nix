@@ -37,6 +37,8 @@
       alias mounts="sudo $SCRIPTS_DIR/system/mounts.sh"
       alias nixosFlake="sudo nixos-rebuild switch --flake /etc/nixos#cabbage"
       alias nixosFlakeF="sudo nixos-rebuild switch --flake /etc/nixos#cabbage --fast --offline"
+      alias nixosUpgrade=""nix flake update && git commit -a -m "flake:update"\
+            nixosFlake; home-manager expire-generations 1min; nix profile wipe-history; garb
 
       alias tday="timew day from 6:00 - 20:00"
       alias lday="timew day from now - 20:00"
