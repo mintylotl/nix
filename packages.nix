@@ -221,7 +221,7 @@ in
     speedcrunch
     bleed.openssl
 
-    bleed.lutris
+    lutris
     protontricks
 
     fd
