@@ -307,11 +307,9 @@ in
     wireshark-qt
     wireguard-tools
     duperemove
-    dxvk_2
-    vkd3d-proton
-    bleed.gamescope
-    bleed.gamemode
-    bleed.mangohud
+    gamescope
+    gamemode
+    mangohud
     # Programs
     #wineWowPackages.waylandFull
     #wineWowPackages.stableFull
