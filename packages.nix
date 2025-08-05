@@ -221,7 +221,12 @@ in
     speedcrunch
     bleed.openssl
 
-    lutris
+    (lutris.overrideAttrs ({
+      extraPkgs = with pkgs; [
+        vkd3d-proton
+        dxvk_2
+      ];
+    }))
     protontricks
 
     fd
