@@ -225,6 +225,9 @@ in
       extraPkgs = with pkgs; [
         vkd3d-proton
         dxvk_2
+        gamescope
+        gamemode
+        mangohud
       ];
     }))
     protontricks
@@ -312,9 +315,6 @@ in
     wireshark-qt
     wireguard-tools
     duperemove
-    gamescope
-    gamemode
-    mangohud
     # Programs
     #wineWowPackages.waylandFull
     #wineWowPackages.stableFull
