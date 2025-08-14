@@ -52,9 +52,9 @@
       alias todosC="git commit -a -m "todos@$(date +'%Y-%m-%dT%H:%M:%S')""
 
         # --gocryptfs
-        alias crypts="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh"
-        alias cryptsU="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh 3"
-        alias org="sudo -E /etc/nixos/dots/scripts/system/usb_crypt.sh org"
+        alias crypts="sudo -E /etc/nixos/dots/scripts/system/http_crypt.sh"
+        alias cryptsU="sudo -E /etc/nixos/dots/scripts/system/http_crypt.sh 3"
+        alias org="sudo -E /etc/nixos/dots/scripts/system/http_crypt.sh org"
         alias orgu="umount -l ''${HOME}/.orgnotes"
 
         # --wireguard

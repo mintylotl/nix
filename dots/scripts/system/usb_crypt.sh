@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# Codes:
+# id is the array key used for the fs
+#
+# id + 1 = unmount fs
+# id + no argument = mount fs
+# 0 / no argument = mount all defined dirs (fs)
+# 3 = unmount all defined dirs
+# 8 = Expose passfile for a short duration for manual use
+
 declare -A mountPoints
 declare -A mountPointsCrypt
 declare -A additionalArgs
