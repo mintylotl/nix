@@ -80,6 +80,21 @@ else
     fi
 fi
 
+curl -u "passfile:$credentials" "$endpoint" 2>/dev/null| grep -wq "confirmation"
+curlStat=$?
+if [ $curlStat -eq 0 ]; then
+    printf 'Please grant access by confirmation...\n'
+    while :
+    do
+        curl -u "passfile:$credentials" "$endpoint" 2>/dev/null | grep -wq "confirmation"
+        if [[ $? -eq 0 ]]; then
+            sleep 1s
+        else
+            break
+        fi
+    done
+fi
+
 tmpFile=$(mktemp)
 # Make first tmpfile containing encrypted passfile
 chmod 600 "${tmpFile}"
