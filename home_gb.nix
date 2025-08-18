@@ -1,6 +1,8 @@
 { lib, pkgs, ... }:
-let HOME = "/home/gameboy";
-in {
+let
+  HOME = "/home/gameboy";
+in
+{
   imports = [ ./programs/zsh.nix ];
 
   home.username = "gameboy";
@@ -9,14 +11,18 @@ in {
 
   programs.home-manager.enable = true;
 
-  home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
 
   home.file = {
-    ".config/pipewire" = {
-      source = ./dots/config/pipewire;
-      recursive = true;
+    #".config/pipewire" = {
+    #  source = ./dots/config/pipewire;
+    #  recursive = true;
+    #};
+    ".scripts/sink.sh" = {
+      source = ./dots/config/hypr/sink.sh;
     };
-    ".scripts/sink.sh" = { source = ./dots/config/hypr/sink.sh; };
   };
 
   # Programs
@@ -42,7 +48,9 @@ in {
     '';
   };
 
-  programs.neovim = { enable = true; };
+  programs.neovim = {
+    enable = true;
+  };
 
   programs.kitty.enable = true;
   programs.alacritty.enable = true;

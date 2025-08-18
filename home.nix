@@ -1,6 +1,16 @@
-{ config, lib, pkgs, pkgsPath, pkgsPath_bleeding, inputs, ... }:
-let HOME = "/home/jwm";
-in {
+{
+  config,
+  lib,
+  pkgs,
+  pkgsPath,
+  pkgsPath_bleeding,
+  inputs,
+  ...
+}:
+let
+  HOME = "/home/jwm";
+in
+{
   home.username = "jwm";
   home.homeDirectory = "/home/jwm";
   home.preferXdgDirectories = true;
@@ -21,7 +31,9 @@ in {
     ./services_user.nix
   ];
 
-  home.sessionVariables = { NIXOS_OZONE_WL = 1; };
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = 1;
+  };
 
   nix.registry = {
     devShells = {
@@ -81,10 +93,12 @@ in {
       source = ./dots/config/waybar;
       recursive = true;
     };
-    ".config/pipewire" = {
-      source = ./dots/config/pipewire;
-      recursive = true;
-    };
+    /*
+      ".config/pipewire" = {
+        source = ./dots/config/pipewire;
+        recursive = true;
+      };
+    */
   };
   # Services
   services.mpd = {
@@ -93,7 +107,9 @@ in {
     dataDir = "/system/programs/mpd";
     dbFile = "/system/programs/mpd/library.db";
 
-    network = { port = 37388; };
+    network = {
+      port = 37388;
+    };
   };
 
   # Programs
@@ -120,7 +136,9 @@ in {
     enableZshIntegration = true;
   };
 
-  programs.neovim = { enable = true; };
+  programs.neovim = {
+    enable = true;
+  };
 
   programs.kitty.enable = true;
   programs.alacritty.enable = true;
@@ -155,9 +173,13 @@ in {
   gtk = {
     enable = true;
 
-    gtk3.extraConfig = { gtk-menu-images = true; };
+    gtk3.extraConfig = {
+      gtk-menu-images = true;
+    };
 
-    gtk4.extraConfig = { gtk-menu-images = true; };
+    gtk4.extraConfig = {
+      gtk-menu-images = true;
+    };
 
     cursorTheme.name = "BreezeX-RosePineDawn-Linux";
     theme = {
