@@ -133,125 +133,125 @@
       }
 
       #WindowRules
-      windowrulev2 = workspace 2 silent, class:^(steam)$
-      windowrulev2 = workspace 2 silent, class:^(lutris)$
-      windowrulev2 = workspace 8 silent, class:^(org.qbittorrent.qBittorrent)$
-      windowrulev2 = workspace 1 silent, class:^(firefox)$
+      windowrule = workspace 2 silent, class:^(steam)$
+      windowrule = workspace 2 silent, class:^(lutris)$
+      windowrule = workspace 8 silent, class:^(org.qbittorrent.qBittorrent)$
+      windowrule = workspace 1 silent, class:^(firefox)$
 
-      # WindowruleV2s
+      # Windowrules
       # --Godot
-      windowrulev2 = float, class:Godot
-      windowrulev2 = size 1100 750, class:Godot, title:^.+$
-      windowrulev2 = center 1, class:Godot, title:^.+$
+      windowrule = float, class:Godot
+      windowrule = size 1100 750, class:Godot, title:^.+$
+      windowrule = center 1, class:Godot, title:^.+$
       # --XDG
-      windowrulev2 = float, class:xdg-desktop-portal-gtk
-      windowrulev2 = size 880 680, class:xdg-desktop-portal-gtk
-      windowrulev2 = center 1, class:xdg-desktop-portal-gtk
+      windowrule = float, class:xdg-desktop-portal-gtk
+      windowrule = size 880 680, class:xdg-desktop-portal-gtk
+      windowrule = center 1, class:xdg-desktop-portal-gtk
       # --Alacritty
-      windowrulev2 = float, class:Alacritty
-      windowrulev2 = size 1150 550, class:Alacritty
+      windowrule = float, class:Alacritty
+      windowrule = size 1150 550, class:Alacritty
       # --QimgV
-      windowrulev2 = float, class:qimgv
-      windowrulev2 = size 800 800, class:qimgv
-      windowrulev2 = center 1, class:qimgv
+      windowrule = float, class:qimgv
+      windowrule = size 800 800, class:qimgv
+      windowrule = center 1, class:qimgv
       # --Lutris
-      #windowrulev2 = float, class:lutris, title:(?!Lutris.*)
-      #windowrulev2 = center 1, class:lutris, title:(?!Lutris.*)
-      #windowrulev2 = size 950 700, class:lutris, title:(?!Lutris.*)
+      #windowrule = float, class:lutris, title:(?!Lutris.*)
+      #windowrule = center 1, class:lutris, title:(?!Lutris.*)
+      #windowrule = size 950 700, class:lutris, title:(?!Lutris.*)
       # --polkit
-      windowrulev2 = float, class:^(org.kde.polkit-kde-authentication-agent-1)$
-      windowrulev2 = center 1, class:^(org.kde.polkit-kde-authentication-agent-1)$
+      windowrule = float, class:^(org.kde.polkit-kde-authentication-agent-1)$
+      windowrule = center 1, class:^(org.kde.polkit-kde-authentication-agent-1)$
       # --Steam
-      windowrulev2 = float, class:(steam), title:(Friends List)
-      windowrulev2 = size 940 740, class:(steam), title:(Friends List)
-      windowrulev2 = center 1, class:^(steam)$
-      windowrulev2 = float, class:^(steam)$, title:^(Steam Settings)$
-      windowrulev2 = center 1, class:^(steam)$, title:^(Steam Settings)$
+      windowrule = float, class:(steam), title:(Friends List)
+      windowrule = size 940 740, class:(steam), title:(Friends List)
+      windowrule = center 1, class:^(steam)$
+      windowrule = float, class:^(steam)$, title:^(Steam Settings)$
+      windowrule = center 1, class:^(steam)$, title:^(Steam Settings)$
       # --Irfanview
-      windowrulev2 = maximize, class:^(i_view64\.exe)$, title:^(IrfanView)$
+      windowrule = maximize, class:^(i_view64\.exe)$, title:^(IrfanView)$
       # --Firefox
-      #windowrulev2 = float
+      #windowrule = float
       # --VSS Code
-      windowrulev2 = float, class:^(code-oss)$
-      windowrulev2 = center 1, class:^(code-oss)$
-      windowrulev2 = size 1052 705, class:^(code-oss)$
+      windowrule = float, class:^(code-oss)$
+      windowrule = center 1, class:^(code-oss)$
+      windowrule = size 1052 705, class:^(code-oss)$
       # --Ark
-      windowrulev2 = float, class:^(org.kde.ark)$
-      windowrulev2 = center 1, class:^(org.kde.ark)$, title:^(Ark)$
-      windowrulev2 = size 925 635, class:^(org.kde.ark)$, title:^(Ark)$
+      windowrule = float, class:^(org.kde.ark)$
+      windowrule = center 1, class:^(org.kde.ark)$, title:^(Ark)$
+      windowrule = size 925 635, class:^(org.kde.ark)$, title:^(Ark)$
       # --Compressing...
-      windowrulev2 = size 350 160, class:^(org.kde.ark)$, title:^(Compressing.*)$
-      windowrulev2 = move 14 850, class:^(org.kde.ark)$, title:^(Compressing.*)$
+      windowrule = size 350 160, class:^(org.kde.ark)$, title:^(Compressing.*)$
+      windowrule = move 14 850, class:^(org.kde.ark)$, title:^(Compressing.*)$
       # --Kitty
-      windowrulev2 = float, class:^(kitty)$
-      windowrulev2 = size 615 168, class:^(kitty)$
-      windowrulev2 = move 651 842, class:^(kitty)$
+      windowrule = float, class:^(kitty)$
+      windowrule = size 615 168, class:^(kitty)$
+      windowrule = move 651 842, class:^(kitty)$
       # --Emacs
-      windowrulev2 = float, class:^(Emacs)$
-      windowrulev2 = center 1, class:^(Emacs)$
-      windowrulev2 = size 950 850, class:^(Emacs)$
+      windowrule = float, class:^(Emacs)$
+      windowrule = center 1, class:^(Emacs)$
+      windowrule = size 950 850, class:^(Emacs)$
       # --PavuControl
-      windowrulev2 = float, class:^(org.pulseaudio.pavucontrol)$
-      windowrulev2 = center 1, class:^(org.pulseaudio.pavucontrol)$
-      windowrulev2 = size 1094 345, class:^(org.pulseaudio.pavucontrol)$
+      windowrule = float, class:^(org.pulseaudio.pavucontrol)$
+      windowrule = center 1, class:^(org.pulseaudio.pavucontrol)$
+      windowrule = size 1094 345, class:^(org.pulseaudio.pavucontrol)$
       # --qBittorrent
-      windowrulev2 = float, class:^(org.qbittorrent.qBittorrent)$, title:^(?!.*qBittorrent).*
-      windowrulev2 = size 1100 900, class:^(org.qbittorrent.qBittorrent)$, title:^(?!.*qBittorrent).*
-      windowrulev2 = center, class:^(org.qbittorrent.qBittorrent)$, title:^(?!.*qBittorrent).*
+      windowrule = float, title:^(?!(qBittorrent)).*$
+      windowrule = size 1100 900, title:^(?!(qBittorrent)).*$
+      windowrule = center 1, title:^(?!(qBittorrent)).*$
       # --winetricks
-      windowrulev2 = float, class:^(zenity)$
-      windowrulev2 = center 1, class:^(zenity)$
+      windowrule = float, class:^(zenity)$
+      windowrule = center 1, class:^(zenity)$
       # --speedcrunch
-      windowrulev2 = float, class:^(org\.speedcrunch.*)$
-      windowrulev2 = size 1000 800, class:^(org.speedcrunch.*)$
-      windowrulev2 = center 1, class:^(org\.speedcrunch.*)$
+      windowrule = float, class:^(org\.speedcrunch.*)$
+      windowrule = size 1000 800, class:^(org.speedcrunch.*)$
+      windowrule = center 1, class:^(org\.speedcrunch.*)$
       # --thunar
-      windowrulev2 = float, class:^(thunar)$, title:^(File Operation Progress)$
-      windowrulev2 = size 500 160, class:^(thunar)$, title:^(File Operation Progress)$
-      windowrulev2 = move 14 850, class:^(thunar)$, title:^(File Operation Progress)$
-      windowrulev2 = float, class:^(thunar)$, title:^(Confirm to replace files)$
-      windowrulev2 = center 1, class:^(thunar)$, title:^(Confirm to replace files)$
-      windowrulev2 = float, class:^(thunar)$, title:^(Rename.*)$
-      windowrulev2 = size 470 137, class:^(thunar)$, title:^(Rename.*)$
-      windowrulev2 = move 405 443, class:^(thunar)$, title:^(Rename.*)$
-      windowrulev2 = center 1, class:^(thunar)$, title:^(Rename.*)$
+      windowrule = float, class:^(thunar)$, title:^(File Operation Progress)$
+      windowrule = size 500 160, class:^(thunar)$, title:^(File Operation Progress)$
+      windowrule = move 14 850, class:^(thunar)$, title:^(File Operation Progress)$
+      windowrule = float, class:^(thunar)$, title:^(Confirm to replace files)$
+      windowrule = center 1, class:^(thunar)$, title:^(Confirm to replace files)$
+      windowrule = float, class:^(thunar)$, title:^(Rename.*)$
+      windowrule = size 470 137, class:^(thunar)$, title:^(Rename.*)$
+      windowrule = move 405 443, class:^(thunar)$, title:^(Rename.*)$
+      windowrule = center 1, class:^(thunar)$, title:^(Rename.*)$
       # --mpv
-      windowrulev2 = float, class:^(mpv)
-      windowrulev2 = size 1000 800, class:^(mpv)
-      windowrulev2 = center 1, class:^(mpv)
+      windowrule = float, class:^(mpv)
+      windowrule = size 1000 800, class:^(mpv)
+      windowrule = center 1, class:^(mpv)
       # --discord
-      windowrulev2 = float, class:^(Bitwarden)$
-      windowrulev2 = center 1, class:^(Bitwarden)$
+      windowrule = float, class:^(Bitwarden)$
+      windowrule = center 1, class:^(Bitwarden)$
       # --puddletag
-      windowrulev2 = float, class:^(python3)$, title:^(puddletag)$
-      windowrulev2 = size 1250 970, class:^(python3)$, title:^(puddletag)$
-      windowrulev2 = center 1, class:^(python3)$, title:^(puddletag)$
+      windowrule = float, class:^(python3)$, title:^(puddletag)$
+      windowrule = size 1250 970, class:^(python3)$, title:^(puddletag)$
+      windowrule = center 1, class:^(python3)$, title:^(puddletag)$
       # --doomemacs
-      windowrulev2 = float, class:^(emacs)$, title:^(.*Doom Emacs)$
-      windowrulev2 = size 1000 800, class:^(emacs)$, title:^(.*Doom Emacs)$
-      windowrulev2 = center 1, class:^(emacs)$, title:^(.*Doom Emacs)$
+      windowrule = float, class:^(emacs)$, title:^(.*Doom Emacs)$
+      windowrule = size 1000 800, class:^(emacs)$, title:^(.*Doom Emacs)$
+      windowrule = center 1, class:^(emacs)$, title:^(.*Doom Emacs)$
       # --QOwnNotes
-      windowrulev2 = float, class:^(PBE.*)$
-      windowrulev2 = size 1000 700, class:^(PBE.*)$, title:default
-      windowrulev2 = center 1, class:^(PBE.*)$
+      windowrule = float, class:^(PBE.*)$
+      windowrule = size 1000 700, class:^(PBE.*)$, title:default
+      windowrule = center 1, class:^(PBE.*)$
       # --XnViewMP
-      windowrulev2 = float, class:^(com.xnview.XnView)$, title:(.*XnView MP)
-      windowrulev2 = maximize, class:^(com.xnview.XnView)$, title:(.*XnView MP)
+      windowrule = float, class:^(com.xnview.XnView)$, title:(.*XnView MP)
+      windowrule = maximize, class:^(com.xnview.XnView)$, title:(.*XnView MP)
       # --Strawberry
-      windowrulev2 = float, class:^(org.strawberrymusicplayer.strawberry)$, title:^(.*Strawberry Music Player)$
-      windowrulev2 = maximize, class:^(org.strawberrymusicplayer.strawberry)$, title:^(.*Strawberry Music Player)$
+      windowrule = float, class:^(org.strawberrymusicplayer.strawberry)$, title:^(.*Strawberry Music Player)$
+      windowrule = maximize, class:^(org.strawberrymusicplayer.strawberry)$, title:^(.*Strawberry Music Player)$
       # --Telegram
-      windowrulev2 = float, class:^(org.telegram.desktop)$
-      windowrulev2 = size 1000 700, class:^(org.telegram.desktop)$, title:^(Telegram)$
-      windowrulev2 = center 1, class:^(org.telegram.desktop)$
+      windowrule = float, class:^(org.telegram.desktop)$
+      windowrule = size 1000 700, class:^(org.telegram.desktop)$, title:^(Telegram)$
+      windowrule = center 1, class:^(org.telegram.desktop)$
       # --Neovim
-      windowrulev2 = float, class:^(Gvim)$
-      windowrulev2 = center 1, class:^(Gvim)$
+      windowrule = float, class:^(Gvim)$
+      windowrule = center 1, class:^(Gvim)$
       # --MusicBee
-      windowrulev2 = fullscreen, class:^(musicbee.exe)$, title:^(.*MusicBee)$
-      windowrulev2 = float, class:^(musicbee.exe)$, title:^()$
-      # --Mp3Tag
-      windowrulev2 = maximize, class:^(mp3tag.exe)$, title:^(Mp3tag v3.26  -  ).*$
+      windowrule = fullscreen, class:^(musicbee.exe)$, title:^(.*MusicBee)$
+      windowrule = float, class:^(musicbee.exe)$, title:^()$
+       --Mp3Tag
+      windowrule = maximize, class:^(mp3tag.exe)$, title:^(Mp3tag v3.26  -  ).*$
 
 
       #Binds
