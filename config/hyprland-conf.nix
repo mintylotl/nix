@@ -195,9 +195,10 @@
       windowrule = center 1, class:^(org.pulseaudio.pavucontrol)$
       windowrule = size 1094 345, class:^(org.pulseaudio.pavucontrol)$
       # --qBittorrent
-      windowrule = float, title:^(?!(qBittorrent)).*$
-      windowrule = size 1100 900, title:^(?!(qBittorrent)).*$
-      windowrule = center 1, title:^(?!(qBittorrent)).*$
+      windowrule =
+      windowrule = float, title:negative:^qBittorrent.*$
+      windowrule = size 1100 900, title:negative:^qBittorrent.*$
+      windowrule = center 1, title:negative:^qBittorrent.*$
       # --winetricks
       windowrule = float, class:^(zenity)$
       windowrule = center 1, class:^(zenity)$
@@ -237,9 +238,6 @@
       # --XnViewMP
       windowrule = float, class:^(com.xnview.XnView)$, title:(.*XnView MP)
       windowrule = maximize, class:^(com.xnview.XnView)$, title:(.*XnView MP)
-      # --Strawberry
-      windowrule = float, class:^(org.strawberrymusicplayer.strawberry)$, title:^(.*Strawberry Music Player)$
-      windowrule = maximize, class:^(org.strawberrymusicplayer.strawberry)$, title:^(.*Strawberry Music Player)$
       # --Telegram
       windowrule = float, class:^(org.telegram.desktop)$
       windowrule = size 1000 700, class:^(org.telegram.desktop)$, title:^(Telegram)$
