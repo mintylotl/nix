@@ -136,7 +136,7 @@
       windowrule = workspace 2 silent, class:^(steam)$
       windowrule = workspace 2 silent, class:^(lutris)$
       windowrule = workspace 8 silent, class:^(org.qbittorrent.qBittorrent)$
-      windowrule = workspace 1 silent, class:^(firefox)$
+      windowrule = workspace 1 silent, class:^(firefox-devedition)$
 
       # Windowrules
       # --Godot
@@ -154,10 +154,6 @@
       windowrule = float, class:qimgv
       windowrule = size 800 800, class:qimgv
       windowrule = center 1, class:qimgv
-      # --Lutris
-      #windowrule = float, class:lutris, title:(?!Lutris.*)
-      #windowrule = center 1, class:lutris, title:(?!Lutris.*)
-      #windowrule = size 950 700, class:lutris, title:(?!Lutris.*)
       # --polkit
       windowrule = float, class:^(org.kde.polkit-kde-authentication-agent-1)$
       windowrule = center 1, class:^(org.kde.polkit-kde-authentication-agent-1)$
@@ -167,10 +163,8 @@
       windowrule = center 1, class:^(steam)$
       windowrule = float, class:^(steam)$, title:^(Steam Settings)$
       windowrule = center 1, class:^(steam)$, title:^(Steam Settings)$
-      # --Irfanview
-      windowrule = maximize, class:^(i_view64\.exe)$, title:^(IrfanView)$
       # --Firefox
-      #windowrule = float
+      windowrule = tile, class:^firefox-devedition$, title:^.*$
       # --VSS Code
       windowrule = float, class:^(code-oss)$
       windowrule = center 1, class:^(code-oss)$
@@ -186,19 +180,14 @@
       windowrule = float, class:^(kitty)$
       windowrule = size 615 168, class:^(kitty)$
       windowrule = move 651 842, class:^(kitty)$
-      # --Emacs
-      windowrule = float, class:^(Emacs)$
-      windowrule = center 1, class:^(Emacs)$
-      windowrule = size 950 850, class:^(Emacs)$
       # --PavuControl
       windowrule = float, class:^(org.pulseaudio.pavucontrol)$
       windowrule = center 1, class:^(org.pulseaudio.pavucontrol)$
       windowrule = size 1094 345, class:^(org.pulseaudio.pavucontrol)$
       # --qBittorrent
-      windowrule =
-      windowrule = float, title:negative:^qBittorrent.*$
-      windowrule = size 1100 900, title:negative:^qBittorrent.*$
-      windowrule = center 1, title:negative:^qBittorrent.*$
+      windowrule = float, title:negative:.*qBittorrent.*
+      windowrule = size 1100 900, title:negative:.*qBittorrent.*
+      windowrule = center 1, title:negative:.*qBittorrent.*
       # --winetricks
       windowrule = float, class:^(zenity)$
       windowrule = center 1, class:^(zenity)$
@@ -212,10 +201,7 @@
       windowrule = move 14 850, class:^(thunar)$, title:^(File Operation Progress)$
       windowrule = float, class:^(thunar)$, title:^(Confirm to replace files)$
       windowrule = center 1, class:^(thunar)$, title:^(Confirm to replace files)$
-      windowrule = float, class:^(thunar)$, title:^(Rename.*)$
-      windowrule = size 470 137, class:^(thunar)$, title:^(Rename.*)$
-      windowrule = move 405 443, class:^(thunar)$, title:^(Rename.*)$
-      windowrule = center 1, class:^(thunar)$, title:^(Rename.*)$
+      windowrule = float, size 880 200, center 1, class:^thunar$, title:^Rename ".+"$
       # --mpv
       windowrule = float, class:^(mpv)
       windowrule = size 1000 800, class:^(mpv)
@@ -223,33 +209,26 @@
       # --discord
       windowrule = float, class:^(Bitwarden)$
       windowrule = center 1, class:^(Bitwarden)$
-      # --puddletag
-      windowrule = float, class:^(python3)$, title:^(puddletag)$
-      windowrule = size 1250 970, class:^(python3)$, title:^(puddletag)$
-      windowrule = center 1, class:^(python3)$, title:^(puddletag)$
       # --doomemacs
-      windowrule = float, class:^(emacs)$, title:^(.*Doom Emacs)$
-      windowrule = size 1000 800, class:^(emacs)$, title:^(.*Doom Emacs)$
+      windowrule = float, initialClassclass:^(emacs)$, title:^(.*Doom Emacs)$
+      windowrule = size 1120 850, initialClass:^(emacs)$, title:^(.*Doom Emacs)$
       windowrule = center 1, class:^(emacs)$, title:^(.*Doom Emacs)$
-      # --QOwnNotes
-      windowrule = float, class:^(PBE.*)$
-      windowrule = size 1000 700, class:^(PBE.*)$, title:default
-      windowrule = center 1, class:^(PBE.*)$
-      # --XnViewMP
-      windowrule = float, class:^(com.xnview.XnView)$, title:(.*XnView MP)
-      windowrule = maximize, class:^(com.xnview.XnView)$, title:(.*XnView MP)
       # --Telegram
       windowrule = float, class:^(org.telegram.desktop)$
-      windowrule = size 1000 700, class:^(org.telegram.desktop)$, title:^(Telegram)$
+      #windowrule = size 1000 700, class:^(org.telegram.desktop)$, title:^(Telegram)$
       windowrule = center 1, class:^(org.telegram.desktop)$
-      # --Neovim
-      windowrule = float, class:^(Gvim)$
-      windowrule = center 1, class:^(Gvim)$
       # --MusicBee
-      windowrule = fullscreen, class:^(musicbee.exe)$, title:^(.*MusicBee)$
-      windowrule = float, class:^(musicbee.exe)$, title:^()$
-       --Mp3Tag
+      windowrule = fullscreen, class:^(musicbee.exe)$, title:^.*MusicBee.*$
+      windowrule = tile, class:^(musicbee.exe)$, title:^$
+      windowrule = pin, class:^musicbee.exe$, title:^$
+      windowrule = size 100 100, class:^explorer.exe$, title:^$
+      windowrule = move 5 10, class:^explorer.exe$, title:^$
+      # --Mp3Tag
       windowrule = maximize, class:^(mp3tag.exe)$, title:^(Mp3tag v3.26  -  ).*$
+      # --Rofi
+      windowrule = float, class:^Rofi$
+      windowrule = size 1100 900, class:^Rofi$
+      windowrule = center 1, class:^Rofi$
 
 
       #Binds
