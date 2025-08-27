@@ -146,6 +146,7 @@ in
     enable = true;
     theme = ./config/dracula.rasi;
     terminal = "${pkgs.alacritty}/bin/alacritty";
+    package = pkgs.rofi-wayland;
   };
 
   programs.git = {
