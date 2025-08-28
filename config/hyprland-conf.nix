@@ -176,10 +176,10 @@
 
       windowrule = [
         # Simple Placement
-        "workspace 2 silent, class:^(steam)$"
-        "workspace 2 silent, class:^(lutris)$"
-        "workspace 8 silent, class:^(org.qbittorrent.qBittorrent)$"
-        "workspace 1 silent, class:^(firefox-devedition)$"
+        "workspace 2 silent, class:^steam$"
+        "workspace 2 silent, class:^lutris$"
+        "workspace 8 silent, class:^org\.qbittorrent\.qBittorrent$"
+        "workspace 1 silent, class:^firefox-devedition$"
 
         # Windowrules
         # -Godot
@@ -188,7 +188,8 @@
         # XDG
         "float, size 880 680, class:xdg-desktop-portal-gtk"
         # Alacritty
-        "float, size 1150 550, class:Alacritty"
+        "float, class:Alacritty, initialTitle:Alacritty"
+        "size 1110 420, class:Alacritty, initialTitle:Alacritty"
         # QimgV
         "float, size 800 800, center 1, class:qimgv"
 
@@ -223,17 +224,18 @@
         "float, size 1100 900, center 1, title:negative:.*qBittorrent.*"
 
         # Thunar
+        "tile, class:thunar, title:.* Thunar"
         # -File Operation
         "float, size 500 160, move 14 850, class:thunar, title:^File Operation Progress$"
         # -Confirm to Replace
         "float, center 1, size 300 300, class:thunar, title:^Confirm to replace files$"
-        "float, size 880 200, center 1, class:thunar, title:Rename \".+\""
+        "float, size 700 180, center 1, class:thunar, title:^Rename \\\".*\\\""
 
         # mpv
         "float, size 1000 800, center 1, class:^(mpv)"
 
         # Bitwarden
-        "float, center 1, class:Bitwarden"
+        "maximize, center 1, class:Bitwarden"
 
         # Doom Emacs
         "float, initialClassclass:^(emacs)$, title:^(.*Doom Emacs)$"
@@ -248,13 +250,10 @@
         "fullscreen, class:musicbee\.exe, title:^.*MusicBee.*$"
         #"float, pin, class:musicbee\.exe, title:^$"
         # -Explorer Dialogue
-        "size 100 100, move 5 10, class:explorer.exe, title:^$"
+        "size 200 20, move 10 20, class:explorer.exe, title:^$"
 
         # Mp3Tag
         "maximize, class:^mp3tag\.exe$, title:^Mp3tag v3\.26.+-.+$"
-
-        # Rofi
-        "float, size 1100 900, center 1, class:^Rofi$"
       ];
 
       # Binds
@@ -290,7 +289,7 @@
         "$mainMod, M, exec, loginctl terminate-user "
         "$mainMod CTRL, down, exec, bash -c 'archwiki-offline'"
         "$mainMod, T, exec, cliphist wipe"
-        "$mainMod, SPACE, exec, rofi -show drun"
+        "$mainMod, SPACE, exec, rofi -show drun -width 65 -lines 15"
 
         # Audio
         ", F7, exec, wpctl set-volume 33 5%-"

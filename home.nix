@@ -141,7 +141,15 @@ in
   };
 
   programs.kitty.enable = true;
-  programs.alacritty.enable = true;
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window.dimensions = {
+        lines = 15;
+        columns = 600;
+      };
+    };
+  };
   programs.rofi = {
     enable = true;
     theme = ./config/dracula.rasi;
