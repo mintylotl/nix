@@ -102,7 +102,7 @@ in
   };
   # Services
   services.mpd = {
-    enable = true;
+    enable = false;
     musicDirectory = "${HOME}/Music";
     dataDir = "/system/programs/mpd";
     dbFile = "/system/programs/mpd/library.db";

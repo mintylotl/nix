@@ -288,7 +288,6 @@
 
         # Misc
         "$mainMod, M, exec, loginctl terminate-user "
-        ""
         "$mainMod CTRL, down, exec, bash -c 'archwiki-offline'"
         "$mainMod, T, exec, cliphist wipe"
         "$mainMod, SPACE, exec, rofi -show drun"
@@ -320,8 +319,6 @@
         "$mainMod, R, movetoworkspacesilent, 7"
 
         # Window Control
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
         # -Focus
         "$mainMod SHIFT, left, layoutmsg, orientationleft"
         "$mainMod SHIFT, right, layoutmsg, orientationright"
@@ -365,6 +362,11 @@
         # -Cycle workspaces with ScrollWheel
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+      ];
+      bindm = [
+        # Window Control
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
       ];
     };
   };
