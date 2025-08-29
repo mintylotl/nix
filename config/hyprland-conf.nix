@@ -178,48 +178,58 @@
         # Simple Placement
         "workspace 2 silent, class:^steam$"
         "workspace 2 silent, class:^lutris$"
-        "workspace 8 silent, class:^org\.qbittorrent\.qBittorrent$"
+        "workspace 8 silent, class:^org\\.qbittorrent\\.qBittorrent$"
         "workspace 1 silent, class:^firefox-devedition$"
 
         # Windowrules
-        # -Godot
+        # Godot
         "float, size 1100 750, center 1, class:Godot, title:^.+$"
+
+        # PrismLauncher
+        "tile, class:org\\.prismlauncher\\.PrismLauncher"
+        # -Edit Menu
+        "float, size 1200 950, center 1, class:org\\.prismlauncher\\.PrismLauncher, title:^Console window.+ — Prism Launcher .+$"
 
         # XDG
         "float, size 880 680, class:xdg-desktop-portal-gtk"
+
         # Alacritty
         "float, class:Alacritty, initialTitle:Alacritty"
         "size 1110 420, class:Alacritty, initialTitle:Alacritty"
+
         # QimgV
         "float, size 800 800, center 1, class:qimgv"
 
         # Steam
-        "center 1, class:^(steam)$"
+        "tile, center 1, class:^(steam)$"
         # -Friends List
-        "float, class:(steam), size 940 740, class:(steam), title:(Friends List)"
+        "float, size 940 740, class:(steam), title:(Friends List)"
         # -Settings
-        "float, class:^(steam)$, center 1, class:^(steam)$, title:^(Steam Settings)$"
+        "float, center 1, class:^(steam)$, title:^(Steam Settings)$"
 
         # Firefox
-        "tile, initialClass:^firefox-devedition$"
+        "tile, class:firefox-devedition, title:^.+— Firefox Developer Edition$"
 
         # VSS Code
         "float, center 1, size 1052 705, class:^(code-oss)$"
 
         # Ark
-        "float, center 1, size 925 635, class:^(org\.kde\.ark)$, title:^(Ark)$"
+        "float, center 1, size 925 635, class:^(org\\.kde\\.ark)$, title:^(Ark)$"
         # -Compressing...
-        "size 350 160, move 14 850, class:^(org\.kde\.ark)$, title:^(Compressing.+)$"
+        "size 350 160, move 14 850, class:^(org\\.kde\\.ark)$, title:^(Compressing.+)$"
 
         # Kitty
         "float, size 615 168, move 651 842, class:^(kitty)$"
 
         # PavuControl
-        "float, center 1, size 1094 345, class:^(org\.pulseaudio\.pavucontrol)$"
+        "float, center 1, size 1094 345, class:^(org\\.pulseaudio\\.pavucontrol)$"
+
         # Winetricks
         "float, center 1, class:^(zenity)$"
+
         # Speedcrunch
-        "float, size 1000 800, center 1, class:^(org\.speedcrunch.*)$"
+        "float, size 1000 800, center 1, class:^(org\\.speedcrunch.+)$"
+
         # qBittorrent
         "float, size 1100 900, center 1, title:negative:.*qBittorrent.*"
 
@@ -229,7 +239,7 @@
         "float, size 500 160, move 14 850, class:thunar, title:^File Operation Progress$"
         # -Confirm to Replace
         "float, center 1, size 300 300, class:thunar, title:^Confirm to replace files$"
-        "float, size 700 180, center 1, class:thunar, title:^Rename \\\".*\\\""
+        "float, size 700 180, center 1, class:thunar, title:^Rename \".+\""
 
         # mpv
         "float, size 1000 800, center 1, class:^(mpv)"
@@ -238,22 +248,20 @@
         "maximize, center 1, class:Bitwarden"
 
         # Doom Emacs
-        "float, initialClassclass:^(emacs)$, title:^(.*Doom Emacs)$"
-        "size 1120 850, initialClass:^(emacs)$, title:^(.*Doom Emacs)$"
-        "center 1, class:^(emacs)$, title:^(.*Doom Emacs)$"
+        "float, class:emacs"
+        "size 1120 850, center 1, class:emacs"
 
         # Telegram
-        "float, center 1, class:org\.telegram\.desktop"
-        "float, center 1, size 1000 700, class:org\.telegram\.desktop, title:Telegram"
+        "float, center 1, class:org\\.telegram\\.desktop"
+        "float, center 1, size 1000 700, class:org\\.telegram\\.desktop, title:Telegram"
 
         # MusicBee
-        "fullscreen, class:musicbee\.exe, title:^.*MusicBee.*$"
-        #"float, pin, class:musicbee\.exe, title:^$"
+        "fullscreen, class:musicbee\\.exe, title:^.*MusicBee.*$"
         # -Explorer Dialogue
-        "size 200 20, move 10 20, class:explorer.exe, title:^$"
+        "size 200 20, move 10 20, class:explorer\\.exe, title:^$"
 
         # Mp3Tag
-        "maximize, class:^mp3tag\.exe$, title:^Mp3tag v3\.26.+-.+$"
+        "maximize, class:^mp3tag\\.exe$, title:^Mp3tag v3\\.26.+-.+$"
       ];
 
       # Binds
@@ -263,7 +271,7 @@
       bind = [
         # ScreenShotting
         ", Print, exec, grim -l 4 -g \"0,0 1280x1024\""
-        "$mainMod, Print, exec, grim -l 8 -g \"\$(slurp)\""
+        "$mainMod, Print, exec, grim -l 8 -g \"$(slurp)\""
 
         # Editors
         "$mainMod, O, exec, alacritty -e nvim ./"
@@ -286,7 +294,7 @@
         #bind = $mainMod, R, workspaceopt, allfloat
 
         # Misc
-        "$mainMod, M, exec, loginctl terminate-user "
+        "$mainMod, M, exec, loginctl terminate-user \"\""
         "$mainMod CTRL, down, exec, bash -c 'archwiki-offline'"
         "$mainMod, T, exec, cliphist wipe"
         "$mainMod, SPACE, exec, rofi -show drun -width 65 -lines 15"
