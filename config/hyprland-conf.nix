@@ -153,117 +153,16 @@
         "workspace 2 silent, class:^lutris$"
         "workspace 8 silent, class:^org\\.qbittorrent\\.qBittorrent$"
 
+        "suppressevent maximize, class:.*"
+
         # Windowrules
-        # Godot
-        "float, class:Godot, title:^.+$"
-        "size 1100 750, class:Godot, title:^.+$"
-        "center 1, class:Godot"
-
-        # PrismLauncher
-        "tile, class:org\\.prismlauncher\\.PrismLauncher"
-        # -Edit Menu
-        "float, class:org\\.prismlauncher\\.PrismLauncher, title:^Console window.+ — Prism Launcher .+$"
-        "size 1200 950, class:org\\.prismlauncher\\.PrismLauncher, title:^Console window.+ — Prism Launcher .+$"
-        "center 1, class:org\\.prismlauncher\\.PrismLauncher, title:^Console window.+ — Prism Launcher .+$"
-
-        # XDG
-        "float, class:xdg-desktop-portal-gtk"
-        "size 880 680, class:xdg-desktop-portal-gtk"
+        #Doom Emacs
+        "float, class:emacs"
+        "size 1169 750, class:emacs"
 
         # Alacritty
-        "float, class:Alacritty, initialTitle:Alacritty"
-        "size 1110 420, class:Alacritty, initialTitle:Alacritty"
-
-        # QimgV
-        "float, class:qimgv"
-        "size 800 800, class:qimgv"
-        "center 1, class:qimgv"
-
-        # Steam
-        "tile, class:steam"
-        # -Friends List
-        "float, class:steam, title:Friends List"
-        "size 940 740, class:steam, title:Friends List"
-        # -Settings
-        "float, class:steam, title:Steam Settings"
-        "center 1, class:steam, title:Steam Settings"
-
-        # Firefox
-        "workspace 1 silent, class:firefox-devedition"
-        "tile, initialClass:firefox-devedition"
-
-        # VSS Code
-        #"float, center 1, size 1052 705, class:^(code-oss)$"
-
-        # Ark
-        "float, class:^(org\\.kde\\.ark)$, title:^(Ark)$"
-        "size 925 635, class:^(org\\.kde\\.ark)$, title:^(Ark)$"
-        "center 1, class:^(org\\.kde\\.ark)$, title:^(Ark)$"
-        # -Compressing...
-        "size 350 160, class:^(org\\.kde\\.ark)$, title:^(Compressing.+)$"
-        "move 14 850, class:^(org\\.kde\\.ark)$, title:^(Compressing.+)$"
-
-        # Kitty
-        "float, class:kitty"
-        "size 615 168, class:kitty"
-        "move 651 842, class:kitty"
-
-        # PavuControl
-        "float, class:^org\\.pulseaudio\\.pavucontrol$"
-        "size 1094 345, class:^org\\.pulseaudio\\.pavucontrol$"
-        "center 1, class:^org\\.pulseaudio\\.pavucontrol$"
-
-        # Winetricks
-        "float, class:^(zenity)$"
-
-        # Speedcrunch
-        "float, class:org\\.speedcrunch.+"
-        "size 1000 800, class:org\\.speedcrunch.+"
-        "center 1, class:org\\.speedcrunch.+"
-
-        # qBittorrent
-        "float, title:negative:.*qBittorrent.*"
-        "size 1100 900, title:negative:.*qBittorrent.*"
-        "center 1, title:negative:.*qBittorrent.*"
-
-        # Thunar
-        "tile, class:thunar, title:.* Thunar"
-        # -File Operation
-        #"float, size 500 160, move 14 850, class:thunar, title:^File Operation Progress$"
-        # -Confirm to Replace
-        #"float, center 1, size 300 300, class:thunar, title:^Confirm to replace files$"
-        # Rename
-        "float, class:thunar, title:Rename \".+\""
-        "size 640 200, class:thunar, title:Rename \".+\""
-        "center 1, class:thunar, title:Rename \".+\""
-
-        # mpv
-        "float, class:mpv"
-        "size 1000 800, class:mpv"
-        "center 1, class:mpv"
-
-        # Bitwarden
-        "maximize, class:Bitwarden"
-        "center 1, class:Bitwarden"
-
-        # Doom Emacs
-        "float, class:emacs"
-        "size 1120 850, class:emacs"
-        "center 1, class:emacs"
-
-        # Telegram
-        "float, class:org\\.telegram\\.desktop, title:Telegram"
-        "size 1000 700, class:org\\.telegram\\.desktop, title:Telegram"
-        "center 1, class:org\\.telegram\\.desktop, title:Telegram"
-
-        # MusicBee
-        "fullscreen, class:musicbee\\.exe, title:^.*MusicBee.*$"
-        # -Explorer Dialogue
-        "size 200 20, class:explorer\\.exe, title:^$"
-        "move 10 20, class:explorer\\.exe, title:^$"
-
-        # Mp3Tag
-        "maximize, class:^mp3tag\\.exe$, title:^Mp3tag v3\\.26.+-.+$"
+        "float, class:Alacritty"
+        "size 1000 300, class:Alacritty"
       ];
 
       # Binds
