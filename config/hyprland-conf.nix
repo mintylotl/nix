@@ -5,33 +5,6 @@
   ...
 }:
 {
-  home.file = {
-    # SCRIPTS
-    ".config/hypr/gamemode.sh" = {
-      source = ../dots/config/hypr/gamemode.sh;
-    };
-    ".config/hypr/startup.sh" = {
-      source = ../dots/config/hypr/startup.sh;
-    };
-    ".config/hypr/sink.sh" = {
-      source = ../dots/config/hypr/sink.sh;
-    };
-    ".config/hypr/xdp.sh" = {
-      source = ../dots/config/hypr/xdp.sh;
-    };
-
-    # CONFIG
-    ".config/hypr/hypridle.conf" = {
-      source = ../dots/config/hypr/hypridle.conf;
-    };
-    ".config/hypr/hyprpaper.conf" = {
-      source = ../dots/config/hypr/hyprpaper.conf;
-    };
-    ".config/hypr/hyprlock.conf" = {
-      source = ../dots/config/hypr/hyprlock.conf;
-    };
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -179,86 +152,115 @@
         "workspace 2 silent, class:^steam$"
         "workspace 2 silent, class:^lutris$"
         "workspace 8 silent, class:^org\\.qbittorrent\\.qBittorrent$"
-        "workspace 1 silent, class:^firefox-devedition$"
 
         # Windowrules
         # Godot
-        "float, size 1100 750, center 1, class:Godot, title:^.+$"
+        "float, class:Godot, title:^.+$"
+        "size 1100 750, class:Godot, title:^.+$"
+        "center 1, class:Godot"
 
         # PrismLauncher
         "tile, class:org\\.prismlauncher\\.PrismLauncher"
         # -Edit Menu
-        "float, size 1200 950, center 1, class:org\\.prismlauncher\\.PrismLauncher, title:^Console window.+ — Prism Launcher .+$"
+        "float, class:org\\.prismlauncher\\.PrismLauncher, title:^Console window.+ — Prism Launcher .+$"
+        "size 1200 950, class:org\\.prismlauncher\\.PrismLauncher, title:^Console window.+ — Prism Launcher .+$"
+        "center 1, class:org\\.prismlauncher\\.PrismLauncher, title:^Console window.+ — Prism Launcher .+$"
 
         # XDG
-        "float, size 880 680, class:xdg-desktop-portal-gtk"
+        "float, class:xdg-desktop-portal-gtk"
+        "size 880 680, class:xdg-desktop-portal-gtk"
 
         # Alacritty
         "float, class:Alacritty, initialTitle:Alacritty"
         "size 1110 420, class:Alacritty, initialTitle:Alacritty"
 
         # QimgV
-        "float, size 800 800, center 1, class:qimgv"
+        "float, class:qimgv"
+        "size 800 800, class:qimgv"
+        "center 1, class:qimgv"
 
         # Steam
-        "tile, center 1, class:^(steam)$"
+        "tile, class:steam"
         # -Friends List
-        "float, size 940 740, class:(steam), title:(Friends List)"
+        "float, class:steam, title:Friends List"
+        "size 940 740, class:steam, title:Friends List"
         # -Settings
-        "float, center 1, class:^(steam)$, title:^(Steam Settings)$"
+        "float, class:steam, title:Steam Settings"
+        "center 1, class:steam, title:Steam Settings"
 
         # Firefox
-        "tile, class:firefox-devedition, title:^.+— Firefox Developer Edition$"
+        "workspace 1 silent, class:firefox-devedition"
+        "tile, initialClass:firefox-devedition"
 
         # VSS Code
-        "float, center 1, size 1052 705, class:^(code-oss)$"
+        #"float, center 1, size 1052 705, class:^(code-oss)$"
 
         # Ark
-        "float, center 1, size 925 635, class:^(org\\.kde\\.ark)$, title:^(Ark)$"
+        "float, class:^(org\\.kde\\.ark)$, title:^(Ark)$"
+        "size 925 635, class:^(org\\.kde\\.ark)$, title:^(Ark)$"
+        "center 1, class:^(org\\.kde\\.ark)$, title:^(Ark)$"
         # -Compressing...
-        "size 350 160, move 14 850, class:^(org\\.kde\\.ark)$, title:^(Compressing.+)$"
+        "size 350 160, class:^(org\\.kde\\.ark)$, title:^(Compressing.+)$"
+        "move 14 850, class:^(org\\.kde\\.ark)$, title:^(Compressing.+)$"
 
         # Kitty
-        "float, size 615 168, move 651 842, class:^(kitty)$"
+        "float, class:kitty"
+        "size 615 168, class:kitty"
+        "move 651 842, class:kitty"
 
         # PavuControl
-        "float, center 1, size 1094 345, class:^(org\\.pulseaudio\\.pavucontrol)$"
+        "float, class:^org\\.pulseaudio\\.pavucontrol$"
+        "size 1094 345, class:^org\\.pulseaudio\\.pavucontrol$"
+        "center 1, class:^org\\.pulseaudio\\.pavucontrol$"
 
         # Winetricks
-        "float, center 1, class:^(zenity)$"
+        "float, class:^(zenity)$"
 
         # Speedcrunch
-        "float, size 1000 800, center 1, class:^(org\\.speedcrunch.+)$"
+        "float, class:org\\.speedcrunch.+"
+        "size 1000 800, class:org\\.speedcrunch.+"
+        "center 1, class:org\\.speedcrunch.+"
 
         # qBittorrent
-        "float, size 1100 900, center 1, title:negative:.*qBittorrent.*"
+        "float, title:negative:.*qBittorrent.*"
+        "size 1100 900, title:negative:.*qBittorrent.*"
+        "center 1, title:negative:.*qBittorrent.*"
 
         # Thunar
         "tile, class:thunar, title:.* Thunar"
         # -File Operation
-        "float, size 500 160, move 14 850, class:thunar, title:^File Operation Progress$"
+        #"float, size 500 160, move 14 850, class:thunar, title:^File Operation Progress$"
         # -Confirm to Replace
-        "float, center 1, size 300 300, class:thunar, title:^Confirm to replace files$"
-        "float, size 700 180, center 1, class:thunar, title:^Rename \".+\""
+        #"float, center 1, size 300 300, class:thunar, title:^Confirm to replace files$"
+        # Rename
+        "float, class:thunar, title:Rename \".+\""
+        "size 640 200, class:thunar, title:Rename \".+\""
+        "center 1, class:thunar, title:Rename \".+\""
 
         # mpv
-        "float, size 1000 800, center 1, class:^(mpv)"
+        "float, class:mpv"
+        "size 1000 800, class:mpv"
+        "center 1, class:mpv"
 
         # Bitwarden
-        "maximize, center 1, class:Bitwarden"
+        "maximize, class:Bitwarden"
+        "center 1, class:Bitwarden"
 
         # Doom Emacs
         "float, class:emacs"
-        "size 1120 850, center 1, class:emacs"
+        "size 1120 850, class:emacs"
+        "center 1, class:emacs"
 
         # Telegram
-        "float, center 1, class:org\\.telegram\\.desktop"
-        "float, center 1, size 1000 700, class:org\\.telegram\\.desktop, title:Telegram"
+        "float, class:org\\.telegram\\.desktop, title:Telegram"
+        "size 1000 700, class:org\\.telegram\\.desktop, title:Telegram"
+        "center 1, class:org\\.telegram\\.desktop, title:Telegram"
 
         # MusicBee
         "fullscreen, class:musicbee\\.exe, title:^.*MusicBee.*$"
         # -Explorer Dialogue
-        "size 200 20, move 10 20, class:explorer\\.exe, title:^$"
+        "size 200 20, class:explorer\\.exe, title:^$"
+        "move 10 20, class:explorer\\.exe, title:^$"
 
         # Mp3Tag
         "maximize, class:^mp3tag\\.exe$, title:^Mp3tag v3\\.26.+-.+$"
@@ -375,6 +377,33 @@
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
+    };
+  };
+
+  home.file = {
+    # SCRIPTS
+    ".config/hypr/gamemode.sh" = {
+      source = ../dots/config/hypr/gamemode.sh;
+    };
+    ".config/hypr/startup.sh" = {
+      source = ../dots/config/hypr/startup.sh;
+    };
+    ".config/hypr/sink.sh" = {
+      source = ../dots/config/hypr/sink.sh;
+    };
+    ".config/hypr/xdp.sh" = {
+      source = ../dots/config/hypr/xdp.sh;
+    };
+
+    # CONFIG
+    ".config/hypr/hypridle.conf" = {
+      source = ../dots/config/hypr/hypridle.conf;
+    };
+    ".config/hypr/hyprpaper.conf" = {
+      source = ../dots/config/hypr/hyprpaper.conf;
+    };
+    ".config/hypr/hyprlock.conf" = {
+      source = ../dots/config/hypr/hyprlock.conf;
     };
   };
 }
