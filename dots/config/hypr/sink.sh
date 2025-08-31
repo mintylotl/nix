@@ -4,6 +4,7 @@ count=3
 state_sink="$(wpctl status)"
 state="$(systemctl --user status pipewire)"
 config="$(cat /etc/nixos/dots/config/pipewire/pipewire.conf)"
+arg=$1
 
 if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headphones"; then
 	echo Service Failed, Attempting a Restart...
@@ -23,9 +24,14 @@ if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headp
 		done
 	done
 
-	ln -s /etc/nixos/dots/config/pipewire/pipewire.conf ~/.config/pipewire/pipewire.conf
+	ln -s /etc/nixos/dots/config/pipewire/pipewire.conf /home/jwm/.config/pipewire
+	ln -s /etc/nixos/dots/config/pipewire/pipewire.conf /home/gameboy/.config/pipewire
 	systemctl --user restart pipewire
 	sleep 1s
+
+	if [ $arg -eq 1 ]; then
+		exit
+	fi
 fi
 
 SCRIPT_DIR="/home/jwm/.config/hypr"
