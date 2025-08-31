@@ -163,6 +163,11 @@
         # Alacritty
         "float, class:Alacritty"
         "size 1000 300, class:Alacritty"
+
+        # Telegram
+        "float, class:org\\.telegram\\.desktop"
+        "size 1120 750, class:org\\.telegram\\.desktop"
+        "center 1, class:org\\.telegram\\.desktop"
       ];
 
       # Binds
