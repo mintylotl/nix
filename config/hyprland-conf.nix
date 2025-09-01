@@ -168,6 +168,22 @@
         "float, class:org\\.telegram\\.desktop"
         "size 1120 750, class:org\\.telegram\\.desktop"
         "center 1, class:org\\.telegram\\.desktop"
+
+        # QIMGV
+        "float, class:qimgv"
+        "size 950 950, class:qimgv"
+        "center 1, class:qimgv"
+
+        # PavuControl
+        "float, class:org\\.pulseaudio\\.pavucontrol"
+        "size 1220 700, class:org\\.pulseaudio\\.pavucontrol"
+        "center 1, class:org\\.pulseaudio\\.pavucontrol"
+
+        # Thunar
+        # -Rename
+        "float, class:thunar, title:Rename.+"
+        "size 650 150, class:thunar, title:Rename.+"
+        "center 1, class:thunar, title:Rename.+"
       ];
 
       # Binds
