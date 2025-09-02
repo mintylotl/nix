@@ -236,12 +236,20 @@
 
         # Shortcuts
         # -MusicBee
-        ", End, exec, $shortcut_dir/play_pause.sh"
-        ", Pause, exec, $shortcut_dir/shuffle.sh"
-        ", Delete, exec, $shortcut_dir/close_kill.sh"
-        ", Home, exec, $shortcut_dir/next.sh"
-        ", Next, exec, $shortcut_dir/stop_after_current.sh"
-        ", Scroll_Lock, exec, $shortcut_dir/previous.sh"
+        #", End, exec, $shortcut_dir/play_pause.sh"
+        #", Pause, exec, $shortcut_dir/shuffle.sh"
+        #", Delete, exec, $shortcut_dir/close_kill.sh"
+        #", Home, exec, $shortcut_dir/next.sh"
+        #", Next, exec, $shortcut_dir/stop_after_current.sh"
+        #", Scroll_Lock, exec, $shortcut_dir/previous.sh"
+
+        # -Tauon
+        #", End, sendshortcut, End, class:tauonmb"
+        #", Delete, pass, $shortcut_dir/close_kill.sh"
+        #", Home, pass, class:tauonmb"
+        #", Next, pass, class:tauonmb"
+        #", Scroll_Lock, exec, class:tauonmb"
+        #", F9, pass, class:tauonmb"
 
         # Other
         "$mainMod, X, exec, alacritty -e nvim /home/jwm/.config/hypr/hyprland.conf"
