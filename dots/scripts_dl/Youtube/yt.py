@@ -35,11 +35,9 @@ def youtube(link):
         params["format"] = "bestaudio"
         params["outtmpl"] = ""
 
-        i = 0
         for l in link:
-            if (l == "!") and (i == link.__len__()):
+            if l == "!":
                 link = link.replace("!", "")
-            i = i + 1
     try:
         yt = yt_dlp.YoutubeDL(params)
         yt.download(link)
@@ -50,6 +48,7 @@ def youtube(link):
 fileL = open(f"{root}/links.txt", "r")
 urls = fileL.read().split("\n")
 
+print(urls)
 for url in urls:
     print(f"Link: {url}")
     print(url.__len__())
