@@ -156,7 +156,7 @@
         "suppressevent maximize, class:.*"
 
         # Windowrules
-        #Doom Emacs
+        # Doom Emacs
         "float, class:emacs"
         "size 1169 750, class:emacs"
 
@@ -184,11 +184,20 @@
         "float, class:thunar, title:Rename.+"
         "size 650 150, class:thunar, title:Rename.+"
         "center 1, class:thunar, title:Rename.+"
+
+        # TauonMB
+        "fullscreen, class:tauonmb"
+
+        # MPV
+        "float, class:mpv"
+        "size 900 700, class:mpv"
+        "center 1, class:mpv"
       ];
 
       # Binds
       "$mainMod" = "SUPER";
       "$shortcut_dir" = "$HOME/.programs/musicbee/shortcuts";
+      "$player" = "tauon";
 
       bind = [
         # ScreenShotting
@@ -244,12 +253,12 @@
         #", Scroll_Lock, exec, $shortcut_dir/previous.sh"
 
         # -Tauon
-        #", End, sendshortcut, End, class:tauonmb"
-        #", Delete, pass, $shortcut_dir/close_kill.sh"
-        #", Home, pass, class:tauonmb"
-        #", Next, pass, class:tauonmb"
-        #", Scroll_Lock, exec, class:tauonmb"
-        #", F9, pass, class:tauonmb"
+        ", End, exec, playerctl -p $player play-pause"
+        ", Pause, exec, playerctl -p $player shuffle \"On\""
+        ", Home, exec, playerctl -p $player next"
+        ", Next, exec, playerctl -p $player shuffle \"Off\""
+        ", Scroll_Lock, exec, playerctl -p $player previous"
+        ", Print, exec, playerctl -p $player stop"
 
         # Other
         "$mainMod, X, exec, alacritty -e nvim /home/jwm/.config/hypr/hyprland.conf"
