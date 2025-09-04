@@ -184,6 +184,10 @@
         "float, class:thunar, title:Rename.+"
         "size 650 150, class:thunar, title:Rename.+"
         "center 1, class:thunar, title:Rename.+"
+        # -Confirmation Dialogue
+        "float, class:thunar, title:File Operation Progress"
+        "size 550 180, class:thunar, title:File Operation Progress"
+        "move 715 800, class:thunar, title:File Operation Progress"
 
         # TauonMB
         "fullscreen, class:tauonmb"
@@ -192,6 +196,10 @@
         "float, class:mpv"
         "size 900 700, class:mpv"
         "center 1, class:mpv"
+
+        # Ark
+        "float, class:org\\.kde\\.ark"
+        "size, 1000 700, class:org\\.kde\\.ark"
       ];
 
       # Binds
