@@ -48,8 +48,9 @@ def youtube(link):
 fileL = open(f"{root}/links.txt", "r")
 urls = fileL.read().split("\n")
 
-print(urls)
 for url in urls:
+    if url == "":
+        pass
+
     print(f"Link: {url}")
-    print(url.__len__())
     youtube(url)

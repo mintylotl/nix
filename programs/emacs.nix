@@ -1,12 +1,20 @@
-{ config, lib, pkgs, ... }:
-let epaks = pkgs.emacsPackages;
-in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  epaks = pkgs.emacsPackages;
+  pypaks = pkgs.pythonPackages312;
+in
+{
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-pgtk;
 
-    extraPackages = epkgs:
-      with pkgs; [
+    extraPackages =
+      epkgs: with pkgs; [
         epaks.vterm
         epaks.apheleia
         epaks.ripgrep
@@ -17,6 +25,8 @@ in {
         epaks.all-the-icons
         epaks.org-superstar
         epaks.pytest
+
+        pypaks.python-lsp-server
 
         fd
         cmake
@@ -47,5 +57,7 @@ in {
 
     startWithUserSession = true;
   };
-  systemd.user.services.emacs = { Unit.After = [ "emacs-mounts.service" ]; };
+  systemd.user.services.emacs = {
+    Unit.After = [ "emacs-mounts.service" ];
+  };
 }
