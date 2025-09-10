@@ -81,6 +81,7 @@
       source "''${HOME}/.zmodules"
 
       LS_COLORS=$(vivid generate tokyonight-storm)
+      bindkey -e
 
       compinit
       zstyle ':completion:*' completer _complete _ignored _files

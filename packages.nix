@@ -152,6 +152,8 @@ in
     py.isort
     py.tkinter
 
+    bleed.jdk17
+
     pipenv
     poetry
     pyenv

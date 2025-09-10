@@ -6,7 +6,7 @@
 }:
 let
   epaks = pkgs.emacsPackages;
-  pypaks = pkgs.pythonPackages312;
+  pypaks = pkgs.python312Packages;
 in
 {
   programs.emacs = {
