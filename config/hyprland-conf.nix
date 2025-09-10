@@ -266,7 +266,6 @@
         ", Home, exec, playerctl -p $player next"
         ", Next, exec, playerctl -p $player shuffle \"Off\""
         ", Scroll_Lock, exec, playerctl -p $player previous"
-        ", Print, exec, playerctl -p $player stop"
 
         # Other
         "$mainMod, X, exec, alacritty -e nvim /home/jwm/.config/hypr/hyprland.conf"
@@ -280,6 +279,7 @@
         "$mainMod, down, movefocus, d"
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
+        "$mainMod, x, bringactivetotop"
         # -Workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
