@@ -65,6 +65,7 @@
         ];
 
         serviceConfig = {
+          Before = [ "emacs.service" ];
           ExecStart = "${pkgs.bash}/bin/bash /system/scripts/mounts.sh 1";
           ProtectSystem = false;
           ProtectHome = false;

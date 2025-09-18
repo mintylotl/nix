@@ -58,7 +58,5 @@ in
     startWithUserSession = true;
   };
   systemd.user.services.emacs = {
-    Unit.After = [ "emacs-mounts.service" ];
-    Unit.Requires = [ "emacs-mounts.service" ];
   };
 }
