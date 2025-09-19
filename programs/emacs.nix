@@ -7,6 +7,7 @@
 let
   epaks = pkgs.emacsPackages;
   pypaks = pkgs.python312Packages;
+  HOME = "/home/jwm";
 in
 {
   programs.emacs = {
@@ -58,5 +59,8 @@ in
     startWithUserSession = true;
   };
   systemd.user.services.emacs = {
+    serviceConfig = {
+      ExecStartPre = [ "${HOME}/.scripts/emacs.sh" ];
+    };
   };
 }
