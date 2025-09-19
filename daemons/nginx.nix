@@ -1,16 +1,19 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   httpsPortDefault = "443";
   httpsFileserver = "1111";
   httpFileserver = "2121";
-  #httpsVaultwarden = "444";
-  #httpVaultwarden = 34777;
-  #httpNotifVaultwarden = 34778;
   httpsJellyfin = "9998";
   httpJellyfin = "9999";
-  httpPlex = "32400";
   httpsAnki = "37356";
   httpAnki = "37355";
+  httpsKomga = "9997";
+  httpKomga = "37322";
 
   sslCert = "/system/certs/ssl/ssl.crt";
   sslCertSecret = "/system/certs/ssl/ssl.key";
@@ -22,29 +25,38 @@ let
     index index.html index.htm;
   '';
 
-in {
-  services.nginx.enable = true;
+in
+{
   systemd.services.nginx = {
-    serviceConfig = { ProtectSystem = lib.mkForce "off"; };
+    serviceConfig = {
+      ProtectSystem = lib.mkForce "off";
+    };
   };
-  services.nginx.config = ''
-    #Nginx Config
-    worker_processes 4;
-    #pid /run/nginx.pid;
-    #log /run/nginx.log;
-    events {
+  services.nginx = {
+    enable = true;
+    config = ''
+      #Nginx Config
+      worker_processes 4;
+      #pid /run/nginx.pid;
+      #log /run/nginx.log;
+      events {
         worker_connections 2048;
-    }
+      }
 
-    http {
+      http {
         include ${pkgs.nginx}/conf/mime.types;
         default_type application/octet-stream;
+        client_max_body_size 500M;
         charset utf-8;
         gzip on;
+
         ssl_certificate ${sslCert};
         ssl_certificate_key ${sslCertSecret};
+
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
 
         server {
           listen ${httpsFileserver} ssl;
@@ -60,13 +72,31 @@ in {
         }
         server {
           listen ${httpsAnki} ssl;
-            location / {
-              ${proxy}:${httpAnki};
-            }
-            location /msync {
-              ${proxy}:${httpAnki};
-            }
+          location / {
+            ${proxy}:${httpAnki};
+          }
+          location /msync {
+            ${proxy}:${httpAnki};
+          }
         }
-    }
-  '';
+        server {
+          client_max_body_size 2G;
+          proxy_read_timeout 180;
+          proxy_send_timeout 180;
+
+          listen ${httpsKomga} ssl;
+
+          location ~* \.(?:ico|css|js|jpe?g|png|gif|webp|svg|woff2?)$ {
+            expires 30d;
+            access_log off;
+            add_header Cache-Control "public";
+            proxy_pass http://127.0.0.1:25600;
+          }
+          location / {
+            proxy_pass http://127.0.0.1:${httpKomga};
+          }
+        }
+      }
+    '';
+  };
 }
