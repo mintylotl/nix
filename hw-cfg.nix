@@ -48,16 +48,6 @@
         "dmask=0022"
       ];
     };
-
-    "/Drives/Games" = {
-      device = "/dev/disk/by-uuid/c25cdb9e-39f7-4bc9-8f15-324fa10f7318";
-      fsType = "btrfs";
-      options = [
-        "subvol=@Games"
-        "noatime"
-        "compress-force=zstd:2"
-      ];
-    };
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

@@ -18,10 +18,10 @@ HOT="8f29f7cf-0bea-45a9-945c-9c35e9ac41da"
 MED="bc53d224-cdf4-4d0d-a328-9731266e5220"
 
 if [ $MODE -eq 1 ]; then
-	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/emacs-conf $HOME/.doom.d/
-	#mount --onlyonce -t btrfs -U $HOT -o compress-force=zstd:3,noatime,subvol=@vols/emacs $HOME/.emacs.d/
-	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/orgnotes,compress=zstd:3,noatime $HOME/.crypt/orgnotes
-	/system/scripts/usb_crypt.sh org
+	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/emacs-conf,noatime,compress-force=zstd:6 $HOME/.doom.d/
+	mount --onlyonce -t btrfs -U $HOT -o compress-force=zstd:6,subvol=@vols/emacs $HOME/.emacs.d/
+	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/orgnotes,compress=zstd:3 $HOME/.crypt/orgnotes
+	#/system/scripts/usb_crypt.sh org
 	exit 0
 fi
 

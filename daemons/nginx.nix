@@ -90,7 +90,7 @@ in
             expires 30d;
             access_log off;
             add_header Cache-Control "public";
-            proxy_pass http://127.0.0.1:25600;
+            proxy_pass http://127.0.0.1:${httpKomga};
           }
           location / {
             proxy_pass http://127.0.0.1:${httpKomga};
