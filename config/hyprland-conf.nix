@@ -199,7 +199,12 @@
 
         # Ark
         "float, class:org\\.kde\\.ark"
-        "size, 1000 700, class:org\\.kde\\.ark"
+        "size 1000 700, class:org\\.kde\\.ark"
+
+        # SpeedCrunch
+
+        "float, class:org\\.speedcrunch.*"
+        "size 1000 700, class:org\\.speedcrunch.*"
       ];
 
       # Binds
