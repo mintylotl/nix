@@ -30,6 +30,8 @@
 
       alias ls="ls --color"
       alias e="exit"
+      alias ..="cd .."
+
       alias vd="veracrypt -t -d"
       alias vc="veracrypt -t -c"
       alias vm="veracrypt -t"

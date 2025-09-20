@@ -59,8 +59,8 @@ in
     startWithUserSession = true;
   };
   systemd.user.services.emacs = {
-    serviceConfig = {
-      ExecStartPre = [ "${HOME}/.scripts/emacs.sh" ];
+    Unit = {
+      ExecStartPre = [ "${pkgs.bash}/bin/bash ${HOME}/.scripts/emacs.sh" ];
     };
   };
 }
