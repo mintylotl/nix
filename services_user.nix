@@ -1,43 +1,60 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   HOME = "/home/jwm";
   scriptsDir = "${HOME}/.scripts";
   programsDir = "${HOME}/.programs";
-in {
+in
+{
   systemd = {
     user.enable = true;
     #user.startServices = "sd-switch";
-    user.sessionVariables = { PATH = "/home/jwm/.emacs.d/bin:$PATH"; };
+    user.sessionVariables = {
+      PATH = "/home/jwm/.emacs.d/bin:$PATH";
+    };
 
     user.services = {
       aria2 = {
-        Install = { WantedBy = [ "default.target" ]; };
+        Unit = {
+          Description = "Aria2 Daemon";
+        };
         Service = {
           ProtectSystem = lib.mkForce "off";
           Type = "simple";
-          Environment =
-            ''LD_LIBRARY_PATH="${pkgs.aria2.out}/lib:$LD_LIBRARY_PATH"'';
-          ExecStart =
-            "${pkgs.aria2.bin}/bin/aria2c --conf-path=${programsDir}/aria2/aria2.conf";
+          Environment = ''LD_LIBRARY_PATH="${pkgs.aria2.out}/lib:$LD_LIBRARY_PATH"'';
+          ExecStart = "${pkgs.aria2.bin}/bin/aria2c --conf-path=${programsDir}/aria2/aria2.conf";
         };
-        Unit = { Description = "Aria2 Daemon"; };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
       };
       nginx_html = {
-        Unit = { Description = "Nginx HTML regenerator service"; };
+        Unit = {
+          Description = "Nginx HTML regenerator service";
+        };
         Service = {
-          ExecStart =
-            "${pkgs.bash}/bin/bash -lc '${scriptsDir}/nginxhtml/nginx_html.sh'";
+          ExecStart = "${pkgs.bash}/bin/bash -lc '${scriptsDir}/nginxhtml/nginx_html.sh'";
           Restart = "on-failure";
         };
-        Install = { WantedBy = [ "default.target" ]; };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
       };
       anki_sync = {
-        Unit = { Description = "Anki-Sync Daemon"; };
+        Unit = {
+          Description = "Anki-Sync Daemon";
+        };
         Service = {
           ExecStart = "${pkgs.bash}/bin/bash -lc '${programsDir}/anki_sync.sh'";
           Restart = "on-failure";
         };
-        Install = { WantedBy = [ "default.target" ]; };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
       };
       loadsheddingnotifier = {
         #Service = {
