@@ -1,6 +1,13 @@
-{ config, pkgs, lib, ... }:
-let HOME = "/home/panda";
-in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  HOME = "/home/panda";
+in
+{
   imports = [
     # Services
     ./services_user.nix
@@ -12,9 +19,15 @@ in {
   home.preferXdgDirectories = false;
   programs.home-manager.enable = true;
 
-  home.sessionVariables = { 
+  home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    LD_LIBRARY_PATH = lib.makeLibraryPath( with pkgs; [ mesa driversi686Linux.mesa ] );
+    LD_LIBRARY_PATH = lib.makeLibraryPath (
+      with pkgs;
+      [
+        mesa
+        driversi686Linux.mesa
+      ]
+    );
   };
 
   home.file = {
@@ -42,7 +55,9 @@ in {
     profileExtra = "";
   };
 
-  programs.neovim = { enable = true; };
+  programs.neovim = {
+    enable = true;
+  };
 
   programs.kitty.enable = true;
   programs.fish.enable = true;
@@ -50,8 +65,8 @@ in {
 
   programs.git = {
     enable = true;
-    userName = "mintylotl";
-    userEmail = "mintyaxolotl@proton.me";
+    userName = "panda";
+    userEmail = "panda@proton.me";
   };
 
   home.stateVersion = "24.05";

@@ -1,6 +1,15 @@
-{ nixpkgs, config, lib, pkgs, inputs, ... }:
-let HOME = "/home/panda";
-in {
+{
+  nixpkgs,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  HOME = "/home/panda";
+in
+{
   # nixOS
   imports = [
     ./hw-cfg.nix
@@ -15,7 +24,9 @@ in {
   nix = {
     package = pkgs.nix;
     extraOptions = "experimental-features = nix-command flakes";
-    settings = { trusted-users = [ "panda" ]; };
+    settings = {
+      trusted-users = [ "panda" ];
+    };
 
     optimise = {
       automatic = false;
@@ -34,8 +45,15 @@ in {
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = false;
+      efi.canTouchEfiVariables = false;
+
+      grub = {
+        enable = true;
+        grub.efiSupport = true;
+        grub.useOSProber = true;
+        grub.installAsRemovable = true;
+      };
     };
     kernelPackages = pkgs.linuxPackages;
 
@@ -55,8 +73,10 @@ in {
   networking.firewall.enable = false;
 
   networking.hostName = "banana";
-  networking.hosts = { "127.0.0.1" = [ "localhost" ]; };
-  
+  networking.hosts = {
+    "127.0.0.1" = [ "localhost" ];
+  };
+
   networking.wireless.enable = false;
   networking.dhcpcd.enable = false;
 
@@ -64,23 +84,34 @@ in {
 
   security.sudo = {
     enable = true;
-    extraRules = [{
-      users = [ "panda" ];
-      commands = [
-        {
-          command = "/system/scripts/mounts.sh";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-        {
-          command = "/system/scripts/nixosgarbage.sh";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-        {
-          command = "/run/current-system/sw/bin/nixos-rebuild";
-          options = [ "SETENV" "NOPASSWD" ];
-        }
-      ];
-    }];
+    extraRules = [
+      {
+        users = [ "panda" ];
+        commands = [
+          {
+            command = "/system/scripts/mounts.sh";
+            options = [
+              "SETENV"
+              "NOPASSWD"
+            ];
+          }
+          {
+            command = "/system/scripts/nixosgarbage.sh";
+            options = [
+              "SETENV"
+              "NOPASSWD"
+            ];
+          }
+          {
+            command = "/run/current-system/sw/bin/nixos-rebuild";
+            options = [
+              "SETENV"
+              "NOPASSWD"
+            ];
+          }
+        ];
+      }
+    ];
   };
 
   # Locale
@@ -98,7 +129,12 @@ in {
     isNormalUser = true;
     home = "/home/panda";
     group = "panda";
-    extraGroups = [ "wheel" "realtime" "nicy" "audio" ];
+    extraGroups = [
+      "wheel"
+      "realtime"
+      "nicy"
+      "audio"
+    ];
     linger = false;
     homeMode = "711";
   };
@@ -132,14 +168,14 @@ in {
     enable = true;
     extraConfig = ''
       polkit.addRule(function (action, subject) {
-      	let ids = [
-	  "com.feralinteractive.GameMode.cpu-helper"
-	  "com.feralinteractive.GameMode.governor-helper"
-	  "com.feralinteractive.GameMode.gpu-helper"
-	  "com.feralinteractive.GameMode.procsys-helper"
-	  "com.freedesktop.policykit.exec"
-	  "org.kde.ksysguard.processlisthelper.renice"
-	];
+        let ids = [
+          "com.feralinteractive.GameMode.cpu-helper"
+          "com.feralinteractive.GameMode.governor-helper"
+          "com.feralinteractive.GameMode.gpu-helper"
+          "com.feralinteractive.GameMode.procsys-helper"
+          "com.freedesktop.policykit.exec"
+          "org.kde.ksysguard.processlisthelper.renice"
+        ];
         if (ids.indexOf(action.id) !== -1 && subject.isInGroup("nicy")) {
           return polkit.Result.YES;
         };
@@ -147,16 +183,18 @@ in {
     '';
   };
 
-  security.pam.loginLimits = [{
-    domain = "@nicy";
-    type = "-";
-    item = "nice";
-    value = -16;
-  }];
+  security.pam.loginLimits = [
+    {
+      domain = "@nicy";
+      type = "-";
+      item = "nice";
+      value = -16;
+    }
+  ];
 
   environment.variables = {
     NIX_CONF_DIR = "/etc/nixos";
-    
+
     LIBVA_DRIVER_NAME = "iHD";
     MESA_LOADER_DRIVER_OVERRIDE = "iris";
 
