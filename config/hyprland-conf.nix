@@ -273,7 +273,6 @@
         ", Scroll_Lock, exec, playerctl -p $player previous"
 
         # Other
-        "$mainMod, X, exec, alacritty -e nvim /home/jwm/.config/hypr/hyprland.conf"
         "$mainMod, R, movetoworkspacesilent, 7"
 
         # Window Control
@@ -284,7 +283,7 @@
         "$mainMod, down, movefocus, d"
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
-        "$mainMod, x, bringactivetotop"
+        "$mainMod, X, bringactivetotop"
         # -Workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
