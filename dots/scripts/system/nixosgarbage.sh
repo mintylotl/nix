@@ -10,5 +10,5 @@ if [ $1 -eq 0 ]; then
 
 else
     nix-collect-garbage -d
-    nixos-rebuild boot --fast --flake /etc/nixos#cabbage
+    #nixos-rebuild boot --fast --flake /etc/nixos#cabbage
 fi

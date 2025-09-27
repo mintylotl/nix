@@ -91,6 +91,15 @@ in
         efiInstallAsRemovable = false;
 
         device = "nodev";
+        #extraEntries = ''
+        #  menuentry "Michaelsoft Binbows 10" {
+        #    insmod part_gpt
+        #    insmod fat
+
+        #    search --no-floppy --fs-uuid --set=root 14A5-3735
+        #    chainload /EFI/BOOT/Microsoft/Boot/bootmgfw.efi
+        #  }
+        #'';
       };
     };
 
