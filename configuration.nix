@@ -115,17 +115,17 @@ in
       # NVIDIA_GPU
       "nvidia_uvm"
       "nvidia_modeset"
-      "nvidiafb"
     ];
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
       "nvidia_drm.modeset=1"
-      "nvidia_drm.fbdev=1"
+      "nvidia_drm.fbdev=0"
     ];
     blacklistedKernelModules = [
       "amdgpu"
       "i915"
       "nouveau"
+      "nvidiafb"
     ];
 
     kernelPackages = pkgs.linuxPackages;
