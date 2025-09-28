@@ -9,7 +9,7 @@
 }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.beta;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
   cuda = pkgs.cudaPackages.cudatoolkit;
   bleed = pkgs_bleeding;
 
@@ -128,7 +128,7 @@ in
       "nvidiafb"
     ];
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_16;
   };
 
   # NETWORKING
