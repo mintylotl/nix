@@ -128,7 +128,7 @@ in
       "nvidiafb"
     ];
 
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   # NETWORKING
