@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
 
   home.file.".zmodules" = {
@@ -52,7 +52,7 @@
       alias garbBige="sudo $SCRIPTS_DIR/system/nixosgarbage.sh 0"
       alias blender3="$HOME"/.local/state/nix/profiles/blender3/bin/blender
       alias todosC="git commit -a -m "todos@$(date +'%Y-%m-%dT%H:%M:%S')""
-
+      alias grub="grub --install-directory=${pkgs.grub2}/lib/grub/i386-pc"
         # --gocryptfs
         alias crypts="sudo -E /etc/nixos/dots/scripts/system/http_crypt.sh"
         alias cryptsU="sudo -E /etc/nixos/dots/scripts/system/http_crypt.sh 3"
