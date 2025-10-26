@@ -70,6 +70,10 @@ in
     };
   };
 
+  services.openssh = {
+    settings.PermitRootLogin = "yes";
+  };
+
   documentation = {
     dev.enable = true;
     man = {
@@ -128,15 +132,15 @@ in
       "nvidiafb"
     ];
 
-    kernelPackages = pkgs.linuxPackages_6_16;
+    kernelPackages = pkgs.linuxPackages;
   };
 
   # NETWORKING
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
-  networking.wireless.enable = false;
+  networking.wireless.enable = false; # Enables wireless through wpa_supplicant
   networking.firewall = {
-    enable = true;
+    # IPtables
+    enable = false;
     allowedTCPPortRanges = [
       {
         from = 0;
@@ -165,7 +169,7 @@ in
   networking.interfaces.enp42s0.useDHCP = true;
 
   networking.dhcpcd.enable = false;
-  networking.nftables.enable = true;
+  networking.nftables.enable = false;
 
   time.timeZone = "Africa/Johannesburg";
 

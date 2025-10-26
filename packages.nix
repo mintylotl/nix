@@ -32,6 +32,8 @@ in
     vivid
     #bleed.ollama-cuda
 
+    protonvpn-cli
+    openvpn
     zrythm
     bespokesynth
     #bleed.lmstudio
@@ -385,6 +387,48 @@ in
     enable = true;
     enableRenice = true;
   };
+  programs = {
+    ecryptfs.enable = false;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        zlib
+        glib
+        nspr
+        nss
+        glibc
+        glib
+        nspr
+        nss
+        dbus
+        atk
+        at-spi2-core
+        cups
+        cairo
+        gtk3
+        pango
+        xorg.libX11
+        xorg.libXcomposite
+        xorg.libXdamage
+        xorg.libXext
+        xorg.libXfixes
+        xorg.libXrandr
+        mesa
+        expat
+        xorg.libxcb
+        libxkbcommon
+        systemd
+        alsa-lib
+        gcc
+        pkg-config
+        libgbm
+      ];
+    };
+  };
+  programs.fuse = {
+    userAllowOther = true;
+    mountMax = 20;
+  };
 
   # Services
   services.vsftpd.enable = true;
@@ -418,13 +462,12 @@ in
     dbBackend = "sqlite";
     config = {
       DATA_FOLDER = "/system/programs/Vaultwarden";
-      ROCKET_ADRESS = "0.0.0.0";
+      ROCKET_ADDRESS = "0.0.0.0";
       ROCKET_PORT = "37344";
     };
   };
   systemd.services.vaultwarden = {
     serviceConfig = {
-      StateDirectory = lib.mkForce "/system/programs/Vaultwarden";
       ProtectSystem = lib.mkForce "off";
     };
   };
@@ -452,6 +495,13 @@ in
       DataFolder = "/system/programs/navidrome";
       CacheFolder = "/system/programs/navidrome/cache";
     };
+  };
+
+  services.mongodb = {
+    enable = true;
+  };
+  virtualisation.docker = {
+    enable = true;
   };
 
   services.komga = {
@@ -486,21 +536,6 @@ in
     icons.enable = true;
     menus.enable = true;
     mime.enable = true;
-  };
-  programs = {
-    ecryptfs.enable = false;
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [
-        zlib
-        gcc
-      ];
-    };
-  };
-
-  programs.fuse = {
-    userAllowOther = true;
-    mountMax = 100;
   };
 
   # Fonts
