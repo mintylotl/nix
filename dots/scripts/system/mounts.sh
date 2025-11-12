@@ -46,7 +46,7 @@ lnID_DISK="$(printf "$lnID" | sed 's/1//g')"
 
 # APM
 printf "Setting APM Params...\n"
-hdparm -B 111 -S 245 $lnID_DISK
+hdparm -B 192 -S 0 $lnID_DISK
 printf "\nParams Set Successfully...\n\n"
 
 # Mounts
