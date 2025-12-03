@@ -214,7 +214,7 @@
 
       bind = [
         # ScreenShotting
-        ", Print, exec, grim -l 4 -g \"0,0 1280x1024\""
+        ", Print, exec, grim -l 4 -g \"0,0 1920x1080\""
         "$mainMod, Print, exec, grim -l 8 -g \"$(slurp)\""
 
         # Editors
