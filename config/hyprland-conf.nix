@@ -14,7 +14,7 @@
     };
 
     settings = {
-      monitor = "HDMI-A-1, 1920x1080@100, 0x0, 1";
+      monitor = ", 1920x1080@highrr, 0x0, 1";
       workspace = "HDMI-A-1, 1";
 
       # Nvidia
