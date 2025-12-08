@@ -32,14 +32,14 @@ in
     vivid
     #bleed.ollama-cuda
 
-    protonvpn-cli
+    #protonvpn-cli
     openvpn
-    zrythm
+    #zrythm
     bespokesynth
     #bleed.lmstudio
-    conda
-    ryujinx
-    citron
+    #conda
+    #ryujinx
+    #citron
     zlib
     zip
     imhex
@@ -51,11 +51,11 @@ in
     most
     less
 
-    vscode-fhs
+    #vscode-fhs
     wineasio
     unzip
-    surge
-    sfizz
+    #surge
+    #sfizz
     rmpc
     poppler_utils
     pnpm
@@ -63,7 +63,7 @@ in
     nvme-cli
     ardour
     arch-install-scripts
-    veracrypt
+    #veracrypt
     hdparm
     libreoffice-qt6-fresh
     rpcs3
@@ -176,7 +176,6 @@ in
     xorg.xinit
     unrar
     kdePackages.ark
-    strawberry-qt6
 
     # Project Zomboid
     dwarfs
@@ -195,11 +194,8 @@ in
     pkgs.blender
     keyutils
     compsize
-    pkgs.gtk2
-    pkgs.gtk3
     udisks
     timewarrior
-    nvtopPackages.nvidia
 
     # GTK Libs
     zenity
@@ -213,7 +209,6 @@ in
 
     vulkan-loader
     vulkan-headers
-    vulkan-validation-layers
 
     xcur2png
     pavucontrol
@@ -260,26 +255,26 @@ in
     # PrismLauncher Cracked
     pkgs.prismlauncherCracked
 
-    (retroarch.withCores (
-      cores: with cores; [
-        mgba
-        mame2003-plus
-        mame2010
-        snes9x
-        nestopia
-        ppsspp
-        dolphin
-        swanstation
-        bsnes-mercury-performance
-        bsnes-mercury
-        fbalpha2012
-        pcsx-rearmed
-        genesis-plus-gx
-        mame2000
-        melonds
-      ]
-    ))
-    retroarch-assets
+    # (retroarch.withCores (
+    #   cores: with cores; [
+    #     mgba
+    #     mame2003-plus
+    #     mame2010
+    #     snes9x
+    #     nestopia
+    #     ppsspp
+    #     dolphin
+    #     swanstation
+    #     bsnes-mercury-performance
+    #     bsnes-mercury
+    #     fbalpha2012
+    #     pcsx-rearmed
+    #     genesis-plus-gx
+    #     mame2000
+    #     melonds
+    #   ]
+    # ))
+    # retroarch-assets
 
     typescript
     # Python
@@ -340,7 +335,7 @@ in
     wl-clipboard
     cliphist
     bleed.firefox-devedition
-    bleed.telegram-desktop
+    telegram-desktop
     pkgs.qbittorrent
     mako
     bleed.zlib
