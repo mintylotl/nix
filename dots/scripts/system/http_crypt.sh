@@ -9,7 +9,6 @@
 # 3 = unmount all defined dirs
 # 4 = Server Status Report
 
-
 declare -A mountPoints
 declare -A mountPointsCrypt
 declare -A additionalArgs
@@ -21,7 +20,6 @@ mountPointsCrypt[dreams]="/Drives/WD1TB/Archive/Other/bak/misc/Dreams/.crypt"
 
 credentials="iA6oV*L2V@\$FQYsMiN*MRJBGu"
 endpoint="https://10.0.2.3:8987/files"
-
 
 for j in "${!mountPointsCrypt[@]}"; do
     mountPoints[$j]="${mountPointsCrypt[$j]}/../Files"
@@ -80,12 +78,11 @@ else
     fi
 fi
 
-curl -u "passfile:$credentials" "$endpoint" 2>/dev/null| grep -wq "confirmation"
+curl -u "passfile:$credentials" "$endpoint" 2>/dev/null | grep -wq "confirmation"
 curlStat=$?
 if [ $curlStat -eq 0 ]; then
     printf 'Please grant access by confirmation...\n'
-    while :
-    do
+    while :; do
         curl -u "passfile:$credentials" "$endpoint" 2>/dev/null | grep -wq "confirmation"
         if [[ $? -eq 0 ]]; then
             sleep 1s

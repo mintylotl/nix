@@ -158,7 +158,7 @@
         # Windowrules
         # Doom Emacs
         "float, class:emacs"
-        "size 1169 750, class:emacs"
+        "size 1400 850, class:emacs"
 
         # Alacritty
         "float, class:Alacritty"
