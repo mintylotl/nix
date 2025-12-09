@@ -34,6 +34,8 @@ if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headp
 	systemctl --user restart pipewire
 	sleep 1s
 
+	./windows_cleanup.sh &
+
 	if [ $arg -eq 1 ]; then
 		exit
 	fi

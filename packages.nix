@@ -17,10 +17,10 @@ in
 {
   nixpkgs.overlays = [
     (final: prev: {
-      umu = inputs.umuProton.packages.${pkgs.system}.umu-launcher.override {
-        withTruststore = true;
-        withDeltaUpdates = true;
-      };
+      #umu = inputs.umuProton.packages.${pkgs.system}.umu-launcher.override {
+      #  withTruststore = true;
+      #  withDeltaUpdates = true;
+      #};
       prismlauncherCracked = prism.packages.${pkgs.system}.prismlauncher;
       kdePackges = bleed.kdePackages;
     })
@@ -185,7 +185,7 @@ in
 
     #OVMF
     #qemu_full
-    umu
+    umu-launcher
 
     cowsay
     kittysay
