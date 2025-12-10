@@ -37,12 +37,9 @@ in
 
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [ "electron-33.4.11" ];
-  };
 
   nix = {
     package = pkgs.nix;
-    extraOptions = "experimental-features = nix-command flakes";
 
     registry = {
       devShells = {
