@@ -100,17 +100,6 @@ in
       };
     */
   };
-  # Services
-  services.mpd = {
-    enable = false;
-    musicDirectory = "${HOME}/Music";
-    dataDir = "/system/programs/mpd";
-    dbFile = "/system/programs/mpd/library.db";
-
-    network = {
-      port = 37388;
-    };
-  };
 
   # Programs
   programs.direnv = {

@@ -18,20 +18,20 @@ in
     };
 
     user.services = {
-      aria2 = {
-        Unit = {
-          Description = "Aria2 Daemon";
-        };
-        Service = {
-          ProtectSystem = lib.mkForce "off";
-          Type = "simple";
-          Environment = ''LD_LIBRARY_PATH="${pkgs.aria2.out}/lib:$LD_LIBRARY_PATH"'';
-          ExecStart = "${pkgs.aria2.bin}/bin/aria2c --conf-path=${programsDir}/aria2/aria2.conf";
-        };
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
-      };
+      #aria2 = {
+      #  Unit = {
+      #    Description = "Aria2 Daemon";
+      #  };
+      #  Service = {
+      #    ProtectSystem = lib.mkForce "off";
+      #    Type = "simple";
+      #    Environment = ''LD_LIBRARY_PATH="${pkgs.aria2.out}/lib:$LD_LIBRARY_PATH"'';
+      #    ExecStart = "${pkgs.aria2.bin}/bin/aria2c --conf-path=${programsDir}/aria2/aria2.conf";
+      #  };
+      #  Install = {
+      #    WantedBy = [ "default.target" ];
+      #  };
+      #};
       nginx_html = {
         Unit = {
           Description = "Nginx HTML regenerator service";

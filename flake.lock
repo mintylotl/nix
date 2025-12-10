@@ -35,22 +35,6 @@
         "type": "github"
       }
     },
-    "musicBee": {
-      "locked": {
-        "lastModified": 1738702386,
-        "narHash": "sha256-nJj8f78AYAxl/zqLiFGXn5Im1qjFKU8yBPKoWEeZN5M=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "030ba1976b7c0e1a67d9716b17308ccdab5b381e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "030ba1976b7c0e1a67d9716b17308ccdab5b381e",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1753345091,
@@ -79,22 +63,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-25.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1740547748,
-        "narHash": "sha256-Ly2fBL1LscV+KyCqPRufUBuiw+zmWrlJzpWOWbahplg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "3a05eebede89661660945da1f151959900903b6a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -139,31 +107,9 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "musicBee": "musicBee",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs_unstable": "nixpkgs_unstable",
-        "prism": "prism",
-        "umuProton": "umuProton"
-      }
-    },
-    "umuProton": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "dir": "packaging/nix",
-        "lastModified": 1764042763,
-        "narHash": "sha256-XR3fefEgF4/sq7tOwdHMJcb7sB87rMiBUtJ3+QkhL8k=",
-        "owner": "Open-Wine-Components",
-        "repo": "umu-launcher",
-        "rev": "4ed61d1031ea43d55100ae2ffa3057280ed2540c",
-        "type": "github"
-      },
-      "original": {
-        "dir": "packaging/nix",
-        "owner": "Open-Wine-Components",
-        "repo": "umu-launcher",
-        "type": "github"
+        "prism": "prism"
       }
     }
   },

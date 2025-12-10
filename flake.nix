@@ -20,8 +20,12 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs_unstable = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
-    nixpkgs = { url = "github:NixOS/nixpkgs?ref=nixos-25.05"; };
+    nixpkgs_unstable = {
+      url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    };
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs?ref=nixos-25.05";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager?ref=release-25.05";
@@ -31,28 +35,20 @@
       url = "github:Diegiwg/PrismLauncher-Cracked";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    umuProton = {
-      url = "github:Open-Wine-Components/umu-launcher?dir=packaging/nix";
-      #"github:Open-Wine-Components/umu-launcher/59a82ea8cd284c7535bc06b8f6156abb7da96f6a?dir=packaging/nix";
-    };
-
-    musicBee = {
-      url = "github:NixOS/nixpkgs/030ba1976b7c0e1a67d9716b17308ccdab5b381e";
-    };
-
-    #Hyprland = {
-    #  url = "github:hyprwm/hyprland";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
   };
 
-  outputs = { self, nixpkgs_unstable, nixpkgs, home-manager, prism, musicBee
-    , ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs_unstable,
+      nixpkgs,
+      home-manager,
+      prism,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs_old = musicBee.legacyPackages.${system};
       pkgsPath = nixpkgs.outPath;
 
       pkgs_bleeding = import nixpkgs_unstable {
@@ -66,7 +62,8 @@
         prismlauncherCracked = prism.packages.${system}.prismlauncher;
       };
 
-    in {
+    in
+    {
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {
           modules = [
@@ -88,8 +85,6 @@
           specialArgs = {
             inherit inputs;
             inherit prism;
-            inherit pkgs_old;
-            inherit musicBee;
             inherit pkgs_bleeding;
           };
         };

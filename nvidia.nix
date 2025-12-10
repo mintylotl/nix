@@ -7,19 +7,19 @@
 {
 
   hardware.graphics = {
-    enable = lib.mkDefault true;
-    enable32Bit = lib.mkDefault true;
+    enable = true;
+    enable32Bit = true;
     extraPackages = [ pkgs.libva-vdpau-driver ];
     extraPackages32 = [ pkgs.driversi686Linux.libva-vdpau-driver ];
   };
 
   services.xserver = {
-    enable = true;
+    enable = false;
     videoDrivers = [ "nvidia" ];
   };
 
   services.displayManager.sddm = {
-    enable = lib.mkForce false;
+    enable = false;
     wayland.enable = false;
   };
 
@@ -30,7 +30,7 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     powerManagement.finegrained = false;
     powerManagement.enable = true;
