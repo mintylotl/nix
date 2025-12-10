@@ -40,13 +40,13 @@ in
     initExtra = ''
       zsh
     '';
-    profileExtra = ''
-      if [[ $- == *i* ]];
-      then
-        exec startplasma-wayland
-        alias sound="sudo cp /home/jwm/.config/pipewire/pipewire.conf ./.config/pipewire && systemctl --user restart pipewire"
-      fi
-    '';
+    #   profileExtra = ''
+    #     if [[ $- == *i* ]];
+    #     then
+    #       exec startplasma-wayland &
+    #       alias sound="sudo cp /home/jwm/.config/pipewire/pipewire.conf ./.config/pipewire && systemctl --user restart pipewire"
+    #     fi
+    #   '';
   };
 
   programs.neovim = {
