@@ -117,6 +117,7 @@ in
       "kvm-amd"
 
       # NVIDIA_GPU
+      "nvidia"
       "nvidia_uvm"
       "nvidia_modeset"
     ];
