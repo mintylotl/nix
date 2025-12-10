@@ -9,7 +9,7 @@
   ...
 }:
 let
-  paksold = pkgs_old;
+  #paksold = pkgs_old;
   py = pkgs.python312Packages;
   bleed = pkgs_bleeding;
 
@@ -340,7 +340,7 @@ in
     mako
     bleed.zlib
     rose-pine-cursor
-    paksold.aria2
+    aria2
 
     # Icon_Themes
     adwaita-icon-theme
@@ -513,6 +513,21 @@ in
     after = [
       "mounts.service"
     ];
+  };
+
+  services.aria2 = {
+    enable = true;
+    rpcSecretFile = "/system/programs/aria2/rpcsecret.txt";
+    settings = {
+      dir = "/home/jwm/Downloads/Aria";
+      conf-path = "/system/programs/aria2/aria2.conf";
+    };
+  };
+  systemd.services.aria2 = {
+    serviceConfig = {
+      User = "aria2";
+      Group = "aria2";
+    };
   };
 
   xdg = {
