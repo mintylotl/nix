@@ -1,6 +1,6 @@
 { config, lib, ... }:
 
-{ 
+{
   services.vsftpd = {
     anonymousUser = false;
     localUsers = true;
@@ -10,7 +10,7 @@
     allowWriteableChroot = true;
     extraConfig = ''
       local_umask=022
-      file_open_mode=0777
+      file_open_mode=0775
     '';
   };
 }
