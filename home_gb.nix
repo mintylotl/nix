@@ -20,9 +20,9 @@ in
     #  source = ./dots/config/pipewire;
     #  recursive = true;
     #};
-    ".scripts/sink.sh" = {
-      source = ./dots/config/hypr/sink.sh;
-    };
+    #".scripts/sink.sh" = {
+    #  source = ./dots/config/hypr/sink.sh;
+    #};
   };
 
   # Programs
@@ -38,15 +38,15 @@ in
   programs.bash = {
     enable = true;
     initExtra = ''
+      alias e="exit"
       zsh
     '';
-    #   profileExtra = ''
-    #     if [[ $- == *i* ]];
-    #     then
-    #       exec startplasma-wayland &
-    #       alias sound="sudo cp /home/jwm/.config/pipewire/pipewire.conf ./.config/pipewire && systemctl --user restart pipewire"
-    #     fi
-    #   '';
+    profileExtra = ''
+      if [[ $- == *i* ]];
+      then
+        exec startplasma-wayland &
+      fi
+    '';
   };
 
   programs.neovim = {

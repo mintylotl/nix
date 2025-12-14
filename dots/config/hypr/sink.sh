@@ -34,8 +34,6 @@ if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headp
 	systemctl --user restart pipewire
 	sleep 1s
 
-	./windows_cleanup.sh &
-
 	if [ $arg -eq 1 ]; then
 		exit
 	fi
@@ -48,6 +46,7 @@ if systemctl --user status pipewire | grep -q "failed"; then
 	$SCRIPT_DIR/xdp.sh &
 	$SCRIPT_DIR/startup.sh &
 else
+	$SCRIPT_DIR/windows_cleanup.sh &
 	echo Pipewire Launched Successfully...
 	echo Launching waybar...
 	"$SCRIPT_DIR"/xdp.sh &
