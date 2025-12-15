@@ -44,7 +44,7 @@ in
     profileExtra = ''
       if [[ $- == *i* ]];
       then
-        exec startplasma-wayland &
+        exec startplasma-wayland
       fi
     '';
   };

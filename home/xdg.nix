@@ -1,6 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
-let HOME = "/home/jwm";
-in {
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  HOME = "/home/jwm";
+in
+{
   # Home Stuff
   xdg = {
     enable = true;
@@ -26,7 +34,7 @@ in {
     dataHome = "${HOME}/.local/share";
     stateHome = "${HOME}/.local/state";
 
-    userDirs.createDirectories = true;
+    userDirs.createDirectories = false;
 
     desktopEntries = {
       "emacs-client.desktop" = {
@@ -76,7 +84,10 @@ in {
         '';
 
         terminal = false;
-        categories = [ "Development" "TextEditor" ];
+        categories = [
+          "Development"
+          "TextEditor"
+        ];
         startupNotify = true;
 
         settings = {
