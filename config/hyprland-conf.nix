@@ -238,7 +238,7 @@
         #bind = $mainMod, R, workspaceopt, allfloat
 
         # Misc
-        "$mainMod, M, exec, loginctl terminate-session \"\""
+        "$mainMod, M, exec, bash -c 'umount ~/.orgnotes; loginctl terminate-session \"\"'"
         "$mainMod CTRL, down, exec, bash -c 'archwiki-offline'"
         "$mainMod, T, exec, cliphist wipe"
         "$mainMod, SPACE, exec, rofi -show drun -width 65 -lines 15"
