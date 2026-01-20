@@ -2,7 +2,7 @@
   description = "NixOS Flake Configuration";
 
   nixConfig = {
-    extra-experimental-features = "nix-command flakes";
+    experimental-features = "nix-command flakes";
     trusted-users = "jwm";
     max-jobs = 2;
     max-substitution-jobs = 1;

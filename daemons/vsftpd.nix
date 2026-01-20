@@ -6,7 +6,7 @@
     localUsers = true;
     #localRoot = "/var/lib/jail";
     writeEnable = true;
-    chrootlocalUser = true;
+    chrootlocalUser = false;
     allowWriteableChroot = true;
     extraConfig = ''
       local_umask=022
