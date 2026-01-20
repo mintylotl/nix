@@ -299,7 +299,10 @@ in
   # Services
   services.pipewire = {
     enable = true;
-    wireplumber.enable = true;
+    wireplumber = {
+      enable = true;
+      extraLv2Packages = [ pkgs.lsp-plugins ];
+    };
 
     audio.enable = true;
     pulse.enable = true;
@@ -393,6 +396,24 @@ in
   environment.pathsToLink = [
     # NVIDIA DRIVERS
   ];
+
+  environment.etc."wireplumber/wireplumber.conf.d/55-alsa-soft-mixer.conf".text = ''
+    monitor.alsa.rules = [
+      {
+        matches = [
+          {
+            node.name = "~alsa_output.pci-0000_2d_00.4.+"
+          }
+        ]
+        actions = {
+          update-props = {
+            api.alsa.soft-mixer = true;
+            api.alsa.ignore-dB = true;
+          }
+        }
+      }
+    ];
+  '';
 
   system.stateVersion = "24.05";
 }

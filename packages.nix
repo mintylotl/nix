@@ -17,12 +17,8 @@ in
 {
   nixpkgs.overlays = [
     (final: prev: {
-      #umu = inputs.umuProton.packages.${pkgs.system}.umu-launcher.override {
-      #  withTruststore = true;
-      #  withDeltaUpdates = true;
-      #};
       prismlauncherCracked = prism.packages.${pkgs.system}.prismlauncher;
-      kdePackges = bleed.kdePackages;
+      #kdePackges = pkgs.kdePackages;
     })
   ];
 
@@ -429,25 +425,11 @@ in
   services.vsftpd.enable = true;
   services.openssh.enable = true;
   services.tumbler.enable = true;
-  #services.cachix-agent.enable = true;
 
   services.jellyfin = {
     enable = true;
     dataDir = "/system/programs/jellyfin";
   };
-
-  services.plex = {
-    enable = false;
-    package = pkgs.plex;
-    accelerationDevices = [ ];
-  };
-  #systemd.services.plex = {
-  #serviceConfig = {
-  #  Environment = ''
-  #    LD_LIBRARY_PATH="${pkgs.plex}/lib/plexmediaserver/lib"
-  #  '';
-  #};
-  #};
 
   services.vaultwarden = {
     enable = true;
@@ -476,27 +458,11 @@ in
     welcometext = "Welcome to the Abyss";
   };
 
-  services.bookstack = {
-    enable = false;
-    dataDir = "/system/programs/bookstack";
-    appKeyFile = "/system/programs/bookstack/appkey";
-  };
-
-  services.navidrome = {
-    enable = false;
-    settings.Port = 37311;
-    settings = {
-      MusicFolder = "/Drives/WD1TB/Archive/Artists";
-      DataFolder = "/system/programs/navidrome";
-      CacheFolder = "/system/programs/navidrome/cache";
-    };
-  };
-
   services.mongodb = {
     enable = true;
   };
   virtualisation.docker = {
-    enable = true;
+    enable = false;
   };
 
   services.komga = {
@@ -515,6 +481,12 @@ in
     ];
   };
 
+  services.nix-serve = {
+    enable = true;
+    port = 29777;
+    secretKeyFile = "/system/pass/cache-key.key";
+  };
+
   services.aria2 = {
     enable = true;
     rpcSecretFile = "/system/programs/aria2/rpcsecret.txt";
@@ -529,6 +501,8 @@ in
       Group = "aria2";
     };
   };
+
+  virtualisation.waydroid.enable = true;
 
   xdg = {
     terminal-exec.enable = true;
