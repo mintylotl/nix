@@ -459,7 +459,7 @@ in
   };
 
   services.mongodb = {
-    enable = true;
+    enable = false;
   };
   virtualisation.docker = {
     enable = false;
