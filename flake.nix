@@ -24,11 +24,11 @@
       url = "github:nixos/nixpkgs?ref=nixos-unstable";
     };
     nixpkgs = {
-      url = "github:NixOS/nixpkgs?ref=nixos-25.05";
+      url = "github:NixOS/nixpkgs?ref=nixos-25.11";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager?ref=release-25.05";
+      url = "github:nix-community/home-manager?ref=release-25.11";
     };
 
     prism = {

@@ -30,7 +30,7 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
 
     powerManagement.finegrained = false;
     powerManagement.enable = true;
