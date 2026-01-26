@@ -18,7 +18,6 @@ in
   nixpkgs.overlays = [
     (final: prev: {
       prismlauncherCracked = prism.packages.${pkgs.system}.prismlauncher;
-      #kdePackges = pkgs.kdePackages;
     })
   ];
 
@@ -221,7 +220,6 @@ in
         vkd3d-proton
         dxvk_2
         gamescope
-        gamemode
         mangohud
         vulkan-tools
         vulkan-loader

@@ -9,7 +9,7 @@
 }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
   cuda = pkgs.cudaPackages.cudatoolkit;
   bleed = pkgs_bleeding;
 
