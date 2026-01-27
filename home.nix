@@ -148,8 +148,12 @@ in
 
   programs.git = {
     enable = true;
-    userName = "mintylotl";
-    userEmail = "mintyaxolotl@proton.me";
+    settings = {
+      user = {
+        name = "mintylotl";
+        email = "mintyaxolotl@proton.me";
+      };
+    };
   };
 
   # Hyprland

@@ -52,7 +52,7 @@ in
     #surge
     #sfizz
     rmpc
-    poppler_utils
+    poppler-utils
     pnpm
     p7zip
     nvme-cli
@@ -273,7 +273,6 @@ in
     typescript
     # Python
     #System
-    python3Full
     py.pip
 
     #Misc
@@ -308,7 +307,6 @@ in
     # Thumbnailers
     ffmpegthumbnailer
     #JAVA
-    openjdk23
     openjdk21
     openjdk17
     openjdk8

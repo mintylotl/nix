@@ -14,47 +14,59 @@ in
     enable = true;
     package = pkgs.emacs-pgtk;
 
-    extraPackages =
-      epkgs: with pkgs; [
-        epaks.vterm
-        epaks.apheleia
-        epaks.ripgrep
-        epaks.gnuplot
-        epaks.shfmt
-        epaks.pipenv
-        epaks.pandoc
-        epaks.all-the-icons
-        epaks.org-superstar
-        epaks.pytest
+    extraPackages = epkgs: [
+      epkgs.vterm
+      epkgs.apheleia
+      epkgs.ripgrep
+      epkgs.gnuplot
+      epkgs.shfmt
+      epkgs.pipenv
+      epkgs.pandoc
+      epkgs.all-the-icons
+      epkgs.org-superstar
+      epkgs.pytest
 
-        pypaks.python-lsp-server
+      pypaks.python-lsp-server
 
-        fd
-        cmake
-        clang
-        gnumake
-        nixfmt-rfc-style
-        sbcl
-        gdtoolkit_4
+      pkgs.fd
+      pkgs.cmake
+      pkgs.clang
+      pkgs.gnumake
+      pkgs.nixfmt-rfc-style
+      pkgs.sbcl
+      pkgs.gdtoolkit_4
 
-        ispell
-        stylelint
+      pkgs.ispell
+      pkgs.stylelint
 
-        shellcheck
-        graphviz
+      pkgs.shellcheck
+      pkgs.graphviz
 
-        libtool
-        rustup
-        rust-analyzer
-        zig
-        pnpm
-      ];
+      pkgs.libtool
+      pkgs.rustup
+      pkgs.zig
+      pkgs.pnpm
+    ];
   };
 
   services.emacs = {
     enable = true;
     client.enable = false;
     defaultEditor = true;
+    package =
+      with pkgs;
+      ((emacsPackagesFor emacs-pgtk).emacsWithPackages (epkgs: [
+        epkgs.vterm
+        epkgs.apheleia
+        epkgs.ripgrep
+        epkgs.gnuplot
+        epkgs.shfmt
+        epkgs.pipenv
+        epkgs.pandoc
+        epkgs.all-the-icons
+        epkgs.org-superstar
+        epkgs.pytest
+      ]));
 
     startWithUserSession = true;
   };
