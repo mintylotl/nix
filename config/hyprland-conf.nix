@@ -135,13 +135,6 @@
         orientation = "top";
         new_on_top = false;
       };
-      gestures = {
-        workspace_swipe = false;
-      };
-
-      render = {
-        explicit_sync = 0;
-      };
       misc = {
         vfr = false;
         enable_anr_dialog = false;
