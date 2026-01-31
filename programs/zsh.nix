@@ -53,7 +53,7 @@
       alias blender3="$HOME"/.local/state/nix/profiles/blender3/bin/blender
       alias todosC="git commit -a -m "todos@$(date +'%Y-%m-%dT%H:%M:%S')""
       alias grub="grub --install-directory=${pkgs.grub2}/lib/grub/i386-pc"
-
+      alias gacha="$HOME"/.programs/gacha/life_gacha
         # --gocryptfs
         alias crypts="sudo -E /etc/nixos/dots/scripts/system/http_crypt.sh"
         alias cryptsU="sudo -E /etc/nixos/dots/scripts/system/http_crypt.sh 3"
@@ -65,6 +65,18 @@
         alias wgVlanD="sudo wg-quick down ~/.wireguard/vlan.conf"
         alias wgClientU="sudo wg-quick up ~/.wireguard/client2.conf"
         alias wgClientD="sudo wg-quick down ~/.wireguard/client2.conf"
+
+      # Show time when the last command finished
+      typeset -g LAST_CMD_START_TIME=$EPOCHSECONDS
+
+      preexec() {
+        LAST_CMD_START_TIME=$EPOCHSECONDS
+      }
+
+      precmd() {
+        local ts=''${LAST_CMD_START_TIME:-$EPOCHSECONDS}
+        RPROMPT="%F{8}$(date -d "@$ts" +%H:%M:%S)%f"
+      }
 
       PATH="/home/jwm/.cargo/bin:/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$SCRIPTS_DIR/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
       PURE_PROMPT_SYMBOL='❯'
