@@ -166,7 +166,7 @@ in
       "fileserve.srv"
       "komga.srv"
     ];
-    "10.0.2.2" = [ "vault.tld" ];
+    "11.0.0.2" = [ "vault.tld" ];
   };
   networking.interfaces.enp42s0.macAddress = "2C:F0:5D:E5:E2:E1";
   networking.interfaces.enp42s0.useDHCP = true;
@@ -377,7 +377,7 @@ in
     }
   ];
 
-  security.pki.certificateFiles = [ ./resources/certs/ca/rootCA.pem ];
+  security.pki.certificateFiles = [ ./resources/certs/ca/rootCA.crt ];
 
   environment.variables = {
     NIX_CONF_DIR = "/etc/nixos";

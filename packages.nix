@@ -213,7 +213,7 @@ in
     htop
     neofetch
     speedcrunch
-    bleed.openssl
+    openssl
 
     (lutris.overrideAttrs ({
       extraPkgs = with pkgs; [
