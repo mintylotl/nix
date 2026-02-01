@@ -67,15 +67,8 @@
         alias wgClientD="sudo wg-quick down ~/.wireguard/client2.conf"
 
       # Show time when the last command finished
-      typeset -g LAST_CMD_START_TIME=$EPOCHSECONDS
-
-      preexec() {
-        LAST_CMD_START_TIME=$EPOCHSECONDS
-      }
-
       precmd() {
-        local ts=''${LAST_CMD_START_TIME:-$EPOCHSECONDS}
-        RPROMPT="%F{8}$(date -d "@$ts" +%H:%M:%S)%f"
+        RPROMPT="%F{8}%D{%H:%M:%S}%f"
       }
 
       PATH="/home/jwm/.cargo/bin:/home/jwm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$SCRIPTS_DIR/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
