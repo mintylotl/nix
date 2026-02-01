@@ -142,6 +142,7 @@ in
     fscryptctl
 
     #Python
+    py.python
     py.black
     py.nose2
     py.pyflakes

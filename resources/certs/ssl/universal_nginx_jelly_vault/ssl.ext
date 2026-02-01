@@ -10,5 +10,5 @@ DNS.2 = jellyfin.srv
 DNS.3 = fileserve.srv
 DNS.4 = vault.tld
 
-IP.1 = 10.0.2.2
+IP.1 = 11.0.0.2
 IP.2 = 127.0.0.1

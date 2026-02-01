@@ -5,7 +5,5 @@ extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = vault.tld
-
-IP.1 = 10.0.2.3
+IP.1 = 11.0.0.3
 IP.2 = 127.0.0.1
