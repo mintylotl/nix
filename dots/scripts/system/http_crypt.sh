@@ -19,7 +19,7 @@ mountPointsCrypt[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/.crypt"
 mountPointsCrypt[dreams]="/Drives/WD1TB/Archive/Other/bak/misc/Dreams/.crypt"
 
 credentials="iA6oV*L2V@\$FQYsMiN*MRJBGu"
-endpoint="http://11.0.0.3:8987/files"
+endpoint="https://11.0.0.3:8987/files"
 
 for j in "${!mountPointsCrypt[@]}"; do
     mountPoints[$j]="${mountPointsCrypt[$j]}/../Files"
