@@ -498,6 +498,12 @@ in
       Group = "aria2";
     };
   };
+  services.dnsmasq = {
+    settings = {
+      conf-file = "/etc/dnsmasq.conf";
+    };
+    enable = false;
+  };
 
   virtualisation.waydroid.enable = true;
 
