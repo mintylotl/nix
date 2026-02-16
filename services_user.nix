@@ -44,12 +44,25 @@ in
           WantedBy = [ "default.target" ];
         };
       };
+      gacha_life = {
+        Unit = {
+          Description = "GachaLife Daemon";
+        };
+        Service = {
+          ExecStart = "${pkgs.bash}/bin/bash -lc '${programsDir}/gacha_life.sh'";
+          ExecStopPost = "${pkgs.bash}/bin/bash -lc '${programsDir}/gacha_life.sh 1'";
+          Restart = "on-failure";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
       anki_sync = {
         Unit = {
           Description = "Anki-Sync Daemon";
         };
         Service = {
-          ExecStart = "${pkgs.bash}/bin/bash -lc '${programsDir}/anki_sync.sh'";
+          ExecStart = "${pkgs.bash}/bin/bash -lc '${programsDir}/anki_sync.sh}'";
           Restart = "on-failure";
         };
         Install = {

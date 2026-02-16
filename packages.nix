@@ -22,6 +22,14 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
+    nodePackages.typescript-language-server
+    nodePackages.typescript
+    nodePackages.eslint
+    vtsls
+
+    pkgs.tree-sitter-grammars.tree-sitter-typescript
+    pkgs.tree-sitter-grammars.tree-sitter-tsx
+
     # General
     man-pages-posix
     vivid
@@ -285,6 +293,7 @@ in
     bleed.discord
     bitwarden-desktop
     git
+
     #makemkv
     pkg-config
     btrfs-progs
