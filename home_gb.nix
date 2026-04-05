@@ -1,4 +1,10 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  pkgsPath,
+  pkgsPath_bleeding,
+  ...
+}:
 let
   HOME = "/home/gameboy";
 in
@@ -7,6 +13,7 @@ in
 
   home.username = "gameboy";
   home.homeDirectory = "/home/gameboy";
+  home.preferXdgDirectories = true;
   home.enableNixpkgsReleaseCheck = false;
 
   programs.home-manager.enable = true;
@@ -44,7 +51,12 @@ in
     profileExtra = ''
       if [[ $- == *i* ]];
       then
-        exec startplasma-wayland
+        export WLR_NO_HARDWARE_CURSORS=1
+        export WLR_RENDERER=
+        export WLR_DRM_NO_ATOMIC=1
+        export GBM_BACKEND=nvidia-drm
+        export XDG_CURRENT_DESKTOP=labwc
+        export XDG_SESSION_TYPE=wayland
       fi
     '';
   };
@@ -60,6 +72,41 @@ in
     theme = ./config/dracula.rasi;
     terminal = "${pkgs.alacritty}/bin/alacritty";
   };
+
+  nix.registry = {
+    devShells = {
+      from = {
+        id = "devShells";
+        type = "indirect";
+      };
+      to = {
+        type = "path";
+        path = "/etc/nixos/devShells";
+      };
+    };
+    nixos = {
+      from = {
+        id = "nixos";
+        type = "indirect";
+      };
+      to = {
+        type = "path";
+        path = pkgsPath;
+      };
+    };
+    nixosBleed = {
+      from = {
+        id = "nixosbleed";
+        type = "indirect";
+      };
+      to = {
+        type = "path";
+        path = pkgsPath_bleeding;
+      };
+    };
+  };
+	
+  programs.waybar.enable = true;
 
   home.stateVersion = "24.05";
 }

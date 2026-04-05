@@ -54,6 +54,9 @@ in
     most
     less
 
+    xdg-desktop-portal-wlr
+    swaybg
+
     #vscode-fhs
     wineasio
     unzip
@@ -356,6 +359,7 @@ in
     package = pkgs.obs-studio;
     plugins = [ pkgs.obs-studio-plugins.wlrobs ];
   };
+  programs.tmux.enable = true;
   programs.xfconf.enable = true;
   programs.dconf.enable = true;
   programs.thunar = {
@@ -426,6 +430,8 @@ in
     userAllowOther = true;
     mountMax = 20;
   };
+
+  programs.labwc.enable = true;
 
   # Services
   services.vsftpd.enable = true;
@@ -507,6 +513,22 @@ in
       Group = "aria2";
     };
   };
+
+  services.input-remapper.enable = true;
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = [ "*" ];
+        settings = {
+          main = {
+            back = "+command(mumble rpc mute)";
+          };
+        };
+      };
+    };
+  };
+
   services.dnsmasq = {
     settings = {
       conf-file = "/etc/dnsmasq.conf";

@@ -4,7 +4,7 @@
   nixConfig = {
     experimental-features = "nix-command flakes";
     trusted-users = "jwm";
-    max-jobs = 2;
+    max-jobs = 3;
     max-substitution-jobs = 1;
     cores = 5;
 
@@ -40,8 +40,8 @@
   outputs =
     {
       self,
-      nixpkgs_unstable,
       nixpkgs,
+      nixpkgs_unstable,
       home-manager,
       prism,
       ...
@@ -57,9 +57,8 @@
       };
       pkgsPath_bleeding = nixpkgs_unstable.outPath;
 
-      packages.x86_64-linux = {
-        default = nixpkgs.legacyPackages.${system};
-        prismlauncherCracked = prism.packages.${system}.prismlauncher;
+      packages = {
+      	x86_64-linux = nixpkgs.legacyPackages.${system};
       };
 
     in
