@@ -14,6 +14,10 @@ let
   httpAnki = "37355";
   httpsKomga = "9997";
   httpKomga = "37322";
+  httpGacha = "5173";
+  httpsGacha = "37398";
+  httpGachaBE = "3000";
+  httpsGachaBE = "37399";
 
   sslCert = "/system/certs/ssl/ssl.crt";
   sslCertSecret = "/system/certs/ssl/ssl.key";
@@ -94,6 +98,54 @@ in
           }
           location / {
             proxy_pass http://127.0.0.1:${httpKomga};
+          }
+        }
+        server {
+          client_max_body_size 2G;
+          proxy_read_timeout 180;
+          proxy_send_timeout 180;
+
+          listen ${httpsGacha} ssl;
+
+          location / {
+             proxy_hide_header 'Access-Control-Allow-Origin';
+             proxy_hide_header 'Access-Control-Allow-Methods';
+             proxy_hide_header 'Access-Control-Allow-Headers';
+             if ($request_method = 'OPTIONS') {
+              add_header 'Access-Control-Allow-Origin' '$http_origin' always;
+              add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, DELETE' always;
+              add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization' always;
+              add_header 'Access-Control-Max-Age' 1728000;
+              return 204;
+             }
+             add_header 'Access-Control-Allow-Origin' '$http_origin' always;
+             add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, DELETE' always;
+             add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization' always;
+            proxy_pass http://11.0.0.2:${httpGacha};
+          }
+        }
+        server {
+          client_max_body_size 2G;
+          proxy_read_timeout 180;
+          proxy_send_timeout 180;
+
+          listen ${httpsGachaBE} ssl;
+
+          location / {
+             proxy_hide_header 'Access-Control-Allow-Origin';
+             proxy_hide_header 'Access-Control-Allow-Methods';
+             proxy_hide_header 'Access-Control-Allow-Headers';
+             if ($request_method = 'OPTIONS') {
+              add_header 'Access-Control-Allow-Origin' '$http_origin' always;
+              add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, DELETE' always;
+              add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization' always;
+              add_header 'Access-Control-Max-Age' 1728000;
+              return 204;
+             }
+             add_header 'Access-Control-Allow-Origin' '$http_origin' always;
+             add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, DELETE' always;
+             add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization' always;
+             proxy_pass http://11.0.0.2:${httpGachaBE};
           }
         }
       }

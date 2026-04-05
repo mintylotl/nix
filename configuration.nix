@@ -257,6 +257,10 @@ in
       "audio"
       "gamers"
       "aria2"
+      "seat"
+      "input"
+      "uinput"
+      "video"
     ];
     linger = true;
     homeMode = "711";
@@ -272,6 +276,10 @@ in
       "nicely"
       "audio"
       "gamers"
+      "seat"
+      "input"
+      "uinput"
+      "video"
     ];
   };
   users.users.ftpsecure = {

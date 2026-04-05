@@ -5,9 +5,9 @@ cd ~/.programs/gacha_life
 if [[ "$1" == 1 ]]; then
     pkill gacha
     pkill vite
+    exit
 fi
-cd gacha
-cargo run &
+./gacha &
 
-cd ./../gacha_ui/ui
+cd ~/Proj/projects/gacha_life/gacha_ui/ui
 npm run dev

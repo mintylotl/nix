@@ -2,16 +2,40 @@
 {
   systemd = {
     services = {
+      mc = {
+        description = "A service for running the Minecraft Server (1.21.11)";
+        after = [ "network-online.target" ];
+        requires = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
+        path = [ pkgs.wireguard-tools ];
+
+        serviceConfig = {
+          Type = "forking";
+          User = "root";
+          Group = "root";
+          WorkingDirectory = "/system/programs/minecraft/thegamev2";
+          ProtectSystem = "false";
+          ProtectHome = "false";
+          PrivateTmp = "false";
+
+          ExecStart = "${pkgs.tmux}/bin/tmux -S /run/mc.socket new-session -d -s mc_sess '${pkgs.bash}/bin/bash /system/programs/minecraft/thegamev2/run.sh ${pkgs.openjdk21}'";
+          ExecStop = "${pkgs.tmux}/bin/tmux -S /run/mc.socket send-keys -t mc_sess stop ENTER";
+          Restart = "on-failure";
+          KillMode = "none";
+        };
+      };
       alice = {
         description = "A service for running the Alice Bot";
         after = [ "network-online.target" ];
         requires = [ "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
-        path = with pkgs; [ openjdk ];
+        environment = {
+          TELOXIDE_TOKEN = "8530595599:AAEZKbP5ir67zybUTiQRnUV4yR6IsFXBgG0";
+        };
 
         serviceConfig = {
           WorkingDirectory = "/system/programs/alice";
-          ExecStart = "/run/current-system/sw/bin/java -jar ./alice.jar";
+          ExecStart = "/run/current-system/sw/bin/bash -c './alice_bot'";
         };
       };
 

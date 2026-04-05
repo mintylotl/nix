@@ -19,13 +19,26 @@ in
     portal = {
       enable = true;
       xdgOpenUsePortal = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-      config.common.default = "gtk";
-      config.hyprland = {
-        default = "gtk";
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+      ];
+
+      config.common.default = [
+        "hyprland"
+        "wlr"
+        "gtk"
+      ];
+      config.Hyprland = {
         "org.freedesktop.impl.portal.ScreenCast" = "hyprland.portal";
         "org.freedesktop.impl.portal.Screenshot" = "hyprland.portal";
         "org.freedesktop.impl.portal.GlobalShortcuts" = "hyprland.portal";
+      };
+      config.labwc = {
+        default = [
+          "wlr"
+        ];
       };
     };
 
@@ -55,23 +68,6 @@ in
           "text/x-pascal"
           "text/x-tcl"
           "text/x-tex"
-          "application/x-shellscript"
-          "text/x-c"
-          "text/x-c++"
-          "x-scheme-handler/org-protocol"
-          "text/english"
-          "text/plain"
-          "text/x-makefile"
-          "text/x-c++hdr"
-          "text/x-c++src"
-          "text/x-chdr"
-          "text/x-csrc"
-          "text/x-java"
-          "text/x-moc"
-          "text/x-pascal"
-          "text/x-tcl"
-          "text/x-tex"
-          "application/x-shellscript"
           "text/x-c"
           "text/x-c++"
           "x-scheme-handler/org-protocol"

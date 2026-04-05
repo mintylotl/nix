@@ -48,12 +48,18 @@
       alias resume="timew continue && timew join @2 @1"
       alias fetch="fetcher.sh"
       alias emacsc="emacsclient -c -a emacs -s "$HOME"/.doom.d/emacflurry/mcflurry"
+      alias emacst="emacsclient -ca emacs -ts "$HOME"/.doom.d/emacflurry/mcflurry"
       alias garb="sudo $SCRIPTS_DIR/system/nixosgarbage.sh 1"
       alias garbBige="sudo $SCRIPTS_DIR/system/nixosgarbage.sh 0"
       alias blender3="$HOME"/.local/state/nix/profiles/blender3/bin/blender
       alias todosC="git commit -a -m "todos@$(date +'%Y-%m-%dT%H:%M:%S')""
       alias grub="grub --install-directory=${pkgs.grub2}/lib/grub/i386-pc"
       alias gacha="$HOME"/.programs/gacha/life_gacha
+
+      alias lwc="exec labwc"
+      alias kde="export XDG_CURRENT_DESKTOP= && exec startplasma-wayland"
+
+      alias labwc="XDG_CURRENT_DESKTOP=labwc:wlroots XDG_SESSION_TYPE=wayland labwc"
         # --gocryptfs
         alias crypts="sudo -E /etc/nixos/dots/scripts/system/http_crypt.sh"
         alias cryptsU="sudo -E /etc/nixos/dots/scripts/system/http_crypt.sh 3"

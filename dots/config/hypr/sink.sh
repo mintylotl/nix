@@ -6,6 +6,10 @@ state="$(systemctl --user status pipewire)"
 config="$(cat /etc/nixos/dots/config/pipewire/pipewire.conf)"
 arg=$1
 
+if [[ "$arg" == "" ]];then
+	arg=0
+fi
+
 if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headphones"; then
 	echo Service Failed, Attempting a Restart...
 	sleep 1s
@@ -24,9 +28,6 @@ if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headp
 			fi
 		done
 	done
-
-	rm ~/.config/pipewire/pipewire.conf
-	rm /home/gameboy/.config/pipewire/pipewire.conf
 
 	ln -s /etc/nixos/dots/config/pipewire/pipewire.conf /home/jwm/.config/pipewire
 	ln -s /etc/nixos/dots/config/pipewire/pipewire.conf /home/gameboy/.config/pipewire

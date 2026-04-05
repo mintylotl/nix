@@ -50,6 +50,7 @@ in
         };
         Service = {
           ExecStart = "${pkgs.bash}/bin/bash -lc '${programsDir}/gacha_life.sh'";
+          Environment = "TELOXIDE_TOKEN=8323998090:AAGX7RIyCIUlf-q_2xRkORN_Cqi2b-bq4Dw";
           ExecStopPost = "${pkgs.bash}/bin/bash -lc '${programsDir}/gacha_life.sh 1'";
           Restart = "on-failure";
         };
@@ -62,7 +63,7 @@ in
           Description = "Anki-Sync Daemon";
         };
         Service = {
-          ExecStart = "${pkgs.bash}/bin/bash -lc '${programsDir}/anki_sync.sh}'";
+          ExecStart = "${pkgs.bash}/bin/bash -lc '${programsDir}/anki_sync.sh'";
           Restart = "on-failure";
         };
         Install = {
