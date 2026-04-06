@@ -466,7 +466,7 @@ in
     port = 37374;
     registerName = "Mumbone";
     bonjour = true;
-    users = 3;
+    users = 7;
     welcometext = "Welcome to the Abyss";
   };
 
