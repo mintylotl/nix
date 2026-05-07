@@ -18,7 +18,7 @@ mountPointsCrypt[camera]="/Drives/WD1TB/Archive/Camera/.crypt"
 mountPointsCrypt[gpt]="/Drives/WD1TB/Archive/Other/bak/chatgpt/.crypt"
 mountPointsCrypt[dreams]="/Drives/WD1TB/Archive/Other/bak/misc/Dreams/.crypt"
 
-credentials="iA6oV*L2V@\$FQYsMiN*MRJBGu"
+credentials="iA6oV*L2V@FQYsMiN*MRJBGu"
 endpoint="https://11.0.0.3:8987/files"
 
 for j in "${!mountPointsCrypt[@]}"; do
@@ -42,7 +42,7 @@ fi
 if [[ $VOL =~ ^[0-9]+$ ]]; then
     VOLV=$VOL
 fi
-if [ $VOLV -eq 4 ] && curl -u "passfile:$credentials" "$endpoint" 2>/dev/null 1>&2; then
+if [ $VOLV -eq 4 ] && curl -u "pass:$credentials" "$endpoint" 2>/dev/null 1>&2; then
     printf 'Server Reachable\n'
     exit 0
 elif [ $VOLV -eq 4 ]; then
@@ -70,7 +70,7 @@ if [ $VOLVV -eq 1 ]; then
     umount "${mountPoints[$VOL]}"
     exit 0
 else
-    if curl -u "passfile:$credentials" $endpoint/.pass/passfile >/dev/null 2>&1; then
+    if curl -u "pass:$credentials" $endpoint/.pass/passfile >/dev/null 2>&1; then
         printf 'Server Active, Starting Mounts\n'
     else
         printf 'Server not responding. Abort!\n'
@@ -78,12 +78,12 @@ else
     fi
 fi
 
-curl -u "passfile:$credentials" "$endpoint" 2>/dev/null | grep -wq "confirmation"
+curl -u "pass:$credentials" "$endpoint" 2>/dev/null | grep -wq "confirmation"
 curlStat=$?
 if [ $curlStat -eq 0 ]; then
     printf 'Please grant access by confirmation...\n'
     while :; do
-        curl -u "passfile:$credentials" "$endpoint" 2>/dev/null | grep -wq "confirmation"
+        curl -u "pass:$credentials" "$endpoint" 2>/dev/null | grep -wq "confirmation"
         if [[ $? -eq 0 ]]; then
             sleep 1s
         else
@@ -95,22 +95,20 @@ fi
 tmpFile=$(mktemp)
 # Make first tmpfile containing encrypted passfile
 chmod 600 "${tmpFile}"
-curl -u "passfile:$credentials" "$endpoint"/.pass/passfile 2>/dev/null |
-    tee "${tmpFile}" >/dev/null
+curl -u "pass:$credentials" "$endpoint"/.pass/passfile 2>/dev/null | tee "${tmpFile}" >/dev/null
 
 #Decrypt passfile to new temp location for usage
 tmpOld="$tmpFile"
 tmpFile=$(mktemp)
 chmod 600 "$tmpFile"
-cat /system/pass/usb | gpg --batch --passphrase-fd 0 -d "$tmpOld" 2>/dev/null |
-    tee "$tmpFile" >/dev/null
+cat /system/pass/usb | gpg --batch --passphrase-fd 0 -d "$tmpOld" 2>/dev/null | tee "$tmpFile" >/dev/null
 
 if [ -z "$VOL" ]; then
     for d in "${!mountPoints[@]}"; do
         if ! [[ -v additionalArgs[$d] ]]; then
             additionalArgs[$d]=""
         fi
-        cat $tmpFile | sudo -u jwm gocryptfs ${additionalArgs[$d]} --quiet ${mountPointsCrypt[$d]} ${mountPoints[$d]}
+        cat "${tmpFile}" | sudo -u jwm gocryptfs ${additionalArgs[$d]} --quiet ${mountPointsCrypt[$d]} ${mountPoints[$d]}
         printf 'Mount Successful: %s \n' "$d"
     done
     exit 0

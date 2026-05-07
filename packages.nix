@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs_bleeding,
+  #pkgs_bleeding,
   pkgs_old,
   config,
   lib,
@@ -11,17 +11,11 @@
 let
   #paksold = pkgs_old;
   py = pkgs.python312Packages;
-  bleed = pkgs_bleeding;
-
+  #bleed = pkgs_bleeding;
 in
 {
-  nixpkgs.overlays = [
-    (final: prev: {
-      prismlauncherCracked = prism.packages.${pkgs.system}.prismlauncher;
-    })
-  ];
-
   environment.systemPackages = with pkgs; [
+    prism.packages.${pkgs.system}.prismlauncher
     nodePackages.typescript-language-server
     nodePackages.typescript
     nodePackages.eslint
@@ -33,16 +27,11 @@ in
     # General
     man-pages-posix
     vivid
-    #bleed.ollama-cuda
 
     #protonvpn-cli
     openvpn
     #zrythm
     bespokesynth
-    #bleed.lmstudio
-    #conda
-    #ryujinx
-    #citron
     zlib
     zip
     imhex
@@ -85,7 +74,7 @@ in
     filezilla
     mokuro
     jellyfin-mpv-shim
-    bleed.osu-lazer-bin
+    osu-lazer-bin
     anki-bin
     anki-sync-server
     prisma-engines
@@ -135,7 +124,7 @@ in
     gotests
     gore
     haskell-language-server
-    llvmPackages.clang-tools
+    #llvmPackages.clang-tools
     pandoc
     nixfmt-rfc-style
     shfmt
@@ -161,7 +150,7 @@ in
     py.isort
     py.tkinter
 
-    bleed.jdk17
+    jdk17
 
     pipenv
     poetry
@@ -179,7 +168,6 @@ in
     alsa-lib
     alsa-tools
     alsa-utils
-    bleed.godot_4
     xorg.xinit
     unrar
     kdePackages.ark
@@ -220,30 +208,14 @@ in
     xcur2png
     pavucontrol
     #audacity
-    bleed.mpv
+    mpv
     #busybox
     htop
     neofetch
     speedcrunch
     openssl
 
-    (lutris.overrideAttrs ({
-      extraPkgs = with pkgs; [
-        vkd3d-proton
-        dxvk_2
-        gamescope
-        mangohud
-        vulkan-tools
-        vulkan-loader
-        gst_all_1.gstreamer
-        gst_all_1.gst-vaapi
-        gst_all_1.gst-plugins-base
-        gst_all_1.gst-plugins-good
-        gst_all_1.gst-plugins-ugly
-        gst_all_1.gst-plugins-bad
-        gst_all_1.gst-libav
-      ];
-    }))
+    lutris
     protontricks
 
     fd
@@ -252,35 +224,35 @@ in
     clang
     gcc
     rustup
-    bleed.rust-analyzer
+    rust-analyzer
 
     # QT
     qimgv
     kdePackages.qt6ct
 
     # PrismLauncher Cracked
-    pkgs.prismlauncherCracked
+    #pkgs.prismlauncherCracked
 
-    # (retroarch.withCores (
-    #   cores: with cores; [
-    #     mgba
-    #     mame2003-plus
-    #     mame2010
-    #     snes9x
-    #     nestopia
-    #     ppsspp
-    #     dolphin
-    #     swanstation
-    #     bsnes-mercury-performance
-    #     bsnes-mercury
-    #     fbalpha2012
-    #     pcsx-rearmed
-    #     genesis-plus-gx
-    #     mame2000
-    #     melonds
-    #   ]
-    # ))
-    # retroarch-assets
+    (retroarch.withCores (
+      cores: with cores; [
+        mgba
+        mame2003-plus
+        mame2010
+        snes9x
+        nestopia
+        ppsspp
+        dolphin
+        swanstation
+        bsnes-mercury-performance
+        bsnes-mercury
+        #fbalpha2012
+        pcsx-rearmed
+        genesis-plus-gx
+        mame2000
+        melonds
+      ]
+    ))
+    retroarch-assets
 
     typescript
     # Python
@@ -293,7 +265,7 @@ in
 
     # System Utilities
     home-manager
-    bleed.discord
+    discord
     bitwarden-desktop
     git
 
@@ -308,7 +280,7 @@ in
     stow
     brightnessctl
     ffmpeg-full
-    bleed.yt-dlp
+    yt-dlp
     zig
     (ghc.withPackages (
       hp: with hp; [
@@ -339,11 +311,10 @@ in
     hyprpaper
     wl-clipboard
     cliphist
-    bleed.firefox-devedition
+    firefox-devedition
     telegram-desktop
     pkgs.qbittorrent
     mako
-    bleed.zlib
     rose-pine-cursor
     aria2
 
@@ -393,14 +364,12 @@ in
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
+        # Existing dependencies
         zlib
         glib
         nspr
         nss
         glibc
-        glib
-        nspr
-        nss
         dbus
         atk
         at-spi2-core
@@ -408,21 +377,33 @@ in
         cairo
         gtk3
         pango
-        xorg.libX11
-        xorg.libXcomposite
-        xorg.libXdamage
-        xorg.libXext
-        xorg.libXfixes
-        xorg.libXrandr
-        mesa
         expat
-        xorg.libxcb
         libxkbcommon
         systemd
         alsa-lib
         gcc
         pkg-config
         libgbm
+
+        # X11 libs
+        xorg.libX11
+        xorg.libXcomposite
+        xorg.libXdamage
+        xorg.libXext
+        xorg.libXfixes
+        xorg.libXrandr
+        xorg.libxcb
+
+        # Missing Graphics stack (libGL, libGLX, libEGL, libOpenGL)
+        libGL
+        libGLX
+        libglvnd # Provides libOpenGL and vendor-neutral dispatch
+        mesa # Essential for hardware acceleration/drivers
+
+        # Font & System libs
+        fontconfig # libfontconfig.so.1
+        freetype # libfreetype.so.6
+        libgpg-error # libgpg-error.so.0
       ];
     };
   };
@@ -434,13 +415,48 @@ in
   programs.labwc.enable = true;
 
   # Services
+  services.seatd.enable = true;
   services.vsftpd.enable = true;
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    extraConfig = ''
+      ClientAliveInterval 60
+      ClientAliveCountMax 3
+    '';
+  };
   services.tumbler.enable = true;
 
   services.jellyfin = {
     enable = true;
     dataDir = "/system/programs/jellyfin";
+  };
+
+  services.dnsmasq = {
+    enable = true;
+    settings = {
+      # Listen only on the local loopback interface
+      listen-address = [
+        "11.0.0.2"
+      ];
+      interface = [
+        "enp42s0"
+      ];
+      bind-interfaces = true;
+
+      # Upstream DNS servers
+      server = [
+        "11.0.0.254"
+        "9.9.9.9"
+        "8.8.8.8"
+      ];
+
+      address = [
+        "/.vault.tld/11.0.0.2"
+      ];
+
+      # Optional: Cache size and optimization
+      cache-size = 1000;
+    };
   };
 
   services.vaultwarden = {
@@ -495,8 +511,8 @@ in
 
   services.nix-serve = {
     enable = true;
-    port = 29777;
-    secretKeyFile = "/system/pass/cache-key.key";
+    port = 32999;
+    secretKeyFile = "/system/programs/nixserve/cache.key";
   };
 
   services.aria2 = {
@@ -512,28 +528,6 @@ in
       User = "aria2";
       Group = "aria2";
     };
-  };
-
-  services.input-remapper.enable = true;
-  services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-        ids = [ "*" ];
-        settings = {
-          main = {
-            back = "+command(mumble rpc mute)";
-          };
-        };
-      };
-    };
-  };
-
-  services.dnsmasq = {
-    settings = {
-      conf-file = "/etc/dnsmasq.conf";
-    };
-    enable = false;
   };
 
   virtualisation.waydroid.enable = true;
@@ -557,7 +551,7 @@ in
   };
 
   # Fonts
-  fonts.packages = with bleed; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif

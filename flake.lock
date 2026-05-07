@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1775077333,
-        "narHash": "sha256-OXcxobt7lBkh1B8AjwreU+24myhtKpqeLfAeIyNLFY8=",
+        "lastModified": 1775425411,
+        "narHash": "sha256-KY6HsebJHEe5nHOWP7ur09mb0drGxYSzE3rQxy62rJo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "49ca96b2714c5931e17401eff87f3edd42d2b0f2",
+        "rev": "0d02ec1d0a05f88ef9e74b516842900c41f0f2fe",
         "type": "github"
       },
       "original": {
@@ -22,11 +22,11 @@
     "libnbtplusplus": {
       "flake": false,
       "locked": {
-        "lastModified": 1744811532,
-        "narHash": "sha256-qhmjaRkt+O7A+gu6HjUkl7QzOEb4r8y8vWZMG2R/C6o=",
+        "lastModified": 1772016279,
+        "narHash": "sha256-7itkptyjoRcXfGLwg1/jxajetZ3a4mDc66+w4X6yW8s=",
         "owner": "PrismLauncher",
         "repo": "libnbtplusplus",
-        "rev": "531449ba1c930c98e0bcf5d332b237a8566f9d78",
+        "rev": "687e43031df0dc641984b4256bcca50d5b3f7de3",
         "type": "github"
       },
       "original": {
@@ -36,22 +36,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1774799055,
-        "narHash": "sha256-Tsq9BCz0q47ej1uFF39m4tuhcwru/ls6vCCJzutEpaw=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "107cba9eb4a8d8c9f8e9e61266d78d340867913a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1775002709,
         "narHash": "sha256-d3Yx83vSrN+2z/loBh4mJpyRqr9aAJqlke4TkpFmRJA=",
@@ -67,13 +51,29 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1777077449,
+        "narHash": "sha256-AIiMJiqvGrN4HyLEbKAoCSRRYn0rnlW5VbKNIMIYqm4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a4bf06618f0b5ee50f14ed8f0da77d34ecc19160",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_unstable": {
       "locked": {
-        "lastModified": 1775036866,
-        "narHash": "sha256-ZojAnPuCdy657PbTq5V0Y+AHKhZAIwSIT2cb8UgAz/U=",
+        "lastModified": 1777268161,
+        "narHash": "sha256-bxrdOn8SCOv8tN4JbTF/TXq7kjo9ag4M+C8yzzIRYbE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6201e203d09599479a3b3450ed24fa81537ebc4e",
+        "rev": "1c3fe55ad329cbcb28471bb30f05c9827f724c76",
         "type": "github"
       },
       "original": {
@@ -87,15 +87,15 @@
       "inputs": {
         "libnbtplusplus": "libnbtplusplus",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs_unstable"
         ]
       },
       "locked": {
-        "lastModified": 1771797779,
-        "narHash": "sha256-VjN8CBG3KLaqP7yFYWvLQuCwivh4RBjzWkWlMlxYjdI=",
+        "lastModified": 1776795718,
+        "narHash": "sha256-YrqHeE9ZEnmxJiXE+IBAxbmNRFPE7mn9KbxZ3Mpu388=",
         "owner": "Diegiwg",
         "repo": "PrismLauncher-Cracked",
-        "rev": "356e6d7edc4a1b8b28d1a9a04057a2a3ea8655e4",
+        "rev": "0c20d448a3c89cbff85ef5dc7420bf60dc1e65ff",
         "type": "github"
       },
       "original": {

@@ -3,15 +3,14 @@
   config,
   lib,
   pkgs,
-  pkgs_bleeding,
+  #pkgs_bleeding,
   inputs,
   ...
 }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
-  cuda = pkgs.cudaPackages.cudatoolkit;
-  bleed = pkgs_bleeding;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
+  #bleed = pkgs_bleeding;
 
   scriptsDir = "${HOME}/.scripts";
   programsDir = "${HOME}/.programs";
@@ -139,8 +138,12 @@ in
   };
 
   # NETWORKING
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    dns = "none";
+  };
   networking.wireless.enable = false; # Enables wireless through wpa_supplicant
+
   networking.firewall = {
     # IPtables
     enable = false;
@@ -158,6 +161,7 @@ in
     ];
   };
 
+  networking.nameservers = [ "127.0.0.1" ];
   networking.hostName = "cabbage";
   networking.hosts = {
     "127.0.0.1" = [
@@ -172,7 +176,10 @@ in
   networking.interfaces.enp42s0.useDHCP = true;
 
   networking.dhcpcd.enable = false;
+  networking.resolvconf.enable = true;
   networking.nftables.enable = false;
+
+  services.resolved.enable = false;
 
   time.timeZone = "Africa/Johannesburg";
 
@@ -243,6 +250,7 @@ in
     gamers = { };
     postgres = { };
     org = { };
+    plugdev = { };
   };
   # Users
   users.users.jwm = {
@@ -258,11 +266,13 @@ in
       "gamers"
       "aria2"
       "seat"
+      "render"
       "input"
       "uinput"
       "video"
+      "plugdev"
     ];
-    linger = true;
+    linger = false;
     homeMode = "711";
   };
   users.users.gameboy = {
@@ -277,6 +287,7 @@ in
       "audio"
       "gamers"
       "seat"
+      "render"
       "input"
       "uinput"
       "video"
@@ -367,7 +378,7 @@ in
   };
 
   services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev", TAG+="uaccess"
   '';
 
   security.pam.loginLimits = [
@@ -395,8 +406,6 @@ in
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
-
-    #CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
 
     VK_ICD_FILENAMES = "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
   };
