@@ -56,16 +56,16 @@ in
         path = pkgsPath;
       };
     };
-    nixosBleed = {
-      from = {
-        id = "nixosbleed";
-        type = "indirect";
-      };
-      to = {
-        type = "path";
-        path = pkgsPath_bleeding;
-      };
-    };
+    #nixosBleed = {
+    #  from = {
+    #    id = "nixosbleed";
+    #    type = "indirect";
+    #  };
+    #  to = {
+    #    type = "path";
+    #    path = pkgsPath_bleeding;
+    #  };
+    #};
   };
 
   home.file = {

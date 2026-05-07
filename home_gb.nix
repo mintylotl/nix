@@ -2,7 +2,7 @@
   lib,
   pkgs,
   pkgsPath,
-  pkgsPath_bleeding,
+  #pkgsPath_bleeding,
   ...
 }:
 let
@@ -94,18 +94,18 @@ in
         path = pkgsPath;
       };
     };
-    nixosBleed = {
-      from = {
-        id = "nixosbleed";
-        type = "indirect";
-      };
-      to = {
-        type = "path";
-        path = pkgsPath_bleeding;
-      };
-    };
+    #nixosBleed = {
+    #  from = {
+    #    id = "nixosbleed";
+    #    type = "indirect";
+    #  };
+    #  to = {
+    #    type = "path";
+    #    path = pkgsPath_bleeding;
+    #  };
+    #};
   };
-	
+
   programs.waybar.enable = true;
 
   home.stateVersion = "24.05";
