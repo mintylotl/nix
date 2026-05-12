@@ -9,7 +9,7 @@
 }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.beta;
   #bleed = pkgs_bleeding;
 
   scriptsDir = "${HOME}/.scripts";
