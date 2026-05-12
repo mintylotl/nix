@@ -26,7 +26,7 @@
       };
       alice = {
         description = "A service for running the Alice Bot";
-        after = [ "network-online.target" ];
+        after = [ "NetworkManager-wait-online.service" ];
         requires = [ "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
         environment = {

@@ -15,7 +15,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    prism.packages.${pkgs.system}.prismlauncher
+    prism.packages.${pkgs.stdenv.system}.prismlauncher
     nodePackages.typescript-language-server
     nodePackages.typescript
     nodePackages.eslint
@@ -404,6 +404,29 @@ in
         fontconfig # libfontconfig.so.1
         freetype # libfreetype.so.6
         libgpg-error # libgpg-error.so.0
+
+        # Other
+        wayland # libwayland-client.so.0
+        bzip2 # libbz2.so.1.0
+        libadwaita # libadwaita-1.so.0
+        gtk4 # libgtk-4.so.1
+        pango # libpango-1.0.so.0
+        gdk-pixbuf # libgdk_pixbuf-2.0.so.0
+        cairo # libcairo.so.2
+        glib # libgio-2.0.so.0, libgobject-2.0.so.0, libglib-2.0.so.0
+
+        # Common dependencies often required by GTK4/Adwaita apps
+        glibc
+        libGL
+        vulkan-loader
+        xorg.libX11
+
+        gst_all_1.gstreamer
+        gst_all_1.gst-plugins-base
+        gst_all_1.gst-plugins-good
+        gst_all_1.gst-plugins-bad
+        gst_all_1.gst-plugins-ugly
+        gst_all_1.gst-libav
       ];
     };
   };
@@ -445,9 +468,9 @@ in
 
       # Upstream DNS servers
       server = [
-        "11.0.0.254"
-        "9.9.9.9"
         "8.8.8.8"
+        "9.9.9.9"
+        "11.0.0.254"
       ];
 
       address = [
@@ -457,6 +480,9 @@ in
       # Optional: Cache size and optimization
       cache-size = 1000;
     };
+  };
+  systemd.services.dnsmasq = {
+    after = [ "NetworkManager-wait-online.service" ];
   };
 
   services.vaultwarden = {
