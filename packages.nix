@@ -314,7 +314,6 @@ in
     firefox-devedition
     telegram-desktop
     pkgs.qbittorrent
-    mako
     rose-pine-cursor
     aria2
 

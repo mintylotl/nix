@@ -23,6 +23,7 @@ in
 
   imports = [
     ./home/xdg.nix
+    ./home/daemons.nix
 
     ./programs/zsh.nix
     ./config/hyprland-conf.nix
