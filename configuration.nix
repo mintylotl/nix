@@ -9,7 +9,7 @@
 }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.beta;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
   #bleed = pkgs_bleeding;
 
   scriptsDir = "${HOME}/.scripts";
@@ -85,6 +85,7 @@ in
 
   # Use the systemd-boot EFI boot loader.
   boot = {
+    kernelPackages = pkgs.linuxPackages_xanmod;
     loader = {
       systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
@@ -133,8 +134,6 @@ in
       "nouveau"
       "nvidiafb"
     ];
-
-    kernelPackages = pkgs.linuxPackages;
   };
 
   # NETWORKING
@@ -338,6 +337,7 @@ in
       "en_US.UTF-8/UTF-8"
       "ja_JP.UTF-8/UTF-8"
       "ko_KR.UTF-8/UTF-8"
+      "zh_CN.UTF-8/UTF-8"
     ];
 
     inputMethod = {
