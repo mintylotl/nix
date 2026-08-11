@@ -16,9 +16,9 @@ in
 {
   environment.systemPackages = with pkgs; [
     prism.packages.${pkgs.stdenv.system}.prismlauncher
-    nodePackages.typescript-language-server
-    nodePackages.typescript
-    nodePackages.eslint
+    typescript-language-server
+    typescript
+    eslint
     vtsls
 
     pkgs.tree-sitter-grammars.tree-sitter-typescript
@@ -359,7 +359,6 @@ in
     enableRenice = true;
   };
   programs = {
-    ecryptfs.enable = false;
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
