@@ -206,5 +206,5 @@ in
     style.package = pkgs.qt6Packages.qtstyleplugin-kvantum;
   };
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "25.05";
 }
