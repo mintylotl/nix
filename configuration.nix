@@ -9,7 +9,7 @@
 }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
   #bleed = pkgs_bleeding;
 
   scriptsDir = "${HOME}/.scripts";
@@ -24,7 +24,6 @@ in
     # Daemons
     ./daemons/nginx.nix
     ./daemons/vsftpd.nix
-    #./daemons/aria2.nix
 
     ./nvidia.nix
     ./packages.nix
@@ -84,8 +83,12 @@ in
   };
 
   # Use the systemd-boot EFI boot loader.
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    "riscv64-linux"
+  ];
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxPackages;
     loader = {
       systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
@@ -126,13 +129,11 @@ in
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
       "nvidia_drm.modeset=1"
-      "nvidia_drm.fbdev=0"
     ];
     blacklistedKernelModules = [
       "amdgpu"
       "i915"
       "nouveau"
-      "nvidiafb"
     ];
   };
 

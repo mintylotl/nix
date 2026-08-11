@@ -16,7 +16,7 @@ let
   httpKomga = "37322";
   httpGacha = "5173";
   httpsGacha = "37398";
-  httpGachaBE = "3000";
+  httpGachaBE = "3099";
   httpsGachaBE = "37399";
 
   sslCert = "/system/certs/ssl/ssl.crt";

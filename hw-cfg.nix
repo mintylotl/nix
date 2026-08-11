@@ -52,9 +52,15 @@
 
   zramSwap = {
     enable = true;
-    memoryPercent = 18;
+    memoryPercent = 12;
   };
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
+
+  hardware.enableRedistributableFirmware = true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
