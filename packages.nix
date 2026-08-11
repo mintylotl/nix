@@ -179,7 +179,7 @@ in
     hyprpolkitagent
 
     #OVMF
-    #qemu_full
+    qemu
     umu-launcher
 
     cowsay
@@ -452,6 +452,8 @@ in
     enable = true;
     dataDir = "/system/programs/jellyfin";
   };
+
+  services.flatpak.enable = true;
 
   services.dnsmasq = {
     enable = true;

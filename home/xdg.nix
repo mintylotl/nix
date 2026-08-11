@@ -25,11 +25,16 @@ in
         xdg-desktop-portal-wlr
       ];
 
-      config.common.default = [
-        "hyprland"
-        "wlr"
-        "gtk"
-      ];
+      configPackages = with pkgs; [ firefox-devedition ];
+
+      config.common = {
+        default = [
+          "hyprland"
+          "wlr"
+          "gtk"
+        ];
+        "org.freedesktop.portal.OpenURI" = [ "firefox-developer-edition" ];
+      };
       config.Hyprland = {
         "org.freedesktop.impl.portal.ScreenCast" = "hyprland.portal";
         "org.freedesktop.impl.portal.Screenshot" = "hyprland.portal";
@@ -100,5 +105,9 @@ in
       };
     };
 
+  };
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox-devedition;
   };
 }

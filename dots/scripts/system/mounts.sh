@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 MODE=0
 
+if [[ $1 =~ ^[1-9]$ ]]; then
+	MODE=$1
+fi
+
 mountpoint /Drives/WD1TB
 if [[ $? -eq 0 ]]; then
 	if [ $MODE -eq 0 ]; then
@@ -8,20 +12,24 @@ if [[ $? -eq 0 ]]; then
 	fi
 fi
 
-if [[ $1 =~ ^[1-9]$ ]]; then
-	MODE=$1
-fi
-
 HOME="/home/jwm"
 COLD="d7f41dd1-ef48-427f-9f65-94e1016c0b13"
 HOT="8f29f7cf-0bea-45a9-945c-9c35e9ac41da"
-MED="bc53d224-cdf4-4d0d-a328-9731266e5220"
+GAMESHD="74fdc53f-af7b-4805-aeca-07eb13ac0b8c"
+GAMESD="eab8d2aa-2a49-431a-9f98-e6e35ff5ddba"
 
 if [ $MODE -eq 1 ]; then
 	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/emacs-conf,noatime,compress-force=zstd:6 $HOME/.doom.d/
 	mount --onlyonce -t btrfs -U $HOT -o compress-force=zstd:6,subvol=@vols/emacs $HOME/.emacs.d/
 	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/orgnotes,compress=zstd:3 $HOME/.crypt/orgnotes
 	#/system/scripts/usb_crypt.sh org
+	exit 0
+fi
+
+if [ $MODE -eq 2 ]; then
+	printf "\nMounting Complex Game Drives...\n"
+	mount --onlyonce -t btrfs -U $GAMESHD -o subvol=/,noatime,compress-force=zstd:2,defaults,ssd /home/Games/Gamesc
+	mount --onlyonce -t btrfs -U $GAMESD -o subvol=/,noatime,compress-force=zstd:2,defaults,ssd /home/Games/Gamesc/SSD
 	exit 0
 fi
 
@@ -34,11 +42,11 @@ while :; do
 	fi
 
 	COUNTER=$((COUNTER + 1))
-	if [[ $COUNTER -eq 10 ]]; then
+	if [[ $COUNTER -eq 25 ]]; then
 		printf 'Error Loading Drive\nUUID %s Not Found...\n' "$COLD" >&2
 		exit 1
 	fi
-	sleep 5s
+	sleep 1s
 done
 
 lnID="$(blkid | grep 'UUID="d7f41dd1-ef48-427f-9f65-94e1016c0b13"' | grep -o '/dev/sd[a-z][1-9]*')"
@@ -73,6 +81,9 @@ printf "\nMounted\n\n"
 printf "Mounting Encrypted Volumes...\n"
 mount --onlyonce -t btrfs -U $COLD -o subvol=@vols/crypt/vol_camera /Drives/WD1TB/Archive/Camera/.crypt
 mount --onlyonce -t btrfs -U $COLD -o subvol=@vols/crypt/vol_gptchats /Drives/WD1TB/Archive/Other/bak/chatgpt/.crypt
+
+printf "\nMounting Complex Game Drives...\n"
+mount --onlyonce -t btrfs -U $GAMES -o subvol=/,compress-force=zstd:2,noatime /home/Games/Gamesc
 
 printf "Symlinking\n"
 # --Cold Storage
