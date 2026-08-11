@@ -142,7 +142,7 @@ in
     enable = true;
     dns = "none";
   };
-  networking.wireless.enable = false; # Enables wireless through wpa_supplicant
+  networking.wireless.enable = true; # Enables wireless through wpa_supplicant
 
   networking.firewall = {
     # IPtables
@@ -433,5 +433,5 @@ in
     ];
   '';
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "26.05";
 }
