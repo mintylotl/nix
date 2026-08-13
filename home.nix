@@ -179,9 +179,12 @@ in
     gtk3.extraConfig = {
       gtk-menu-images = true;
     };
-
-    gtk4.extraConfig = {
-      gtk-menu-images = true;
+	
+    gtk4 = {
+      theme = null;
+      extraConfig = {
+        gtk-menu-images = true;
+      };
     };
 
     cursorTheme.name = "BreezeX-RosePineDawn-Linux";
