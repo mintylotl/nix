@@ -10,12 +10,12 @@
 }:
 let
   #paksold = pkgs_old;
-  py = pkgs.python312Packages;
+  py = pkgs.python313Packages;
   #bleed = pkgs_bleeding;
 in
 {
   environment.systemPackages = with pkgs; [
-    prism.packages.${pkgs.stdenv.system}.prismlauncher
+    #prism.packages.${pkgs.stdenv.system}.prismlauncher
     typescript-language-server
     typescript
     eslint
@@ -61,14 +61,13 @@ in
     #veracrypt
     hdparm
     libreoffice-qt6-fresh
-    rpcs3
+    #rpcs3
     vitetris
     joystickwake
     sdl-jstest
     jstest-gtk
     linuxConsoleTools
     hyprpicker
-    ngrok
     cachix
     nicotine-plus
     filezilla
@@ -77,7 +76,6 @@ in
     osu-lazer-bin
     anki-bin
     anki-sync-server
-    prisma-engines
 
     #Dicts
     hunspellDicts.ko_KR
@@ -93,15 +91,14 @@ in
     ))
 
     #cudaPackages.cudatoolkit
-    xorg.xeyes
-    xorg.xorgserver
-    xorg.xrandr
+    xeyes
+    xorgserver
+    xrandr
 
     stuntman
     heimdall
     gvfs
     simple-mtpfs
-    libmtp
     android-tools
 
     #Emacs
@@ -211,7 +208,7 @@ in
     mpv
     #busybox
     htop
-    neofetch
+    fastfetch
     speedcrunch
     openssl
 
@@ -228,7 +225,6 @@ in
 
     # QT
     qimgv
-    kdePackages.qt6ct
 
     # PrismLauncher Cracked
     #pkgs.prismlauncherCracked
@@ -253,15 +249,14 @@ in
       ]
     ))
     retroarch-assets
-
     typescript
+
     # Python
     #System
     py.pip
 
     #Misc
     py.yt-dlp
-    py.numpy
 
     # System Utilities
     home-manager
@@ -270,12 +265,10 @@ in
     git
 
     #makemkv
-    pkg-config
     btrfs-progs
     vulkan-tools
     rsync
     xdotool
-    nodejs_22
     yarn
     stow
     brightnessctl
@@ -297,14 +290,13 @@ in
     openjdk8
 
     # WINE
-    wireshark-qt
+    #wireshark-qt
     wireguard-tools
     duperemove
     # Programs
     #wineWowPackages.waylandFull
     #wineWowPackages.stableFull
-    #wineWowPackages.unstableFull
-    wineWowPackages.stableFull
+    wineWow64Packages.unstableFull
     winetricks
     grim
     slurp
@@ -318,9 +310,6 @@ in
     aria2
 
     # Icon_Themes
-    adwaita-icon-theme
-    kdePackages.breeze-gtk
-    kdePackages.breeze-icons
     papirus-icon-theme
   ];
 
@@ -382,15 +371,6 @@ in
         gcc
         pkg-config
         libgbm
-
-        # X11 libs
-        xorg.libX11
-        xorg.libXcomposite
-        xorg.libXdamage
-        xorg.libXext
-        xorg.libXfixes
-        xorg.libXrandr
-        xorg.libxcb
 
         # Missing Graphics stack (libGL, libGLX, libEGL, libOpenGL)
         libGL

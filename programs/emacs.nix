@@ -21,7 +21,6 @@ in
       epkgs.gnuplot
       epkgs.shfmt
       epkgs.pipenv
-      epkgs.pandoc
       epkgs.all-the-icons
       epkgs.org-superstar
       epkgs.pytest
@@ -62,7 +61,6 @@ in
         epkgs.gnuplot
         epkgs.shfmt
         epkgs.pipenv
-        epkgs.pandoc
         epkgs.all-the-icons
         epkgs.org-superstar
         epkgs.pytest
