@@ -10,12 +10,23 @@
 }:
 let
   #paksold = pkgs_old;
-  py = pkgs.python313Packages;
   #bleed = pkgs_bleeding;
+  py = pkgs.python313Packages;
+  prismFix = prism.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+    prismlauncher-unwrapped =
+      (prism.packages.${pkgs.stdenv.hostPlatform.system}.prismlauncher-unwrapped.override {
+        extra-cmake-modules = pkgs.kdePackages.extra-cmake-modules;
+      }).overrideAttrs
+        (oldAttrs: {
+          nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [
+            pkgs.pkg-config
+          ];
+        });
+  };
 in
 {
   environment.systemPackages = with pkgs; [
-    #prism.packages.${pkgs.stdenv.system}.prismlauncher
+    prismFix
     typescript-language-server
     typescript
     eslint
@@ -27,6 +38,7 @@ in
     # General
     man-pages-posix
     vivid
+    pkg-config
 
     #protonvpn-cli
     openvpn
