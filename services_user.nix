@@ -52,7 +52,6 @@ in
           ExecStart = "${pkgs.bash}/bin/bash -lc '${programsDir}/gacha_life.sh'";
           Environment = "TELOXIDE_TOKEN=8323998090:AAGX7RIyCIUlf-q_2xRkORN_Cqi2b-bq4Dw";
           ExecStopPost = "${pkgs.bash}/bin/bash -lc '${programsDir}/gacha_life.sh 1'";
-          Restart = "on-failure";
         };
         Install = {
           WantedBy = [ "default.target" ];
