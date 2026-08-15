@@ -39,6 +39,7 @@ in
     man-pages-posix
     vivid
     pkg-config
+    nixd
 
     #protonvpn-cli
     openvpn

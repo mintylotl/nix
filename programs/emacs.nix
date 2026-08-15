@@ -45,6 +45,7 @@ in
       pkgs.rustup
       pkgs.zig
       pkgs.pnpm
+      pkgs.nixd
     ];
   };
 
