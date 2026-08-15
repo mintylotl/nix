@@ -9,7 +9,7 @@
 }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.stable;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.production;
   #bleed = pkgs_bleeding;
 
   scriptsDir = "${HOME}/.scripts";
@@ -412,7 +412,7 @@ in
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
 
-    VK_ICD_FILENAMES = "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
+    #VK_ICD_FILENAMES = "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
   };
 
   environment.pathsToLink = [

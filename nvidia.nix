@@ -13,7 +13,7 @@
   };
 
   services.xserver = {
-    enable = true;
+    #enable = false;
     videoDrivers = [ "nvidia" ];
   };
 
@@ -28,7 +28,7 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
 
     powerManagement.finegrained = false;
     powerManagement.enable = true;
