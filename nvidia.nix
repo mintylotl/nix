@@ -28,7 +28,7 @@
 
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
 
     powerManagement.finegrained = false;
     powerManagement.enable = true;

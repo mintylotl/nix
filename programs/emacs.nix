@@ -6,7 +6,7 @@
 }:
 let
   epaks = pkgs.emacsPackages;
-  pypaks = pkgs.python312Packages;
+  pypaks = pkgs.python314Packages;
   HOME = "/home/jwm";
 in
 {

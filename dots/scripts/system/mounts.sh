@@ -15,7 +15,7 @@ fi
 HOME="/home/jwm"
 COLD="d7f41dd1-ef48-427f-9f65-94e1016c0b13"
 HOT="8f29f7cf-0bea-45a9-945c-9c35e9ac41da"
-GAMESHD="74fdc53f-af7b-4805-aeca-07eb13ac0b8c"
+GAMESHD="03abf04b-7e23-4879-95fa-33fce8f162f3"
 GAMESD="eab8d2aa-2a49-431a-9f98-e6e35ff5ddba"
 
 if [ $MODE -eq 1 ]; then
@@ -28,7 +28,7 @@ fi
 
 if [ $MODE -eq 2 ]; then
 	printf "\nMounting Complex Game Drives...\n"
-	mount --onlyonce -t btrfs -U $GAMESHD -o subvol=/,noatime,compress-force=zstd:2,defaults,ssd /home/Games/Gamesc
+	mount --onlyonce -t ext4 -U $GAMESHD -o defaults,noatime,nodiratime,commit=60 /home/Games/Gamesc
 	mount --onlyonce -t btrfs -U $GAMESD -o subvol=/,noatime,compress-force=zstd:2,defaults,ssd /home/Games/Gamesc/SSD
 	exit 0
 fi
@@ -42,9 +42,9 @@ while :; do
 	fi
 
 	COUNTER=$((COUNTER + 1))
-	if [[ $COUNTER -eq 25 ]]; then
+	if [[ $COUNTER -eq 15 ]]; then
 		printf 'Error Loading Drive\nUUID %s Not Found...\n' "$COLD" >&2
-		exit 1
+		break
 	fi
 	sleep 1s
 done
@@ -84,6 +84,11 @@ mount --onlyonce -t btrfs -U $COLD -o subvol=@vols/crypt/vol_gptchats /Drives/WD
 
 printf "\nMounting Complex Game Drives...\n"
 mount --onlyonce -t btrfs -U $GAMES -o subvol=/,compress-force=zstd:2,noatime /home/Games/Gamesc
+
+# --Game Drives
+printf "\nMounting Complex Game Drives...\n"
+mount --onlyonce -t ext4 -U $GAMESHD -o defaults,noatime,nodiratime,commit=60 /home/Games/Gamesc
+mount --onlyonce -t btrfs -U $GAMESD -o noatime,compress-force=zstd:2,defaults,ssd /home/Games/Gamesc/SSD
 
 printf "Symlinking\n"
 # --Cold Storage

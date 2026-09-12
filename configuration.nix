@@ -9,7 +9,6 @@
 }:
 let
   HOME = "/home/jwm";
-  nvidia = config.boot.kernelPackages.nvidiaPackages.production;
   #bleed = pkgs_bleeding;
 
   scriptsDir = "${HOME}/.scripts";
@@ -120,6 +119,8 @@ in
       # NVIDIA
       "nvidia"
       "nvidia-drm"
+      "bcache"
+      "ntsync"
     ];
     kernelModules = [
       # AMDCPU
@@ -132,10 +133,10 @@ in
     ];
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-      "nvidia_drm.modeset=1"
+      #"nvidia_drm.modeset=1"
     ];
     blacklistedKernelModules = [
-      "amdgpu"
+      #"amdgpu"
       "i915"
       "nouveau"
     ];
@@ -358,6 +359,18 @@ in
         ];
       };
     };
+
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
   };
 
   # Securitay
@@ -407,12 +420,9 @@ in
     NIX_CONF_DIR = "/etc/nixos";
 
     LIBVA_DRIVER_NAME = "nvidia";
-    MESA_LOADER_DRIVER_OVERRIDE = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
     NVD_BACKEND = "direct";
-
-    #VK_ICD_FILENAMES = "${nvidia}/share/vulkan/icd.d/nvidia_icd.x86_64.json:${nvidia.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json";
   };
 
   environment.pathsToLink = [

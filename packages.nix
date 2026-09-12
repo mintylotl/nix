@@ -11,7 +11,7 @@
 let
   #paksold = pkgs_old;
   #bleed = pkgs_bleeding;
-  py = pkgs.python313Packages;
+  py = pkgs.python314Packages;
   prismFix = prism.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
     prismlauncher-unwrapped =
       (prism.packages.${pkgs.stdenv.hostPlatform.system}.prismlauncher-unwrapped.override {
@@ -178,7 +178,7 @@ in
     alsa-lib
     alsa-tools
     alsa-utils
-    xorg.xinit
+    xinit
     unrar
     kdePackages.ark
 
@@ -266,6 +266,7 @@ in
 
     # Python
     #System
+    python315.out
     py.pip
 
     #Misc
@@ -337,12 +338,12 @@ in
   programs.thunar = {
     enable = true;
     plugins = with pkgs; [
-      xfce.thunar-volman
-      xfce.thunar-archive-plugin
-      xfce.catfish
-      xfce.garcon
-      xfce.exo
-      xfce.tumbler
+      thunar-volman
+      thunar-archive-plugin
+      catfish
+      garcon
+      exo
+      tumbler
 
       totem
       webp-pixbuf-loader
@@ -408,9 +409,6 @@ in
 
         # Common dependencies often required by GTK4/Adwaita apps
         glibc
-        libGL
-        vulkan-loader
-        xorg.libX11
 
         gst_all_1.gstreamer
         gst_all_1.gst-plugins-base
