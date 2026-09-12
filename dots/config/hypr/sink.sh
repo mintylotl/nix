@@ -6,7 +6,7 @@ state="$(systemctl --user status pipewire)"
 config="$(cat /etc/nixos/dots/config/pipewire/pipewire.conf)"
 arg=$1
 
-if [[ "$arg" == "" ]];then
+if [[ "$arg" == "" ]]; then
 	arg=0
 fi
 
@@ -17,7 +17,6 @@ if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headp
 		while :; do
 			if [ "${x: -1}" == "$count" ]; then
 				rm ~/.config/pipewire/pipewire.conf
-				rm /home/gameboy/.config/pipewire/pipewire.conf
 				sed -i "s/hw:[0-9]/hw:$count/g" /etc/nixos/dots/config/pipewire/pipewire.conf
 			fi
 
@@ -30,7 +29,6 @@ if echo "$state" | grep -q "failed" || ! echo "$state_sink" | grep -q "33. Headp
 	done
 
 	ln -s /etc/nixos/dots/config/pipewire/pipewire.conf /home/jwm/.config/pipewire
-	ln -s /etc/nixos/dots/config/pipewire/pipewire.conf /home/gameboy/.config/pipewire
 
 	systemctl --user restart pipewire
 	sleep 1s

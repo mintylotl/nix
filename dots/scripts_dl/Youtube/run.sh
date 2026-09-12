@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-python yt.py
+. ./dl_env/bin/activate
 
+python yt.py

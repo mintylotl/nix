@@ -17,12 +17,6 @@
       monitor = ", 1920x1080@100, 0x0, 1";
       workspace = "HDMI-A-1, 1";
 
-      # Nvidia
-      #env = __GLX_VENDOR_LIBRARY_NAME, nvidia
-      #env = LIBVA_DRIVER_NAME, nvidia
-      #env = GBM_BACKEND, nvidia-drm
-      #env = NVD_BACKEND, direct
-
       env = [
         # THEMING
         "GDK_BACKEND, wayland, x11"
@@ -68,18 +62,12 @@
       "$scripts" = "$HOME/.scripts";
       "$emacsDir" = "$HOME/.emacs.d";
 
-      # --Lutris
-      #env = LUTRIS_SKIP_INIT, 1
-
       cursor = {
-        no_hardware_cursors = true;
+        # Changed to integer (2 = Auto, 1 = true, 0 = false)
+        no_hardware_cursors = 2;
       };
       input = {
         kb_layout = "us";
-        #kb_variant =
-        #kb_model =
-        #kb_options =
-        #kb_rules =
 
         touchpad = {
           natural_scroll = false;
@@ -94,7 +82,6 @@
         gaps_out = 5;
         border_size = 3;
 
-        #col.active_border = rgba(1803E799)
         "col.active_border" = "rgba(240FB480)";
         "col.inactive_border" = "rgba(595959aa)";
 
@@ -127,77 +114,69 @@
       };
 
       dwindle = {
-        pseudotile = true;
         preserve_split = true;
       };
       master = {
-        #new_is_master = false
         orientation = "top";
         new_on_top = false;
       };
       misc = {
-        vfr = false;
         enable_anr_dialog = false;
       };
 
       windowrule = [
         # Simple Placement
-        "workspace 2 silent, class:^steam$"
-        "workspace 2 silent, class:^lutris$"
-        "workspace 8 silent, class:^org\\.qbittorrent\\.qBittorrent$"
-
-        "suppressevent maximize, class:.*"
+        "workspace 8 silent, match:class ^org\\.qbittorrent\\.qBittorrent$"
 
         # Windowrules
         # Doom Emacs
-        "float, class:emacs"
-        "size 1400 850, class:emacs"
+        "float 1, match:class emacs"
+        "size 1400 850, match:class emacs"
 
         # Alacritty
-        "float, class:Alacritty"
-        "size 1000 300, class:Alacritty"
+        "float 1, match:class Alacritty"
+        "size 1000 300, match:class Alacritty"
 
         # Telegram
-        "float, class:org\\.telegram\\.desktop"
-        "size 1120 750, class:org\\.telegram\\.desktop"
-        "center 1, class:org\\.telegram\\.desktop"
+        "float 1, match:class org\\.telegram\\.desktop"
+        "size 1120 750, match:class org\\.telegram\\.desktop"
+        "center 1, match:class org\\.telegram\\.desktop"
 
         # QIMGV
-        "float, class:qimgv"
-        "size 950 950, class:qimgv"
-        "center 1, class:qimgv"
+        "float 1, match:class qimgv"
+        "size 950 950, match:class qimgv"
+        "center 1, match:class qimgv"
 
         # PavuControl
-        "float, class:org\\.pulseaudio\\.pavucontrol"
-        "size 1220 700, class:org\\.pulseaudio\\.pavucontrol"
-        "center 1, class:org\\.pulseaudio\\.pavucontrol"
+        "float 1, match:class org\\.pulseaudio\\.pavucontrol"
+        "size 1220 700, match:class org\\.pulseaudio\\.pavucontrol"
+        "center 1, match:class org\\.pulseaudio\\.pavucontrol"
 
         # Thunar
         # -Rename
-        "float, class:thunar, title:Rename.+"
-        "size 650 150, class:thunar, title:Rename.+"
-        "center 1, class:thunar, title:Rename.+"
+        "float 1, match:class thunar, match:title Rename.+"
+        "size 650 150, match:class thunar, match:title Rename.+"
+        "center 1, match:class thunar, match:title Rename.+"
         # -Confirmation Dialogue
-        "float, class:thunar, title:File Operation Progress"
-        "size 550 180, class:thunar, title:File Operation Progress"
-        "move 715 800, class:thunar, title:File Operation Progress"
+        "float 1, match:class thunar, match:title File Operation Progress"
+        "size 550 180, match:class thunar, match:title File Operation Progress"
+        "move 715 800, match:class thunar, match:title File Operation Progress"
 
         # TauonMB
-        "fullscreen, class:tauonmb"
+        "fullscreen 1, match:class tauonmb"
 
         # MPV
-        "float, class:mpv"
-        "size 900 700, class:mpv"
-        "center 1, class:mpv"
+        "float 1, match:class mpv"
+        "size 900 700, match:class mpv"
+        "center 1, match:class mpv"
 
         # Ark
-        "float, class:org\\.kde\\.ark"
-        "size 1000 700, class:org\\.kde\\.ark"
+        "float 1, match:class org\\.kde\\.ark"
+        "size 1000 700, match:class org\\.kde\\.ark"
 
         # SpeedCrunch
-
-        "float, class:org\\.speedcrunch.*"
-        "size 1000 700, class:org\\.speedcrunch.*"
+        "float 1, match:class org\\.speedcrunch.*"
+        "size 1000 700, match:class org\\.speedcrunch.*"
       ];
 
       # Binds
@@ -227,8 +206,6 @@
         "$mainMod, C, killactive"
         "$mainMod, V, layoutmsg, swapwithmaster"
         "$mainMod, L, exec, pidof hyprlock && hyprlock || hyprlock"
-        #"$mainMod, U, exec, ~/.config/hypr/gamemode.sh"
-        #bind = $mainMod, R, workspaceopt, allfloat
 
         # Misc
         "$mainMod, M, exec, bash -c 'umount ~/.orgnotes; loginctl terminate-session \"\"'"
@@ -250,14 +227,6 @@
         "$mainMod, E, exec, GDK_BACKEND=\"wayland\" GTK_ICON_THEME=\"Papirus-Dark\" thunar"
 
         # Shortcuts
-        # -MusicBee
-        #", End, exec, $shortcut_dir/play_pause.sh"
-        #", Pause, exec, $shortcut_dir/shuffle.sh"
-        #", Delete, exec, $shortcut_dir/close_kill.sh"
-        #", Home, exec, $shortcut_dir/next.sh"
-        #", Next, exec, $shortcut_dir/stop_after_current.sh"
-        #", Scroll_Lock, exec, $shortcut_dir/previous.sh"
-
         # -Tauon
         ", End, exec, playerctl -p $player play-pause"
         ", Pause, exec, playerctl -p $player shuffle \"On\""

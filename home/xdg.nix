@@ -13,9 +13,10 @@ in
   xdg = {
     enable = true;
 
-    mime.enable = false;
+    mime.enable = true;
     mimeApps.enable = false;
 
+    #configFile."mimeapps.list".force = true;
     portal = {
       enable = true;
       xdgOpenUsePortal = true;
@@ -26,7 +27,6 @@ in
       ];
 
       configPackages = with pkgs; [ firefox-devedition ];
-
       config.common = {
         default = [
           "hyprland"
