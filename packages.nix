@@ -9,24 +9,12 @@
   ...
 }:
 let
-  #paksold = pkgs_old;
-  #bleed = pkgs_bleeding;
+  bleed = pkgs_bleeding;
   py = pkgs.python314Packages;
-  prismFix = prism.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-    prismlauncher-unwrapped =
-      (prism.packages.${pkgs.stdenv.hostPlatform.system}.prismlauncher-unwrapped.override {
-        extra-cmake-modules = pkgs.kdePackages.extra-cmake-modules;
-      }).overrideAttrs
-        (oldAttrs: {
-          nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [
-            pkgs.pkg-config
-          ];
-        });
-  };
 in
 {
   environment.systemPackages = with pkgs; [
-    prismFix
+    prism.packages."${pkgs.stdenv.hostPlatform.system}".prismlauncher
     typescript-language-server
     typescript
     eslint
@@ -43,7 +31,6 @@ in
 
     #protonvpn-cli
     openvpn
-    #zrythm
     bespokesynth
     zlib
     zip
@@ -56,10 +43,6 @@ in
     most
     less
 
-    xdg-desktop-portal-wlr
-    swaybg
-
-    #vscode-fhs
     wineasio
     unzip
     #surge
@@ -71,7 +54,7 @@ in
     nvme-cli
     ardour
     arch-install-scripts
-    #veracrypt
+    veracrypt
     hdparm
     libreoffice-qt6-fresh
     #rpcs3
@@ -86,7 +69,7 @@ in
     filezilla
     mokuro
     jellyfin-mpv-shim
-    osu-lazer-bin
+    bleed.osu-lazer-bin
     anki-bin
     anki-sync-server
 
@@ -103,40 +86,26 @@ in
       ]
     ))
 
-    #cudaPackages.cudatoolkit
     xeyes
-    xorgserver
-    xrandr
-
     stuntman
     heimdall
-    gvfs
     simple-mtpfs
     android-tools
 
     #Emacs
     cmigemo
     tidyp
-    jsbeautifier
     html-tidy
     gnumake
-    pkg-config
     cmake
     libtool
     libvterm
-    editorconfig-checker
-    editorconfig-core-c
     sbcl
-    gdtoolkit_4
     libxml2
-    gopls
-    gomodifytags
-    gotests
     gore
     haskell-language-server
-    #llvmPackages.clang-tools
     pandoc
-    nixfmt-rfc-style
+    nixfmt
     shfmt
     shellcheck
     stylelint
@@ -170,12 +139,8 @@ in
     shadow
     wget
     coreutils
-    psmisc
-    ntfs3g
-    libxkbcommon
     alsa-plugins
     alsa-firmware
-    alsa-lib
     alsa-tools
     alsa-utils
     xinit
@@ -186,7 +151,6 @@ in
     dwarfs
     fuse-overlayfs
     libarchive
-    hyprpolkitagent
 
     #OVMF
     qemu
@@ -201,25 +165,14 @@ in
     compsize
     udisks
     timewarrior
-
-    # GTK Libs
     zenity
-    gst_all_1.gstreamer
-    gst_all_1.gst-vaapi
-    gst_all_1.gst-plugins-base
-    gst_all_1.gst-plugins-good
-    gst_all_1.gst-plugins-ugly
-    gst_all_1.gst-plugins-bad
-    gst_all_1.gst-libav
 
     vulkan-loader
     vulkan-headers
 
-    xcur2png
     pavucontrol
     #audacity
     mpv
-    #busybox
     htop
     fastfetch
     speedcrunch
@@ -230,7 +183,6 @@ in
 
     fd
     ripgrep
-    cmake
     clang
     gcc
     rustup
@@ -238,9 +190,6 @@ in
 
     # QT
     qimgv
-
-    # PrismLauncher Cracked
-    #pkgs.prismlauncherCracked
 
     (retroarch.withCores (
       cores: with cores; [
@@ -266,14 +215,13 @@ in
 
     # Python
     #System
-    python315.out
     py.pip
-
-    #Misc
     py.yt-dlp
 
+    #Misc
+    hyprpolkitagent
+
     # System Utilities
-    home-manager
     discord
     bitwarden-desktop
     git
@@ -284,7 +232,6 @@ in
     rsync
     xdotool
     yarn
-    stow
     brightnessctl
     ffmpeg-full
     yt-dlp
@@ -304,13 +251,15 @@ in
     openjdk8
 
     # WINE
-    #wireshark-qt
+    wireshark-qt
     wireguard-tools
     duperemove
+
     # Programs
-    #wineWowPackages.waylandFull
-    #wineWowPackages.stableFull
-    wineWow64Packages.unstableFull
+    #wineWow64Packages.waylandFull
+    #wineWow64Packages.stableFull
+    #wineWow64Packages.unstableFull
+    wineWow64Packages.stagingFull
     winetricks
     grim
     slurp
@@ -319,7 +268,7 @@ in
     cliphist
     firefox-devedition
     telegram-desktop
-    pkgs.qbittorrent
+    qbittorrent
     rose-pine-cursor
     aria2
 
@@ -327,41 +276,41 @@ in
     papirus-icon-theme
   ];
 
-  programs.obs-studio = {
-    enable = true;
-    package = pkgs.obs-studio;
-    plugins = [ pkgs.obs-studio-plugins.wlrobs ];
-  };
-  programs.tmux.enable = true;
-  programs.xfconf.enable = true;
-  programs.dconf.enable = true;
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs; [
-      thunar-volman
-      thunar-archive-plugin
-      catfish
-      garcon
-      exo
-      tumbler
-
-      totem
-      webp-pixbuf-loader
-      mcomix
-      f3d
-      gnome-epub-thumbnailer
-    ];
-  };
-  programs.steam = {
-    enable = true;
-    protontricks.enable = true;
-    gamescopeSession.enable = false;
-  };
-  programs.gamemode = {
-    enable = true;
-    enableRenice = true;
-  };
   programs = {
+    obs-studio = {
+      enable = true;
+      package = pkgs.obs-studio;
+      plugins = [ pkgs.obs-studio-plugins.wlrobs ];
+    };
+    tmux.enable = true;
+    xfconf.enable = true;
+    dconf.enable = true;
+    thunar = {
+      enable = true;
+      plugins = with pkgs; [
+        thunar-volman
+        thunar-archive-plugin
+        catfish
+        garcon
+        exo
+        tumbler
+
+        totem
+        webp-pixbuf-loader
+        mcomix
+        f3d
+        gnome-epub-thumbnailer
+      ];
+    };
+    steam = {
+      enable = true;
+      protontricks.enable = true;
+      gamescopeSession.enable = false;
+    };
+    gamemode = {
+      enable = true;
+      enableRenice = true;
+    };
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
@@ -418,13 +367,13 @@ in
         gst_all_1.gst-libav
       ];
     };
-  };
-  programs.fuse = {
-    userAllowOther = true;
-    mountMax = 20;
-  };
+    fuse = {
+      userAllowOther = true;
+      mountMax = 20;
+    };
 
-  programs.labwc.enable = true;
+    labwc.enable = true;
+  };
 
   # Services
   services.seatd.enable = true;
