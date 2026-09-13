@@ -21,7 +21,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs_unstable = {
-      url = "github:nixos/nixpkgs?ref=nixos-unstable";
+      url = "github:nixos/nixpkgs?ref=master";
     };
     nixpkgs = {
       url = "github:NixOS/nixpkgs?ref=nixos-26.05";
@@ -35,6 +35,11 @@
       url = "github:Diegiwg/PrismLauncher-Cracked";
       inputs.nixpkgs.follows = "nixpkgs_unstable";
     };
+
+    #vaultwarden-src = {
+    #  url = "github:dani-garcia/vaultwarden/1.37.3";
+    #  flake = false;
+    #};
   };
 
   outputs =
@@ -60,7 +65,7 @@
       packages = {
         x86_64-linux = nixpkgs.legacyPackages.${system};
       };
-
+      lib = nixpkgs.lib;
     in
     {
       nixosConfigurations = {
@@ -88,5 +93,19 @@
           };
         };
       };
+
+      nixpkgs.overlays = (
+        final: prev: {
+          vaultwarden = prev.vaultwarden.overrideAttrs (old: {
+            version = "1.37.3";
+            src = inputs.vaultwarden-src;
+
+            cargoDeps = old.cargoDeps.overrideAttrs {
+              src = inputs.vaultwarden-src;
+              outputHash = lib.fakeHash;
+            };
+          });
+        }
+      );
     };
 }
