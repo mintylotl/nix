@@ -41,6 +41,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs_unstable,
       home-manager,
       prism,
       ...
@@ -50,11 +51,11 @@
       pkgs = nixpkgs.legacyPackages."${system}";
       pkgsPath = nixpkgs.outPath;
 
-      #pkgs_bleeding = import nixpkgs_unstable {
-      #  system = "${system}";
-      #  config.allowUnfree = true;
-      #};
-      #pkgsPath_bleeding = nixpkgs_unstable.outPath;
+      pkgs_bleeding = import nixpkgs_unstable {
+        system = "${system}";
+        config.allowUnfree = true;
+      };
+      pkgsPath_bleeding = nixpkgs_unstable.outPath;
 
       packages = {
         x86_64-linux = nixpkgs.legacyPackages.${system};
@@ -76,14 +77,14 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 inherit pkgsPath;
-                #         inherit pkgsPath_bleeding;
+                #inherit pkgsPath_bleeding;
               };
             }
           ];
           specialArgs = {
             inherit inputs;
             inherit prism;
-            #    inherit pkgs_bleeding;
+            inherit pkgs_bleeding;
           };
         };
       };

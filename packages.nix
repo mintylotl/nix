@@ -1,6 +1,6 @@
 {
   pkgs,
-  #pkgs_bleeding,
+  pkgs_bleeding,
   pkgs_old,
   config,
   lib,
@@ -478,7 +478,7 @@ in
 
   services.vaultwarden = {
     enable = true;
-    package = pkgs.vaultwarden;
+    package = pkgs_bleeding.vaultwarden;
     environmentFile = "/system/programs/Vaultwarden/env.env";
     #config = "";
     dbBackend = "sqlite";
