@@ -20,6 +20,7 @@ in
     eslint
     vtsls
     zsh
+    bash
 
     pkgs.tree-sitter-grammars.tree-sitter-typescript
     pkgs.tree-sitter-grammars.tree-sitter-tsx

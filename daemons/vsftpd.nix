@@ -1,6 +1,7 @@
 { config, lib, ... }:
 
 {
+  security.pam.services.vsftpd.unixAuth = true;
   services.vsftpd = {
     enable = true;
     anonymousUser = false;
@@ -8,7 +9,6 @@
     writeEnable = true;
     chrootlocalUser = false;
     allowWriteableChroot = true;
-    allowConfigOps = true;
     extraConfig = ''
       local_umask=000
       file_open_mode=0666
@@ -18,6 +18,7 @@
       pasv_min_port=40000
       pasv_max_port=40100
       pam_service_name=vsftpd
+      seccomp_sandbox=NO
       check_shell=NO
     '';
   };
