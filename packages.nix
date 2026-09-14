@@ -19,6 +19,7 @@ in
     typescript
     eslint
     vtsls
+    zsh
 
     pkgs.tree-sitter-grammars.tree-sitter-typescript
     pkgs.tree-sitter-grammars.tree-sitter-tsx
@@ -251,7 +252,7 @@ in
     openjdk8
 
     # WINE
-    wireshark-qt
+    #wireshark
     wireguard-tools
     duperemove
 
@@ -292,7 +293,7 @@ in
         thunar-archive-plugin
         catfish
         garcon
-        exo
+        #exo
         tumbler
 
         totem

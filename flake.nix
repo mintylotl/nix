@@ -32,8 +32,8 @@
     };
 
     prism = {
-      url = "github:Diegiwg/PrismLauncher-Cracked";
-      inputs.nixpkgs.follows = "nixpkgs_unstable";
+      url = "github:mintylotl/prismcrack";
+      #inputs.nixpkgs.follows = "nixpkgs_unstable";
     };
 
     #vaultwarden-src = {
@@ -68,6 +68,7 @@
       lib = nixpkgs.lib;
     in
     {
+      packages.${system}.prismlauncher = prism.packages.${system}.prismlauncher;
       nixosConfigurations = {
         cabbage = nixpkgs.lib.nixosSystem {
           modules = [

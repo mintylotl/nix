@@ -2,12 +2,13 @@
 
 {
   services.vsftpd = {
+    enable = true;
     anonymousUser = false;
     localUsers = true;
-    #localRoot = "/var/lib/jail";
     writeEnable = true;
     chrootlocalUser = false;
     allowWriteableChroot = true;
+    allowConfigOps = true;
     extraConfig = ''
       local_umask=000
       file_open_mode=0666
@@ -16,10 +17,8 @@
       pasv_enable=yes
       pasv_min_port=40000
       pasv_max_port=40100
+      pam_service_name=vsftpd
+      check_shell=NO
     '';
-  };
-  systemd.services.vsftpd.serviceConfig = {
-    ProtectHome = "false";
-    ProtectSystem = "nodev";
   };
 }
