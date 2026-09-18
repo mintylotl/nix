@@ -9,7 +9,10 @@ let
   HOME = "/home/gameboy";
 in
 {
-  imports = [ ./programs/zsh.nix ];
+  imports = [
+    ./home/xdg_gameboy.nix
+    ./programs/zsh_gameboy.nix
+  ];
 
   home.username = "gameboy";
   home.homeDirectory = "/home/gameboy";
