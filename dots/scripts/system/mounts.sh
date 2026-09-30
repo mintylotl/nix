@@ -87,7 +87,7 @@ mount --onlyonce -t btrfs -U $GAMES -o subvol=/,compress-force=zstd:2,noatime /h
 
 # --Game Drives
 printf "\nMounting Complex Game Drives...\n"
-mount --onlyonce -t ext4 -U $GAMESHD -o defaults,noatime,nodiratime,commit=60 /home/Games/Gamesc
+mount --onlyonce -t btrfs -U $GAMESHD -o defaults,noatime,nodiratime,commit=60,compress-force=zstd:2 /home/Games/Gamesc
 mount --onlyonce -t btrfs -U $GAMESD -o noatime,compress-force=zstd:2,defaults,ssd /home/Games/SSD
 
 printf "Symlinking\n"
