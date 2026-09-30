@@ -7,19 +7,11 @@
   inputs,
   ...
 }:
-let
-  HOME = "/home/jwm";
-in
 {
   home.username = "jwm";
   home.homeDirectory = "/home/jwm";
   home.preferXdgDirectories = true;
   home.enableNixpkgsReleaseCheck = false;
-
-  programs.home-manager = {
-    enable = true;
-    path = "/etc/nixos/home.nix";
-  };
 
   imports = [
     ./home/xdg.nix
@@ -179,7 +171,7 @@ in
     gtk3.extraConfig = {
       gtk-menu-images = true;
     };
-	
+
     gtk4 = {
       theme = null;
       extraConfig = {

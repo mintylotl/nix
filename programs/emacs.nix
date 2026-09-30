@@ -7,7 +7,7 @@
 let
   epaks = pkgs.emacsPackages;
   pypaks = pkgs.python314Packages;
-  HOME = "/home/jwm";
+  homeDir = "/home/jwm";
 in
 {
   programs.emacs = {
@@ -71,7 +71,7 @@ in
   };
   systemd.user.services.emacs = {
     Unit = {
-      ExecStartPre = [ "${pkgs.bash}/bin/bash ${HOME}/.scripts/emacs.sh" ];
+      ExecStartPre = [ "${pkgs.bash}/bin/bash ${homeDir}/.scripts/emacs.sh" ];
     };
   };
 }

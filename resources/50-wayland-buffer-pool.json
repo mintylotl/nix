@@ -28,8 +28,9 @@
             "settings": [
                 {
                     "key": "GLVidHeapReuseRatio",
-                    "value": 1
-                }]
+                    "value": 0
+                }
+            ]
         }
     ]
 }

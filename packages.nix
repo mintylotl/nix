@@ -316,57 +316,14 @@ in
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
-        # Existing dependencies
-        zlib
-        glib
-        nspr
-        nss
-        glibc
-        dbus
-        atk
-        at-spi2-core
-        cups
-        cairo
-        gtk3
-        pango
-        expat
-        libxkbcommon
-        systemd
-        alsa-lib
-        gcc
-        pkg-config
-        libgbm
-
-        # Missing Graphics stack (libGL, libGLX, libEGL, libOpenGL)
-        libGL
-        libGLX
-        libglvnd # Provides libOpenGL and vendor-neutral dispatch
-        mesa # Essential for hardware acceleration/drivers
-
-        # Font & System libs
-        fontconfig # libfontconfig.so.1
-        freetype # libfreetype.so.6
-        libgpg-error # libgpg-error.so.0
-
-        # Other
-        wayland # libwayland-client.so.0
-        bzip2 # libbz2.so.1.0
-        libadwaita # libadwaita-1.so.0
-        gtk4 # libgtk-4.so.1
-        pango # libpango-1.0.so.0
-        gdk-pixbuf # libgdk_pixbuf-2.0.so.0
-        cairo # libcairo.so.2
-        glib # libgio-2.0.so.0, libgobject-2.0.so.0, libglib-2.0.so.0
-
-        # Common dependencies often required by GTK4/Adwaita apps
-        glibc
-
         gst_all_1.gstreamer
         gst_all_1.gst-plugins-base
         gst_all_1.gst-plugins-good
         gst_all_1.gst-plugins-bad
         gst_all_1.gst-plugins-ugly
         gst_all_1.gst-libav
+
+        fuse2
       ];
     };
     fuse = {

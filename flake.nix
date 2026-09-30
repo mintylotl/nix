@@ -95,7 +95,7 @@
         };
       };
 
-      nixpkgs.overlays = (
+      nixpkgs_unstable.overlays = (
         final: prev: {
           vaultwarden = prev.vaultwarden.overrideAttrs (old: {
             version = "1.37.3";

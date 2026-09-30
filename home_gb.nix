@@ -1,13 +1,11 @@
 {
   lib,
+  config,
   pkgs,
   pkgsPath,
   #pkgsPath_bleeding,
   ...
 }:
-let
-  HOME = "/home/gameboy";
-in
 {
   imports = [
     ./home/xdg_gameboy.nix
@@ -19,10 +17,9 @@ in
   home.preferXdgDirectories = true;
   home.enableNixpkgsReleaseCheck = false;
 
-  programs.home-manager.enable = true;
-
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    #STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${config.home.homeDirectory}/.steam/root/compatibilitytools.d";
   };
 
   home.file = {
@@ -36,7 +33,7 @@ in
   };
 
   xdg.mimeApps = {
-    enable = true;
+    enable = false;
     defaultApplications = {
       "text/html" = [ "firefox.desktop" ];
       "x-scheme-handler/http" = [ "firefox.desktop" ];
@@ -46,45 +43,47 @@ in
     };
   };
 
-  # Programs
-  programs.direnv = {
-    enable = true;
-    enableBashIntegration = true;
-    nix-direnv.enable = true;
-  };
-
-  programs.emacs.enable = true;
   services.emacs.enable = false;
+  programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    };
 
-  programs.bash = {
-    enable = true;
-    initExtra = ''
-      alias e="exit"
-      zsh
-    '';
-    profileExtra = ''
-      if [[ $- == *i* ]];
-      then
-        export WLR_NO_HARDWARE_CURSORS=1
-        export WLR_RENDERER=
-        export WLR_DRM_NO_ATOMIC=1
-        export GBM_BACKEND=nvidia-drm
-        export XDG_CURRENT_DESKTOP=labwc
-        export XDG_SESSION_TYPE=wayland
-      fi
-    '';
-  };
+    emacs.enable = true;
 
-  programs.neovim = {
-    enable = true;
-  };
+    bash = {
+      enable = true;
+      initExtra = ''
+        alias e="exit"
+        zsh
+      '';
+      profileExtra = ''
+        if [[ $- == *i* ]];
+        then
+          export WLR_NO_HARDWARE_CURSORS=1
+          export WLR_RENDERER=
+          export WLR_DRM_NO_ATOMIC=1
+          export GBM_BACKEND=nvidia-drm
+          export XDG_CURRENT_DESKTOP=labwc
+          export XDG_SESSION_TYPE=wayland
+        fi
+      '';
+    };
 
-  programs.kitty.enable = true;
-  programs.alacritty.enable = true;
-  programs.rofi = {
-    enable = true;
-    theme = ./config/dracula.rasi;
-    terminal = "${pkgs.alacritty}/bin/alacritty";
+    neovim = {
+      enable = true;
+    };
+
+    kitty.enable = true;
+    alacritty.enable = true;
+    rofi = {
+      enable = true;
+      theme = ./config/dracula.rasi;
+      terminal = "${pkgs.alacritty}/bin/alacritty";
+    };
+    waybar.enable = true;
   };
 
   nix.registry = {
@@ -119,8 +118,6 @@ in
     #  };
     #};
   };
-
-  programs.waybar.enable = true;
 
   home.stateVersion = "26.05";
 }

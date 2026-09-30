@@ -8,11 +8,11 @@
   ...
 }:
 let
-  HOME = "/home/jwm";
   #bleed = pkgs_bleeding;
 
-  scriptsDir = "${HOME}/.scripts";
-  programsDir = "${HOME}/.programs";
+  homeDir = "/home/jwm";
+  scriptsDir = "${homeDir}/.scripts";
+  programsDir = "${homeDir}/.programs";
 in
 {
   # nixOS
@@ -223,7 +223,7 @@ in
             ];
           }
           {
-            command = "${HOME}/.scripts/programs/musicbee/musicbee.sh";
+            command = "${scriptsDir}/programs/musicbee/musicbee.sh";
             options = [
               "SETENV"
               "NOPASSWD"

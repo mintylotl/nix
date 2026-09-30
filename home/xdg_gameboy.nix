@@ -13,7 +13,7 @@ in
   xdg = {
     enable = true;
 
-    mime.enable = true;
+    mime.enable = false;
     mimeApps.enable = false;
 
     #configFile."mimeapps.list".force = true;
