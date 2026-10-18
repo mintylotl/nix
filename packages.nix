@@ -156,7 +156,7 @@ in
 
     #OVMF
     qemu
-    umu-launcher
+    bleed.umu-launcher
 
     cowsay
     kittysay
@@ -476,19 +476,55 @@ in
   };
 
   # Fonts
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-color-emoji
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-color-emoji
 
-    proggyfonts
-    font-awesome
-    andika
+      fira-code
+      fira-code-symbols
+      proggyfonts
+      font-awesome
 
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.iosevka
-    nerd-fonts.hack
-  ];
+      # Fallback
+      unifont
+    ];
+
+    fontconfig = {
+      useEmbeddedBitmaps = true;
+      localConf = ''
+        <alias>
+          <family>sans-serif</family>
+          <prefer>
+            <family>Noto Sans</family>
+            <family>Noto Color Emoji</family>
+          </prefer>
+        </alias>
+      '';
+
+      defaultFonts = {
+        emoji = [
+          "Noto Color Emoji"
+          "Unifont"
+        ];
+        sansSerif = [
+          "Noto Sans"
+          "Noto Sans CJK JP"
+          "Unifont"
+        ];
+        serif = [
+          "Noto Serif"
+          "Noto Serif CJK JP"
+          "Unifont"
+        ];
+        monospace = [
+          "Noto Sans Mono"
+          "Noto Sans Mono CJK JP"
+          "Unifont"
+        ];
+      };
+    };
+  };
 }

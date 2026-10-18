@@ -30,6 +30,7 @@
 
       alias ls="ls --color"
       alias e="exit"
+      alias s="systemctl suspend -i"
       alias ..="cd .."
 
       alias vd="veracrypt -t -d"

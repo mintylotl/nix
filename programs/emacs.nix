@@ -31,7 +31,7 @@ in
       pkgs.cmake
       pkgs.clang
       pkgs.gnumake
-      pkgs.nixfmt-rfc-style
+      pkgs.nixfmt
       pkgs.sbcl
       pkgs.gdtoolkit_4
 

@@ -133,6 +133,7 @@ in
     ];
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      "nvme_core.default_ps_max_latency_us=0"
       #"nvidia_drm.modeset=1"
     ];
     blacklistedKernelModules = [
