@@ -20,6 +20,8 @@
 
   programs.zsh = {
     enable = true;
+
+    dotDir = "${config.xdg.configHome}/zsh";
     completionInit = "";
     initContent = ''
       ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.local/share}/zinit/zinit.git"

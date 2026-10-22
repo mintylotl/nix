@@ -32,19 +32,23 @@
     #};
   };
 
-  xdg.mimeApps = {
-    enable = false;
-    defaultApplications = {
-      "text/html" = [ "firefox.desktop" ];
-      "x-scheme-handler/http" = [ "firefox.desktop" ];
-      "x-scheme-handler/https" = [ "firefox.desktop" ];
-      "x-scheme-handler/about" = [ "firefox.desktop" ];
-      "x-scheme-handler/unknown" = [ "firefox.desktop" ];
-    };
-  };
+  #xdg.mimeApps = {
+  #  enable = false;
+  #  defaultApplications = {
+  #    "text/html" = [ "firefox.desktop" ];
+  #    "x-scheme-handler/http" = [ "firefox.desktop" ];
+  #    "x-scheme-handler/https" = [ "firefox.desktop" ];
+  #    "x-scheme-handler/about" = [ "firefox.desktop" ];
+  #    "x-scheme-handler/unknown" = [ "firefox.desktop" ];
+  #  };
+  #};
 
   services.emacs.enable = false;
   programs = {
+    firefox = {
+      enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
+    };
     direnv = {
       enable = true;
       enableBashIntegration = true;
@@ -74,6 +78,9 @@
 
     neovim = {
       enable = true;
+
+      withPython3 = false;
+      withRuby = false;
     };
 
     kitty.enable = true;

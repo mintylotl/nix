@@ -120,6 +120,9 @@
 
   programs.neovim = {
     enable = true;
+
+    withPython3 = false;
+    withRuby = false;
   };
 
   programs.kitty.enable = true;
@@ -201,5 +204,5 @@
     style.package = pkgs.qt6Packages.qtstyleplugin-kvantum;
   };
 
-  home.stateVersion = "25.05";
+  home.stateVersion = "26.05";
 }

@@ -14,7 +14,6 @@
       "https://nix-community.cachix.org"
       "https://prismlauncher.cachix.org"
       "https://hyprland.cachix.org"
-      "https://cuda-maintainers.cachix.org"
     ];
   };
 
@@ -75,8 +74,8 @@
             ./configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
+              home-manager.useGlobalPkgs = false;
+              home-manager.useUserPackages = false;
               home-manager.users.jwm = import ./home.nix;
               home-manager.users.gameboy = import ./home_gb.nix;
 

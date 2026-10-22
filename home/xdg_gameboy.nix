@@ -9,6 +9,7 @@ let
   HOME = "/home/gameboy";
 in
 {
+
   # Home Stuff
   xdg = {
     enable = true;
@@ -105,9 +106,5 @@ in
       };
     };
 
-  };
-  programs.firefox = {
-    enable = true;
-    package = pkgs.firefox-devedition;
   };
 }

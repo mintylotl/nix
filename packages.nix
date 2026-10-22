@@ -261,7 +261,6 @@ in
     hyprpaper
     wl-clipboard
     cliphist
-    firefox-devedition
     telegram-desktop
     qbittorrent
     rose-pine-cursor

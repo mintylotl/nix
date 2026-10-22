@@ -11,6 +11,11 @@ local mainMod = "SUPER"
 local shortcut_dir = HOME .. "/.programs/musicbee/shortcuts"
 local player = "tauon"
 
+local accent = {
+    pink = "rgb(f5c2e7)",
+    mauve = "rgb(cba6f7)",
+    inactive = "rgb(45475a)",
+}
 ------------------------------------------------------------
 -- Monitor / workspace
 ------------------------------------------------------------
@@ -57,15 +62,20 @@ hl.config({
         numlock_by_default = true,
     },
     general = {
-        gaps_in = 3,
-        gaps_out = 5,
-        border_size = 3,
-        col = {
-            active_border = "rgba(240FB480)",
-            inactive_border = "rgba(595959aa)",
+      gaps_in = 3,
+      gaps_out = 5,
+      border_size = 2,
+
+      col = {
+        active_border = {
+          colors = { accent.pink, accent.mauve },
+          angle = 45,
         },
-        layout = "master",
-        allow_tearing = true,
+        inactive_border = accent.inactive,
+      },
+
+      layout = "master",
+      allow_tearing = true,
     },
     decoration = {
         rounding = 3,
