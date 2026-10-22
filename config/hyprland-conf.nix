@@ -8,291 +8,26 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
+    # Home Manager's Lua-mode config entrypoint imports ~/.config/hypr/config.lua.
+    configType = "lua";
+
     systemd = {
       enable = true;
       variables = [ "--all" ];
     };
 
-    settings = {
-      monitor = ", 1920x1080@100, 0x0, 1";
-      workspace = "HDMI-A-1, 1";
-
-      env = [
-        # THEMING
-        "GDK_BACKEND, wayland, x11"
-        "QT_QPA_PLATFORM, wayland"
-
-        # Cursors
-        "XCURSOR_SIZE, 24"
-        "XCURSOR_THEME, \"BreezeX-RosePineDawn-Linux\""
-        "HYPRCURSOR_SIZE, 24"
-        "HYPRCURSOR_THEME, \"rosepine-cursor\""
-
-        # XDG / DBUS
-        "XDG_CURRENT_DESKTOP, Hyprland"
-        "XDG_SESSION_DESKTOP, Hyprland"
-        "XDG_SESSION_TYPE, wayland"
-      ];
-
-      exec-once = [
-        # Startup / Env / Dbus / XDG
-        "sleep 10s && systemctl --user start hyprpolkitagent"
-        "systemctl --user start xdg-desktop-portal-hyprland"
-        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-
-        # Clipboard
-        "wl-paste --type text --watch cliphist store"
-
-        # Scripts
-        "$HOME/.config/hypr/sink.sh"
-        "sudo -E $scripts/system/leds.sh&"
-        # Programs
-        "hyprpaper"
-        "fcitx5 -d"
-      ];
-
-      exec = [
-        "dconf write /org/gnome/desktop/interface/cursor-theme \"'BreezeX-RosePineDawn-Linux'\""
-        "dconf write /org/gnome/desktop/interface/gtk-theme \"'Breeze-Dark'\""
-      ];
-
-      # Hyprland Variables
-      "$HOME" = "/home/jwm";
-      "$scripts" = "$HOME/.scripts";
-      "$emacsDir" = "$HOME/.emacs.d";
-
-      cursor = {
-        # Changed to integer (2 = Auto, 1 = true, 0 = false)
-        no_hardware_cursors = 2;
-      };
-      input = {
-        kb_layout = "us";
-
-        touchpad = {
-          natural_scroll = false;
-        };
-
-        sensitivity = 0.5;
-        follow_mouse = 1;
-        numlock_by_default = true;
-      };
-      general = {
-        gaps_in = 3;
-        gaps_out = 5;
-        border_size = 3;
-
-        "col.active_border" = "rgba(240FB480)";
-        "col.inactive_border" = "rgba(595959aa)";
-
-        layout = "master";
-        allow_tearing = true;
-      };
-
-      decoration = {
-        rounding = 3;
-
-        blur = {
-          enabled = true;
-          size = 2;
-          passes = 1;
-        };
-      };
-
-      animations = {
-        enabled = true;
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-
-        animation = [
-          "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "borderangle, 1, 8, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
-        ];
-      };
-
-      dwindle = {
-        preserve_split = true;
-      };
-      master = {
-        orientation = "top";
-        new_on_top = false;
-      };
-      misc = {
-        enable_anr_dialog = false;
-      };
-
-      windowrule = [
-        # Simple Placement
-        "workspace 8 silent, match:class ^org\\.qbittorrent\\.qBittorrent$"
-
-        # Windowrules
-        # Doom Emacs
-        "float 1, match:class emacs"
-        "size 1400 850, match:class emacs"
-
-        # Alacritty
-        "float 1, match:class Alacritty"
-        "size 1000 300, match:class Alacritty"
-
-        # Telegram
-        "float 1, match:class org\\.telegram\\.desktop"
-        "size 1120 750, match:class org\\.telegram\\.desktop"
-        "center 1, match:class org\\.telegram\\.desktop"
-
-        # QIMGV
-        "float 1, match:class qimgv"
-        "size 950 950, match:class qimgv"
-        "center 1, match:class qimgv"
-
-        # PavuControl
-        "float 1, match:class org\\.pulseaudio\\.pavucontrol"
-        "size 1220 700, match:class org\\.pulseaudio\\.pavucontrol"
-        "center 1, match:class org\\.pulseaudio\\.pavucontrol"
-
-        # Thunar
-        # -Rename
-        "float 1, match:class thunar, match:title Rename.+"
-        "size 650 150, match:class thunar, match:title Rename.+"
-        "center 1, match:class thunar, match:title Rename.+"
-        # -Confirmation Dialogue
-        "float 1, match:class thunar, match:title File Operation Progress"
-        "size 550 180, match:class thunar, match:title File Operation Progress"
-        "move 715 800, match:class thunar, match:title File Operation Progress"
-
-        # TauonMB
-        "fullscreen 1, match:class tauonmb"
-
-        # MPV
-        "float 1, match:class mpv"
-        "size 900 700, match:class mpv"
-        "center 1, match:class mpv"
-
-        # Ark
-        "float 1, match:class org\\.kde\\.ark"
-        "size 1000 700, match:class org\\.kde\\.ark"
-
-        # SpeedCrunch
-        "float 1, match:class org\\.speedcrunch.*"
-        "size 1000 700, match:class org\\.speedcrunch.*"
-      ];
-
-      # Binds
-      "$mainMod" = "SUPER";
-      "$shortcut_dir" = "$HOME/.programs/musicbee/shortcuts";
-      "$player" = "tauon";
-
-      bind = [
-        # ScreenShotting
-        ", Print, exec, grim -l 4 -g \"0,0 1920x1080\""
-        "$mainMod, Print, exec, grim -l 8 -g \"$(slurp)\""
-
-        # Editors
-        "$mainMod, O, exec, alacritty -e nvim ./"
-        "$mainMod, I, exec, alacritty -e nvim ./newfilevim"
-        "$mainMod, A, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-        "$mainMod, Z, exec, emacsclient -c -s \"$HOME/.doom.d/emacflurry/mcflurry\""
-
-        # Hypr Utilities
-        "$mainMod, N, layoutmsg, orientationtop"
-        "$mainMod, K, exec, hyprctl kill"
-        "$mainMod, Q, exec, hyprctl dispatch pin"
-        "$mainMod, W, togglefloating"
-        "$mainMod, B, fullscreen"
-        "$mainMod, F, fullscreen, 1"
-        "$mainMod, D, exec, hyprctl dispatch centerwindow"
-        "$mainMod, C, killactive"
-        "$mainMod, V, layoutmsg, swapwithmaster"
-        "$mainMod, L, exec, pidof hyprlock && hyprlock || hyprlock"
-
-        # Misc
-        "$mainMod, M, exec, bash -c 'umount ~/.orgnotes; loginctl terminate-session \"\"'"
-        "$mainMod CTRL, down, exec, bash -c 'archwiki-offline'"
-        "$mainMod, T, exec, cliphist wipe"
-        "$mainMod, SPACE, exec, rofi -show drun -width 65 -lines 15"
-
-        # Audio
-        ", F7, exec, wpctl set-volume 33 5%-"
-        ", F8, exec, wpctl set-volume 33 5%+"
-
-        # Programs
-        # -MusicBee
-        "$mainMod, P, exec, $shortcut_dir/../launcher.sh"
-        # -Misc
-        "$mainMod, G, exec, firefox-devedition"
-        "$mainMod, RETURN, exec, alacritty"
-        "$mainMod, S, exec, speedcrunch"
-        "$mainMod, E, exec, GDK_BACKEND=\"wayland\" GTK_ICON_THEME=\"Papirus-Dark\" thunar"
-
-        # Shortcuts
-        # -Tauon
-        ", End, exec, playerctl -p $player play-pause"
-        ", Pause, exec, playerctl -p $player shuffle \"On\""
-        ", Home, exec, playerctl -p $player next"
-        ", Next, exec, playerctl -p $player shuffle \"Off\""
-        ", Scroll_Lock, exec, playerctl -p $player previous"
-
-        # Other
-        "$mainMod, R, movetoworkspacesilent, 7"
-
-        # Window Control
-        # -Focus
-        "$mainMod SHIFT, left, layoutmsg, orientationleft"
-        "$mainMod SHIFT, right, layoutmsg, orientationright"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, X, bringactivetotop"
-        # -Workspaces
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
-        # -Window to workspace
-        "$mainMod, 87, movetoworkspacesilent, 1"
-        "$mainMod, 88, movetoworkspacesilent, 2"
-        "$mainMod, 89, movetoworkspacesilent, 3"
-        "$mainMod, 83, movetoworkspacesilent, 4"
-        "$mainMod, 84, movetoworkspacesilent, 5"
-        "$mainMod, 85, movetoworkspacesilent, 6"
-        "$mainMod, 79, movetoworkspacesilent, 7"
-        "$mainMod, 80, movetoworkspacesilent, 8"
-        "$mainMod, 81, movetoworkspacesilent, 9"
-        "$mainMod, 90, movetoworkspacesilent, 10"
-        # -To workspace with active window
-        "$mainMod SHIFT, 87, movetoworkspace, 1"
-        "$mainMod SHIFT, 88, movetoworkspace, 2"
-        "$mainMod SHIFT, 89, movetoworkspace, 3"
-        "$mainMod SHIFT, 83, movetoworkspace, 4"
-        "$mainMod SHIFT, 84, movetoworkspace, 5"
-        "$mainMod SHIFT, 85, movetoworkspace, 6"
-        "$mainMod SHIFT, 79, movetoworkspace, 7"
-        "$mainMod SHIFT, 80, movetoworkspace, 8"
-        "$mainMod SHIFT, 81, movetoworkspace, 9"
-        "$mainMod SHIFT, 90, movetoworkspace, 10"
-        # -Cycle workspaces with ScrollWheel
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
-      ];
-      bindm = [
-        # Window Control
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-      ];
-    };
+    settings = { };
+    extraConfig = ''
+      require("config")
+    '';
   };
 
   home.file = {
-    # SCRIPTS
+    # Main Lua config migrated from the old Nix settings.
+    ".config/hypr/config.lua" = {
+      source = ../dots/config/hypr/config.lua;
+    };
+    # Scripts (union of the old config and the updated reference file).
     ".config/hypr/gamemode.sh" = {
       source = ../dots/config/hypr/gamemode.sh;
     };
@@ -302,11 +37,14 @@
     ".config/hypr/sink.sh" = {
       source = ../dots/config/hypr/sink.sh;
     };
+    ".config/hypr/shuffle_bg.sh" = {
+      source = ../dots/config/hypr/shuffle_bg.sh;
+    };
     ".config/hypr/xdp.sh" = {
       source = ../dots/config/hypr/xdp.sh;
     };
 
-    # CONFIG
+    # Other Hyprland configs.
     ".config/hypr/hypridle.conf" = {
       source = ../dots/config/hypr/hypridle.conf;
     };

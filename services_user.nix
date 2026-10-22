@@ -44,19 +44,6 @@ in
           WantedBy = [ "default.target" ];
         };
       };
-      gacha_life = {
-        Unit = {
-          Description = "GachaLife Daemon";
-        };
-        Service = {
-          ExecStart = "${pkgs.bash}/bin/bash -lc '${programsDir}/gacha_life.sh'";
-          #Environment = "TELOXIDE_TOKEN=redacted";
-          ExecStopPost = "${pkgs.bash}/bin/bash -lc '${programsDir}/gacha_life.sh 1'";
-        };
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
-      };
       anki_sync = {
         Unit = {
           Description = "Anki-Sync Daemon";

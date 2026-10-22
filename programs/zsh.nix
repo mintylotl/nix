@@ -78,7 +78,7 @@
         RPROMPT="%F{8}%D{%H:%M:%S}%f"
       }
 
-      PATH="$HOME/.cargo/bin:$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$SCRIPTS_DIR/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$PATH"
+      PATH="$HOME/.cargo/bin:$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$SCRIPTS_DIR/scripts:$HOME/.local/bin:$HOME/.config/emacs/bin:$PATH"
       PURE_PROMPT_SYMBOL='❯'
       PURE_GIT_PULL=1
       PURE_GIT_UNTRACKED_DIRTY=1

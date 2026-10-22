@@ -46,6 +46,17 @@ in
       pkgs.zig
       pkgs.pnpm
       pkgs.nixd
+      pkgs.nodejs
+      pkgs.gopls
+      pkgs.gomodifytags
+      pkgs.gotests
+      pkgs.haskellPackages.hoogle
+      pkgs.clang-tools
+      pkgs.python3Packages.nose2
+      pkgs.pyenv
+      pkgs.js-beautify
+
+      pkgs.python3
     ];
   };
 
@@ -65,6 +76,7 @@ in
         epkgs.all-the-icons
         epkgs.org-superstar
         epkgs.pytest
+	pkgs.python3
       ]));
 
     startWithUserSession = true;

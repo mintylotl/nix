@@ -37,6 +37,19 @@
           ExecStart = "/run/current-system/sw/bin/bash -c './alice_bot'";
         };
       };
+      gacha_life = {
+        enable = true;
+        description = "A service for running the Gacha Bot";
+        after = [ "NetworkManager-wait-online.service" ];
+        requires = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
+
+        serviceConfig = {
+	  EnvironmentFile = /system/creds/gacha_life.env;
+          WorkingDirectory = "/system/programs/gacha_life";
+          ExecStart = "/run/current-system/sw/bin/bash -c './gacha'";
+        };
+      };
 
       komf = {
         description = "Komf service for fetching Komga metadata";
