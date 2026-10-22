@@ -3,7 +3,7 @@
   config,
   lib,
   pkgs,
-  #pkgs_bleeding,
+  pkgs_bleeding,
   inputs,
   ...
 }:

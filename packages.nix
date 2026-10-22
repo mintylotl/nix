@@ -33,7 +33,7 @@ in
 
     #protonvpn-cli
     openvpn
-    bespokesynth
+    #bespokesynth
     zlib
     zip
     imhex
@@ -115,7 +115,6 @@ in
     tk
     tree
     ocrmypdf
-    php
     sl
     lsof
     hdparm
@@ -130,8 +129,6 @@ in
     py.pytest
     py.isort
     py.tkinter
-
-    jdk17
 
     pipenv
     poetry
@@ -160,7 +157,6 @@ in
 
     cowsay
     kittysay
-    pokemonsay
     smartmontools
     pkgs.blender
     keyutils
@@ -170,11 +166,10 @@ in
     zenity
 
     vulkan-loader
-    vulkan-headers
 
     pavucontrol
     #audacity
-    mpv
+    bleed.mpv
     htop
     fastfetch
     speedcrunch
@@ -196,24 +191,23 @@ in
     (retroarch.withCores (
       cores: with cores; [
         mgba
-        mame2003-plus
+        #mame2003-plus
         mame2010
         snes9x
-        nestopia
+        #nestopia
         ppsspp
-        dolphin
+        #dolphin
         swanstation
-        bsnes-mercury-performance
-        bsnes-mercury
+        #bsnes-mercury-performance
+        #bsnes-mercury
         #fbalpha2012
         pcsx-rearmed
-        genesis-plus-gx
-        mame2000
-        melonds
+        #genesis-plus-gx
+        #mame2000
+        #melonds
       ]
     ))
     retroarch-assets
-    typescript
 
     # Python
     #System
@@ -250,7 +244,6 @@ in
     #JAVA
     openjdk21
     openjdk17
-    openjdk8
 
     # WINE
     #wireshark
@@ -259,9 +252,9 @@ in
 
     # Programs
     #wineWow64Packages.waylandFull
-    #wineWow64Packages.stableFull
+    wineWow64Packages.stableFull
     #wineWow64Packages.unstableFull
-    wineWow64Packages.stagingFull
+    #wineWow64Packages.stagingFull
     winetricks
     grim
     slurp
@@ -316,14 +309,6 @@ in
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
-        gst_all_1.gstreamer
-        gst_all_1.gst-plugins-base
-        gst_all_1.gst-plugins-good
-        gst_all_1.gst-plugins-bad
-        gst_all_1.gst-plugins-ugly
-        gst_all_1.gst-libav
-
-        fuse2
       ];
     };
     fuse = {

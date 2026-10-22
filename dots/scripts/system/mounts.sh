@@ -16,7 +16,7 @@ HOME="/home/jwm"
 COLD="d7f41dd1-ef48-427f-9f65-94e1016c0b13"
 HOT="8f29f7cf-0bea-45a9-945c-9c35e9ac41da"
 GAMESHD="3be35d9b-3130-47e5-860c-ca2b6458b071"
-GAMESD="eab8d2aa-2a49-431a-9f98-e6e35ff5ddba"
+GAMESD="c2678ceb-9fb5-453a-b64b-de9225f46e40"
 
 if [ $MODE -eq 1 ]; then
 	mount --onlyonce -t btrfs -U $HOT -o subvol=@vols/emacs-conf,noatime,compress-force=zstd:6 $HOME/.doom.d/
@@ -28,8 +28,8 @@ fi
 
 if [ $MODE -eq 2 ]; then
 	printf "\nMounting Complex Game Drives...\n"
-	mount --onlyonce -t btrfs -U $GAMESHD -o defaults,noatime,nodiratime,commit=60,compress-force=zstd:2 /home/Games/Gamesc
-	mount --onlyonce -t btrfs -U $GAMESD -o subvol=/,noatime,compress-force=zstd:2,defaults,ssd /home/Games/SSD
+	mount --onlyonce -t btrfs -U $GAMESHD -o defaults,noatime,nodiratime,commit=60,compress-force=zstd:3 /home/Games/Gamesc
+	mount --onlyonce -t btrfs -U $GAMESD -o subvol=@Games,noatime,compress-force=zstd:4,defaults,ssd /home/Games/SSD
 	exit 0
 fi
 
@@ -88,7 +88,7 @@ mount --onlyonce -t btrfs -U $GAMES -o subvol=/,compress-force=zstd:2,noatime /h
 # --Game Drives
 printf "\nMounting Complex Game Drives...\n"
 mount --onlyonce -t btrfs -U $GAMESHD -o defaults,noatime,nodiratime,commit=60,compress-force=zstd:2 /home/Games/Gamesc
-mount --onlyonce -t btrfs -U $GAMESD -o noatime,compress-force=zstd:2,defaults,ssd /home/Games/SSD
+mount --onlyonce -t btrfs -U $GAMESD -o subvol=@Games,nodiratime,noatime,compress-force=zstd:4,defaults,ssd /home/Games/SSD
 
 printf "Symlinking\n"
 # --Cold Storage

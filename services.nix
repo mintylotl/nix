@@ -25,6 +25,7 @@
         };
       };
       alice = {
+        enable = true;
         description = "A service for running the Alice Bot";
         after = [ "NetworkManager-wait-online.service" ];
         requires = [ "network-online.target" ];

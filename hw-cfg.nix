@@ -29,19 +29,18 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/8f29f7cf-0bea-45a9-945c-9c35e9ac41da";
+      device = "/dev/disk/by-uuid/620905f0-92f7-44cb-887f-771e4bd90b7c";
       fsType = "btrfs";
       options = [
-        "subvol=@nix"
         "noatime"
-        "compress-force=zstd:4"
+        "compress-force=zstd:2"
         "ssd"
         "discard=async"
       ];
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/14A5-3735";
+      device = "/dev/disk/by-uuid/65B9-33B2";
       fsType = "vfat";
       options = [
         "fmask=0022"
@@ -52,15 +51,17 @@
 
   zramSwap = {
     enable = true;
-    memoryPercent = 12;
+    memoryPercent = 6;
   };
 
+  hardware.alsa.enablePersistence = true;
+  hardware.enableRedistributableFirmware = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
   };
 
-  hardware.enableRedistributableFirmware = true;
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
