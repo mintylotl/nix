@@ -28,6 +28,13 @@
     NIXOS_OZONE_WL = 1;
   };
 
+  programs = {
+    home-manager = {
+      enable = false;
+      path = "/etc/nixos/home_jwm.nix";
+    };
+  };
+
   nix.registry = {
     devShells = {
       from = {
@@ -86,68 +93,69 @@
       source = ./dots/config/waybar;
       recursive = true;
     };
-    /*
-      ".config/pipewire" = {
-        source = ./dots/config/pipewire;
-        recursive = true;
-      };
-    */
   };
 
   # Programs
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-  programs.waybar = {
-    enable = true;
-    systemd.enable = false;
-  };
+  programs = {
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-devedition;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
+    };
 
-  programs.bash = {
-    enable = true;
-    bashrcExtra = "";
-    initExtra = ''
-      alias e="exit"
-      zsh
-    '';
-    profileExtra = "";
-  };
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    waybar = {
+      enable = true;
+      systemd.enable = false;
+    };
 
-  programs.neovim = {
-    enable = true;
+    bash = {
+      enable = true;
+      bashrcExtra = "";
+      initExtra = ''
+        alias e="exit"
+        zsh
+      '';
+      profileExtra = "";
+    };
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
-    withPython3 = false;
-    withRuby = false;
-  };
+    neovim = {
+      enable = true;
 
-  programs.kitty.enable = true;
-  programs.alacritty = {
-    enable = true;
-    #settings = {
-    #  window.dimensions = {
-    #    lines = 15;
-    #    columns = 600;
-    #  };
-    #};
-  };
-  programs.rofi = {
-    enable = true;
-    theme = ./config/dracula.rasi;
-    terminal = "${pkgs.alacritty}/bin/alacritty";
-    package = pkgs.rofi;
-  };
+      withPython3 = false;
+      withRuby = false;
+    };
 
-  programs.git = {
-    enable = true;
-    settings = {
-      user = {
-        name = "mintylotl";
-        email = "mintyaxolotl@proton.me";
+    kitty.enable = true;
+    alacritty = {
+      enable = true;
+      #settings = {
+      #  window.dimensions = {
+      #    lines = 15;
+      #    columns = 600;
+      #  };
+      #};
+    };
+    rofi = {
+      enable = true;
+      terminal = "${pkgs.alacritty}/bin/alacritty";
+      package = pkgs.rofi;
+    };
+
+    git = {
+      enable = true;
+      settings = {
+        user = {
+          name = "mintylotl";
+          email = "mintyaxolotl@proton.me";
+        };
       };
     };
   };
@@ -159,9 +167,9 @@
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
+  # THEMING
   home.pointerCursor = {
     x11.enable = true;
-
     gtk.enable = true;
     package = pkgs.rose-pine-cursor;
     name = "BreezeX-RosePineDawn-Linux";
@@ -171,22 +179,21 @@
   gtk = {
     enable = true;
 
-    gtk3.extraConfig = {
-      gtk-menu-images = true;
+    gtk3 = {
+      extraConfig = {
+        gtk-menu-images = true;
+        gtk-application-prefer-dark-theme = true;
+      };
     };
 
     gtk4 = {
-      theme = null;
       extraConfig = {
         gtk-menu-images = true;
+        gtk-application-prefer-dark-theme = true;
       };
     };
 
     cursorTheme.name = "BreezeX-RosePineDawn-Linux";
-    theme = {
-      package = pkgs.kdePackages.breeze-gtk;
-      name = "Breeze-Dark";
-    };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
       name = "Papirus-Dark";
@@ -199,9 +206,23 @@
 
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
     style.name = "kvantum";
-    style.package = pkgs.qt6Packages.qtstyleplugin-kvantum;
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "frappe";
+    accent = "mauve";
+
+    gtk = {
+      icon.enable = false;
+    };
+    kvantum = {
+      enable = true;
+      apply = true;
+    };
+    rofi.enable = true;
+    alacritty.enable = false;
   };
 
   home.stateVersion = "26.05";

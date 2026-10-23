@@ -27,14 +27,13 @@ in
         xdg-desktop-portal-wlr
       ];
 
-      configPackages = with pkgs; [ firefox-devedition ];
       config.common = {
         default = [
           "hyprland"
           "wlr"
           "gtk"
         ];
-        "org.freedesktop.portal.OpenURI" = [ "firefox-developer-edition" ];
+        "org.freedesktop.portal.OpenURI" = [ "firefox-devedition" ];
       };
       config.Hyprland = {
         "org.freedesktop.impl.portal.ScreenCast" = "hyprland.portal";
@@ -105,6 +104,5 @@ in
         #};
       };
     };
-
   };
 }

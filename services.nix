@@ -32,7 +32,7 @@
         wantedBy = [ "multi-user.target" ];
 
         serviceConfig = {
-	  EnvironmentFile = /system/creds/alice.env;
+          EnvironmentFile = /system/creds/alice.env;
           WorkingDirectory = "/system/programs/alice";
           ExecStart = "/run/current-system/sw/bin/bash -c './alice_bot'";
         };
@@ -45,7 +45,7 @@
         wantedBy = [ "multi-user.target" ];
 
         serviceConfig = {
-	  EnvironmentFile = /system/creds/gacha_life.env;
+          EnvironmentFile = /system/creds/gacha_life.env;
           WorkingDirectory = "/system/programs/gacha_life";
           ExecStart = "/run/current-system/sw/bin/bash -c './gacha'";
         };

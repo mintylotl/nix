@@ -35,6 +35,10 @@
       #inputs.nixpkgs.follows = "nixpkgs_unstable";
     };
 
+    catppuccin = {
+      url = "github:catppuccin/nix/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #vaultwarden-src = {
     #  url = "github:dani-garcia/vaultwarden/1.37.3";
     #  flake = false;
@@ -48,6 +52,7 @@
       nixpkgs_unstable,
       home-manager,
       prism,
+      catppuccin,
       ...
     }@inputs:
     let
@@ -76,7 +81,12 @@
             {
               home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = false;
-              home-manager.users.jwm = import ./home.nix;
+              home-manager.users.jwm = {
+                imports = [
+                  catppuccin.homeModules.catppuccin
+                  ./home.nix
+                ];
+              };
               home-manager.users.gameboy = import ./home_gb.nix;
 
               home-manager.extraSpecialArgs = {

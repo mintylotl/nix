@@ -12,7 +12,6 @@ in
 {
   systemd = {
     user.enable = true;
-    #user.startServices = "sd-switch";
     user.sessionVariables = {
       PATH = "/home/jwm/.emacs.d/bin:$PATH";
     };
