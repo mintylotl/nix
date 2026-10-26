@@ -37,6 +37,21 @@
           ExecStart = "/run/current-system/sw/bin/bash -c './alice_bot'";
         };
       };
+      inhibitor = {
+        enable = true;
+
+        path = [
+          pkgs.jq
+          pkgs.curl
+        ];
+        description = "A service for Inhibiting Sleep";
+        wantedBy = [ "multi-user.target" ];
+
+        serviceConfig = {
+          WorkingDirectory = "/system/scripts";
+          ExecStart = "/run/current-system/sw/bin/bash ./inhibit_if_serving.sh";
+        };
+      };
       gacha_life = {
         enable = true;
         description = "A service for running the Gacha Bot";

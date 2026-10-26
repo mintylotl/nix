@@ -175,8 +175,9 @@ in
     speedcrunch
     openssl
 
-    lutris
-    protontricks
+    bleed.lutris
+    bleed.protonplus
+    bleed.protontricks
 
     fd
     ripgrep
@@ -323,15 +324,13 @@ in
   services.vsftpd.enable = true;
   services.openssh = {
     enable = true;
-    extraConfig = ''
-      ClientAliveInterval 60
-      ClientAliveCountMax 3
-    '';
   };
+
   services.tumbler.enable = true;
 
   services.jellyfin = {
     enable = true;
+    package = bleed.jellyfin;
     dataDir = "/system/programs/jellyfin";
   };
 
