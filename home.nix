@@ -93,6 +93,10 @@
       source = ./dots/config/waybar;
       recursive = true;
     };
+
+    ".config/pipewire/pipewire.conf" = {
+      source = ./dots/config/pipewire/pipewire.conf;
+    };
   };
 
   # Programs

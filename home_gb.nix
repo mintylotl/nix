@@ -23,13 +23,9 @@
   };
 
   home.file = {
-    #".config/pipewire" = {
-    #  source = ./dots/config/pipewire;
-    #  recursive = true;
-    #};
-    #".scripts/sink.sh" = {
-    #  source = ./dots/config/hypr/sink.sh;
-    #};
+    ".config/pipewire/pipewire.conf" = {
+      source = ./dots/config/pipewire/pipewire.conf;
+    };
   };
 
   #xdg.mimeApps = {
