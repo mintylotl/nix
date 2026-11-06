@@ -39,6 +39,11 @@
       url = "github:catppuccin/nix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #vaultwarden-src = {
     #  url = "github:dani-garcia/vaultwarden/1.37.3";
     #  flake = false;
@@ -53,6 +58,7 @@
       home-manager,
       prism,
       catppuccin,
+      nur,
       ...
     }@inputs:
     let
@@ -77,6 +83,8 @@
         cabbage = nixpkgs.lib.nixosSystem {
           modules = [
             ./configuration.nix
+            nur.modules.nixos.default
+
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = false;
@@ -92,7 +100,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 inherit pkgsPath;
-                #inherit pkgsPath_bleeding;
+                inherit pkgsPath_bleeding;
               };
             }
           ];
