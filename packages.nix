@@ -14,6 +14,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
+    pkgs.nur.repos.ilyasturki.citron-neo
     prism.packages."${pkgs.stdenv.hostPlatform.system}".prismlauncher
     typescript-language-server
     typescript
@@ -315,8 +316,21 @@ in
       userAllowOther = true;
       mountMax = 20;
     };
-
     labwc.enable = true;
+
+    appimage = {
+      enable = true;
+      binfmt = true;
+
+      package = pkgs.appimage-run.override {
+        extraPkgs =
+          pkgs: with pkgs; [
+            libgpg-error
+            libGL
+            libglvnd
+          ];
+      };
+    };
   };
 
   # Services

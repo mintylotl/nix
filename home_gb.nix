@@ -3,7 +3,7 @@
   config,
   pkgs,
   pkgsPath,
-  #pkgsPath_bleeding,
+  pkgsPath_bleeding,
   ...
 }:
 {
@@ -111,16 +111,16 @@
         path = pkgsPath;
       };
     };
-    #nixosBleed = {
-    #  from = {
-    #    id = "nixosbleed";
-    #    type = "indirect";
-    #  };
-    #  to = {
-    #    type = "path";
-    #    path = pkgsPath_bleeding;
-    #  };
-    #};
+    bleed = {
+      from = {
+        id = "nixosbleed";
+        type = "indirect";
+      };
+      to = {
+        type = "path";
+        path = pkgsPath_bleeding;
+      };
+    };
   };
 
   home.stateVersion = "26.05";
